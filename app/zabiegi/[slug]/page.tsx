@@ -102,158 +102,157 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
   const galleryLink = galleryLinks[treatment.slug];
 
   return (
-    <article>
-      <section
-        id="wprowadzenie"
-        className={`${styles.hero} ${styles.anchorSection} section-shell`}
-      >
-        <div className={styles.heroCopy}>
-          <Breadcrumbs currentPage={treatment.title} />
-          <h1 className={styles.heroTitle}>{treatment.title}</h1>
-          <TreatmentFacts
-            id="informacje"
-            className={`${styles.heroFacts} ${styles.mobileHeroFacts} ${styles.anchorSection}`}
-            price={treatment.price}
-            duration={treatment.duration}
-            recoveryTime={treatment.recoveryTime}
-            sessionCount={treatment.sessionCount}
-          />
-          <h2 className={styles.heroSubtitle}>Dla kogo jest ten zabieg?</h2>
-          {treatment.forWho.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-          <div className={styles.heroActions}>
-            <CTAButton />
-            {galleryLink ? (
-              <Link
-                className="button button-secondary"
-                href={`/galeria?category=${galleryLink.category}`}
-              >
-                Zobacz moje prace
-              </Link>
-            ) : null}
-          </div>
-        </div>
+    <article className={styles.layout}>
+      <aside className={`${styles.sidebar} section-shell`}>
         <div className={styles.heroImage}>
           <Image
             className={styles.heroImageFile}
             src={getTreatmentImage(treatment.slug)}
             alt={treatment.imageAlt}
             fill
-            sizes="(min-width: 768px) 50vw, 100vw"
+            sizes="(min-width: 640px) 40vw, 100vw"
           />
         </div>
-      </section>
-
-      <section
-        id="opis-zabiegu"
-        className={`${styles.content} ${styles.copyContent} ${styles.copyContentNoDivider} ${styles.anchorSection} section-shell`}
-      >
-        <h2>Na czym polega zabieg?</h2>
-        <div className={styles.copyColumn}>
-          {treatment.description.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
         <TreatmentFacts
+          id="informacje"
           className={`${styles.heroFacts} ${styles.desktopHeroFacts} ${styles.anchorSection}`}
           price={treatment.price}
           duration={treatment.duration}
           recoveryTime={treatment.recoveryTime}
           sessionCount={treatment.sessionCount}
         />
-      </section>
+      </aside>
 
-      <section
-        id="przygotowanie-do-zabiegu"
-        className={`${styles.content} ${styles.listContent} ${styles.anchorSection} section-shell`}
-      >
-        <div>
-          <h2>Przygotowanie do zabiegu</h2>
-          <ol className={`${styles.list} ${styles.orderedList}`}>
-            {treatment.preparation.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      {treatment.beforeAfter && (
+      <div className={styles.mainContent}>
         <section
-          id="przed-i-po"
-          className={`${styles.content} ${styles.beforeAfter} ${styles.anchorSection} section-shell`}
-          aria-labelledby="before-after-title"
+          id="wprowadzenie"
+          className={`${styles.hero} ${styles.anchorSection} section-shell`}
         >
-          <div className={styles.beforeAfterCopy}>
-            <h2 id="before-after-title">Przed i po</h2>
-            <h3>{treatment.beforeAfter.title}</h3>
-            {treatment.beforeAfter.description.map((paragraph) => (
+          <div className={styles.heroCopy}>
+            <Breadcrumbs currentPage={treatment.title} />
+            <h1 className={styles.heroTitle}>{treatment.title}</h1>
+            <TreatmentFacts
+              id="informacje-mobilne"
+              className={`${styles.heroFacts} ${styles.mobileHeroFacts} ${styles.anchorSection}`}
+              price={treatment.price}
+              duration={treatment.duration}
+              recoveryTime={treatment.recoveryTime}
+              sessionCount={treatment.sessionCount}
+            />
+            <h2 className={styles.heroSubtitle}>Dla kogo jest ten zabieg?</h2>
+            {treatment.forWho.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+            <div className={styles.heroActions}>
+              <CTAButton />
+              {galleryLink ? (
+                <Link
+                  className="button button-secondary"
+                  href={`/galeria?category=${galleryLink.category}`}
+                >
+                  Zobacz moje prace
+                </Link>
+              ) : null}
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="opis-zabiegu"
+          className={`${styles.content} ${styles.copyContent} ${styles.copyContentNoDivider} ${styles.anchorSection} section-shell`}
+        >
+          <h2>Na czym polega zabieg?</h2>
+          <div className={styles.copyColumn}>
+            {treatment.description.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
-          <BeforeAfterSlider
-            beforeSrc={treatment.beforeAfter.before.src}
-            beforeAlt={treatment.beforeAfter.before.alt}
-            afterSrc={treatment.beforeAfter.after.src}
-            afterAlt={treatment.beforeAfter.after.alt}
-          />
         </section>
-      )}
 
-      <section
-        id="przeciwwskazania"
-        className={`${styles.content} ${styles.listContent} ${styles.anchorSection} section-shell`}
-      >
-        <div>
-          <h2>Przeciwwskazania</h2>
-          <ul className={`${styles.list} ${styles.unorderedList}`}>
-            {treatment.contraindications.map((item) => (
-              <li key={item}>{item}</li>
+        <section
+          id="przygotowanie-do-zabiegu"
+          className={`${styles.content} ${styles.listContent} ${styles.anchorSection} section-shell`}
+        >
+          <div>
+            <h2>Przygotowanie do zabiegu</h2>
+            <ol className={`${styles.list} ${styles.orderedList}`}>
+              {treatment.preparation.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {treatment.beforeAfter && (
+          <section
+            id="przed-i-po"
+            className={`${styles.content} ${styles.beforeAfter} ${styles.anchorSection} section-shell`}
+            aria-labelledby="before-after-title"
+          >
+            <BeforeAfterSlider
+              beforeSrc={treatment.beforeAfter.before.src}
+              beforeAlt={treatment.beforeAfter.before.alt}
+              afterSrc={treatment.beforeAfter.after.src}
+              afterAlt={treatment.beforeAfter.after.alt}
+            />
+          </section>
+        )}
+
+        <section
+          id="przeciwwskazania"
+          className={`${styles.content} ${styles.listContent} ${styles.anchorSection} section-shell`}
+        >
+          <div>
+            <h2>Przeciwwskazania</h2>
+            <ul className={`${styles.list} ${styles.unorderedList}`}>
+              {treatment.contraindications.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section
+          id="reakcje-pozabiegowe"
+          className={`${styles.content} ${styles.copyContent} ${styles.anchorSection} section-shell`}
+        >
+          <h2>Możliwe reakcje pozabiegowe</h2>
+          <div className={styles.copyColumn}>
+            {treatment.possibleReactions.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
             ))}
-          </ul>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      <section
-        id="reakcje-pozabiegowe"
-        className={`${styles.content} ${styles.copyContent} ${styles.anchorSection} section-shell`}
-      >
-        <h2>Możliwe reakcje pozabiegowe</h2>
-        <div className={styles.copyColumn}>
-          {treatment.possibleReactions.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
-      </section>
+        <section
+          id="zalecenia-pozabiegowe"
+          className={`${styles.content} ${styles.listContent} ${styles.anchorSection} section-shell`}
+        >
+          <div>
+            <h2>Zalecenia pozabiegowe</h2>
+            <ul className={`${styles.list} ${styles.unorderedList}`}>
+              {treatment.aftercare.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
-      <section
-        id="zalecenia-pozabiegowe"
-        className={`${styles.content} ${styles.listContent} ${styles.anchorSection} section-shell`}
-      >
-        <div>
-          <h2>Zalecenia pozabiegowe</h2>
-          <ul className={`${styles.list} ${styles.unorderedList}`}>
-            {treatment.aftercare.map((item) => (
-              <li key={item}>{item}</li>
+        <section
+          id="faq"
+          className={`${styles.content} ${styles.faqSection} ${styles.anchorSection} section-shell section-tinted`}
+          aria-labelledby="faq-title"
+        >
+          <div>
+            <h2 id="faq-title">Najczęściej zadawane pytania</h2>
+          </div>
+          <div>
+            {treatment.faqs.map((faq) => (
+              <FaqItem key={faq.question} {...faq} />
             ))}
-          </ul>
-        </div>
-      </section>
-
-      <section
-        id="faq"
-        className={`${styles.content} ${styles.faqSection} ${styles.anchorSection} section-shell section-tinted`}
-        aria-labelledby="faq-title"
-      >
-        <div>
-          <h2 id="faq-title">Najczęściej zadawane pytania</h2>
-        </div>
-        <div>
-          {treatment.faqs.map((faq) => (
-            <FaqItem key={faq.question} {...faq} />
-          ))}
-        </div>
-      </section>
+          </div>
+        </section>
+      </div>
     </article>
   );
 }
