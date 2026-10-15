@@ -1,27 +1,36 @@
+type TreatmentBeforeAfter =
+  | {
+      composite: {
+        src: string;
+        beforeAlt: string;
+        afterAlt: string;
+      };
+    }
+  | {
+      before: { src: string; alt: string };
+      after: { src: string; alt: string };
+    };
+
 export type Treatment = {
   slug: string;
   title: string;
   shortDescription: string;
-  forWho: string[];
+  forWho?: string[];
   imageAlt: string;
   secondaryImage: { src: string; alt: string };
-  beforeAfter?: {
-    title: string;
-    description: string[];
-    before: { src: string; alt: string };
-    after: { src: string; alt: string };
-  };
+  beforeAfter?: TreatmentBeforeAfter;
   duration: string;
   effectDuration: string;
-  recoveryTime: string;
-  sessionCount: string;
+  recoveryTime?: string;
+  sessionCount?: string;
   price: string;
   description: string[];
   possibleReactions: string[];
+  possibleReactionSymptoms?: string[];
   preparation: string[];
   contraindications: string[];
   aftercare: string[];
-  faqs: { question: string; answer: string }[];
+  faqs?: { question: string; answer: string }[];
 };
 
 export const treatmentImages: Record<string, string> = {
@@ -40,51 +49,75 @@ export const treatments: Treatment[] = [
     slug: "modelowanie-ust",
     title: "Modelowanie ust",
     shortDescription:
-      "Subtelne podkreślenie kształtu, konturu i proporcji ust dopasowane do Twojej urody.",
-    forWho: [
-      "Zabieg może być odpowiedni dla osób, które chcą subtelnie podkreślić kontur ust, dodać im objętości lub skorygować asymetrię.",
-      "Zakres modelowania dobiera się do anatomii twarzy i oczekiwań. Podczas konsultacji można omówić planowany efekt oraz ocenić, czy jest możliwy do uzyskania.",
-    ],
+      "Poprawa kształtu, proporcji i objętości ust z zachowaniem naturalnej harmonii.",
     imageAlt: "Zdjęcie ust związane z zabiegiem modelowania.",
     secondaryImage: {
       src: "/images/lips/IMG_8490.JPG",
       alt: "Naturalny efekt ust.",
     },
-    duration: "około 30 minut",
-    effectDuration: "zależna od preparatu i indywidualnych cech",
-    recoveryTime: "kilka dni",
-    sessionCount: "1 + ewentualna korekta",
-    price: "800–1000 zł",
+    duration: "50 minut",
+    effectDuration: "od kilku do kilkunastu miesięcy",
+    price: "700 zł",
     description: [
-      "Podczas konsultacji omawiamy oczekiwania, proporcje twarzy i możliwy efekt. Dobór preparatu oraz plan podania uwzględniają anatomię ust.",
-      "Preparat podawany jest precyzyjnie w wybrane obszary, aby podkreślić kontur, skorygować asymetrię lub dodać objętości. Zakres zabiegu ustalamy wspólnie przed rozpoczęciem.",
-      "Plan pracy układamy tak, by zachować harmonię z rysami twarzy i skupić się na efekcie, który został omówiony podczas konsultacji.",
+      "To zabieg, którego celem jest poprawa kształtu, proporcji oraz objętości ust z zachowaniem naturalnej harmonii.",
+      "Zabieg wykonywany jest z wykorzystaniem preparatu na bazie kwasu hialuronowego – substancji naturalnie występującej w organizmie, odpowiedzialnej m.in. za utrzymanie odpowiedniego poziomu nawilżenia i objętości tkanek.",
+      "Każdy zabieg poprzedzony jest szczegółową konsultacją, podczas której analizowane są proporcje ust, oczekiwania pacjentki oraz ewentualne przeciwwskazania. Na tej podstawie dobierana jest odpowiednia technika oraz ilość preparatu, tak aby uzyskany efekt był dopasowany indywidualnie do oczekiwań pacjentki.",
+      "W zależności od potrzeb zabieg może obejmować delikatne zwiększenie objętości, podkreślenie konturu czerwieni wargowej, poprawę symetrii, modelowanie łuku Kupidyna czy przywrócenie utraconej objętości.",
+      "Trwałość efektu jest indywidualna i zależy m.in. od zastosowanego preparatu, metabolizmu organizmu, stylu życia oraz indywidualnych predyspozycji. Zazwyczaj efekt utrzymuje się przez kilka do kilkunastu miesięcy.",
     ],
     possibleReactions: [
-      "Bezpośrednio po zabiegu może pojawić się obrzęk, tkliwość lub zaczerwienienie ust. Objawy zwykle stopniowo ustępują w trakcie gojenia.",
-      "Możliwe są również niewielkie siniaki i przejściowa nierówność związana z obrzękiem. Ostateczny efekt oceniamy po jego ustąpieniu.",
+      "Techniki iniekcji stosowane podczas zabiegu nie są mocno traumatyczne dla tkanek. Po zabiegu może jednak wystąpić przejściowy obrzęk i tkliwość.",
+      "Preparat stabilizuje się w tkankach w kolejnych tygodniach, dlatego efekt końcowy oceniamy po około 3–4 tygodniach od zabiegu.",
+      "Do około 2 tygodni mogą być wyczuwalne niewielkie nierówności lub zgrubienia, które w większości przypadków ustępują samoistnie.",
+    ],
+    possibleReactionSymptoms: [
+      "opuchlizna",
+      "siniaki",
+      "krwiaki",
+      "tkliwość w miejscach wkłuć",
+      "uczucie napięcia",
+      "przejściowe nierówności lub zgrubienia",
     ],
     preparation: [
-      "Na kilka dni przed wizytą unikaj alkoholu i intensywnego opalania.",
-      "Poinformuj osobę wykonującą zabieg o przyjmowanych lekach i stanie zdrowia.",
-      "Jeśli masz skłonność do opryszczki, omów to podczas konsultacji.",
-      "Na wizytę przyjdź bez kosmetyków kolorowych na ustach i wspomnij o wcześniejszych zabiegach w tej okolicy.",
-      "Jeśli od rezerwacji pojawiły się nowe objawy lub zmienił się Twój stan zdrowia, skontaktuj się z gabinetem przed wizytą.",
+      "Na 2–3 dni przed zabiegiem zadbaj o regularne picie wody — około 2–3 litrów dziennie.",
+      "Nie spożywaj alkoholu minimum 24–48 godzin przed planowanym zabiegiem.",
+      "Na minimum 48 godzin przed zabiegiem, o ile jest to możliwe i bezpieczne, unikaj leków przeciwbólowych i przeciwzapalnych z grupy NLPZ.",
+      "Przy tendencji do opryszczki należy przyjąć heviran w dawce 600-800 mg / dziennie przez ok 3 dni przed zabiegiem.",
+      "Po zakończeniu antybiotykoterapii warto odczekać do pełnego powrotu do zdrowia i skonsultować termin zabiegu. W przypadku infekcji, gorączki lub złego samopoczucia zabieg należy przełożyć.",
+      "Zrezygnuj z kawy, napojów energetycznych oraz intensywnego wysiłku fizycznego bezpośrednio przed wizytą.",
     ],
     contraindications: [
       "ciąża i karmienie piersią",
-      "aktywna opryszczka lub stan zapalny w miejscu zabiegu",
-      "choroby autoimmunologiczne i zaburzenia krzepliwości krwi",
-      "uczulenie na składniki preparatu",
-      "przyjmowanie leków wpływających na krzepliwość lub gojenie, wymagające indywidualnej kwalifikacji",
-      "niewyjaśnione zmiany lub uszkodzenia w obrębie ust wymagające wcześniejszej oceny",
+      "aktywna opryszczka",
+      "stany zapalne w miejscu wykonywania zabiegu (zmiany ropne)",
+      "infekcja, przeziębienie lub osłabienie organizmu",
+      "cukrzyca, szczególnie niewyrównana",
+      "epilepsja oraz niektóre choroby psychiczne",
+      "łuszczyca i inne aktywne choroby skóry w miejscu zabiegu",
+      "czynne choroby autoimmunologiczne",
+      "leczenie przeciwkrzepliwe i zaburzenia krzepliwości krwi",
+      "ziarniniakowe zapalenie skóry",
+      "choroby nowotworowe – wymagana indywidualna kwalifikacja",
+      "nadwrażliwość na kwas hialuronowy lub którykolwiek ze składników wypełniacza",
+      "izotretynoina (Izotek) – w trakcie leczenia",
+      "przyjmowanie leków zwiększających ryzyko krwawienia, w szczególności ASA i NLPZ",
+      "aktywne leczenie antybiotykiem lub trwająca infekcja",
+      "stały wypełniacz w miejscu planowanego zabiegu (np. Aquamid)",
+      "dysmorfofobia i nierealistyczne oczekiwania dotyczące efektu zabiegu",
+      "skłonność do powstawania bliznowców – przeciwwskazanie względne/indywidualna kwalifikacja",
+      "inne istotne choroby lub przyjmowane leki mogące mieć wpływ na bezpieczeństwo zabiegu",
     ],
     aftercare: [
-      "Przez pierwsze 24 godziny zachowaj szczególną higienę okolicy zabiegowej.",
-      "Przez kilka dni unikaj alkoholu, intensywnego wysiłku, sauny i wysokiej temperatury.",
-      "Końcowy efekt oceniamy po ustąpieniu obrzęku, zwykle po kilku tygodniach.",
-      "Nie uciskaj ani nie masuj ust, chyba że osoba wykonująca zabieg zaleci inaczej.",
-      "Jeśli reakcja jest silna, nasila się lub utrzymuje dłużej niż omówiono, skontaktuj się z gabinetem.",
+      "Zachować szczególną higienę okolicy zabiegowej. Nie dotykać i nie malować ust przez minimum 24 godziny.",
+      "Po zabiegu modelowania ust regularnie nawilżać usta zaleconym preparatem przez okres gojenia.",
+      "Zmienić ręcznik do twarzy na czysty lub jednorazowy oraz poszewkę na poduszkę.",
+      "Nie spożywać alkoholu przez minimum 24–48 godzin po zabiegu.",
+      "Nie przyjmować bez konsultacji leków przeciwbólowych i przeciwzapalnych zwiększających ryzyko krwawienia (np. aspiryny, ibuprofenu).",
+      "W dniu zabiegu unikać bardzo gorących i pikantnych potraw oraz napojów.",
+      "Nie układać ust w „dziubek”, nie pocierać warg o siebie i nie zagryzać ich.",
+      "Unikać sauny, solarium oraz intensywnego nagrzewania okolicy zabiegowej przez minimum 14 dni.",
+      "Przez kilka dni po zabiegu unikać spania w pozycji powodującej ucisk na usta.",
+      "Nie masować ani nie uciskać ust.",
     ],
     faqs: [
       {
@@ -104,17 +137,10 @@ export const treatments: Treatment[] = [
       },
     ],
     beforeAfter: {
-      title: "Efekt makijażu permanentnego brwi",
-      description: [
-        "Makijaż permanentny pozwala podkreślić kształt brwi i nadać im bardziej wyrazistą linię. Projekt oraz intensywność pigmentacji dobierane są indywidualnie do rysów twarzy i oczekiwanego efektu.",
-      ],
-      before: {
-        src: "/images/before_after/before2.png",
-        alt: "Twarz przed rekonstrukcją brwi, bez brwi.",
-      },
-      after: {
-        src: "/images/before_after/after2.png",
-        alt: "Twarz po rekonstrukcji brwi makijażem permanentnym.",
+      composite: {
+        src: "/images/lips/powiekszanie ust.JPG",
+        beforeAlt: "Usta przed modelowaniem kwasem hialuronowym.",
+        afterAlt: "Usta po modelowaniu kwasem hialuronowym.",
       },
     },
   },

@@ -37,8 +37,8 @@ type TreatmentFactsProps = {
   duration: string;
   id?: string;
   price: string;
-  recoveryTime: string;
-  sessionCount: string;
+  recoveryTime?: string;
+  sessionCount?: string;
 };
 
 const TreatmentFacts = ({
@@ -62,14 +62,18 @@ const TreatmentFacts = ({
       <dt>Czas trwania</dt>
       <dd>{duration}</dd>
     </div>
-    <div>
-      <dt>Rekonwalescencja</dt>
-      <dd>{recoveryTime}</dd>
-    </div>
-    <div>
-      <dt>Liczba zabiegów</dt>
-      <dd>{sessionCount}</dd>
-    </div>
+    {recoveryTime ? (
+      <div>
+        <dt>Rekonwalescencja</dt>
+        <dd>{recoveryTime}</dd>
+      </div>
+    ) : null}
+    {sessionCount ? (
+      <div>
+        <dt>Liczba zabiegów</dt>
+        <dd>{sessionCount}</dd>
+      </div>
+    ) : null}
   </dl>
 );
 
@@ -139,10 +143,16 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
               recoveryTime={treatment.recoveryTime}
               sessionCount={treatment.sessionCount}
             />
-            <h2 className={styles.heroSubtitle}>Dla kogo jest ten zabieg?</h2>
-            {treatment.forWho.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
+            {treatment.forWho?.length ? (
+              <>
+                <h2 className={styles.heroSubtitle}>
+                  Dla kogo jest ten zabieg?
+                </h2>
+                {treatment.forWho.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </>
+            ) : null}
             <div className={styles.heroActions}>
               <CTAButton />
               {galleryLink ? (
@@ -189,12 +199,23 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
             className={`${styles.content} ${styles.beforeAfter} ${styles.anchorSection} section-shell`}
             aria-labelledby="before-after-title"
           >
-            <BeforeAfterSlider
-              beforeSrc={treatment.beforeAfter.before.src}
-              beforeAlt={treatment.beforeAfter.before.alt}
-              afterSrc={treatment.beforeAfter.after.src}
-              afterAlt={treatment.beforeAfter.after.alt}
-            />
+            <h2 id="before-after-title">Przed i po</h2>
+            {"composite" in treatment.beforeAfter ? (
+              <BeforeAfterSlider
+                beforeSrc={treatment.beforeAfter.composite.src}
+                beforeAlt={treatment.beforeAfter.composite.beforeAlt}
+                afterSrc={treatment.beforeAfter.composite.src}
+                afterAlt={treatment.beforeAfter.composite.afterAlt}
+                composite
+              />
+            ) : (
+              <BeforeAfterSlider
+                beforeSrc={treatment.beforeAfter.before.src}
+                beforeAlt={treatment.beforeAfter.before.alt}
+                afterSrc={treatment.beforeAfter.after.src}
+                afterAlt={treatment.beforeAfter.after.alt}
+              />
+            )}
           </section>
         )}
 
@@ -221,6 +242,13 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
             {treatment.possibleReactions.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
+            {treatment.possibleReactionSymptoms?.length ? (
+              <ul className={`${styles.list} ${styles.unorderedList}`}>
+                {treatment.possibleReactionSymptoms.map((symptom) => (
+                  <li key={symptom}>{symptom}</li>
+                ))}
+              </ul>
+            ) : null}
           </div>
         </section>
 
@@ -238,20 +266,22 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
           </div>
         </section>
 
-        <section
-          id="faq"
-          className={`${styles.content} ${styles.faqSection} ${styles.anchorSection} section-shell section-tinted`}
-          aria-labelledby="faq-title"
-        >
-          <div>
-            <h2 id="faq-title">Najczęściej zadawane pytania</h2>
-          </div>
-          <div>
-            {treatment.faqs.map((faq) => (
-              <FaqItem key={faq.question} {...faq} />
-            ))}
-          </div>
-        </section>
+        {treatment.faqs?.length ? (
+          <section
+            id="faq"
+            className={`${styles.content} ${styles.faqSection} ${styles.anchorSection} section-shell section-tinted`}
+            aria-labelledby="faq-title"
+          >
+            <div>
+              <h2 id="faq-title">Najczęściej zadawane pytania</h2>
+            </div>
+            <div>
+              {treatment.faqs.map((faq) => (
+                <FaqItem key={faq.question} {...faq} />
+              ))}
+            </div>
+          </section>
+        ) : null}
       </div>
     </article>
   );

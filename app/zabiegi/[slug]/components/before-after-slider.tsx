@@ -11,6 +11,7 @@ type BeforeAfterSliderProps = {
   afterSrc: string;
   beforeAlt: string;
   beforeSrc: string;
+  composite?: boolean;
 };
 
 export const BeforeAfterSlider = ({
@@ -18,6 +19,7 @@ export const BeforeAfterSlider = ({
   afterSrc,
   beforeAlt,
   beforeSrc,
+  composite = false,
 }: BeforeAfterSliderProps) => {
   const [position, setPosition] = useState(50);
   const [hiddenLabels, setHiddenLabels] = useState({
@@ -79,7 +81,7 @@ export const BeforeAfterSlider = ({
     <figure className={styles.root}>
       <div
         ref={frameRef}
-        className={styles.frame}
+        className={`${styles.frame} ${composite ? styles.compositeFrame : ""}`}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={stopDragging}
@@ -90,10 +92,12 @@ export const BeforeAfterSlider = ({
         onTouchCancel={stopDragging}
       >
         <Image
-          className={styles.image}
+          className={`${styles.image} ${composite ? styles.compositeBefore : ""}`}
           src={beforeSrc}
           alt={beforeAlt}
-          fill
+          fill={!composite}
+          width={composite ? 2000 : undefined}
+          height={composite ? 1000 : undefined}
           draggable={false}
           sizes="(min-width: 768px) 50vw, 100vw"
         />
@@ -102,10 +106,12 @@ export const BeforeAfterSlider = ({
           style={{ clipPath: `inset(0 0 0 ${position}%)` }}
         >
           <Image
-            className={styles.image}
+            className={`${styles.image} ${composite ? styles.compositeAfter : ""}`}
             src={afterSrc}
             alt={afterAlt}
-            fill
+            fill={!composite}
+            width={composite ? 2000 : undefined}
+            height={composite ? 1000 : undefined}
             draggable={false}
             sizes="(min-width: 768px) 50vw, 100vw"
           />
