@@ -5,9 +5,13 @@ import { notFound } from "next/navigation";
 
 import { CTAButton } from "@/components/cta-button";
 import { FaqItem } from "@/components/faq-item";
-import { getTreatment, getTreatmentImage, treatments } from "@/data/treatments";
-import { BeforeAfterSlider } from "./components/before-after-slider";
+import {
+  getTreatment,
+  getTreatmentImage,
+  treatments,
+} from "@/data/treatments";
 import { Breadcrumbs } from "./components/breadcrumbs";
+import { TreatmentFacts } from "./components/treatment-facts";
 import styles from "./treatment-detail.module.css";
 
 type TreatmentPageProps = {
@@ -32,46 +36,26 @@ const galleryLinks: Record<
   },
 };
 
-type TreatmentFactsProps = {
-  className: string;
-  duration: string;
-  id?: string;
-  price: string;
-  recoveryTime: string;
-  sessionCount: string;
+type SectionItemsProps = {
+  items: string[];
+  ordered?: boolean;
 };
 
-const TreatmentFacts = ({
-  className,
-  duration,
-  id,
-  price,
-  recoveryTime,
-  sessionCount,
-}: TreatmentFactsProps) => (
-  <dl
-    id={id}
-    className={className}
-    aria-label="Podstawowe informacje o zabiegu"
-  >
-    <div>
-      <dt>Cena</dt>
-      <dd>{price}</dd>
-    </div>
-    <div>
-      <dt>Czas trwania</dt>
-      <dd>{duration}</dd>
-    </div>
-    <div>
-      <dt>Rekonwalescencja</dt>
-      <dd>{recoveryTime}</dd>
-    </div>
-    <div>
-      <dt>Liczba zabiegów</dt>
-      <dd>{sessionCount}</dd>
-    </div>
-  </dl>
-);
+const SectionItems = ({ items, ordered = false }: SectionItemsProps) => {
+  const List = ordered ? "ol" : "ul";
+
+  return (
+    <List
+      className={`${styles.list} ${
+        ordered ? styles.orderedList : styles.unorderedList
+      }`}
+    >
+      {items.map((item) => (
+        <li key={item}>{item}</li>
+      ))}
+    </List>
+  );
+};
 
 export function generateStaticParams() {
   return treatments.map(({ slug }) => ({ slug }));
@@ -108,8 +92,10 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
         className={`${styles.hero} ${styles.anchorSection} section-shell`}
       >
         <div className={styles.heroCopy}>
-          <Breadcrumbs currentPage={treatment.title} />
-          <h1 className={styles.heroTitle}>{treatment.title}</h1>
+          <div className={styles.heroIntro}>
+            <Breadcrumbs currentPage={treatment.title} />
+            <h1 className={styles.heroTitle}>{treatment.title}</h1>
+          </div>
           <TreatmentFacts
             id="informacje"
             className={`${styles.heroFacts} ${styles.mobileHeroFacts} ${styles.anchorSection}`}
@@ -118,20 +104,28 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
             recoveryTime={treatment.recoveryTime}
             sessionCount={treatment.sessionCount}
           />
-          <h2 className={styles.heroSubtitle}>Dla kogo jest ten zabieg?</h2>
-          {treatment.forWho.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-          <div className={styles.heroActions}>
-            <CTAButton />
-            {galleryLink ? (
-              <Link
-                className="button button-secondary"
-                href={`/galeria?category=${galleryLink.category}`}
-              >
-                Zobacz moje prace
-              </Link>
+          <div className={styles.heroDetails}>
+            {treatment.forWho ? (
+              <>
+                <h2 className={styles.heroSubtitle}>
+                  {treatment.forWho.heading}
+                </h2>
+                {treatment.forWho.paragraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </>
             ) : null}
+            <div className={styles.heroActions}>
+              <CTAButton />
+              {galleryLink ? (
+                <Link
+                  className="button button-secondary"
+                  href={`/galeria?category=${galleryLink.category}`}
+                >
+                  Zobacz moje prace
+                </Link>
+              ) : null}
+            </div>
           </div>
         </div>
         <div className={styles.heroImage}>
@@ -147,14 +141,8 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
 
       <section
         id="opis-zabiegu"
-        className={`${styles.content} ${styles.copyContent} ${styles.copyContentNoDivider} ${styles.anchorSection} section-shell`}
+        className={`${styles.content} ${styles.copyContent} ${styles.anchorSection} section-shell`}
       >
-        <h2>Na czym polega zabieg?</h2>
-        <div className={styles.copyColumn}>
-          {treatment.description.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
         <TreatmentFacts
           className={`${styles.heroFacts} ${styles.desktopHeroFacts} ${styles.anchorSection}`}
           price={treatment.price}
@@ -162,6 +150,12 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
           recoveryTime={treatment.recoveryTime}
           sessionCount={treatment.sessionCount}
         />
+        <h2>{treatment.description.heading}</h2>
+        <div className={styles.copyColumn}>
+          {treatment.description.paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
       </section>
 
       <section
@@ -169,60 +163,47 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
         className={`${styles.content} ${styles.listContent} ${styles.anchorSection} section-shell`}
       >
         <div>
-          <h2>Przygotowanie do zabiegu</h2>
-          <ol className={`${styles.list} ${styles.orderedList}`}>
-            {treatment.preparation.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ol>
+          <h2>{treatment.preparation.heading}</h2>
+          <SectionItems
+            items={treatment.preparation.items}
+            ordered={treatment.preparation.ordered}
+          />
         </div>
       </section>
-
-      {treatment.beforeAfter && (
-        <section
-          id="przed-i-po"
-          className={`${styles.content} ${styles.beforeAfter} ${styles.anchorSection} section-shell`}
-          aria-labelledby="before-after-title"
-        >
-          <div className={styles.beforeAfterCopy}>
-            <h2 id="before-after-title">Przed i po</h2>
-            <h3>{treatment.beforeAfter.title}</h3>
-            {treatment.beforeAfter.description.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-          <BeforeAfterSlider
-            beforeSrc={treatment.beforeAfter.before.src}
-            beforeAlt={treatment.beforeAfter.before.alt}
-            afterSrc={treatment.beforeAfter.after.src}
-            afterAlt={treatment.beforeAfter.after.alt}
-          />
-        </section>
-      )}
 
       <section
         id="przeciwwskazania"
         className={`${styles.content} ${styles.listContent} ${styles.anchorSection} section-shell`}
       >
         <div>
-          <h2>Przeciwwskazania</h2>
-          <ul className={`${styles.list} ${styles.unorderedList}`}>
-            {treatment.contraindications.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+          <h2>{treatment.contraindications.heading}</h2>
+          <SectionItems items={treatment.contraindications.items} />
         </div>
       </section>
 
       <section
         id="reakcje-pozabiegowe"
-        className={`${styles.content} ${styles.copyContent} ${styles.anchorSection} section-shell`}
+        className={`${styles.content} ${styles.listContent} ${styles.anchorSection} section-shell`}
       >
-        <h2>Możliwe reakcje pozabiegowe</h2>
-        <div className={styles.copyColumn}>
-          {treatment.possibleReactions.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+        <div>
+          <h2>{treatment.recovery.heading}</h2>
+          <div className={styles.recoveryParagraphs}>
+            {treatment.recovery.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+          <section
+            className={styles.recoverySymptoms}
+            aria-labelledby="objawy-pozabiegowe"
+          >
+            <h3
+              className={styles.recoverySymptomsHeading}
+              id="objawy-pozabiegowe"
+            >
+              {treatment.recovery.symptomsHeading}
+            </h3>
+            <SectionItems items={treatment.recovery.symptoms} />
+          </section>
         </div>
       </section>
 
@@ -231,12 +212,8 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
         className={`${styles.content} ${styles.listContent} ${styles.anchorSection} section-shell`}
       >
         <div>
-          <h2>Zalecenia pozabiegowe</h2>
-          <ul className={`${styles.list} ${styles.unorderedList}`}>
-            {treatment.aftercare.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+          <h2>{treatment.aftercare.heading}</h2>
+          <SectionItems items={treatment.aftercare.items} />
         </div>
       </section>
 

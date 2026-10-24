@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import type { Treatment } from "@/data/treatments";
-import { getTreatmentImage } from "@/data/treatments";
+import { getTreatmentImage, type Treatment } from "@/data/treatments";
 
 import styles from "./treatment-list-item.module.css";
 

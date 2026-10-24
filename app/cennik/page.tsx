@@ -43,7 +43,7 @@ const priceCategories: PriceCategory[] = [
     ],
   },
   {
-    name: "Mezoterapia mikroigłowa",
+    name: "Mezoterapia igłowa i mikroigłowa",
     href: "/zabiegi/mezoterapia-mikroiglowa",
     items: [
       { name: "Twarz", price: "350 zł" },
@@ -60,27 +60,11 @@ const priceCategories: PriceCategory[] = [
     ],
   },
   {
-    name: "RF radiofrekwencja",
+    name: "Radiofrekwencja mikroigłowa",
     href: "/zabiegi/rf-radiofrekwencja",
     items: [
       { name: "Twarz + ampułka", price: "450 zł" },
       { name: "Twarz / dekolt + ampułka", price: "600 zł" },
-    ],
-  },
-  {
-    name: "Laserowe usuwanie brwi",
-    href: "/zabiegi/laserowe-usuwanie-brwi",
-    items: [
-      { name: "1 sesja", price: "200 zł" },
-      { name: "Ocieplenie / ochłodzenie brwi", price: "200 zł" },
-    ],
-  },
-  {
-    name: "Peelingi",
-    href: "/zabiegi/peelingi",
-    items: [
-      { name: "Peeling chemiczny", price: "350 zł" },
-      { name: "Peeling węglowy", price: "300 zł" },
     ],
   },
 ];

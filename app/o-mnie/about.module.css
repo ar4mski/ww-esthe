@@ -11,7 +11,7 @@
 
 .aboutCopy h2,
 .credentialsIntro h2 {
-  font-size: clamp(2rem, 7vw, 3.5rem);
+  font-size: var(--heading-2-size);
   margin-bottom: 1.25rem;
 }
 
@@ -130,7 +130,7 @@
 
 .aboutCopy h2,
 .credentialsIntro h2 {
-  font-size: clamp(2rem, 7vw, 3.5rem);
+  font-size: var(--heading-2-size);
   margin-bottom: 1.25rem;
 }
 

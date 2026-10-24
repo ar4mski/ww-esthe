@@ -47,7 +47,7 @@
 
 .heroContent h1 {
   color: var(--foreground);
-  font-size: clamp(2.5rem, 10vw, 4.75rem);
+  font-size: var(--heading-display-size);
   line-height: 0.9;
   margin-bottom: 1.5rem;
   max-width: 9ch;
@@ -118,9 +118,6 @@
     padding: 2.5rem 2rem;
   }
 
-  .heroContent h1 {
-    font-size: clamp(3.25rem, 7vw, 4.75rem);
-  }
 }
 
 @media (min-width: 768px) {
@@ -166,7 +163,6 @@
   }
 
   .heroContent h1 {
-    font-size: clamp(3rem, 5.5vw, 4.75rem);
     letter-spacing: -0.06em;
     text-shadow: 0 2px 18px rgba(42, 29, 22, 0.2);
   }

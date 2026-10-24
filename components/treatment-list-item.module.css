@@ -41,7 +41,7 @@
   align-self: center;
 
   h2 {
-    font-size: clamp(1.75rem, 7vw, 3.75rem);
+    font-size: var(--heading-2-size);
     margin-bottom: 1rem;
   }
 }
@@ -96,7 +96,7 @@
     padding: 0 0.25rem;
 
     h2 {
-      font-size: clamp(1.5rem, 6vw, 2rem);
+      font-size: var(--heading-card-size);
       margin-bottom: 0.5rem;
     }
 

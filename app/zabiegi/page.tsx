@@ -8,7 +8,7 @@ export default function TreatmentsPage() {
       <PageHero
         eyebrow="Oferta"
         title="Zabiegi stworzone z myślą o Tobie."
-        description="Poznaj zabiegi i wybierz rozwiązanie dopasowane do swoich potrzeb."
+        description="Poznaj przebieg zabiegów, przygotowanie, przeciwwskazania oraz zalecenia pozabiegowe."
         image="/images/hero-mobile/hero-treatments.jpg"
         desktopImage="/images/hero-treatments.jpg"
         imageAlt="Portret klientki związany z naturalną estetyką zabiegów"

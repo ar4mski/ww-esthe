@@ -1,26 +1,34 @@
+type ParagraphSection = {
+  heading: string;
+  paragraphs: string[];
+};
+
+type ListSection = {
+  heading: string;
+  items: string[];
+  ordered?: boolean;
+};
+
+type RecoverySection = ParagraphSection & {
+  symptomsHeading: string;
+  symptoms: string[];
+};
+
 export type Treatment = {
   slug: string;
   title: string;
   shortDescription: string;
-  forWho: string[];
-  imageAlt: string;
-  secondaryImage: { src: string; alt: string };
-  beforeAfter?: {
-    title: string;
-    description: string[];
-    before: { src: string; alt: string };
-    after: { src: string; alt: string };
-  };
   duration: string;
-  effectDuration: string;
+  price: string;
   recoveryTime: string;
   sessionCount: string;
-  price: string;
-  description: string[];
-  possibleReactions: string[];
-  preparation: string[];
-  contraindications: string[];
-  aftercare: string[];
+  imageAlt: string;
+  forWho?: ParagraphSection;
+  description: ParagraphSection;
+  preparation: ListSection;
+  contraindications: ListSection;
+  recovery: RecoverySection;
+  aftercare: ListSection;
   faqs: { question: string; answer: string }[];
 };
 
@@ -31,216 +39,228 @@ export const treatmentImages: Record<string, string> = {
   "makijaz-permanentny-ust": "/images/lips_pmu/powiekszanie usta.JPG",
   "mezoterapia-mikroiglowa": "/images/mezo/mezoterapia.JPG",
   "rf-radiofrekwencja": "/images/IMG_5968.PNG",
-  "laserowe-usuwanie-brwi": "/images/brwi perm/IMG_2127.JPG",
-  peelingi: "/images/IMG_5989.PNG",
 };
 
 export const treatments: Treatment[] = [
   {
-    slug: "modelowanie-ust",
-    title: "Modelowanie ust",
-    shortDescription:
-      "Subtelne podkreślenie kształtu, konturu i proporcji ust dopasowane do Twojej urody.",
-    forWho: [
-      "Zabieg może być odpowiedni dla osób, które chcą subtelnie podkreślić kontur ust, dodać im objętości lub skorygować asymetrię.",
-      "Zakres modelowania dobiera się do anatomii twarzy i oczekiwań. Podczas konsultacji można omówić planowany efekt oraz ocenić, czy jest możliwy do uzyskania.",
-    ],
-    imageAlt: "Zdjęcie ust związane z zabiegiem modelowania.",
-    secondaryImage: {
-      src: "/images/lips/IMG_8490.JPG",
-      alt: "Naturalny efekt ust.",
-    },
-    duration: "około 30 minut",
-    effectDuration: "zależna od preparatu i indywidualnych cech",
-    recoveryTime: "kilka dni",
-    sessionCount: "1 + ewentualna korekta",
-    price: "800–1000 zł",
-    description: [
-      "Podczas konsultacji omawiamy oczekiwania, proporcje twarzy i możliwy efekt. Dobór preparatu oraz plan podania uwzględniają anatomię ust.",
-      "Preparat podawany jest precyzyjnie w wybrane obszary, aby podkreślić kontur, skorygować asymetrię lub dodać objętości. Zakres zabiegu ustalamy wspólnie przed rozpoczęciem.",
-      "Plan pracy układamy tak, by zachować harmonię z rysami twarzy i skupić się na efekcie, który został omówiony podczas konsultacji.",
-    ],
-    possibleReactions: [
-      "Bezpośrednio po zabiegu może pojawić się obrzęk, tkliwość lub zaczerwienienie ust. Objawy zwykle stopniowo ustępują w trakcie gojenia.",
-      "Możliwe są również niewielkie siniaki i przejściowa nierówność związana z obrzękiem. Ostateczny efekt oceniamy po jego ustąpieniu.",
-    ],
-    preparation: [
-      "Na kilka dni przed wizytą unikaj alkoholu i intensywnego opalania.",
-      "Poinformuj osobę wykonującą zabieg o przyjmowanych lekach i stanie zdrowia.",
-      "Jeśli masz skłonność do opryszczki, omów to podczas konsultacji.",
-      "Na wizytę przyjdź bez kosmetyków kolorowych na ustach i wspomnij o wcześniejszych zabiegach w tej okolicy.",
-      "Jeśli od rezerwacji pojawiły się nowe objawy lub zmienił się Twój stan zdrowia, skontaktuj się z gabinetem przed wizytą.",
-    ],
-    contraindications: [
-      "ciąża i karmienie piersią",
-      "aktywna opryszczka lub stan zapalny w miejscu zabiegu",
-      "choroby autoimmunologiczne i zaburzenia krzepliwości krwi",
-      "uczulenie na składniki preparatu",
-      "przyjmowanie leków wpływających na krzepliwość lub gojenie, wymagające indywidualnej kwalifikacji",
-      "niewyjaśnione zmiany lub uszkodzenia w obrębie ust wymagające wcześniejszej oceny",
-    ],
-    aftercare: [
-      "Przez pierwsze 24 godziny zachowaj szczególną higienę okolicy zabiegowej.",
-      "Przez kilka dni unikaj alkoholu, intensywnego wysiłku, sauny i wysokiej temperatury.",
-      "Końcowy efekt oceniamy po ustąpieniu obrzęku, zwykle po kilku tygodniach.",
-      "Nie uciskaj ani nie masuj ust, chyba że osoba wykonująca zabieg zaleci inaczej.",
-      "Jeśli reakcja jest silna, nasila się lub utrzymuje dłużej niż omówiono, skontaktuj się z gabinetem.",
-    ],
-    faqs: [
-      {
-        question: "Czy efekt wygląda naturalnie?",
-        answer:
-          "Tak. Zakres zabiegu dobieramy do anatomii twarzy i oczekiwań, dlatego możliwe jest zarówno subtelne podkreślenie kształtu, jak i większa korekta.",
-      },
-      {
-        question: "Czy zabieg jest bolesny?",
-        answer:
-          "Odczucia są indywidualne. Przed zabiegiem omawiamy możliwe sposoby zwiększenia komfortu wizyty.",
-      },
-      {
-        question: "Jak długo utrzymuje się efekt?",
-        answer:
-          "Trwałość efektu zależy między innymi od użytego preparatu, stylu życia i indywidualnych cech organizmu.",
-      },
-    ],
-    beforeAfter: {
-      title: "Efekt makijażu permanentnego brwi",
-      description: [
-        "Makijaż permanentny pozwala podkreślić kształt brwi i nadać im bardziej wyrazistą linię. Projekt oraz intensywność pigmentacji dobierane są indywidualnie do rysów twarzy i oczekiwanego efektu.",
-      ],
-      before: {
-        src: "/images/before_after/before2.png",
-        alt: "Twarz przed rekonstrukcją brwi, bez brwi.",
-      },
-      after: {
-        src: "/images/before_after/after2.png",
-        alt: "Twarz po rekonstrukcji brwi makijażem permanentnym.",
-      },
-    },
-  },
-  {
-    slug: "stymulatory-tkankowe",
-    title: "Stymulatory tkankowe",
-    shortDescription:
-      "Zabieg wspierający poprawę jędrności, nawilżenia i jakości skóry twarzy, szyi lub dekoltu.",
-    forWho: [
-      "Zabieg może zainteresować osoby, które chcą zadbać o wygląd skóry, w tym jej nawilżenie, jędrność lub elastyczność.",
-      "Dobór preparatu i obszaru pracy zależy od indywidualnych potrzeb skóry. Podczas konsultacji omawia się oczekiwania i kwalifikuje do zabiegu.",
-    ],
-    imageAlt: "Zdjęcie skóry związane z zabiegiem stymulatorów tkankowych.",
-    secondaryImage: {
-      src: "/images/IMG_5968.PNG",
-      alt: "Efekt pielęgnacji skóry.",
-    },
-    duration: "około 30 minut",
-    effectDuration: "zależna od preparatu i indywidualnych cech",
-    recoveryTime: "kilka dni",
-    sessionCount: "ustalana indywidualnie",
-    price: "od 900 zł",
-    description: [
-      "Podczas konsultacji oceniamy potrzeby skóry i dobieramy preparat do obszaru zabiegowego oraz oczekiwanego efektu.",
-      "Preparat podawany jest w wybrane partie skóry, gdzie wspiera jej naturalne procesy regeneracyjne. Szczegóły zabiegu i ewentualny plan serii omawiamy indywidualnie.",
-      "Przy ustalaniu planu bierzemy pod uwagę kondycję skóry i obszar zabiegowy, aby dobrać rozwiązanie odpowiednie do indywidualnych potrzeb.",
-    ],
-    possibleReactions: [
-      "W miejscu podania mogą wystąpić niewielkie zaczerwienienie, obrzęk lub tkliwość. Zazwyczaj są to przejściowe reakcje skóry.",
-      "Mogą być widoczne drobne ślady po wkłuciach lub siniaki, które ustępują w trakcie gojenia.",
-    ],
-    preparation: [
-      "Na kilka dni przed wizytą unikaj alkoholu i intensywnego opalania.",
-      "Poinformuj osobę wykonującą zabieg o przyjmowanych lekach i alergiach.",
-      "Przygotuj skórę bez intensywnych peelingów i drażniących kosmetyków.",
-      "Przyjdź z oczyszczoną skórą w obszarze zabiegowym, bez makijażu.",
-      "Zgłoś przed wizytą nowe zmiany skórne lub podrażnienie w planowanym obszarze.",
-    ],
-    contraindications: [
-      "ciąża i karmienie piersią",
-      "aktywne infekcje, opryszczka lub stan zapalny skóry",
-      "choroby autoimmunologiczne i zaburzenia krzepliwości krwi",
-      "uczulenie na składniki preparatu",
-      "przyjmowanie leków lub suplementów mogących wpływać na krzepliwość lub gojenie, wymagające indywidualnej kwalifikacji",
-      "niewyjaśnione zmiany lub uszkodzenia skóry w obszarze zabiegowym",
-    ],
-    aftercare: [
-      "Przez 24 godziny unikaj nakładania makijażu na obszar zabiegowy.",
-      "Przez około dwa tygodnie unikaj sauny, solarium i intensywnego nagrzewania skóry.",
-      "Stosuj delikatną pielęgnację i ochronę przeciwsłoneczną SPF 50.",
-      "Przez pierwsze dni nie masuj obszaru zabiegowego ani nie wykonuj na nim dodatkowych zabiegów bez konsultacji.",
-      "Jeśli reakcja jest silna, nasila się lub utrzymuje dłużej niż omówiono, skontaktuj się z gabinetem.",
-    ],
-    faqs: [
-      {
-        question: "Jak działa zabieg?",
-        answer:
-          "Zabieg dostarcza skórze składników aktywnych i wspiera jej naturalne procesy odnowy. Dokładny preparat dobieramy podczas konsultacji.",
-      },
-      {
-        question: "Ile zabiegów warto wykonać?",
-        answer:
-          "Liczba wizyt zależy od kondycji skóry i założonego celu. Indywidualny plan omawiamy podczas konsultacji.",
-      },
-    ],
-  },
-  {
     slug: "makijaz-permanentny-brwi",
     title: "Makijaż permanentny brwi",
     shortDescription:
-      "Delikatne podkreślenie kształtu i koloru brwi metodą Soft Ombre lub Foxy.",
-    forWho: [
-      "Makijaż permanentny może być odpowiedni dla osób, które chcą podkreślić kształt brwi i ograniczyć potrzebę codziennego rysowania ich makijażem.",
-      "Wybraną technikę, kształt i intensywność efektu omawia się przed zabiegiem, dopasowując projekt do urody i oczekiwań.",
-    ],
-    imageAlt: "Zdjęcie brwi związane z makijażem permanentnym.",
-    secondaryImage: {
-      src: "/images/brwi%20perm/IMG_2057.jpg",
-      alt: "Stylizacja brwi.",
-    },
-    duration: "około 2–3 godzin",
-    effectDuration: "indywidualna",
-    recoveryTime: "do wygojenia skóry",
-    sessionCount: "1 + ewentualna dopigmentacja",
+      "Makijaż permanentny brwi polega na wprowadzeniu pigmentu do powierzchownych warstw skóry. Przed pigmentacją ustala się kształt i odcień, aby dopasować brwi do rysów twarzy.",
+    duration: "2-3 godziny",
     price: "800 zł",
-    description: [
-      "Przed pigmentacją ustalamy kształt, kolor i technikę, dopasowując je do urody oraz oczekiwań. Projekt brwi omawiamy przed rozpoczęciem zabiegu.",
-      "Pigment wprowadzany jest w skórę etapami. Po wygojeniu oceniamy efekt i, jeśli jest taka potrzeba, ustalamy termin dopigmentacji.",
-      "Technika Soft Ombre lub Foxy pozwala zaplanować charakter brwi od delikatnego cieniowania po wyraźniej podkreślony kształt.",
-    ],
-    possibleReactions: [
-      "Po zabiegu skóra może być zaczerwieniona i lekko obrzęknięta. Pigment bezpośrednio po pigmentacji może wydawać się intensywniejszy niż po wygojeniu.",
-      "W trakcie gojenia może pojawić się suchość i delikatne złuszczanie naskórka. Nie należy odrywać łuszczącej się skóry.",
-    ],
-    preparation: [
-      "Przyjdź bez świeżej opalenizny i podrażnienia skóry w okolicy brwi.",
-      "Poinformuj o przyjmowanych lekach i wcześniejszych zabiegach w tym obszarze.",
-      "Ostateczny kształt i kolor omówimy przed rozpoczęciem zabiegu.",
-      "Możesz przygotować inspiracje pokazujące preferowany kształt lub intensywność efektu.",
-      "Jeśli przed wizytą pojawi się podrażnienie lub uszkodzenie skóry przy brwiach, skontaktuj się z gabinetem.",
-    ],
-    contraindications: [
-      "ciąża i karmienie piersią",
-      "aktywne stany zapalne lub infekcje skóry",
-      "nieuregulowana cukrzyca i zaburzenia krzepliwości krwi",
-      "terapia izotretynoiną lub świeże zabiegi w okolicy brwi",
-      "przyjmowanie leków mogących wpływać na krzepliwość lub gojenie, wymagające indywidualnej kwalifikacji",
-      "niewyjaśnione zmiany lub uszkodzenia skóry w obszarze pigmentacji",
-    ],
-    aftercare: [
-      "Przez pierwsze dni utrzymuj okolicę zabiegową w czystości i nie pocieraj jej.",
-      "Unikaj sauny, basenu, intensywnego wysiłku i opalania do czasu wygojenia.",
-      "Dopigmentację wykonujemy po zakończeniu procesu gojenia, jeśli jest potrzebna.",
-      "Nie nakładaj makijażu ani drażniących kosmetyków na pigmentowany obszar do czasu jego wygojenia.",
-      "Jeśli reakcja jest silna, nasila się lub utrzymuje dłużej niż omówiono, skontaktuj się z gabinetem.",
-    ],
+    recoveryTime: "około 7-14 dni",
+    sessionCount: "2 (z dopigmentowaniem po 4-6 tygodniach)",
+    imageAlt: "Makijaż permanentny brwi.",
+    forWho: {
+      heading: "Dla kogo jest zabieg?",
+      paragraphs: [
+        "Zabieg przeznaczony jest dla osób, które chcą podkreślić naturalny kształt brwi, poprawić ich proporcje oraz nadać im bardziej wyrazisty i uporządkowany wygląd. Makijaż permanentny sprawdzi się również u osób, które mają rzadkie, jasne lub asymetryczne brwi i chcą optycznie nadać im większą gęstość oraz odpowiednio zdefiniować ich kształt.",
+      ],
+    },
+    description: {
+      heading: "Na czym polega zabieg?",
+      paragraphs: [
+        "Makijaż permanentny brwi polega na wprowadzeniu pigmentu do powierzchownych warstw skóry przy pomocy jednorazowego kartridżu.",
+        "Przed rozpoczęciem pigmentacji wykonywany jest szczegółowy rysunek wstępny, który pozwala określić odpowiedni kształt, proporcje oraz dopasowanie brwi do rysów twarzy. Po zaakceptowaniu projektu dobierany jest odpowiedni odcień pigmentu, a następnie wykonywana jest właściwa pigmentacja.",
+        "Po zabiegu kolor brwi może być początkowo bardziej intensywny. W trakcie gojenia pigment stopniowo jaśnieje i stabilizuje się, tworząc bardziej naturalny efekt.",
+      ],
+    },
+    preparation: {
+      heading: "Przygotowanie do zabiegu",
+      items: [
+        "Na minimum 48 godzin przed zabiegiem należy unikać spożywania alkoholu oraz, jeśli jest to możliwe i bezpieczne, leków mogących zwiększać ryzyko krwawienia.",
+        "Na kilka dni przed zabiegiem należy unikać intensywnego opalania oraz korzystania z solarium.",
+        "Przed zabiegiem należy zadbać o odpowiednie nawodnienie organizmu.",
+        "W dniu pigmentacji zaleca się ograniczenie kawy oraz napojów energetycznych.",
+        "Nie należy wykonywać intensywnych peelingów ani stosować silnie złuszczających preparatów w obrębie brwi przed zabiegiem.",
+        "Skóra w miejscu pigmentacji powinna być zdrowa, bez ran, podrażnień, aktywnych stanów zapalnych i innych zmian.",
+      ],
+    },
+    contraindications: {
+      heading: "Przeciwwskazania",
+      items: [
+        "Aktywne infekcje i stany zapalne skóry w miejscu wykonywania zabiegu.",
+        "Choroby skóry w aktywnej fazie.",
+        "Ciąża .",
+        "Choroby autoimmunologiczne.",
+        "Zaburzenia krzepnięcia krwi.",
+        "Przyjmowanie leków przeciwzakrzepowych.",
+        "Skłonność do powstawania bliznowców.",
+        "Choroby nowotworowe.",
+        "Niewyrównana cukrzyca.",
+        "Epilepsja.",
+        "Alergia lub nadwrażliwość na składniki stosowanych preparatów.",
+        "Terapia doustnymi antybiotykami.",
+        "Aktywne infekcje organizmu.",
+        "Uszkodzenia, rany lub podrażnienia skóry w miejscu pigmentacji.",
+        "Świeżo wykonane zabiegi kosmetologiczne lub medycyny estetycznej w obrębie brwi.",
+        "Wiek poniżej 18 roku życia.",
+        "Nierealistyczne oczekiwania wobec efektu zabiegu.",
+      ],
+    },
+    recovery: {
+      heading: "Reakcje pozabiegowe i czas rekonwalescencji",
+      paragraphs: [
+        "Bezpośrednio po zabiegu skóra w okolicy brwi może być lekko zaczerwieniona, podrażniona lub obrzęknięta, a pigment może wydawać się znacznie intensywniejszy niż kolor docelowy.",
+        "W kolejnych dniach rozpoczyna się proces regeneracji i delikatnego złuszczania naskórka. Kolor stopniowo się rozjaśnia, a jego ostateczny wygląd stabilizuje się wraz z zakończeniem procesu gojenia. Czas i sposób gojenia mogą różnić się w zależności od rodzaju skóry oraz indywidualnych predyspozycji.",
+      ],
+      symptomsHeading: "Do najczęstszych objawów pozabiegowych należą:",
+      symptoms: [
+        "Delikatny obrzęk.",
+        "Zaczerwienienie skóry.",
+        "Podrażnienie.",
+        "Uczucie napięcia skóry.",
+        "Delikatne pieczenie lub szczypanie.",
+        "Tkliwość w miejscu pigmentacji.",
+        "Początkowo bardzo intensywny kolor brwi.",
+        "Suchość skóry.",
+        "Delikatne złuszczanie naskórka.",
+        "Niewielkie strupki podczas procesu gojenia.",
+        "Nierównomierne złuszczanie pigmentu w trakcie regeneracji.",
+        "Możliwość wystąpienia reakcji alergicznej na składniki preparatów.",
+        "W przypadku nieprzestrzegania zasad higieny istnieje ryzyko wystąpienia infekcji.",
+      ],
+    },
+    aftercare: {
+      heading: "Zalecenia pozabiegowe",
+      items: [
+        "Przez pierwsze dni nie należy dotykać brwi bez wcześniejszego umycia rąk.",
+        "Nie wolno zdrapywać ani odrywać powstających skórek i strupków.",
+        "Do czasu pełnego zagojenia należy unikać basenu, sauny oraz intensywnego wysiłku fizycznego.",
+        "Przez minimum 2 tygodnie należy zrezygnować z opalania i korzystania z solarium.",
+        "Na 3 dzień po zabiegu można zastosować wazelinę do delikatnego posmarowania.",
+        "Do czasu pełnego zagojenia nie stosować peelingów ani kosmetyków o silnym działaniu złuszczającym w okolicy brwi.",
+        "Nie nakładać makijażu bezpośrednio na obszar pigmentacji do czasu jego zagojenia.",
+        "Przez minimum 24-48 godzin po zabiegu należy unikać alkoholu.",
+        "Nie stosować w okolicy brwi produktów mogących powodować podrażnienie.",
+        "Po całkowitym zagojeniu należy chronić obszar brwi przed promieniowaniem UV, stosując SPF 50.",
+        "Nie wykonywać dodatkowych zabiegów kosmetologicznych w obrębie brwi do czasu pełnej regeneracji skóry.",
+        "W razie jakichkolwiek wątpliwości dotyczących procesu gojenia należy skonsultować się z osobą wykonującą zabieg.",
+      ],
+    },
     faqs: [
       {
-        question: "Czy kształt brwi ustalamy przed zabiegiem?",
+        question: "Jak dobierany jest kształt brwi?",
         answer:
-          "Tak. Przed zabiegiem omawiamy oczekiwania i wykonujemy wstępny rysunek kształtu.",
+          "Przed pigmentacją wykonywany jest szczegółowy rysunek wstępny, który pozwala określić kształt, proporcje i dopasowanie brwi do rysów twarzy.",
       },
       {
-        question: "Czy potrzebna jest dopigmentacja?",
+        question: "Czy kolor brwi od razu po zabiegu jest ostateczny?",
         answer:
-          "Dopigmentowanie oceniamy po wygojeniu skóry. Jest to indywidualna kwestia zależna od skóry i oczekiwanego efektu.",
+          "Po zabiegu kolor może być początkowo bardziej intensywny. W trakcie gojenia pigment stopniowo jaśnieje i stabilizuje się.",
+      },
+      {
+        question: "Jakie reakcje mogą wystąpić podczas gojenia?",
+        answer:
+          "Może wystąpić zaczerwienienie, obrzęk, suchość i delikatne złuszczanie naskórka. Czas i sposób gojenia różnią się w zależności od skóry i indywidualnych predyspozycji.",
+      },
+    ],
+  },
+  {
+    slug: "modelowanie-ust",
+    title: "Modelowanie ust",
+    shortDescription:
+      "Modelowanie ust poprawia ich kształt, proporcje i objętość z zachowaniem naturalnej harmonii. Zabieg wykorzystuje preparat na bazie kwasu hialuronowego, a jego zakres dobiera się podczas konsultacji.",
+    duration: "50 MIN",
+    price: "700 zł",
+    recoveryTime: "około 2-7 dni",
+    sessionCount: "1",
+    imageAlt: "Zdjęcie ust związane z zabiegiem modelowania.",
+    description: {
+      heading: "Na czym polega zabieg",
+      paragraphs: [
+        "To zabieg, którego celem jest poprawa kształtu, proporcji oraz objętości ust z zachowaniem naturalnej harmonii.",
+        "Zabieg wykonywany jest z wykorzystaniem preparatu na bazie kwasu hialuronowego - substancji naturalnie występującej w organizmie, odpowiedzialnej m.in. za utrzymanie odpowiedniego poziomu nawilżenia i objętości tkanek.",
+        "Każdy zabieg poprzedzony jest szczegółową konsultacją, podczas której analizowane są proporcje ust, oczekiwania pacjentki oraz ewentualne przeciwwskazania. Na tej podstawie dobierana jest odpowiednia technika oraz ilość preparatu, tak aby uzyskany efekt był dopasowany indywidualnie do oczekiwań pacjentki.",
+        "W zależności od potrzeb zabieg może obejmować delikatne zwiększenie objętości, podkreślenie konturu czerwieni wargowej, poprawę symetrii, modelowanie łuku Kupidyna czy przywrócenie utraconej objętości.",
+        "Bezpośrednio po zabiegu może wystąpić przejściowy obrzęk, zaczerwienienie lub niewielkie zasinienie w miejscu podania preparatu. Jest to naturalna reakcja tkanek na zabieg. Ostateczny efekt ocenia się po ustąpieniu obrzęku i pełnym ułożeniu preparatu w tkankach, zazwyczaj po około 3-4 tygodniach.",
+        "Trwałość efektu jest indywidualna i zależy m.in. od zastosowanego preparatu, metabolizmu organizmu, stylu życia oraz indywidualnych predyspozycji. Zazwyczaj efekt utrzymuje się przez kilka do kilkunastu miesięcy.",
+      ],
+    },
+    preparation: {
+      heading: "Przygotowanie do zabiegu",
+      ordered: true,
+      items: [
+        "Na 2-3 dni przed zabiegiem zadbaj o regularne picie wody — około 2-3 litrów dziennie.",
+        "Nie spożywaj alkoholu minimum 24-48 godzin przed planowanym zabiegiem.",
+        "Na minimum 48 godzin przed zabiegiem, o ile jest to możliwe i bezpieczne, unikaj leków przeciwbólowych i przeciwzapalnych z grupy NLPZ.",
+        "Przy tendencji do opryszczki należy przyjąć heviran w dawce 600-800 mg / dziennie przez ok 3 dni przed zabiegiem.",
+        "Po zakończeniu antybiotykoterapii warto odczekać do pełnego powrotu do zdrowia i skonsultować termin zabiegu. W przypadku infekcji, gorączki lub złego samopoczucia zabieg należy przełożyć.",
+        "Zrezygnuj z kawy, napojów energetycznych oraz intensywnego wysiłku fizycznego bezpośrednio przed wizytą.",
+      ],
+    },
+    contraindications: {
+      heading: "Przeciwwskazania",
+      items: [
+        "Ciąża i karmienie piersią",
+        "Aktywna opryszczka",
+        "Stany zapalne w miejscu wykonywania zabiegu (zmiany ropne)",
+        "Infekcja, przeziębienie lub osłabienie organizmu",
+        "Cukrzyca, szczególnie niewyrównana",
+        "Epilepsja oraz niektóre choroby psychiczne",
+        "Łuszczyca i inne aktywne choroby skóry w miejscu zabiegu",
+        "Czynne choroby autoimmunologiczne",
+        "Leczenie przeciwkrzepliwe i zaburzenia krzepliwości krwi",
+        "Ziarniniakowe zapalenie skóry",
+        "Choroby nowotworowe - wymagana indywidualna kwalifikacja",
+        "Nadwrażliwość na kwas hialuronowy lub którykolwiek ze składników wypełniacza",
+        "Izotretynoina (Izotek) - w trakcie leczenia",
+        "Przyjmowanie leków zwiększających ryzyko krwawienia, w szczególności ASA i NLPZ",
+        "Aktywne leczenie antybiotykiem lub trwająca infekcja",
+        "Stały wypełniacz w miejscu planowanego zabiegu (np. Aquamid)",
+        "Dysmorfofobia i nierealistyczne oczekiwania dotyczące efektu zabiegu",
+        "Skłonność do powstawania bliznowców - przeciwwskazanie względne/indywidualna kwalifikacja",
+        "Inne istotne choroby lub przyjmowane leki mogące mieć wpływ na bezpieczeństwo zabiegu",
+      ],
+    },
+    recovery: {
+      heading: "Reakcje pozabiegowe i czas rekonwalescencji",
+      paragraphs: [
+        "Techniki iniekcji stosowane podczas zabiegu nie są mocno traumatyczne dla tkanek. Po zabiegu może jednak wystąpić przejściowy obrzęk i tkliwość.",
+        "Preparat stabilizuje się w tkankach w kolejnych tygodniach, dlatego efekt końcowy oceniamy po około 4-5 tygodniach od zabiegu.",
+        "Do około 2 tygodni mogą być wyczuwalne niewielkie nierówności lub zgrubienia, które w większości przypadków ustępują samoistnie.",
+      ],
+      symptomsHeading: "Do najczęstszych objawów pozabiegowych należą",
+      symptoms: [
+        "opuchlizna,",
+        "siniaki,",
+        "krwiaki,",
+        "tkliwość w miejscach wkłuć,",
+        "uczucie napięcia,",
+        "przejściowe nierówności lub zgrubienia.",
+      ],
+    },
+    aftercare: {
+      heading: "Zalecenia pozabiegowe",
+      items: [
+        "Zachować szczególną higienę okolicy zabiegowej. Nie dotykać i nie malować ust przez minimum 24 godziny.",
+        "Po zabiegu modelowania ust regularnie nawilżać usta zaleconym preparatem przez okres gojenia.",
+        "Zmienić ręcznik do twarzy na czysty lub jednorazowy oraz poszewkę na poduszkę.",
+        "Nie spożywać alkoholu przez minimum 24-48 godzin po zabiegu.",
+        "Nie przyjmować bez konsultacji leków przeciwbólowych i przeciwzapalnych zwiększających ryzyko krwawienia (np. aspiryny, ibuprofenu).",
+        "W dniu zabiegu unikać bardzo gorących i pikantnych potraw oraz napojów.",
+        "Nie układać ust w „dziubek”, nie pocierać warg o siebie i nie zagryzać ich.",
+        "Unikać sauny, solarium oraz intensywnego nagrzewania okolicy zabiegowej przez minimum 14 dni.",
+        "Przez kilka dni po zabiegu unikać spania w pozycji powodującej ucisk na usta.",
+        "Nie masować ani nie uciskać ust.",
+      ],
+    },
+    faqs: [
+      {
+        question: "Na czym polega modelowanie ust?",
+        answer:
+          "To zabieg, którego celem jest poprawa kształtu, proporcji oraz objętości ust z zachowaniem naturalnej harmonii.",
+      },
+      {
+        question: "Kiedy można ocenić ostateczny efekt?",
+        answer:
+          "Efekt końcowy ocenia się po ustąpieniu obrzęku i ułożeniu preparatu w tkankach. Preparat stabilizuje się w kolejnych tygodniach.",
+      },
+      {
+        question: "Jak długo utrzymuje się efekt modelowania?",
+        answer:
+          "Trwałość zależy między innymi od zastosowanego preparatu, metabolizmu, stylu życia i indywidualnych predyspozycji; zazwyczaj efekt utrzymuje się przez kilka do kilkunastu miesięcy.",
       },
     ],
   },
@@ -248,288 +268,471 @@ export const treatments: Treatment[] = [
     slug: "makijaz-permanentny-ust",
     title: "Makijaż permanentny ust",
     shortDescription:
-      "Subtelne podkreślenie koloru i konturu ust dla uporządkowanego, świeżego efektu.",
-    forWho: [
-      "To propozycja dla osób, które chcą delikatnie podkreślić naturalny kolor ust lub uporządkować ich kontur.",
-      "Odcień i kształt dobiera się indywidualnie. Przed zabiegiem można omówić oczekiwania i wspólnie ustalić projekt pigmentacji.",
-    ],
-    imageAlt: "Zdjęcie ust związane z makijażem permanentnym.",
-    secondaryImage: {
-      src: "/images/lips_pmu/IMG_9028.JPG",
-      alt: "Pigmentacja ust.",
-    },
-    duration: "około 2–3 godzin",
-    effectDuration: "indywidualna",
-    recoveryTime: "do wygojenia skóry",
-    sessionCount: "1 + ewentualna dopigmentacja",
+      "Makijaż permanentny ust polega na wprowadzeniu pigmentu do powierzchownych warstw skóry. Pozwala podkreślić kontur i nadać ustom jednolity, naturalnie wyglądający kolor.",
+    duration: "około 2-3 godziny",
     price: "800 zł",
-    description: [
-      "Podczas konsultacji dobieramy kolor i kształt, uwzględniając naturalny odcień ust oraz oczekiwany efekt.",
-      "Pigment wprowadzany jest w skórę ust, aby podkreślić ich kontur i kolor. Przed zabiegiem omawiamy proces gojenia oraz możliwość dopigmentacji.",
-      "Przed rozpoczęciem potwierdzamy projekt i zakres pigmentacji, zwracając uwagę na naturalny kontur oraz to, jak wybrany odcień współgra z urodą.",
-    ],
-    possibleReactions: [
-      "Po pigmentacji może wystąpić obrzęk, zaczerwienienie lub tkliwość ust. Zwykle są to przejściowe objawy związane z zabiegiem.",
-      "Kolor początkowo może być intensywniejszy, a w trakcie gojenia mogą pojawić się suchość i delikatne złuszczanie. Przy skłonności do opryszczki poinformuj o tym przed wizytą.",
-    ],
-    preparation: [
-      "Poinformuj o skłonności do opryszczki i wcześniejszych zabiegach ust.",
-      "Unikaj podrażniania i intensywnego opalania ust przed wizytą.",
-      "Zadbaj o dobre nawilżenie ust w dniach poprzedzających zabieg.",
-      "Na wizytę przyjdź bez pomadki i innych kosmetyków kolorowych na ustach.",
-      "Jeśli pojawią się objawy opryszczki lub infekcji, skontaktuj się z gabinetem przed wizytą.",
-    ],
-    contraindications: [
-      "aktywna opryszczka lub stan zapalny ust",
-      "ciąża i karmienie piersią",
-      "uczulenie na składniki pigmentu",
-      "zaburzenia krzepliwości krwi",
-      "przyjmowanie leków wpływających na krzepliwość lub gojenie, wymagające indywidualnej kwalifikacji",
-      "niewyjaśnione zmiany lub uszkodzenia w obrębie ust wymagające wcześniejszej oceny",
-    ],
-    aftercare: [
-      "Nie pocieraj ust i zachowaj szczególną higienę podczas gojenia.",
-      "Unikaj sauny, basenu, opalania i intensywnego wysiłku do czasu wygojenia.",
-      "Stosuj pielęgnację zaleconą po zabiegu.",
-      "Nie odrywaj złuszczającego się naskórka ani nie nakładaj na usta przypadkowych preparatów.",
-      "Jeśli reakcja jest silna, nasila się lub utrzymuje dłużej niż omówiono, skontaktuj się z gabinetem.",
-    ],
+    recoveryTime: "około 7-14 dni",
+    sessionCount: "2 (z dopigmentowaniem po 4-6 tygodniach)",
+    imageAlt: "Makijaż permanentny ust.",
+    forWho: {
+      heading: "Dla kogo jest zabieg?",
+      paragraphs: [
+        "Zabieg przeznaczony jest dla osób, które chcą podkreślić naturalny kształt ust, wyrównać ich kolor oraz nadać im bardziej wyrazisty i estetyczny wygląd. Makijaż permanentny może być również dobrym rozwiązaniem dla osób, które chcą optycznie skorygować drobne asymetrie, podkreślić kontur ust oraz ograniczyć konieczność codziennego malowania.",
+      ],
+    },
+    description: {
+      heading: "Na czym polega zabieg?",
+      paragraphs: [
+        "Makijaż permanentny ust polega na wprowadzeniu odpowiednio dobranego pigmentu do powierzchownych warstw skóry za pomocą sterylnego kartridżu.",
+        "Przed rozpoczęciem pigmentacji wykonywany jest rysunek wstępny, podczas którego ustalany jest kształt, proporcje oraz kolor dopasowany do oczekiwań klienta i jego naturalnej urody.",
+        "Następnie pigment zostaje stopniowo wprowadzony w skórę, dzięki czemu usta zyskują bardziej wyraźny kontur oraz jednolity, naturalnie wyglądający kolor.",
+        "Po zabiegu kolor może początkowo wydawać się intensywniejszy. Wraz z procesem gojenia pigment stopniowo jaśnieje, a ostateczny efekt stabilizuje się po pełnej regeneracji skóry.",
+      ],
+    },
+    preparation: {
+      heading: "Przygotowanie do zabiegu",
+      items: [
+        "Na minimum 72 godziny przed zabiegiem należy unikać spożywania alkoholu oraz, jeśli jest to możliwe i bezpieczne, leków mogących zwiększać ryzyko krwawienia.",
+        "2 dni przed zabiegiem zaleca sie przyjąć Heviran w dawce ??",
+        "Przez kilka dni przed zabiegiem należy zadbać o odpowiednie nawodnienie organizmu.",
+        "Na kilka dni przed pigmentacją należy unikać intensywnego opalania oraz korzystania z solarium.",
+        "W dniu zabiegu zaleca się ograniczenie kawy i napojów energetycznych.",
+        "Usta powinny być w dobrej kondycji — bez aktywnej opryszczki, pęknięć, ran czy innych zmian w miejscu wykonywania zabiegu.",
+      ],
+    },
+    contraindications: {
+      heading: "Przeciwwskazania",
+      items: [
+        "Aktywna opryszczka lub inne infekcje w obrębie ust.",
+        "Stany zapalne i zmiany skórne w miejscu wykonywania zabiegu.",
+        "Choroby skóry w aktywnej fazie.",
+        "Ciąża i okres karmienia piersią.",
+        "Choroby autoimmunologiczne.",
+        "Zaburzenia krzepnięcia krwi.",
+        "Przyjmowanie leków przeciwzakrzepowych.",
+        "Skłonność do powstawania bliznowców.",
+        "Choroby nowotworowe.",
+        "Niewyrównana cukrzyca.",
+        "Epilepsja.",
+        "Alergia lub nadwrażliwość na składniki stosowanych preparatów.",
+        "Przyjmowanie doustnych antybiotyków.",
+        "Aktywne infekcje organizmu.",
+        "Świeżo wykonane zabiegi medycyny estetycznej w obrębie ust.",
+        "Uszkodzenia, rany lub podrażnienia skóry ust.",
+        "Nierealistyczne oczekiwania wobec efektu zabiegu.",
+      ],
+    },
+    recovery: {
+      heading: "Reakcje pozabiegowe i czas rekonwalescencji",
+      paragraphs: [
+        "Bezpośrednio po zabiegu usta mogą być lekko opuchnięte, zaczerwienione i bardziej intensywne. W kolejnych dniach pigment stopniowo blednie, a na powierzchni ust może pojawić się delikatne złuszczanie.",
+        "Proces gojenia trwa zazwyczaj kilka dni, natomiast pełna stabilizacja koloru może trwać do miesiąca. Ostateczny rezultat może różnić się u poszczególnych osób i zależy m.in. od rodzaju skóry, zastosowanego pigmentu oraz indywidualnych procesów regeneracyjnych.",
+      ],
+      symptomsHeading: "Do najczęstszych objawów pozabiegowych należą:",
+      symptoms: [
+        "Obrzęk ust.",
+        "Zaczerwienienie.",
+        "Uczucie napięcia skóry.",
+        "Delikatne pieczenie lub szczypanie.",
+        "Tkliwość i dyskomfort.",
+        "Przejściowo intensywniejszy kolor pigmentu.",
+        "Suchość ust.",
+        "Delikatne złuszczanie naskórka.",
+        "Niewielkie strupki podczas procesu gojenia.",
+        "Nierównomierne złuszczanie pigmentu w trakcie regeneracji.",
+        "Możliwość wystąpienia opryszczki u osób z predyspozycją.",
+        "Reakcja alergiczna na składniki stosowanych preparatów.",
+        "W przypadku nieprzestrzegania zasad higieny istnieje ryzyko wystąpienia infekcji.",
+      ],
+    },
+    aftercare: {
+      heading: "Zalecenia pozabiegowe",
+      items: [
+        "Przez pierwsze dni należy unikać dotykania ust bez umycia rąk.",
+        "Nie należy samodzielnie usuwać powstających skórek ani strupków.",
+        "Do czasu pełnego zagojenia należy unikać basenu, sauny oraz intensywnego wysiłku fizycznego.",
+        "Przez minimum 2 tygodnie należy zrezygnować z opalania i korzystania z solarium.",
+        "Nie należy przyjmować gorących płynów.",
+        "Stosować preparat przeznaczony do pielęgnacji ust po pigmentacji.",
+        "Nie stosować peelingów ani produktów o działaniu złuszczającym w obrębie ust do czasu pełnego zagojenia.",
+        "Przez minimum 48 godziny unikać wykonywania makijażu w bezpośrednim obszarze zabiegowym.",
+        "Nie spożywać alkoholu przez minimum 24-48 godzin po zabiegu.",
+        "Przez kilka dni po zabiegu unikać bardzo gorących, pikantnych i mocno drażniących produktów.",
+        "Nie korzystać z pomadek i kosmetyków do ust, które mogą podrażniać świeżo pigmentowaną skórę.",
+        "Po całkowitym zagojeniu należy stosować SPF 50 na usta.",
+        "W przypadku wystąpienia opryszczki lub innych niepokojących objawów należy skontaktować się z osobą wykonującą zabieg.",
+        "W razie jakichkolwiek wątpliwości dotyczących procesu gojenia należy skonsultować się z osobą wykonującą zabieg.",
+      ],
+    },
     faqs: [
       {
-        question: "Czy kolor po wygojeniu będzie intensywny?",
+        question: "Czy kolor ust po zabiegu będzie od razu taki jak docelowy?",
         answer:
-          "Kolor po wygojeniu jest zwykle delikatniejszy niż bezpośrednio po zabiegu. Jego intensywność dobieramy indywidualnie.",
+          "Kolor może początkowo wydawać się intensywniejszy. Wraz z procesem gojenia pigment stopniowo jaśnieje, a ostateczny efekt stabilizuje się po pełnej regeneracji skóry.",
       },
       {
-        question: "Kiedy można wykonać dopigmentowanie?",
+        question: "Jak długo trwa stabilizacja koloru?",
         answer:
-          "Termin oceniamy po pełnym wygojeniu skóry, podczas kontroli pozabiegowej.",
+          "Proces gojenia trwa zazwyczaj kilka dni, natomiast pełna stabilizacja koloru może trwać do miesiąca.",
+      },
+      {
+        question:
+          "Czy przy skłonności do opryszczki należy o tym powiedzieć przed wizytą?",
+        answer:
+          "Tak. W przygotowaniu do zabiegu wskazano, że usta powinny być bez aktywnej opryszczki, a wśród możliwych reakcji wymieniono jej wystąpienie u osób z predyspozycją.",
       },
     ],
   },
   {
     slug: "mezoterapia-mikroiglowa",
-    title: "Mezoterapia mikroigłowa",
+    title: "Mezoterapia igłowa i mikroigłowa",
     shortDescription:
-      "Zabieg poprawiający wygląd i kondycję skóry twarzy, szyi oraz dekoltu.",
-    forWho: [
-      "Zabieg może zainteresować osoby, które chcą zadbać o wygląd i kondycję skóry twarzy, szyi lub dekoltu.",
-      "Możliwość wykonania oraz zakres mikronakłuwania ustala się po ocenie skóry i rozmowie o oczekiwaniach podczas konsultacji.",
-    ],
-    imageAlt: "Zdjęcie związane z mezoterapią mikroigłową.",
-    secondaryImage: {
-      src: "/images/mezo/IMG_3750.JPG",
-      alt: "Zabieg pielęgnacyjny skóry.",
+      "Mezoterapia dostarcza skórze odpowiednio dobrane substancje aktywne. W zależności od metody preparat podaje się cienką igłą lub poprzez kontrolowane mikronakłucia.",
+    duration: "60-90 minut",
+    price: "350-600 zł",
+    recoveryTime: "około 1-3 dni",
+    sessionCount: "3-6",
+    imageAlt: "Zabieg mezoterapii igłowej i mikroigłowej.",
+    forWho: {
+      heading: "Dla kogo jest zabieg?",
+      paragraphs: [
+        "Zabieg przeznaczony jest dla osób, które chcą poprawić kondycję, wygląd oraz jakość skóry. Mezoterapia może być stosowana w celu intensywnego nawilżenia, poprawy jędrności i elastyczności skóry, zmniejszenia widoczności drobnych zmarszczek oraz poprawy jej kolorytu.",
+        "Zabieg może być wykonywany również jako element terapii skóry wymagającej regeneracji, odżywienia i pobudzenia naturalnych procesów odnowy.",
+      ],
     },
-    duration: "około 60 minut",
-    effectDuration: "indywidualna",
-    recoveryTime: "kilka dni",
-    sessionCount: "ustalana indywidualnie",
-    price: "350–500 zł",
-    description: [
-      "Po ocenie skóry dobieramy obszar zabiegowy i pielęgnację do jej potrzeb oraz oczekiwanego efektu.",
-      "Zabieg polega na kontrolowanym mikronakłuwaniu skóry, które pobudza jej naturalne procesy odnowy. Szczegółowy plan ustalamy podczas konsultacji.",
-      "Intensywność pracy i zakres zabiegu ustalamy indywidualnie. Po wizycie omawiamy pielęgnację, która pomoże skórze spokojnie przejść okres regeneracji.",
-    ],
-    possibleReactions: [
-      "Po zabiegu skóra może być zaczerwieniona, rozgrzana i lekko tkliwa. Reakcja zależy między innymi od indywidualnej wrażliwości skóry.",
-      "W kolejnych dniach może pojawić się suchość lub delikatne złuszczanie. Objawy zwykle stopniowo ustępują.",
-    ],
-    preparation: [
-      "Przyjdź z oczyszczoną skórą, bez intensywnego peelingu tuż przed wizytą.",
-      "Poinformuj o aktywnych zmianach skórnych i przyjmowanych lekach.",
-      "Na kilka dni przed wizytą nie wprowadzaj nowych, silnie działających kosmetyków.",
-      "Przyjdź bez makijażu na obszarze, który będzie poddany zabiegowi.",
-    ],
-    contraindications: [
-      "aktywne infekcje i stany zapalne skóry",
-      "ciąża i karmienie piersią",
-      "zaburzenia krzepliwości krwi",
-      "terapia izotretynoiną",
-      "inne kuracje dermatologiczne wpływające na wrażliwość lub gojenie skóry, wymagające konsultacji",
-      "niewyjaśnione zmiany lub uszkodzenia skóry w obszarze zabiegowym",
-    ],
-    aftercare: [
-      "Stosuj łagodną pielęgnację i ochronę SPF 50.",
-      "Przez kilka dni unikaj sauny, basenu, intensywnego wysiłku i słońca.",
-      "Nie wykonuj peelingów do czasu pełnego wyciszenia skóry.",
-      "Do czasu wyciszenia skóry nie wprowadzaj nowych kosmetyków ani intensywnych składników aktywnych.",
-      "Jeśli reakcja jest silna, nasila się lub utrzymuje dłużej niż omówiono, skontaktuj się z gabinetem.",
-    ],
+    description: {
+      heading: "Na czym polega zabieg?",
+      paragraphs: [
+        "Mezoterapia polega na dostarczeniu odpowiednio dobranych substancji aktywnych w obręb skóry. W zależności od wybranej metody preparat może być podawany za pomocą cienkiej igły bezpośrednio do skóry właściwej lub wprowadzany poprzez wykonanie kontrolowanych mikronakłuć.",
+        "Mezoterapia igłowa pozwala na precyzyjne podanie preparatu w wybrane obszary skóry. Mezoterapia mikroigłowa wykorzystuje natomiast serię mikronakłuć, które pobudzają naturalne procesy regeneracyjne skóry oraz zwiększają jej zdolność do odnowy.",
+        "W zależności od zastosowanego preparatu i indywidualnych potrzeb skóry zabieg może mieć działanie przede wszystkim nawilżające, odżywcze, regenerujące, rozświetlające lub poprawiające jej napięcie i elastyczność.",
+      ],
+    },
+    preparation: {
+      heading: "Przygotowanie do zabiegu",
+      items: [
+        "Na minimum 72 godziny przed zabiegiem należy unikać alkoholu oraz, jeśli jest to możliwe i bezpieczne, leków mogących zwiększać ryzyko krwawienia.",
+        "Od zakończenia antybiotykoterapii powinny upłynąć co najmniej 2 tygodnie.",
+        "Na kilka dni przed zabiegiem należy zadbać o odpowiednie nawodnienie organizmu.",
+        "Przed zabiegiem należy unikać intensywnego opalania oraz korzystania z solarium.",
+        "Na kilka dni przed zabiegiem nie należy wykonywać silnych peelingów ani stosować preparatów o intensywnym działaniu złuszczającym.",
+        "W dniu zabiegu zaleca się ograniczenie kawy oraz napojów energetycznych.",
+        "Skóra w miejscu wykonywania zabiegu powinna być zdrowa, bez aktywnych stanów zapalnych, ran czy podrażnień.",
+      ],
+    },
+    contraindications: {
+      heading: "Przeciwwskazania",
+      items: [
+        "Aktywne infekcje i stany zapalne skóry o podłożu bakteryjnym, wirusowym lub grzybiczym.",
+        "Choroby skóry w aktywnej fazie.",
+        "Choroby autoimmunologiczne.",
+        "Ciąża i okres karmienia piersią.",
+        "Skłonność do powstawania bliznowców.",
+        "Zaburzenia krzepnięcia krwi.",
+        "Przyjmowanie leków przeciwzakrzepowych.",
+        "Przyjmowanie niesteroidowych leków przeciwzapalnych.",
+        "Choroby nowotworowe.",
+        "Aktywna opryszczka.",
+        "Niewyrównana cukrzyca.",
+        "Alergia lub nadwrażliwość na składniki stosowanego preparatu.",
+        "Stany zapalne lub uszkodzenia skóry w miejscu planowanego zabiegu.",
+        "Trwająca antybiotykoterapia doustna.",
+        "Epilepsja.",
+        "Wybrane choroby psychiczne.",
+        "Świeżo wykonane zabiegi medycyny estetycznej lub kosmetologiczne w miejscu planowanego zabiegu.",
+        "Nierealistyczne oczekiwania wobec efektów terapii.",
+      ],
+    },
+    recovery: {
+      heading: "Reakcje pozabiegowe i czas rekonwalescencji",
+      paragraphs: [
+        "Bezpośrednio po zabiegu skóra może być zaczerwieniona, lekko obrzęknięta i bardziej wrażliwa. W przypadku mezoterapii igłowej mogą pojawić się niewielkie ślady po wkłuciach, natomiast po mezoterapii mikroigłowej typowe jest przejściowe zaczerwienienie oraz uczucie ciepła lub pieczenia skóry.",
+        "Czas regeneracji zależy od zastosowanej metody, intensywności zabiegu, rodzaju preparatu oraz indywidualnych właściwości skóry. Efekty terapii mogą pojawiać się stopniowo wraz z zachodzącymi procesami regeneracyjnymi.",
+      ],
+      symptomsHeading: "Do najczęstszych objawów pozabiegowych należą:",
+      symptoms: [
+        "Zaczerwienienie skóry.",
+        "Delikatny obrzęk.",
+        "Podrażnienie.",
+        "Uczucie ciepła lub pieczenia.",
+        "Tkliwość skóry.",
+        "Niewielki ból w miejscu wkłuć.",
+        "Drobne siniaki lub krwiaki.",
+        "Widoczne punkty po wkłuciach.",
+        "Uczucie napięcia skóry.",
+        "Przejściowa suchość skóry.",
+        "Delikatne złuszczanie naskórka.",
+        "Reakcje alergiczne na składniki preparatu.",
+        "W przypadku nieprzestrzegania zasad higieny istnieje ryzyko wystąpienia infekcji.",
+      ],
+    },
+    aftercare: {
+      heading: "Zalecenia pozabiegowe",
+      items: [
+        "Przez minimum 24 godziny należy unikać intensywnego wysiłku fizycznego.",
+        "Przez minimum 2 tygodnie należy zrezygnować z opalania oraz korzystania z solarium.",
+        "Przez kilka dni należy unikać sauny, gorących kąpieli oraz innych czynników powodujących intensywne nagrzewanie skóry.",
+        "Do czasu pełnej regeneracji skóry należy zrezygnować z basenu.",
+        "Nie wykonywać peelingów ani nie stosować silnie złuszczających kosmetyków do czasu pełnego zagojenia skóry.",
+        "Przez minimum 24 godziny nie należy wykonywać makijażu w miejscu zabiegu.",
+        "Stosować delikatne kosmetyki przeznaczone do regeneracji skóry.",
+        "Nie dotykać i nie pocierać obszaru poddanego zabiegowi.",
+        "Zadbać o higienę skóry oraz używanie czystego ręcznika i poszewki.",
+        "Stosować ochronę przeciwsłoneczną SPF 50.",
+        "Przez minimum 24-48 godzin należy unikać spożywania alkoholu.",
+        "Zadbać o odpowiednie nawodnienie organizmu.",
+        "Jeżeli nie ma potrzeby, to nie stosować leków przeciwzapalnych.",
+        "W razie jakichkolwiek wątpliwości dotyczących procesu gojenia należy skonsultować się z osobą wykonującą zabieg.",
+      ],
+    },
     faqs: [
       {
-        question: "Czy skóra po zabiegu jest zaczerwieniona?",
+        question: "Czym różni się mezoterapia igłowa od mikroigłowej?",
         answer:
-          "Przejściowe zaczerwienienie jest możliwe i zależy od indywidualnej reakcji skóry oraz intensywności zabiegu.",
+          "W mezoterapii igłowej preparat podawany jest cienką igłą bezpośrednio do skóry właściwej. Mezoterapia mikroigłowa wykorzystuje serię mikronakłuć pobudzających naturalne procesy regeneracyjne skóry.",
+      },
+      {
+        question: "Jakie potrzeby skóry może wspierać mezoterapia?",
+        answer:
+          "W zależności od preparatu i potrzeb skóry zabieg może działać nawilżająco, odżywczo, regenerująco, rozświetlająco lub poprawiać napięcie i elastyczność.",
+      },
+      {
+        question: "Jak długo trwa regeneracja skóry?",
+        answer:
+          "Czas regeneracji zależy od metody, intensywności zabiegu, rodzaju preparatu oraz indywidualnych właściwości skóry.",
+      },
+    ],
+  },
+  {
+    slug: "stymulatory-tkankowe",
+    title: "Stymulatory tkankowe",
+    shortDescription:
+      "Stymulatory tkankowe dostarczają do skóry właściwej odpowiednio dobrane substancje aktywne. Wspierają naturalne procesy odnowy oraz produkcję kolagenu i elastyny.",
+    duration: "50 minut",
+    price: "350-900 zł",
+    recoveryTime: "około 1-3 dni",
+    sessionCount: "1-3",
+    imageAlt: "Zabieg stymulatorami tkankowymi.",
+    forWho: {
+      heading: "Dla kogo przeznaczony jest zabieg?",
+      paragraphs: [
+        "Zabieg przeznaczony jest dla osób, które chcą poprawić kondycję i wygląd skóry, zmniejszyć jej wiotkość oraz poprawić kontur twarzy. Stymulatory mogą być stosowane również w celu wygładzenia drobnych zmarszczek, poprawy gęstości i napięcia skóry, a także nadania jej bardziej zdrowego i świeżego wyglądu.",
+      ],
+    },
+    description: {
+      heading: "Na czym polega zabieg?",
+      paragraphs: [
+        "Stymulatory tkankowe znajdują zastosowanie w terapiach ukierunkowanych na poprawę jakości skóry i procesy regeneracyjne. Ich działanie opiera się na dostarczeniu do skóry odpowiednio dobranych substancji aktywnych, które wspierają naturalne procesy odnowy oraz produkcję kolagenu i elastyny.",
+        "Preparat podawany jest za pomocą cienkiej igły bezpośrednio do skóry właściwej. Sam proces iniekcji powoduje kontrolowaną reakcję tkanek, która może dodatkowo pobudzać naturalne mechanizmy regeneracyjne. W zależności od zastosowanego preparatu uzyskuje się przede wszystkim efekt nawilżenia, poprawy napięcia i elastyczności, zagęszczenia oraz rozświetlenia skóry.",
+      ],
+    },
+    preparation: {
+      heading: "Przygotowanie do zabiegu",
+      items: [
+        "Na minimum 72 godziny przed zabiegiem należy unikać leków przeciwbólowych i przeciwzapalnych z grupy NLPZ oraz preparatów wpływających na krzepliwość krwi. Należy również zrezygnować ze spożywania alkoholu.",
+        "Od zakończenia antybiotykoterapii powinny upłynąć co najmniej 2 tygodnie.",
+        "Przez 2-3 dni poprzedzające zabieg należy zadbać o odpowiednie nawodnienie organizmu.",
+        "W przypadku skłonności do powstawania siniaków można wcześniej skonsultować stosowanie preparatów wspierających naczynia krwionośne.",
+        "W dniu zabiegu zaleca się ograniczenie kawy oraz napojów energetycznych.",
+      ],
+    },
+    contraindications: {
+      heading: "Przeciwwskazania",
+      items: [
+        "Aktywne infekcje i choroby skóry o podłożu bakteryjnym, wirusowym lub grzybiczym.",
+        "Choroby autoimmunologiczne.",
+        "Skłonność do powstawania bliznowców.",
+        "Ciąża i okres karmienia piersią.",
+        "Przyjmowanie leków przeciwzakrzepowych.",
+        "Przyjmowanie niesteroidowych leków przeciwzapalnych.",
+        "Choroby nowotworowe.",
+        "Aktywna opryszczka.",
+        "Zaburzenia krzepnięcia krwi.",
+        "Wiek poniżej 18 lat.",
+        "Nadwrażliwość lub uczulenie na składniki preparatu.",
+        "Aktywne stany zapalne w miejscu planowanego zabiegu.",
+        "Wybrane choroby tkanki łącznej, m.in. RZS, MIZS, toczeń rumieniowaty, twardzina układowa, zapalenie skórno-mięśniowe oraz zapalenie naczyń.",
+        "Ziarniniakowe choroby skóry.",
+        "Dysmorfofobia.",
+        "Trwająca antybiotykoterapia doustna.",
+        "Epilepsja oraz niektóre choroby psychiczne.",
+        "Nierealistyczne oczekiwania wobec efektów zabiegu.",
+      ],
+    },
+    recovery: {
+      heading: "Reakcje pozabiegowe i czas rekonwalescencji",
+      paragraphs: [
+        "Czas utrzymywania się efektów może być różny u poszczególnych osób. Wpływ na rezultat mają m.in. rodzaj i kondycja skóry, zastosowany preparat, jego ilość i technika podania, a także indywidualne predyspozycje oraz styl życia.",
+      ],
+      symptomsHeading: "Do najczęstszych reakcji pozabiegowych należą:",
+      symptoms: [
+        "Delikatny obrzęk.",
+        "Zaczerwienienie skóry.",
+        "Przejściowe podrażnienie.",
+        "Dyskomfort lub ból w miejscu wkłuć.",
+        "Pieczenie lub uczucie rozpierania.",
+        "Miejscowa reakcja zapalna.",
+        "Zasinienia i krwiaki.",
+        "Przejściowe uczucie napięcia skóry.",
+        "Reakcje alergiczne.",
+        "Przejściowe przebarwienia.",
+        "Wyczuwalne pod skórą depozyty preparatu.",
+        "Widoczne niewielkie grudki lub depozyty w miejscu podania.",
+        "W przypadku nieprzestrzegania zasad higieny i aseptyki istnieje również ryzyko wystąpienia infekcji.",
+      ],
+    },
+    aftercare: {
+      heading: "Zalecenia pozabiegowe",
+      items: [
+        "Przez minimum 2 tygodnie należy unikać intensywnego nagrzewania organizmu, opalania oraz korzystania z sauny.",
+        "Do czasu pełnej regeneracji skóry należy ograniczyć intensywny wysiłek fizyczny, treningi, korzystanie z basenu, depilację oraz peelingi i silnie złuszczające preparaty.",
+        "Stosować produkty przeznaczone do regeneracji i odbudowy bariery skóry.",
+        "Miejsce poddane iniekcji powinno być utrzymywane w czystości.",
+        "Należy szczególnie zadbać o higienę obszaru zabiegowego, w tym wymienić ręcznik i poszewkę na poduszkę.",
+        "Przez minimum 24 godziny nie należy wykonywać makijażu w miejscu zabiegu.",
+        "Stosować krem z wysoką ochroną przeciwsłoneczną SPF 50.",
+        "Przez minimum 3 dni po zabiegu należy zrezygnować ze spożywania alkoholu.",
+        "Zadbać o odpowiednie nawodnienie organizmu, zwiększając ilość wypijanej wody.",
+        "Nie stosować leków przeciwzapalnych bez wcześniejszej konsultacji.",
+        "Przy skłonności do opryszczki można zastosować Heviran",
+        "W przypadku tendencji do powstawania obrzęków lub siniaków można przyjąć Aescin,",
+        "W przypadku bólu można stosować paracetamol,",
+        "W przypadku wystąpienia niepokojących objawów lub jakichkolwiek wątpliwości należy skontaktować się z osobą wykonującą zabieg.",
+      ],
+    },
+    faqs: [
+      {
+        question: "Jak działają stymulatory tkankowe?",
+        answer:
+          "Dostarczają do skóry odpowiednio dobrane substancje aktywne, które wspierają naturalne procesy odnowy oraz produkcję kolagenu i elastyny.",
+      },
+      {
+        question: "Jakie efekty może wspierać zabieg?",
+        answer:
+          "W zależności od preparatu zabieg może wspierać nawilżenie, poprawę napięcia i elastyczności, zagęszczenie oraz rozświetlenie skóry.",
+      },
+      {
+        question: "Od czego zależy utrzymywanie się efektów?",
+        answer:
+          "Wpływ mają między innymi rodzaj i kondycja skóry, zastosowany preparat, jego ilość i technika podania, indywidualne predyspozycje oraz styl życia.",
       },
     ],
   },
   {
     slug: "rf-radiofrekwencja",
-    title: "RF radiofrekwencja",
+    title: "Radiofrekwencja mikroigłowa",
     shortDescription:
-      "Zabieg wykorzystujący fale radiowe do pielęgnacji i poprawy napięcia skóry.",
-    forWho: [
-      "Radiofrekwencja może być rozważana przez osoby, które chcą zadbać o wygląd i napięcie skóry twarzy lub dekoltu.",
-      "Obszar i parametry zabiegu dobiera się indywidualnie. Podczas konsultacji omawia się stan zdrowia, oczekiwania oraz możliwe przeciwwskazania.",
-    ],
-    imageAlt: "Zdjęcie związane z zabiegiem radiofrekwencji.",
-    secondaryImage: {
-      src: "/images/IMG_5966.PNG",
-      alt: "Praca z zakresu kosmetologii.",
+      "Radiofrekwencja mikroigłowa łączy kontrolowane mikronakłucia z energią fal radiowych. Zabieg pobudza naturalne procesy regeneracyjne i wspiera stopniową poprawę struktury skóry.",
+    duration: "60-90 minut",
+    price: "350-700 zł",
+    recoveryTime: "około 3-7 dni",
+    sessionCount: "3-4",
+    imageAlt: "Zabieg radiofrekwencji mikroigłowej.",
+    forWho: {
+      heading: "Dla kogo jest zabieg?",
+      paragraphs: [
+        "Zabieg przeznaczony jest dla osób, które chcą poprawić jędrność, napięcie i elastyczność skóry oraz zmniejszyć widoczność drobnych zmarszczek. Radiofrekwencja mikroigłowa może być stosowana również w celu poprawy struktury i gęstości skóry, redukcji widoczności blizn oraz poprawy ogólnego wyglądu i kondycji skóry.",
+      ],
     },
-    duration: "około 45–60 minut",
-    effectDuration: "indywidualna",
-    recoveryTime: "do ustąpienia zaczerwienienia",
-    sessionCount: "ustalana indywidualnie",
-    price: "450–600 zł",
-    description: [
-      "Przed zabiegiem dobieramy jego parametry i obszar pracy do potrzeb skóry oraz wskazań. Omawiamy również stan zdrowia i ewentualne przeciwwskazania.",
-      "Podczas radiofrekwencji skóra jest podgrzewana za pomocą fal radiowych. W zależności od potrzeb zabieg można połączyć z ampułką pielęgnacyjną.",
-      "Przebieg wizyty dopasowujemy do wybranego obszaru i bieżącego komfortu, a przed rozpoczęciem wyjaśniamy, jakich odczuć można się spodziewać.",
-    ],
-    possibleReactions: [
-      "W trakcie zabiegu odczuwalne jest ciepło. Po wizycie może utrzymywać się przejściowe zaczerwienienie lub zwiększona wrażliwość skóry.",
-      "U niektórych osób może wystąpić lekka tkliwość lub niewielki obrzęk, które stopniowo ustępują.",
-    ],
-    preparation: [
-      "Przed wizytą poinformuj o implantach, urządzeniach medycznych i stanie zdrowia.",
-      "Przyjdź z oczyszczoną skórą, bez intensywnych kosmetyków drażniących.",
-      "Zdejmij biżuterię znajdującą się w obszarze zabiegowym.",
-      "Zgłoś przed wizytą nowe podrażnienie lub uszkodzenie skóry w planowanym obszarze.",
-    ],
-    contraindications: [
-      "ciąża i karmienie piersią",
-      "rozrusznik serca lub elektroniczne implanty medyczne",
-      "aktywne stany zapalne skóry",
-      "choroby i stany wymagające indywidualnej kwalifikacji",
-      "przyjmowanie leków lub suplementów wymagających oceny przed zabiegiem",
-      "niewyjaśnione zmiany lub uszkodzenia skóry w obszarze zabiegowym",
-    ],
-    aftercare: [
-      "Stosuj łagodną pielęgnację i nawadniaj skórę.",
-      "Przez kilka dni unikaj intensywnego nagrzewania skóry.",
-      "Do czasu ustąpienia zaczerwienienia unikaj dodatkowych zabiegów na tym samym obszarze.",
-      "Jeśli reakcja jest silna, nasila się lub utrzymuje dłużej niż omówiono, skontaktuj się z gabinetem.",
-    ],
+    description: {
+      heading: "Na czym polega zabieg?",
+      paragraphs: [
+        "Radiofrekwencja mikroigłowa łączy działanie mikronakłuć z energią fal radiowych. Podczas zabiegu cienkie igły wprowadzane są na określoną głębokość skóry, a następnie energia RF przekazywana jest bezpośrednio w obrębie tkanek.",
+        "Kontrolowane mikronakłucia oraz działanie energii cieplnej pobudzają naturalne procesy regeneracyjne skóry i wspierają przebudowę włókien kolagenowych oraz elastynowych. W efekcie skóra może stać się bardziej napięta, jędrna i wygładzona, a jej struktura ulega stopniowej poprawie.",
+      ],
+    },
+    preparation: {
+      heading: "Przygotowanie do zabiegu",
+      items: [
+        "Na minimum 72 godziny przed zabiegiem należy unikać spożywania alkoholu oraz, jeśli jest to możliwe i bezpieczne, leków mogących zwiększać ryzyko krwawienia.",
+        "Od zakończenia antybiotykoterapii powinny upłynąć co najmniej 2 tygodnie.",
+        "Przez kilka dni przed zabiegiem należy zadbać o odpowiednie nawodnienie organizmu.",
+        "Należy unikać intensywnego opalania oraz korzystania z solarium przed zabiegiem.",
+        "Na kilka dni przed zabiegiem nie należy wykonywać silnych peelingów ani stosować intensywnie złuszczających preparatów.",
+        "W dniu zabiegu zaleca się ograniczenie kawy oraz napojów energetycznych.",
+        "Skóra w miejscu wykonywania zabiegu powinna być zdrowa, bez ran, aktywnych stanów zapalnych i podrażnień.",
+      ],
+    },
+    contraindications: {
+      heading: "Przeciwwskazania",
+      items: [
+        "Aktywne infekcje i stany zapalne skóry.",
+        "Choroby skóry w aktywnej fazie.",
+        "Choroby autoimmunologiczne.",
+        "Ciąża i okres karmienia piersią.",
+        "Choroby nowotworowe.",
+        "Zaburzenia krzepnięcia krwi.",
+        "Przyjmowanie leków przeciwzakrzepowych.",
+        "Skłonność do powstawania bliznowców.",
+        "Aktywna opryszczka w miejscu zabiegu.",
+        "Niewyrównana cukrzyca.",
+        "Epilepsja.",
+        "Wszczepiony rozrusznik serca lub inne aktywne implanty elektroniczne.",
+        "Implanty metalowe w obszarze poddawanym zabiegowi.",
+        "Alergia lub nadwrażliwość na stosowane preparaty.",
+        "Uszkodzenia, rany lub podrażnienia skóry w miejscu zabiegu.",
+        "Trwająca antybiotykoterapia doustna.",
+        "Świeżo wykonane zabiegi medycyny estetycznej lub kosmetologiczne w obszarze zabiegowym.",
+        "Nierealistyczne oczekiwania wobec efektów zabiegu.",
+      ],
+    },
+    recovery: {
+      heading: "Reakcje pozabiegowe i czas rekonwalescencji",
+      paragraphs: [
+        "Bezpośrednio po zabiegu skóra może być zaczerwieniona, lekko obrzęknięta i bardziej wrażliwa. Może pojawić się również uczucie ciepła, pieczenia lub napięcia.",
+        "W kolejnych dniach może wystąpić delikatne złuszczanie naskórka. Czas regeneracji zależy m.in. od intensywności zabiegu, zastosowanych parametrów oraz indywidualnych właściwości skóry. Efekty przebudowy skóry pojawiają się stopniowo wraz z zachodzącymi procesami regeneracyjnymi.",
+      ],
+      symptomsHeading: "Do najczęstszych objawów pozabiegowych należą:",
+      symptoms: [
+        "Zaczerwienienie skóry.",
+        "Delikatny obrzęk.",
+        "Uczucie ciepła.",
+        "Pieczenie lub szczypanie.",
+        "Podrażnienie i tkliwość skóry.",
+        "Uczucie napięcia.",
+        "Drobne punkty lub ślady po wkłuciach.",
+        "Niewielkie siniaki lub krwiaki.",
+        "Suchość skóry.",
+        "Delikatne złuszczanie naskórka.",
+        "Przejściowa nadwrażliwość skóry.",
+        "Przebarwienia lub odbarwienia skóry.",
+        "W przypadku nieprzestrzegania zasad higieny istnieje ryzyko wystąpienia infekcji.",
+      ],
+    },
+    aftercare: {
+      heading: "Zalecenia pozabiegowe",
+      items: [
+        "Przez minimum 24-48 godzin należy unikać intensywnego wysiłku fizycznego.",
+        "Przez minimum 2 tygodnie należy zrezygnować z opalania oraz korzystania z solarium.",
+        "Przez kilka dni należy unikać sauny, gorących kąpieli oraz innych czynników powodujących intensywne nagrzewanie skóry.",
+        "Do czasu pełnej regeneracji skóry należy zrezygnować z basenu.",
+        "Nie wykonywać peelingów oraz nie stosować silnie złuszczających preparatów do czasu pełnego zagojenia skóry.",
+        "Przez minimum 24 godziny nie należy wykonywać makijażu w miejscu zabiegu.",
+        "Stosować delikatne preparaty przeznaczone do regeneracji i odbudowy bariery skóry.",
+        "Nie dotykać, nie pocierać ani nie drapać obszaru poddanego zabiegowi.",
+        "Zadbać o odpowiednią higienę skóry oraz używanie czystego ręcznika i poszewki.",
+        "Codziennie stosować ochronę przeciwsłoneczną SPF 50.",
+        "Przez minimum 24-48 godzin należy unikać spożywania alkoholu.",
+        "Zadbać o odpowiednie nawodnienie organizmu.",
+        "Nie stosować produktów zawierających retinoidy, kwasy lub inne silnie działające substancje do czasu pełnej regeneracji skóry.",
+        "W razie jakichkolwiek wątpliwości dotyczących procesu gojenia należy skonsultować się z osobą wykonującą zabieg.",
+      ],
+    },
     faqs: [
       {
-        question: "Czy zabieg jest odczuwalny?",
+        question: "Na czym polega radiofrekwencja mikroigłowa?",
         answer:
-          "Odczucia zależą od ustawień urządzenia i indywidualnej wrażliwości. Zabieg powinien być komfortowy.",
+          "Zabieg łączy mikronakłucia z energią fal radiowych, przekazywaną bezpośrednio w obrębie tkanek.",
       },
-    ],
-  },
-  {
-    slug: "laserowe-usuwanie-brwi",
-    title: "Laserowe usuwanie brwi",
-    shortDescription:
-      "Zabieg dla osób, które chcą usunąć niepożądany pigment z obszaru brwi.",
-    forWho: [
-      "Zabieg może być rozważany przez osoby, które chcą usunąć lub rozjaśnić niepożądany pigment w obszarze brwi.",
-      "Możliwość wykonania oraz przewidywany plan sesji ocenia się podczas konsultacji, po obejrzeniu pigmentu i kondycji skóry.",
-    ],
-    imageAlt: "Zdjęcie brwi związane z laserowym usuwaniem pigmentu.",
-    secondaryImage: {
-      src: "/images/brwi%20perm/IMG_3517.JPG",
-      alt: "Detal stylizacji brwi.",
-    },
-    duration: "około 30 minut",
-    effectDuration: "zależna od pigmentu i skóry",
-    recoveryTime: "do ustąpienia zaczerwienienia",
-    sessionCount: "seria ustalana indywidualnie",
-    price: "200 zł za sesję",
-    description: [
-      "Podczas konsultacji oceniamy rodzaj i głębokość pigmentu oraz kondycję skóry. Na tej podstawie omawiamy możliwe efekty i orientacyjną liczbę sesji.",
-      "Laser kierowany jest na pigment w obszarze brwi. Parametry i odstępy między sesjami dobieramy indywidualnie.",
-      "Przed kolejną sesją ponownie oceniamy obszar zabiegowy i jego regenerację, a dalszy plan dostosowujemy do uzyskanej reakcji skóry.",
-    ],
-    possibleReactions: [
-      "Bezpośrednio po zabiegu może wystąpić zaczerwienienie, obrzęk lub tkliwość skóry w obszarze działania lasera.",
-      "Możliwe są drobne strupki lub czasowa zmiana wyglądu pigmentu. Obszar należy pielęgnować zgodnie z zaleceniami i chronić przed słońcem.",
-    ],
-    preparation: [
-      "Nie opalaj obszaru zabiegowego przed wizytą.",
-      "Poinformuj o lekach, chorobach skóry i wcześniejszych zabiegach.",
-      "Przyjdź z oczyszczoną skórą, bez makijażu i kosmetyków na obszarze brwi.",
-      "Zgłoś świeżą opaleniznę, podrażnienie lub nowe zmiany skórne przed rozpoczęciem zabiegu.",
-    ],
-    contraindications: [
-      "świeża opalenizna i aktywny stan zapalny skóry",
-      "ciąża i karmienie piersią",
-      "skłonność do bliznowców",
-      "choroby i leki wymagające indywidualnej kwalifikacji",
-      "stosowanie leków lub preparatów zwiększających wrażliwość na światło, wymagające wcześniejszej konsultacji",
-      "niewyjaśnione zmiany lub uszkodzenia skóry w obszarze zabiegowym",
-    ],
-    aftercare: [
-      "Chroń obszar przed słońcem i stosuj ochronę SPF.",
-      "Nie zdrapuj złuszczającej się skóry i stosuj zaleconą pielęgnację.",
-      "Nie nakładaj drażniących kosmetyków na obszar zabiegowy do czasu jego wyciszenia.",
-      "Jeśli reakcja jest silna, nasila się lub utrzymuje dłużej niż omówiono, skontaktuj się z gabinetem.",
-    ],
-    faqs: [
       {
-        question: "Ile sesji będzie potrzebnych?",
+        question: "Jakich efektów może dotyczyć zabieg?",
         answer:
-          "Liczba sesji zależy od rodzaju, głębokości i koloru pigmentu. Zostanie omówiona po konsultacji.",
+          "Może wspierać poprawę jędrności, napięcia i elastyczności skóry, jej struktury i gęstości oraz zmniejszenie widoczności drobnych zmarszczek i blizn.",
       },
-    ],
-  },
-  {
-    slug: "peelingi",
-    title: "Peelingi",
-    shortDescription:
-      "Pielęgnacja dopasowana do potrzeb skóry: peeling chemiczny lub węglowy.",
-    forWho: [
-      "Peeling może być odpowiedni dla osób, które chcą odświeżyć wygląd skóry i zadbać o jej gładkość.",
-      "Rodzaj i intensywność zabiegu dobiera się do aktualnej kondycji skóry oraz oczekiwań, po wcześniejszej konsultacji.",
-    ],
-    imageAlt: "Zdjęcie skóry związane z zabiegiem peelingu.",
-    secondaryImage: {
-      src: "/images/IMG_5968.PNG",
-      alt: "Efekt pielęgnacji skóry.",
-    },
-    duration: "około 45 minut",
-    effectDuration: "indywidualna",
-    recoveryTime: "do wyciszenia skóry",
-    sessionCount: "ustalana indywidualnie",
-    price: "300–350 zł",
-    description: [
-      "Rodzaj peelingu dobieramy po ocenie skóry i rozmowie o oczekiwanym efekcie. Uwzględniamy jej aktualną kondycję oraz stosowaną pielęgnację.",
-      "Preparat nakładany jest na wybrany obszar zgodnie z dobraną metodą. Przed wizytą omawiamy przebieg zabiegu i dalszą pielęgnację.",
-      "Celem konsultacji jest dobranie metody do aktualnych potrzeb skóry, a nie samej intensywności złuszczania. Zakres zabiegu i dalszą pielęgnację ustalamy indywidualnie.",
-    ],
-    possibleReactions: [
-      "Po zabiegu może pojawić się zaczerwienienie, uczucie napięcia lub zwiększona wrażliwość skóry.",
-      "W zależności od rodzaju peelingu możliwe jest także przesuszenie lub złuszczanie naskórka. Nasilenie reakcji jest indywidualne.",
-    ],
-    preparation: [
-      "Na kilka dni przed zabiegiem unikaj intensywnych peelingów i opalania.",
-      "Poinformuj o stosowanych kosmetykach i aktywnych zmianach skórnych.",
-      "Przyjdź z oczyszczoną skórą, bez makijażu na obszarze zabiegowym.",
-      "Przekaż informacje o stosowanych kuracjach dermatologicznych i nowych produktach pielęgnacyjnych.",
-    ],
-    contraindications: [
-      "aktywne stany zapalne, infekcje lub podrażnienia skóry",
-      "ciąża i karmienie piersią, zależnie od zastosowanego preparatu",
-      "terapia izotretynoiną",
-      "świeża opalenizna",
-      "leki lub kuracje dermatologiczne mogące wpływać na wrażliwość skóry, wymagające indywidualnej kwalifikacji",
-      "niewyjaśnione zmiany lub uszkodzenia skóry w obszarze zabiegowym",
-    ],
-    aftercare: [
-      "Stosuj delikatną pielęgnację i codzienną ochronę SPF 50.",
-      "Nie zdrapuj złuszczającej się skóry i unikaj dodatkowych peelingów.",
-      "Przez kilka dni unikaj sauny i intensywnego nagrzewania skóry.",
-      "Do czasu pełnego wyciszenia skóry nie wprowadzaj nowych ani silnie działających kosmetyków.",
-      "Jeśli reakcja jest silna, nasila się lub utrzymuje dłużej niż omówiono, skontaktuj się z gabinetem.",
-    ],
-    faqs: [
       {
-        question: "Jaki peeling będzie odpowiedni?",
+        question: "Jak może wyglądać skóra bezpośrednio po zabiegu?",
         answer:
-          "Rodzaj peelingu dobieramy podczas konsultacji do kondycji skóry i celu pielęgnacji.",
+          "Może być zaczerwieniona, lekko obrzęknięta i bardziej wrażliwa. Może pojawić się również uczucie ciepła, pieczenia lub napięcia.",
       },
     ],
   },
