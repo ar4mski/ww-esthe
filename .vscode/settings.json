@@ -1,0 +1,9 @@
+{
+  "chat.tools.terminal.autoApprove": {
+    "mkdir": true,
+    "sips": true,
+    "git status": true,
+    "git diff --check": true,
+    "npm run lint": true
+  }
+}
