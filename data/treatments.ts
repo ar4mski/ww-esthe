@@ -33,12 +33,17 @@ export type Treatment = {
 };
 
 export const treatmentImages: Record<string, string> = {
-  "modelowanie-ust": "/images/lips/powiekszanie ust.JPG",
-  "stymulatory-tkankowe": "/images/IMG_5966.PNG",
-  "makijaz-permanentny-brwi": "/images/brwi perm/brwi.jpg",
-  "makijaz-permanentny-ust": "/images/lips_pmu/powiekszanie usta.JPG",
-  "mezoterapia-mikroiglowa": "/images/mezo/mezoterapia.JPG",
-  "rf-radiofrekwencja": "/images/IMG_5968.PNG",
+  "modelowanie-ust": "/images/treatments/modelowanie-ust/cover.jpg",
+  "stymulatory-tkankowe":
+    "/images/treatments/stymulatory-tkankowe/cover.jpg",
+  "makijaz-permanentny-brwi":
+    "/images/treatments/makijaz-permanentny-brwi/cover.jpg",
+  "makijaz-permanentny-ust":
+    "/images/treatments/makijaz-permanentny-ust/cover.jpg",
+  "mezoterapia-mikroiglowa":
+    "/images/treatments/mezoterapia-mikroiglowa/cover.jpg",
+  "rf-radiofrekwencja":
+    "/images/treatments/rf-radiofrekwencja/cover.jpg",
 };
 
 export const treatments: Treatment[] = [
@@ -46,7 +51,7 @@ export const treatments: Treatment[] = [
     slug: "makijaz-permanentny-brwi",
     title: "Makijaż permanentny brwi",
     shortDescription:
-      "Makijaż permanentny brwi polega na wprowadzeniu pigmentu do powierzchownych warstw skóry. Przed pigmentacją ustala się kształt i odcień, aby dopasować brwi do rysów twarzy.",
+      "Naturalnie podkreślone brwi, dopasowane do rysów twarzy i typu urody. Indywidualny dobór kształtu, koloru i techniki to klucz do perfekcyjnego efektu.",
     duration: "2-3 godziny",
     price: "800 zł",
     recoveryTime: "14 dni",
@@ -161,7 +166,7 @@ export const treatments: Treatment[] = [
     slug: "modelowanie-ust",
     title: "Modelowanie ust",
     shortDescription:
-      "Modelowanie ust poprawia ich kształt, proporcje i objętość z zachowaniem naturalnej harmonii. Zabieg wykorzystuje preparat na bazie kwasu hialuronowego, a jego zakres dobiera się podczas konsultacji.",
+      "Pełniejsze, symetryczne i pięknie wymodelowane usta. Priorytetem jest zachowanie proporcji twarzy i uzyskanie efektu podkreślającego urodę.",
     duration: "50 MIN",
     price: "700 zł",
     recoveryTime: "2-7 dni",
@@ -268,7 +273,7 @@ export const treatments: Treatment[] = [
     slug: "makijaz-permanentny-ust",
     title: "Makijaż permanentny ust",
     shortDescription:
-      "Makijaż permanentny ust polega na wprowadzeniu pigmentu do powierzchownych warstw skóry. Pozwala podkreślić kontur i nadać ustom jednolity, naturalnie wyglądający kolor.",
+      "Podkreślenie naturalnego koloru i kształtu ust, z efektem dopasowanym do urody. Subtelne podkreślenie, które dodaje ustom harmonii i wyrazistości.",
     duration: "2-3 godziny",
     price: "800 zł",
     recoveryTime: "7-14 dni",
@@ -387,7 +392,7 @@ export const treatments: Treatment[] = [
     slug: "mezoterapia-mikroiglowa",
     title: "Mezoterapia igłowa i mikroigłowa",
     shortDescription:
-      "Mezoterapia dostarcza skórze odpowiednio dobrane substancje aktywne. W zależności od metody preparat podaje się cienką igłą lub poprzez kontrolowane mikronakłucia.",
+      "Intensywna pielęgnacja skóry od wewnątrz, ukierunkowana na poprawę nawilżenia, jędrności i promienności. Skóra, która wygląda zdrowo, świeżo i naturalnie.",
     duration: "60-90 minut",
     price: "350-600 zł",
     recoveryTime: "1-3 dni",
@@ -507,7 +512,7 @@ export const treatments: Treatment[] = [
     slug: "stymulatory-tkankowe",
     title: "Stymulatory tkankowe",
     shortDescription:
-      "Stymulatory tkankowe dostarczają do skóry właściwej odpowiednio dobrane substancje aktywne. Wspierają naturalne procesy odnowy oraz produkcję kolagenu i elastyny.",
+      "Wsparcie naturalnych procesów regeneracji skóry, poprawa jej jędrności i elastyczności. Subtelne efekty, które podkreślają piękno i pomagają zachować świeży wygląd.",
     duration: "50 minut",
     price: "350-900 zł",
     recoveryTime: "1-3 dni",
@@ -622,7 +627,7 @@ export const treatments: Treatment[] = [
     slug: "rf-radiofrekwencja",
     title: "Radiofrekwencja mikroigłowa",
     shortDescription:
-      "Radiofrekwencja mikroigłowa łączy kontrolowane mikronakłucia z energią fal radiowych. Zabieg pobudza naturalne procesy regeneracyjne i wspiera stopniową poprawę struktury skóry.",
+      "Połączenie mikronakłuwania i energii fal radiowych, wspierające regenerację oraz poprawę jędrności skóry. Skóra gładsza, bardziej napięta i pełna blasku.",
     duration: "60-90 minut",
     price: "350-700 zł",
     recoveryTime: "3-7 dni",
@@ -736,12 +741,26 @@ export const treatments: Treatment[] = [
       },
     ],
   },
-];
+].sort((first, second) => {
+  if (first.slug === second.slug) {
+    return 0;
+  }
+
+  if (first.slug === "modelowanie-ust") {
+    return -1;
+  }
+
+  if (second.slug === "modelowanie-ust") {
+    return 1;
+  }
+
+  return 0;
+});
 
 export function getTreatment(slug: string) {
   return treatments.find((treatment) => treatment.slug === slug);
 }
 
 export function getTreatmentImage(slug: string) {
-  return treatmentImages[slug] ?? "/images/hero.jpg";
+  return treatmentImages[slug] ?? "/images/heroes/fallback.jpg";
 }

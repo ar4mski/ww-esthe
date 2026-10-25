@@ -80,7 +80,7 @@ export function SiteFooter() {
           <div className={styles.copyrightBrand}>
             <Image
               className={styles.footerLogo}
-              src="/images/logos/logo_w-light.svg"
+              src="/images/branding/logo-w-light.svg"
               alt=""
               width={716}
               height={834}

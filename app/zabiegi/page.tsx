@@ -9,8 +9,8 @@ export default function TreatmentsPage() {
         eyebrow="Oferta"
         title="Zabiegi stworzone z myślą o Tobie."
         description="Poznaj przebieg zabiegów, przygotowanie, przeciwwskazania oraz zalecenia pozabiegowe."
-        image="/images/hero-mobile/hero-treatments.jpg"
-        desktopImage="/images/hero-treatments.jpg"
+        image="/images/heroes/treatments/mobile.jpg"
+        desktopImage="/images/heroes/treatments/desktop.jpg"
         imageAlt="Portret klientki związany z naturalną estetyką zabiegów"
         cta={{ label: "Umów konsultację", href: siteConfig.bookingUrl }}
       />

@@ -36,8 +36,8 @@ export default function AboutPage() {
         eyebrow="O mnie"
         title="Poznajmy się bliżej."
         description="Wierzę, że najlepsze efekty zaczynają się od uważnej rozmowy, zaufania i dobrze dobranego planu."
-        image="/images/hero-mobile/hero-aboutme.jpg"
-        desktopImage="/images/hero-mobile/hero-aboutme.jpg"
+        image="/images/heroes/about/hero.jpg"
+        desktopImage="/images/heroes/about/hero.jpg"
         imageAlt="Portret kobiety w naturalnym świetle"
       />
 

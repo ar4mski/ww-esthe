@@ -9,6 +9,7 @@ import { FaqItem } from "@/components/faq-item";
 import { PageSection } from "@/components/page-section";
 import { getTreatmentShowcase } from "@/data/treatment-showcase";
 import { getTreatment, getTreatmentImage, treatments } from "@/data/treatments";
+import type { GalleryCategory } from "@/components/gallery-grid/gallery-items";
 import { Breadcrumbs } from "./components/breadcrumbs";
 import { TreatmentFacts } from "./components/treatment-facts";
 import { TreatmentShowcase } from "./components/treatment-showcase";
@@ -18,18 +19,24 @@ type TreatmentPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-const galleryLinks: Record<string, { category: "brwi" | "usta" | "skora" }> = {
+const galleryLinks: Record<string, { category: GalleryCategory }> = {
   "makijaz-permanentny-brwi": {
-    category: "brwi",
+    category: "makijaz-permanentny-brwi",
   },
   "makijaz-permanentny-ust": {
-    category: "usta",
+    category: "makijaz-permanentny-ust",
   },
   "modelowanie-ust": {
-    category: "usta",
+    category: "modelowanie-ust",
   },
   "mezoterapia-mikroiglowa": {
-    category: "skora",
+    category: "mezoterapia-mikroiglowa",
+  },
+  "stymulatory-tkankowe": {
+    category: "stymulatory-tkankowe",
+  },
+  "rf-radiofrekwencja": {
+    category: "rf-radiofrekwencja",
   },
 };
 

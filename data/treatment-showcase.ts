@@ -17,56 +17,65 @@ export const treatmentShowcases: Record<string, TreatmentShowcase> = {
   "makijaz-permanentny-brwi": {
     photos: [
       {
-        src: "/images/brwi perm/brwi.jpg",
+        src: "/images/treatments/makijaz-permanentny-brwi/cover.jpg",
         alt: "Brwi po makijażu permanentnym",
       },
       {
-        src: "/images/brwi perm/IMG_8573.JPG",
+        src: "/images/treatments/makijaz-permanentny-brwi/showcase-01.jpg",
         alt: "Naturalny efekt pigmentacji brwi",
       },
-      { src: "/images/brwi perm/IMG_8625.JPG", alt: "Detal brwi po zabiegu" },
       {
-        src: "/images/brwi perm/IMG_7632.jpg",
+        src: "/images/treatments/makijaz-permanentny-brwi/showcase-02.jpg",
+        alt: "Detal brwi po zabiegu",
+      },
+      {
+        src: "/images/treatments/makijaz-permanentny-brwi/showcase-03.jpg",
         alt: "Brwi dopasowane do rysów twarzy",
       },
     ],
   },
   "modelowanie-ust": {
     beforeAfter: {
-      beforeSrc: "/images/before_after/before2.png",
+      beforeSrc: "/images/treatments/modelowanie-ust/before.png",
       beforeAlt: "Usta przed zabiegiem modelowania",
-      afterSrc: "/images/before_after/after2.png",
+      afterSrc: "/images/treatments/modelowanie-ust/after.png",
       afterAlt: "Usta po zabiegu modelowania",
     },
     photos: [
       {
-        src: "/images/lips/IMG_6553.JPG",
+        src: "/images/treatments/modelowanie-ust/showcase-01.jpg",
         alt: "Usta po modelowaniu kwasem hialuronowym",
       },
-      { src: "/images/lips/IMG_7998.jpg", alt: "Naturalnie wymodelowane usta" },
       {
-        src: "/images/lips/IMG_8490.JPG",
+        src: "/images/treatments/modelowanie-ust/showcase-02.jpg",
+        alt: "Naturalnie wymodelowane usta",
+      },
+      {
+        src: "/images/treatments/modelowanie-ust/showcase-03.jpg",
         alt: "Efekt zabiegu modelowania ust",
       },
-      { src: "/images/lips/IMG_8743.JPG", alt: "Pełniejsze usta po zabiegu" },
+      {
+        src: "/images/treatments/modelowanie-ust/showcase-04.jpg",
+        alt: "Pełniejsze usta po zabiegu",
+      },
     ],
   },
   "makijaz-permanentny-ust": {
     photos: [
       {
-        src: "/images/lips_pmu/IMG_6541.JPG",
+        src: "/images/treatments/makijaz-permanentny-ust/showcase-01.jpg",
         alt: "Usta po makijażu permanentnym",
       },
       {
-        src: "/images/lips_pmu/IMG_6544.JPG",
+        src: "/images/treatments/makijaz-permanentny-ust/showcase-02.jpg",
         alt: "Detal koloru ust po pigmentacji",
       },
       {
-        src: "/images/lips_pmu/IMG_9028.JPG",
+        src: "/images/treatments/makijaz-permanentny-ust/showcase-03.jpg",
         alt: "Naturalny efekt pigmentacji ust",
       },
       {
-        src: "/images/lips_pmu/IMG_9462.JPG",
+        src: "/images/treatments/makijaz-permanentny-ust/showcase-04.jpg",
         alt: "Usta w odcieniu dopasowanym do karnacji",
       },
     ],
@@ -74,16 +83,20 @@ export const treatmentShowcases: Record<string, TreatmentShowcase> = {
   "mezoterapia-mikroiglowa": {
     photos: [
       {
-        src: "/images/mezo/mezoterapia.JPG",
+        src: "/images/treatments/mezoterapia-mikroiglowa/cover.jpg",
         alt: "Skóra po mezoterapii mikroigłowej",
       },
       {
-        src: "/images/mezo/IMG_3750.JPG",
+        src: "/images/treatments/mezoterapia-mikroiglowa/showcase-01.jpg",
         alt: "Wykonywanie mezoterapii mikroigłowej",
       },
       {
-        src: "/images/mezo/Kosmetologia_30 szablonów_Beżowy – kopia - 21.JPG",
+        src: "/images/treatments/mezoterapia-mikroiglowa/showcase-02.jpg",
         alt: "Aplikacja preparatu podczas zabiegu",
+      },
+      {
+        src: "/images/treatments/mezoterapia-mikroiglowa/showcase-03.jpg",
+        alt: "Zabieg mezoterapii mikroigłowej",
       },
     ],
   },

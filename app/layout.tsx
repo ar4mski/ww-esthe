@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   title: siteConfig.businessName,
   description: siteConfig.description,
   icons: {
-    icon: "/images/logos/favicon.svg",
+    icon: "/images/branding/favicon.svg",
   },
   alternates: {
     canonical: "/",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/hero-mobile/hero-home.jpg",
+        url: "/images/heroes/home/mobile.jpg",
         alt: "Portret klientki WW-Esthe",
       },
     ],
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.businessName,
     description: siteConfig.description,
-    images: ["/images/hero-mobile/hero-home.jpg"],
+    images: ["/images/heroes/home/mobile.jpg"],
   },
 };
 

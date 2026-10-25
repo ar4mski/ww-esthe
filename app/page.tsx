@@ -22,8 +22,8 @@ export default function Home() {
         eyebrow="Estetyka, która zaczyna się od Ciebie"
         title="Naturalne piękno w dobrych rękach."
         description="To miejsce na krótkie, wprowadzające zdanie o podejściu salonu i doświadczeniu klientek."
-        image="/images/hero-mobile/hero-home.jpg"
-        desktopImage="/images/hero-about.jpg"
+        image="/images/heroes/home/mobile.jpg"
+        desktopImage="/images/heroes/home/desktop.jpg"
         imageAlt="Portret klientki WW-Esthe"
         cta={{ label: "Umów konsultację", href: siteConfig.bookingUrl }}
         secondaryCta={{ label: "Zobacz usługi", href: "/zabiegi" }}
