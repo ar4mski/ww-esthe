@@ -25,6 +25,14 @@
   border-bottom-color: var(--beige);
 }
 
+.filterCollapsed {
+  display: none;
+}
+
+.filterExpand {
+  display: block;
+}
+
 .filter:focus-visible {
   outline: 2px solid var(--beige);
   outline-offset: 3px;
@@ -214,6 +222,16 @@
   .viewerItem {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .filterCollapsed {
+    display: block;
+  }
+
+  .filterExpand {
+    display: none;
   }
 }
 
