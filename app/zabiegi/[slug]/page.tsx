@@ -6,30 +6,30 @@ import { notFound } from "next/navigation";
 
 import { CTAButton } from "@/components/cta-button";
 import { FaqItem } from "@/components/faq-item";
+import { PageSection } from "@/components/page-section";
+import { getTreatmentShowcase } from "@/data/treatment-showcase";
 import { getTreatment, getTreatmentImage, treatments } from "@/data/treatments";
 import { Breadcrumbs } from "./components/breadcrumbs";
 import { TreatmentFacts } from "./components/treatment-facts";
+import { TreatmentShowcase } from "./components/treatment-showcase";
 import styles from "./treatment-detail.module.css";
 
 type TreatmentPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-const galleryLinks: Record<
-  string,
-  { category: "brwi" | "usta"; label: string }
-> = {
+const galleryLinks: Record<string, { category: "brwi" | "usta" | "skora" }> = {
   "makijaz-permanentny-brwi": {
     category: "brwi",
-    label: "Zobacz prace brwi",
   },
   "makijaz-permanentny-ust": {
     category: "usta",
-    label: "Zobacz prace ust",
   },
   "modelowanie-ust": {
     category: "usta",
-    label: "Zobacz prace ust",
+  },
+  "mezoterapia-mikroiglowa": {
+    category: "skora",
   },
 };
 
@@ -81,6 +81,7 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
   }
 
   const galleryLink = galleryLinks[treatment.slug];
+  const showcase = getTreatmentShowcase(treatment.slug);
   const basicFacts = [
     { icon: Banknote, label: "Cena", value: treatment.price },
     { icon: Clock, label: "Czas trwania", value: treatment.duration },
@@ -166,6 +167,24 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
           ))}
         </div>
       </section>
+
+      {showcase ? (
+        <PageSection
+          id="efekty-zabiegu"
+          className={`${styles.content} ${styles.anchorSection}`}
+          title="Moje prace"
+          description="Zobacz wybrane efekty mojej pracy i przekonaj się, jak zabieg może podkreślić Twoje naturalne piękno."
+        >
+          <TreatmentShowcase
+            showcase={showcase}
+            galleryHref={
+              galleryLink
+                ? `/galeria?category=${galleryLink.category}`
+                : undefined
+            }
+          />
+        </PageSection>
+      ) : null}
 
       <section
         id="przygotowanie-do-zabiegu"

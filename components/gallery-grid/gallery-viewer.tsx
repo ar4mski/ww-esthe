@@ -4,9 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./gallery-grid.module.css";
 import { galleryItems, type GalleryItem } from "./gallery-items";
 
+type GalleryViewerItem = Pick<GalleryItem, "src" | "alt"> &
+  Partial<Pick<GalleryItem, "description">>;
+
 type GalleryViewerProps = {
   activeIndex: number;
-  items?: GalleryItem[];
+  items?: GalleryViewerItem[];
   onClose: () => void;
 };
 
@@ -108,20 +111,22 @@ export function GalleryViewer({
               height={1200}
               sizes="100vw"
             />
-            <div className={styles.description}>
-              <p className={expandedIndex === index ? styles.expanded : ""}>
-                {item.description}
-              </p>
-              <button
-                className={styles.readMore}
-                type="button"
-                onClick={() =>
-                  setExpandedIndex(expandedIndex === index ? null : index)
-                }
-              >
-                {expandedIndex === index ? "Pokaż mniej" : "Czytaj więcej"}
-              </button>
-            </div>
+            {item.description ? (
+              <div className={styles.description}>
+                <p className={expandedIndex === index ? styles.expanded : ""}>
+                  {item.description}
+                </p>
+                <button
+                  className={styles.readMore}
+                  type="button"
+                  onClick={() =>
+                    setExpandedIndex(expandedIndex === index ? null : index)
+                  }
+                >
+                  {expandedIndex === index ? "Pokaż mniej" : "Czytaj więcej"}
+                </button>
+              </div>
+            ) : null}
           </article>
         ))}
       </div>
