@@ -1,3 +1,4 @@
+import { Banknote, Clock, HeartPulse, Layers } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -5,11 +6,7 @@ import { notFound } from "next/navigation";
 
 import { CTAButton } from "@/components/cta-button";
 import { FaqItem } from "@/components/faq-item";
-import {
-  getTreatment,
-  getTreatmentImage,
-  treatments,
-} from "@/data/treatments";
+import { getTreatment, getTreatmentImage, treatments } from "@/data/treatments";
 import { Breadcrumbs } from "./components/breadcrumbs";
 import { TreatmentFacts } from "./components/treatment-facts";
 import styles from "./treatment-detail.module.css";
@@ -84,6 +81,23 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
   }
 
   const galleryLink = galleryLinks[treatment.slug];
+  const basicFacts = [
+    { icon: Banknote, label: "Cena", value: treatment.price },
+    { icon: Clock, label: "Czas trwania", value: treatment.duration },
+  ];
+  const additionalFacts = [
+    {
+      icon: HeartPulse,
+      label: "Rekonwalescencja",
+      value: treatment.recoveryTime,
+    },
+    {
+      icon: Layers,
+      label: "Liczba zabiegów",
+      value: treatment.sessionCount,
+    },
+  ];
+  const allFacts = [...basicFacts, ...additionalFacts];
 
   return (
     <article>
@@ -99,10 +113,8 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
           <TreatmentFacts
             id="informacje"
             className={`${styles.heroFacts} ${styles.mobileHeroFacts} ${styles.anchorSection}`}
-            price={treatment.price}
-            duration={treatment.duration}
-            recoveryTime={treatment.recoveryTime}
-            sessionCount={treatment.sessionCount}
+            facts={basicFacts}
+            label="Cena i czas trwania zabiegu"
           />
           <div className={styles.heroDetails}>
             {treatment.forWho ? (
@@ -141,14 +153,11 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
 
       <section
         id="opis-zabiegu"
-        className={`${styles.content} ${styles.copyContent} ${styles.anchorSection} section-shell`}
+        className={`${styles.content} ${styles.copyContent} ${styles.mobileNoDivider} ${styles.anchorSection} section-shell`}
       >
         <TreatmentFacts
           className={`${styles.heroFacts} ${styles.desktopHeroFacts} ${styles.anchorSection}`}
-          price={treatment.price}
-          duration={treatment.duration}
-          recoveryTime={treatment.recoveryTime}
-          sessionCount={treatment.sessionCount}
+          facts={allFacts}
         />
         <h2>{treatment.description.heading}</h2>
         <div className={styles.copyColumn}>
@@ -192,6 +201,11 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
+          <TreatmentFacts
+            className={`${styles.heroFacts} ${styles.mobileHeroFacts}`}
+            facts={additionalFacts}
+            label="Rekonwalescencja i liczba zabiegów"
+          />
           <section
             className={styles.recoverySymptoms}
             aria-labelledby="objawy-pozabiegowe"

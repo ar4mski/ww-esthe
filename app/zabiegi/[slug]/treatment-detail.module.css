@@ -16,6 +16,7 @@
   display: grid;
   gap: 2rem;
   padding-bottom: 0;
+  padding-top: 1.25rem;
   row-gap: 0;
 }
 
@@ -84,6 +85,7 @@
     font-size: var(--heading-3-size);
     line-height: 1.15;
     margin-bottom: 1rem;
+    margin-top: 1rem;
   }
 }
 
@@ -135,7 +137,10 @@
 
     dd {
       font-size: 1.05rem;
+      line-height: 1.4;
       margin: 0;
+      min-width: 0;
+      overflow-wrap: anywhere;
     }
   }
 }
@@ -147,8 +152,18 @@
 .mobileHeroFacts {
   border-bottom: 1px solid var(--line);
   border-top: 1px solid var(--line);
-  margin: 1.25rem 0 2rem;
-  padding: 1rem 0;
+  margin: 1rem 0 1.25rem;
+  padding: 0.75rem 0;
+
+  &::before {
+    display: none;
+  }
+}
+
+.mobileAdditionalFacts {
+  border-top: 1px solid var(--line);
+  margin: 2rem 0 0;
+  padding: 1rem 0 0;
 
   &::before {
     display: none;
@@ -192,8 +207,10 @@
   }
 }
 
-.copyContentNoDivider::before {
-  display: none;
+@media (width < 640px) {
+  .mobileNoDivider::before {
+    display: none;
+  }
 }
 
 .recoverySymptoms {
@@ -255,6 +272,10 @@
     display: none;
   }
 
+  .mobileAdditionalFacts {
+    display: none;
+  }
+
   .content {
     &::before {
       left: max(2rem, calc((100% - 1180px) / 2 + 2rem));
@@ -266,6 +287,7 @@
     column-gap: 3rem;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     padding-bottom: 2.5rem;
+    padding-top: 2.5rem;
   }
 
   .heroFacts {

@@ -49,8 +49,8 @@ export const treatments: Treatment[] = [
       "Makijaż permanentny brwi polega na wprowadzeniu pigmentu do powierzchownych warstw skóry. Przed pigmentacją ustala się kształt i odcień, aby dopasować brwi do rysów twarzy.",
     duration: "2-3 godziny",
     price: "800 zł",
-    recoveryTime: "około 7-14 dni",
-    sessionCount: "2 (z dopigmentowaniem po 4-6 tygodniach)",
+    recoveryTime: "14 dni",
+    sessionCount: "2",
     imageAlt: "Makijaż permanentny brwi.",
     forWho: {
       heading: "Dla kogo jest zabieg?",
@@ -164,7 +164,7 @@ export const treatments: Treatment[] = [
       "Modelowanie ust poprawia ich kształt, proporcje i objętość z zachowaniem naturalnej harmonii. Zabieg wykorzystuje preparat na bazie kwasu hialuronowego, a jego zakres dobiera się podczas konsultacji.",
     duration: "50 MIN",
     price: "700 zł",
-    recoveryTime: "około 2-7 dni",
+    recoveryTime: "2-7 dni",
     sessionCount: "1",
     imageAlt: "Zdjęcie ust związane z zabiegiem modelowania.",
     description: {
@@ -269,9 +269,9 @@ export const treatments: Treatment[] = [
     title: "Makijaż permanentny ust",
     shortDescription:
       "Makijaż permanentny ust polega na wprowadzeniu pigmentu do powierzchownych warstw skóry. Pozwala podkreślić kontur i nadać ustom jednolity, naturalnie wyglądający kolor.",
-    duration: "około 2-3 godziny",
+    duration: "2-3 godziny",
     price: "800 zł",
-    recoveryTime: "około 7-14 dni",
+    recoveryTime: "7-14 dni",
     sessionCount: "2 (z dopigmentowaniem po 4-6 tygodniach)",
     imageAlt: "Makijaż permanentny ust.",
     forWho: {
@@ -390,7 +390,7 @@ export const treatments: Treatment[] = [
       "Mezoterapia dostarcza skórze odpowiednio dobrane substancje aktywne. W zależności od metody preparat podaje się cienką igłą lub poprzez kontrolowane mikronakłucia.",
     duration: "60-90 minut",
     price: "350-600 zł",
-    recoveryTime: "około 1-3 dni",
+    recoveryTime: "1-3 dni",
     sessionCount: "3-6",
     imageAlt: "Zabieg mezoterapii igłowej i mikroigłowej.",
     forWho: {
@@ -510,7 +510,7 @@ export const treatments: Treatment[] = [
       "Stymulatory tkankowe dostarczają do skóry właściwej odpowiednio dobrane substancje aktywne. Wspierają naturalne procesy odnowy oraz produkcję kolagenu i elastyny.",
     duration: "50 minut",
     price: "350-900 zł",
-    recoveryTime: "około 1-3 dni",
+    recoveryTime: "1-3 dni",
     sessionCount: "1-3",
     imageAlt: "Zabieg stymulatorami tkankowymi.",
     forWho: {
@@ -625,7 +625,7 @@ export const treatments: Treatment[] = [
       "Radiofrekwencja mikroigłowa łączy kontrolowane mikronakłucia z energią fal radiowych. Zabieg pobudza naturalne procesy regeneracyjne i wspiera stopniową poprawę struktury skóry.",
     duration: "60-90 minut",
     price: "350-700 zł",
-    recoveryTime: "około 3-7 dni",
+    recoveryTime: "3-7 dni",
     sessionCount: "3-4",
     imageAlt: "Zabieg radiofrekwencji mikroigłowej.",
     forWho: {
