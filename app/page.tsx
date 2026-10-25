@@ -44,7 +44,10 @@ export default function Home() {
             />
           ))}
         </div>
-        <Link className="button button-secondary" href="/zabiegi">
+        <Link
+          className={`text-link ${styles.allTreatmentsLink}`}
+          href="/zabiegi"
+        >
           Poznaj całą ofertę
         </Link>
       </PageSection>
@@ -65,7 +68,7 @@ export default function Home() {
         description="Zobacz efekty zabiegów i poznaj estetykę WW-Esthe."
       >
         <GalleryPreview className={styles.fullWidthGallery} previewCount={3} />
-        <Link className="button button-secondary" href="/galeria">
+        <Link className="text-link" href="/galeria">
           Zobacz całą galerię
         </Link>
       </PageSection>

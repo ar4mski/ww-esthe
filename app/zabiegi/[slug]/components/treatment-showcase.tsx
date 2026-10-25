@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import type { TreatmentShowcase as TreatmentShowcaseData } from "@/data/treatment-showcase";
 import { TreatmentShowcaseGallery } from "./treatment-showcase-gallery";
-import styles from "./treatment-showcase.module.css";
 
 type TreatmentShowcaseProps = {
   showcase: TreatmentShowcaseData;
@@ -16,7 +15,7 @@ export const TreatmentShowcase = ({
   <>
     <TreatmentShowcaseGallery photos={photos} />
     {galleryHref ? (
-      <Link className={styles.galleryLink} href={galleryHref}>
+      <Link className="text-link" href={galleryHref}>
         Zobacz więcej
       </Link>
     ) : null}

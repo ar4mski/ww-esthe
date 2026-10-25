@@ -149,15 +149,6 @@
     display: flex;
     position: relative;
 
-    & + .grid::before {
-      border-left: 1px solid var(--line);
-      bottom: 0;
-      content: "";
-      left: -0.75rem;
-      position: absolute;
-      top: 0;
-    }
-
     .image {
       aspect-ratio: 5 / 3;
     }

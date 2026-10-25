@@ -1,6 +1,11 @@
 .list {
   display: grid;
   gap: 0;
+  margin-bottom: 3rem;
+}
+
+.allTreatmentsLink {
+  font-size: 0.9rem;
 }
 
 .fullWidthGallery {

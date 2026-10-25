@@ -158,6 +158,24 @@ p {
   color: var(--foreground);
 }
 
+.text-link {
+  color: var(--foreground);
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 1.5rem auto 0;
+  text-transform: uppercase;
+  transition: color 180ms ease;
+  width: fit-content;
+}
+
+.text-link:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
 .section-heading {
   margin-bottom: 2.25rem;
   max-width: 38rem;
