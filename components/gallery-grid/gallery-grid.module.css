@@ -18,11 +18,16 @@
 .filter:hover,
 .filter:focus-visible,
 .filterActive {
-  color: var(--foreground);
+  color: var(--beige);
 }
 
 .filterActive {
-  border-bottom-color: var(--foreground);
+  border-bottom-color: var(--beige);
+}
+
+.filter:focus-visible {
+  outline: 2px solid var(--beige);
+  outline-offset: 3px;
 }
 
 .grid {
@@ -128,11 +133,17 @@
   right: 0.5rem;
   top: 0.5rem;
   z-index: 2;
+  transition: color 180ms ease;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--section-tint);
+  }
 }
 
 .closeButton:focus-visible,
 .readMore:focus-visible {
-  outline: 2px solid #fff;
+  outline: 2px solid var(--section-tint);
   outline-offset: 3px;
 }
 
@@ -186,6 +197,12 @@
   cursor: pointer;
   padding: 0;
   text-decoration: underline;
+  transition: color 180ms ease;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--section-tint);
+  }
 }
 
 @media (min-width: 640px) {

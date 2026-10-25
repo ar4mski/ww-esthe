@@ -136,10 +136,10 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
               </>
             ) : null}
             <div className={styles.heroActions}>
-              <CTAButton />
+              <CTAButton className="button-outline button-outline-beige" />
               {galleryLink ? (
                 <Link
-                  className="button button-secondary"
+                  className="button button-outline-secondary"
                   href={`/galeria?category=${galleryLink.category}`}
                 >
                   Zobacz moje prace

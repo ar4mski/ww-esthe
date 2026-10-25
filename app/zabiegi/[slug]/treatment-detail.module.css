@@ -58,11 +58,6 @@
     column-gap: 1rem;
     margin-top: 2rem;
     row-gap: 1rem;
-
-    :global(.button) {
-      margin-top: 0;
-      white-space: nowrap;
-    }
   }
 
   p {
@@ -86,12 +81,6 @@
     line-height: 1.15;
     margin-bottom: 1rem;
     margin-top: 1rem;
-  }
-}
-
-@media (width < 395px) {
-  .heroCopy .heroActions :global(.button) {
-    padding: 0.7rem 0.65rem;
   }
 }
 
@@ -257,11 +246,6 @@
   .heroCopy .heroActions {
     flex-wrap: wrap;
     column-gap: 1rem;
-
-    :global(.button) {
-      padding: 0.95rem 1.2rem;
-      white-space: normal;
-    }
   }
 
   .desktopHeroFacts {

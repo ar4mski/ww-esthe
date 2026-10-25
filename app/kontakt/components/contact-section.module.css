@@ -19,10 +19,13 @@
   padding: 0;
   width: 3.5rem;
   border-radius: 50%;
+  border-color: var(--beige);
+  color: var(--beige);
   text-decoration: none;
   transition:
     background 180ms ease,
     border-color 180ms ease,
+    color 180ms ease,
     transform 180ms ease;
 }
 
@@ -34,7 +37,7 @@
 }
 
 .channelList .channelButton:focus-visible {
-  outline: 2px solid var(--foreground);
+  outline: 2px solid var(--beige);
   outline-offset: 3px;
 }
 
@@ -42,7 +45,7 @@
   fill: none;
   flex: 0 0 auto;
   height: 1.75rem;
-  stroke: var(--beige);
+  stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 1.4;

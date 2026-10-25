@@ -68,12 +68,6 @@
   margin-top: 2rem;
 }
 
-.heroActions :global(.button) {
-  font-size: 0.9rem;
-  margin-top: 0;
-  padding: 0.8rem 1rem;
-}
-
 .heroVisual {
   aspect-ratio: auto;
   background: var(--line);
@@ -205,18 +199,21 @@
     width: 100%;
   }
 
-  .heroActions :global(.button) {
+  .heroActions :global(.button-outline) {
     border-color: rgba(255, 255, 255, 0.9);
+    color: #fffaf5;
+  }
+
+  .heroActions :global(.button-outline:hover) {
     background: #fffaf5;
     color: #2c241f;
   }
 
-  .heroActions :global(.button:hover) {
-    background: transparent;
+  .heroActions :global(.button-outline-secondary) {
     color: #fffaf5;
   }
 
-  .heroActions :global(.button-secondary) {
+  .heroActions :global(.button-outline-secondary:hover) {
     background: transparent;
     color: #fffaf5;
   }

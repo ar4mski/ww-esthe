@@ -84,10 +84,14 @@ export const PageHero = ({
 
           {cta || secondaryCta ? (
             <div className={styles.heroActions}>
-              {cta ? <CTAButton href={cta.href}>{cta.label}</CTAButton> : null}
+              {cta ? (
+                <CTAButton className="button-outline" href={cta.href}>
+                  {cta.label}
+                </CTAButton>
+              ) : null}
               {secondaryCta ? (
                 <Link
-                  className="button button-secondary"
+                  className="button button-outline-secondary"
                   href={secondaryCta.href}
                 >
                   {secondaryCta.label}

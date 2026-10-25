@@ -158,22 +158,65 @@ p {
   color: var(--foreground);
 }
 
-.text-link {
+.button.button-outline,
+.button.button-outline-secondary {
+  background: transparent;
   color: var(--foreground);
-  display: block;
+  margin-top: 0;
+  padding: 0.8rem 1rem;
+}
+
+.button.button-outline,
+.button.button-outline-secondary,
+.text-link {
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  margin: 1.5rem auto 0;
   text-transform: uppercase;
-  transition: color 180ms ease;
-  width: fit-content;
 }
 
-.text-link:hover {
+.button.button-outline {
+  border-color: currentColor;
+}
+
+.button.button-outline:hover {
+  background: var(--foreground);
+  color: var(--surface);
+}
+
+.button.button-outline-beige:hover,
+.button.button-outline-beige:focus-visible {
+  background: var(--beige);
+  border-color: var(--beige);
+  color: var(--surface);
+}
+
+.button.button-outline-secondary {
+  border-color: transparent;
+  padding-inline: 0.25rem;
+}
+
+.button.button-outline-secondary:hover,
+.button.button-outline-secondary:focus-visible {
+  background: transparent;
+}
+
+.button.button-outline-secondary:hover,
+.button.button-outline-secondary:focus-visible,
+.text-link:hover,
+.text-link:focus-visible {
+  color: var(--beige);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.15em;
+}
+
+.text-link {
+  color: var(--foreground);
+  display: block;
+  margin: 1.5rem auto 0;
+  transition: color 180ms ease;
+  width: fit-content;
 }
 
 .section-heading {

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 
-import { CTAButton } from "@/components/cta-button";
 import { PageHero } from "@/components/page-hero";
 
 import styles from "./about.module.css";
@@ -55,7 +54,6 @@ export default function AboutPage() {
             poczuć się dobrze ze swoim wyglądem i podkreślać to, co już w Tobie
             piękne.
           </p>
-          <CTAButton>Umów konsultację</CTAButton>
         </div>
 
         <aside className={styles.aboutNote} aria-labelledby="visit-title">
