@@ -67,6 +67,20 @@ const priceCategories: PriceCategory[] = [
       { name: "Twarz / dekolt + ampułka", price: "600 zł" },
     ],
   },
+  {
+    name: "Laserowe usuwanie brwi",
+    items: [
+      { name: "1 sesja", price: "200 zł" },
+      { name: "Ocieplenie / ochłodzenie brwi", price: "200 zł" },
+    ],
+  },
+  {
+    name: "Peelingi",
+    items: [
+      { name: "Peeling chemiczny", price: "350 zł" },
+      { name: "Peeling węglowy", price: "300 zł" },
+    ],
+  },
 ];
 
 export default function PricingPage() {
@@ -104,12 +118,12 @@ export default function PricingPage() {
         <div className="section-shell">
           <div className={styles.bookingContent}>
             <p className="eyebrow">Konsultacja</p>
-            <h2>Nie wiesz, który zabieg wybrać?</h2>
+            <h2>Nie wiesz, który zabieg wybrać lub masz pytanie?</h2>
             <p>
               Napisz, a wspólnie dobierzemy rozwiązanie dopasowane do Twoich
               potrzeb.
             </p>
-            <CTAButton />
+            <CTAButton className="button-outline button-outline-beige" />
           </div>
         </div>
       </section>
