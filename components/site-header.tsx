@@ -32,6 +32,12 @@ export function SiteHeader() {
 
     const updateCollapse = () => {
       const currentScrollY = window.scrollY;
+      if (isMenuOpen) {
+        lastScrollY.current = currentScrollY;
+        ticking = false;
+        return;
+      }
+
       const delta = currentScrollY - lastScrollY.current;
 
       // Tie the collapse progress directly to how far/fast the user scrolls.
@@ -61,7 +67,7 @@ export function SiteHeader() {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isMenuOpen]);
 
   // Keep the header expanded while the mobile menu is open.
   useEffect(() => {
@@ -71,6 +77,21 @@ export function SiteHeader() {
     collapseRef.current = 0;
     header.style.setProperty("--collapse", "0");
     header.classList.remove(styles.collapsed);
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const handleOutsidePointerDown = (event: PointerEvent) => {
+      const header = headerRef.current;
+      if (header && event.target instanceof Node && !header.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handleOutsidePointerDown);
+    return () =>
+      document.removeEventListener("pointerdown", handleOutsidePointerDown);
   }, [isMenuOpen]);
 
   return (
