@@ -1,0 +1,152 @@
+.feature {
+  margin-left: 50%;
+  position: relative;
+  transform: translateX(-50%);
+  width: 100vw;
+}
+
+.visual {
+  background: var(--section-tint);
+  height: clamp(24rem, 125vw, 36rem);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.video {
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  object-position: center 38%;
+  position: absolute;
+  width: 100%;
+}
+
+.video {
+  z-index: 1;
+}
+
+.overlay {
+  background: linear-gradient(
+    0deg,
+    rgba(42, 29, 22, 0.82) 0%,
+    rgba(42, 29, 22, 0.36) 38%,
+    rgba(42, 29, 22, 0.04) 78%
+  );
+  inset: 0;
+  position: absolute;
+  z-index: 2;
+}
+
+.copy {
+  bottom: 0;
+  color: #fffaf5;
+  left: 0;
+  padding: 2rem 1.25rem;
+  position: absolute;
+  right: 0;
+  z-index: 3;
+
+  h2 {
+    font-size: var(--heading-2-size);
+    line-height: 1.05;
+    margin-bottom: 0.85rem;
+    max-width: 14ch;
+  }
+}
+
+.eyebrow {
+  color: #fffaf5;
+}
+
+.description {
+  color: #fffaf5;
+  margin-bottom: 0;
+  max-width: 32rem;
+}
+
+.section {
+  display: block;
+  padding-bottom: 0;
+  padding-top: 0;
+  position: relative;
+
+  &::before {
+    border-top: 1px solid var(--line);
+    content: "";
+    left: max(1.25rem, calc((100% - 1180px) / 2 + 1.25rem));
+    position: absolute;
+    right: max(1.25rem, calc((100% - 1180px) / 2 + 1.25rem));
+    top: 0;
+  }
+}
+
+@media (min-width: 640px) {
+  .section.mobileOnly {
+    display: none;
+  }
+
+  .section {
+    &::before {
+      left: max(2rem, calc((100% - 1180px) / 2 + 2rem));
+      right: max(2rem, calc((100% - 1180px) / 2 + 2rem));
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .feature {
+    align-items: center;
+    display: grid;
+    gap: clamp(2rem, 5vw, 5rem);
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.85fr);
+    margin: 0 auto;
+    max-width: 1100px;
+    transform: none;
+    width: auto;
+
+    &.withoutCopy {
+      grid-template-columns: minmax(0, 1fr);
+
+      .visual {
+        grid-column: 1;
+      }
+    }
+  }
+
+  .copy {
+    color: var(--foreground);
+    grid-column: 1;
+    grid-row: 1;
+    padding: 0;
+    position: relative;
+
+    h2 {
+      color: var(--foreground);
+    }
+  }
+
+  .eyebrow {
+    color: var(--accent);
+  }
+
+  .description {
+    color: var(--muted);
+  }
+
+  .visual {
+    aspect-ratio: 4 / 5;
+    grid-column: 2;
+    grid-row: 1;
+    height: auto;
+    max-height: 42rem;
+  }
+
+  .overlay {
+    background: linear-gradient(
+      0deg,
+      rgba(42, 29, 22, 0.2),
+      rgba(42, 29, 22, 0.02) 55%
+    );
+  }
+}

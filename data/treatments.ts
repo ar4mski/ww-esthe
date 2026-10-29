@@ -23,6 +23,12 @@ export type Treatment = {
   recoveryTime: string;
   sessionCount: string;
   imageAlt: string;
+  procedureVideo?: {
+    src: string;
+    eyebrow?: string;
+    title?: string;
+    description?: string;
+  };
   forWho?: ParagraphSection;
   description: ParagraphSection;
   preparation: ListSection;
@@ -34,16 +40,14 @@ export type Treatment = {
 
 export const treatmentImages: Record<string, string> = {
   "modelowanie-ust": "/images/treatments/modelowanie-ust/cover.jpg",
-  "stymulatory-tkankowe":
-    "/images/treatments/stymulatory-tkankowe/cover.jpg",
+  "stymulatory-tkankowe": "/images/treatments/stymulatory-tkankowe/cover.jpg",
   "makijaz-permanentny-brwi":
     "/images/treatments/makijaz-permanentny-brwi/cover.jpg",
   "makijaz-permanentny-ust":
     "/images/treatments/makijaz-permanentny-ust/cover.jpg",
   "mezoterapia-mikroiglowa":
     "/images/treatments/mezoterapia-mikroiglowa/cover.jpg",
-  "rf-radiofrekwencja":
-    "/images/treatments/rf-radiofrekwencja/cover.jpg",
+  "rf-radiofrekwencja": "/images/treatments/rf-radiofrekwencja/cover.jpg",
 };
 
 export const treatments: Treatment[] = [
@@ -57,6 +61,12 @@ export const treatments: Treatment[] = [
     recoveryTime: "14 dni",
     sessionCount: "2",
     imageAlt: "Makijaż permanentny brwi.",
+    procedureVideo: {
+      src: "/video/brows_pmu.MP4",
+      title: "Makijaż permanentny brwi w praktyce",
+      description:
+        "Zobacz krótki fragment pigmentacji i poznaj zabieg z bliska.",
+    },
     forWho: {
       heading: "Dla kogo jest zabieg?",
       paragraphs: [

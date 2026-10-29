@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { BackgroundVideoSection } from "@/components/background-video-section";
 import { CTAButton } from "@/components/cta-button";
 import { FaqItem } from "@/components/faq-item";
 import { PageSection } from "@/components/page-section";
@@ -125,7 +126,7 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
             label="Cena i czas trwania zabiegu"
           />
           <div className={styles.heroDetails}>
-            {treatment.forWho ? (
+            {treatment.forWho && (
               <>
                 <h2 className={styles.heroSubtitle}>
                   {treatment.forWho.heading}
@@ -134,17 +135,17 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
                   <p key={paragraph}>{paragraph}</p>
                 ))}
               </>
-            ) : null}
+            )}
             <div className={styles.heroActions}>
               <CTAButton className="button-outline button-outline-beige" />
-              {galleryLink ? (
+              {galleryLink && (
                 <Link
                   className="button button-outline-secondary"
                   href={`/galeria?category=${galleryLink.category}`}
                 >
                   Zobacz moje prace
                 </Link>
-              ) : null}
+              )}
             </div>
           </div>
         </div>
@@ -175,7 +176,19 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
         </div>
       </section>
 
-      {showcase ? (
+      {treatment.procedureVideo && (
+        <BackgroundVideoSection
+          id="zabieg-w-praktyce"
+          className={styles.anchorSection}
+          description={treatment.procedureVideo.description}
+          eyebrow={treatment.procedureVideo.eyebrow}
+          mobileOnly
+          src={treatment.procedureVideo.src}
+          title={treatment.procedureVideo.title}
+        />
+      )}
+
+      {showcase && (
         <PageSection
           id="efekty-zabiegu"
           className={`${styles.content} ${styles.anchorSection}`}
@@ -191,7 +204,7 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
             }
           />
         </PageSection>
-      ) : null}
+      )}
 
       <section
         id="przygotowanie-do-zabiegu"
