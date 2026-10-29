@@ -20,7 +20,7 @@ export const Visit = () => {
       const nextStepButton = activeSlide?.querySelector("button");
 
       if (nextStepButton instanceof HTMLElement) {
-        nextStepButton.focus();
+        nextStepButton.focus({ preventScroll: true });
       }
 
       previousActiveStepRef.current = activeStep;
