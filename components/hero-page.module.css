@@ -103,6 +103,16 @@
   transform: translateX(4%) scale(1.12);
 }
 
+.heroVideo {
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  object-position: 60% center;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
 .desktopHeroImage {
   display: none;
 }
@@ -245,6 +255,10 @@
     width: 100%;
     -webkit-mask-image: none;
     mask-image: none;
+  }
+
+  .heroVideo {
+    object-position: center 45%;
   }
 
   .heroVisual {

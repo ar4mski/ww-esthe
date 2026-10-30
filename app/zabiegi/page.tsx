@@ -11,6 +11,7 @@ export default function TreatmentsPage() {
         description="Poznaj przebieg zabiegów, przygotowanie, przeciwwskazania oraz zalecenia pozabiegowe."
         image="/images/heroes/treatments/mobile.jpg"
         desktopImage="/images/heroes/treatments/desktop.jpg"
+        video="/video/IMG_4309.MP4"
         imageAlt="Portret klientki związany z naturalną estetyką zabiegów"
         cta={{ label: "Umów konsultację", href: siteConfig.bookingUrl }}
       />

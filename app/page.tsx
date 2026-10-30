@@ -24,6 +24,7 @@ export default function Home() {
         description="To miejsce na krótkie, wprowadzające zdanie o podejściu salonu i doświadczeniu klientek."
         image="/images/heroes/home/mobile.jpg"
         desktopImage="/images/heroes/home/desktop.jpg"
+        video="/video/IMG_4277.MP4"
         imageAlt="Portret klientki WW-Esthe"
         cta={{ label: "Umów konsultację", href: siteConfig.bookingUrl }}
         secondaryCta={{ label: "Zobacz usługi", href: "/zabiegi" }}

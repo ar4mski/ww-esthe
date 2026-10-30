@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { BackgroundVideo } from "./background-video";
 import { CTAButton } from "./cta-button";
 
 import styles from "./hero-page.module.css";
@@ -17,6 +18,7 @@ interface HeroPageProps {
   description?: string;
   image: string;
   desktopImage?: string;
+  video?: string;
   imageAlt: string;
   cta?: HeroLink;
   secondaryCta?: HeroLink;
@@ -30,6 +32,7 @@ export const PageHero = ({
   description,
   image,
   desktopImage,
+  video,
   imageAlt,
   cta,
   secondaryCta,
@@ -61,7 +64,14 @@ export const PageHero = ({
           loading={desktopImage ? "eager" : undefined}
           sizes="100vw"
         />
-        {desktopImage ? (
+        {video && (
+          <BackgroundVideo
+            className={styles.heroVideo}
+            poster={image}
+            src={video}
+          />
+        )}
+        {desktopImage && (
           <Image
             className={`${styles.heroImage} ${styles.desktopHeroImage}`}
             src={desktopImage}
@@ -70,35 +80,33 @@ export const PageHero = ({
             preload
             sizes="(min-width: 1024px) 100vw, 40vw"
           />
-        ) : null}
+        )}
       </div>
       <div className={styles.heroOverlay} aria-hidden="true" />
 
       <div className={styles.heroContainer}>
         <div className={styles.heroContent}>
-          {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
+          {eyebrow && <p className={styles.eyebrow}>{eyebrow}</p>}
           <h1 id={titleId}>{title}</h1>
-          {description ? (
-            <p className={styles.description}>{description}</p>
-          ) : null}
+          {description && <p className={styles.description}>{description}</p>}
 
-          {cta || secondaryCta ? (
+          {(cta || secondaryCta) && (
             <div className={styles.heroActions}>
-              {cta ? (
+              {cta && (
                 <CTAButton className="button-outline" href={cta.href}>
                   {cta.label}
                 </CTAButton>
-              ) : null}
-              {secondaryCta ? (
+              )}
+              {secondaryCta && (
                 <Link
                   className="button button-outline-secondary"
                   href={secondaryCta.href}
                 >
                   {secondaryCta.label}
                 </Link>
-              ) : null}
+              )}
             </div>
-          ) : null}
+          )}
         </div>
       </div>
     </section>
