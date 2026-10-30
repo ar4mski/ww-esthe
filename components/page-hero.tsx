@@ -12,28 +12,30 @@ interface HeroLink {
 }
 
 interface HeroPageProps {
+  title: string;
+  image: string;
+  imageAlt: string;
   id?: string;
   eyebrow?: string;
-  title: string;
   description?: string;
-  image: string;
   desktopImage?: string;
   video?: string;
-  imageAlt: string;
+  blendVideoOnDesktop?: boolean;
   cta?: HeroLink;
   secondaryCta?: HeroLink;
   desktopPosition?: string;
 }
 
 export const PageHero = ({
+  title,
+  image,
+  imageAlt,
   id = "hero",
   eyebrow,
-  title,
   description,
-  image,
   desktopImage,
   video,
-  imageAlt,
+  blendVideoOnDesktop,
   cta,
   secondaryCta,
   desktopPosition = "calc(100% - max(2rem, calc((100vw - 1180px) / 2 + 2rem))) center",
@@ -44,7 +46,9 @@ export const PageHero = ({
   return (
     <section
       id={id}
-      className={styles.heroSection}
+      className={`${styles.heroSection} ${
+        video && blendVideoOnDesktop ? styles.blendedVideoHero : ""
+      }`}
       aria-labelledby={titleId}
       style={
         {

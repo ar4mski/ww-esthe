@@ -12,6 +12,7 @@ export default function TreatmentsPage() {
         image="/images/heroes/treatments/mobile.jpg"
         desktopImage="/images/heroes/treatments/desktop.jpg"
         video="/video/IMG_4309.MP4"
+        blendVideoOnDesktop
         imageAlt="Portret klientki związany z naturalną estetyką zabiegów"
         cta={{ label: "Umów konsultację", href: siteConfig.bookingUrl }}
       />

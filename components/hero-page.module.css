@@ -266,6 +266,18 @@
     mask-image: none;
     width: 100%;
   }
+
+  .blendedVideoHero .heroVisual {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 18%,
+      #000 100%
+    );
+    mask-image: linear-gradient(to right, transparent 0%, #000 18%, #000 100%);
+    width: 40%;
+  }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
