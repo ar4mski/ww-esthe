@@ -46,7 +46,8 @@ export async function generateMetadata({
     description,
     alternates: { canonical: path },
     // Categories without articles are still reachable but should not be indexed.
-    robots: posts.length === 0 ? { index: false } : undefined,
+    // The key is omitted otherwise: an explicit `undefined` would override the root layout's robots.
+    ...(posts.length === 0 && { robots: { index: false } }),
     openGraph: {
       title,
       description,

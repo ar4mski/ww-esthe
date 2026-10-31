@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Carousel } from "@/components/carousel";
@@ -5,6 +6,7 @@ import { PageHero } from "@/components/page-hero";
 import { PageSection } from "@/components/page-section";
 import { Testimonial } from "@/components/testimonial";
 import { TreatmentListItem } from "@/components/treatment-list-item";
+import { createPageMetadata } from "@/data/page-metadata";
 import { siteConfig } from "@/data/site-config";
 import { testimonials } from "@/data/testimonials";
 import { treatments } from "@/data/treatments";
@@ -14,6 +16,12 @@ import { GalleryPreview } from "@/components/gallery-grid/gallery-preview";
 import { Visit } from "@/components/visit";
 import { homeFaqs } from "@/data/faq";
 import styles from "./homepage.module.css";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Makijaż permanentny i medycyna estetyczna w Szczecinie | WW - ESTHE",
+  description: siteConfig.description,
+  path: "/",
+});
 
 export default function Home() {
   return (

@@ -24,9 +24,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/images/branding/favicon.svg",
   },
-  alternates: {
-    canonical: "/",
-  },
+  robots: siteConfig.allowIndexing
+    ? undefined
+    : { index: false, follow: false },
   openGraph: {
     title: siteConfig.businessName,
     description: siteConfig.description,
@@ -34,18 +34,13 @@ export const metadata: Metadata = {
     siteName: siteConfig.businessName,
     locale: siteConfig.locale,
     type: "website",
-    images: [
-      {
-        url: "/images/heroes/home/mobile.jpg",
-        alt: "Portret klientki WW-Esthe",
-      },
-    ],
+    images: [siteConfig.defaultOgImage],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.businessName,
     description: siteConfig.description,
-    images: ["/images/heroes/home/mobile.jpg"],
+    images: [siteConfig.defaultOgImage.url],
   },
 };
 

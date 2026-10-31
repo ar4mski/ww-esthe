@@ -1,10 +1,21 @@
+import type { Metadata } from "next";
+
 import { GalleryGrid } from "@/components/gallery-grid/gallery-grid";
 import {
   isGalleryFilter,
   type GalleryFilter,
 } from "@/components/gallery-grid/gallery-items";
 
+import { createPageMetadata } from "@/data/page-metadata";
+
 import styles from "./gallery.module.css";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Galeria prac | WW - ESTHE",
+  description:
+    "Zobacz efekty makijażu permanentnego, modelowania ust i innych zabiegów wykonanych w gabinecie WW-Esthe w Szczecinie.",
+  path: "/galeria",
+});
 
 type GalleryPageProps = {
   searchParams: Promise<{ category?: string | string[] }>;

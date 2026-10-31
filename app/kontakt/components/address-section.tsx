@@ -13,8 +13,9 @@ export function AddressSection() {
     <PageSection
       className={styles.addressSection}
       headingClassName={styles.addressHeading}
-      eyebrow="Dane kontaktowe"
-      title="Adres"
+      eyebrow="Gabinet w Szczecinie"
+      title="Kontakt"
+      headingLevel="h1"
       id="adres"
     >
       <div className={styles.details}>

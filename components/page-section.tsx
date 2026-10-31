@@ -8,6 +8,7 @@ type PageSectionProps = {
   description?: string;
   eyebrow?: string;
   headingClassName?: string;
+  headingLevel?: "h1" | "h2";
 };
 
 export const PageSection = ({
@@ -18,6 +19,7 @@ export const PageSection = ({
   description,
   eyebrow,
   headingClassName = "",
+  headingLevel: Heading = "h2",
 }: PageSectionProps) => {
   const titleId = `${id}-title`;
 
@@ -29,7 +31,7 @@ export const PageSection = ({
     >
       <header className={`section-heading ${headingClassName}`}>
         {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-        <h2 id={titleId}>{title}</h2>
+        <Heading id={titleId}>{title}</Heading>
         {description && <p>{description}</p>}
       </header>
       {children}

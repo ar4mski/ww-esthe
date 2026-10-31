@@ -3,6 +3,12 @@ export const siteConfig = {
   description: "Medycyna estetyczna i makijaż permanentny w Szczecinie.",
   locale: "pl-PL",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://ww-esthe.vercel.app",
+  // Every deployment is blocked from crawlers until ALLOW_INDEXING=true is set at launch.
+  allowIndexing: process.env.ALLOW_INDEXING === "true",
+  defaultOgImage: {
+    url: "/images/heroes/home/mobile.jpg",
+    alt: "Portret klientki WW-Esthe",
+  },
   phone: {
     display: "+48 780 182 458",
     href: "tel:+48780182458",

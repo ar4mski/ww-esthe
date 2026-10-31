@@ -9,6 +9,12 @@
 .addressHeading {
   grid-area: heading;
   margin-bottom: 0;
+
+  h1 {
+    font-size: var(--heading-2-size);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
 }
 
 .details {

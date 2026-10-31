@@ -8,6 +8,7 @@ import { BackgroundVideoSection } from "@/components/background-video-section";
 import { CTAButton } from "@/components/cta-button";
 import { FaqItem } from "@/components/faq-item";
 import { PageSection } from "@/components/page-section";
+import { createPageMetadata } from "@/data/page-metadata";
 import { getTreatmentShowcase } from "@/data/treatment-showcase";
 import { getTreatment, getTreatmentImage, treatments } from "@/data/treatments";
 import type { GalleryCategory } from "@/components/gallery-grid/gallery-items";
@@ -72,12 +73,19 @@ export async function generateMetadata({
   const { slug } = await params;
   const treatment = getTreatment(slug);
 
-  return {
-    title: treatment
-      ? `${treatment.title} | WW - ESTHE`
-      : "Zabieg | WW - ESTHE",
-    description: treatment?.shortDescription,
-  };
+  if (!treatment) {
+    return {};
+  }
+
+  return createPageMetadata({
+    title: `${treatment.title} | WW - ESTHE`,
+    description: treatment.shortDescription,
+    path: `/zabiegi/${treatment.slug}`,
+    image: {
+      url: getTreatmentImage(treatment.slug),
+      alt: treatment.imageAlt,
+    },
+  });
 }
 
 export default async function TreatmentPage({ params }: TreatmentPageProps) {

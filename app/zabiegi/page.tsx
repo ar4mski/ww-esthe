@@ -1,6 +1,16 @@
+import type { Metadata } from "next";
+
 import { PageHero } from "@/components/page-hero";
 import { TreatmentList } from "@/components/treatment-list";
+import { createPageMetadata } from "@/data/page-metadata";
 import { siteConfig } from "@/data/site-config";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Zabiegi | WW - ESTHE",
+  description:
+    "Makijaż permanentny, modelowanie ust i zabiegi medycyny estetycznej w Szczecinie. Poznaj przebieg zabiegów, przygotowanie i zalecenia pozabiegowe.",
+  path: "/zabiegi",
+});
 
 export default function TreatmentsPage() {
   return (

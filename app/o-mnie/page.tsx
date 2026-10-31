@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { PageHero } from "@/components/page-hero";
+import { createPageMetadata } from "@/data/page-metadata";
 
 import styles from "./about.module.css";
 
@@ -22,11 +23,12 @@ const credentials = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "O mnie | WW - ESTHE",
   description:
     "Poznaj podejście Wiktorii do estetyki, pielęgnacji i świadomego podkreślania naturalnego piękna.",
-};
+  path: "/o-mnie",
+});
 
 export default function AboutPage() {
   return (
