@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 
 import { cookieConsentContent } from "@/data/cookie-consent";
 import { siteConfig } from "@/data/site-config";
@@ -9,27 +9,22 @@ import { siteConfig } from "@/data/site-config";
 import {
   getStoredCookieConsent,
   storeCookieConsent,
-  type CookieConsentState,
+  subscribeToCookieConsent,
 } from "./cookie-consent-storage";
 import styles from "./cookie-consent.module.css";
 
 export function CookieConsent() {
-  const [isVisible, setIsVisible] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [analyticsChecked, setAnalyticsChecked] = useState(false);
+  // The server snapshot reports consent as given so the banner is never in the
+  // server HTML; only the client knows whether a choice was already stored.
+  const hasStoredConsent = useSyncExternalStore(
+    subscribeToCookieConsent,
+    () => getStoredCookieConsent() !== null,
+    () => true,
+  );
 
-  useEffect(() => {
-    // Reads localStorage on mount; only the client knows if consent was already given.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsVisible(getStoredCookieConsent() === null);
-  }, []);
-
-  const saveAndHide = (consent: CookieConsentState) => {
-    storeCookieConsent(consent);
-    setIsVisible(false);
-  };
-
-  if (!isVisible) return null;
+  if (hasStoredConsent) return null;
 
   return (
     <div
@@ -78,7 +73,7 @@ export function CookieConsent() {
             <button
               className="button"
               type="button"
-              onClick={() => saveAndHide({ analytics: analyticsChecked })}
+              onClick={() => storeCookieConsent({ analytics: analyticsChecked })}
             >
               {cookieConsentContent.saveSettingsLabel}
             </button>
@@ -87,14 +82,14 @@ export function CookieConsent() {
               <button
                 className="button"
                 type="button"
-                onClick={() => saveAndHide({ analytics: true })}
+                onClick={() => storeCookieConsent({ analytics: true })}
               >
                 {cookieConsentContent.acceptAllLabel}
               </button>
               <button
                 className="button button-secondary"
                 type="button"
-                onClick={() => saveAndHide({ analytics: false })}
+                onClick={() => storeCookieConsent({ analytics: false })}
               >
                 {cookieConsentContent.rejectAllLabel}
               </button>

@@ -1,11 +1,7 @@
-"use client";
-
-import { useState } from "react";
-import { Check, Copy } from "lucide-react";
-
 import { siteConfig } from "@/data/site-config";
 
 import styles from "./business-info.module.css";
+import { CopyButton } from "./copy-button";
 
 const companyClipboardText = [
   siteConfig.company.legalName,
@@ -23,20 +19,6 @@ const bankClipboardText = [
 ].join("\n");
 
 export function BusinessInfo() {
-  const [copiedSection, setCopiedSection] = useState("");
-  const [copyStatus, setCopyStatus] = useState("");
-
-  const copyDetails = async (section: string, text: string) => {
-    try {
-      await navigator.clipboard.writeText(text);
-      setCopiedSection(section);
-      setCopyStatus(`Skopiowano: ${section}`);
-    } catch {
-      setCopiedSection("");
-      setCopyStatus(`Nie udało się skopiować: ${section}`);
-    }
-  };
-
   return (
     <section
       className={`${styles.businessInfoSection} section-shell`}
@@ -48,19 +30,7 @@ export function BusinessInfo() {
             <h2 className={styles.columnTitle} id="company-info-title">
               Dane firmowe
             </h2>
-            <button
-              className={styles.copyButton}
-              onClick={() => copyDetails("Dane firmowe", companyClipboardText)}
-              title="Kopiuj dane firmowe"
-              type="button"
-              aria-label="Kopiuj dane firmowe"
-            >
-              {copiedSection === "Dane firmowe" ? (
-                <Check size={16} />
-              ) : (
-                <Copy size={16} />
-              )}
-            </button>
+            <CopyButton label="dane firmowe" text={companyClipboardText} />
           </div>
           <div className={styles.infoLines}>
             <p className={styles.companyName}>{siteConfig.company.legalName}</p>
@@ -81,21 +51,7 @@ export function BusinessInfo() {
             <h2 className={styles.columnTitle} id="bank-info-title">
               Rachunek firmowy
             </h2>
-            <button
-              className={styles.copyButton}
-              onClick={() =>
-                copyDetails("Rachunek firmowy", bankClipboardText)
-              }
-              title="Kopiuj rachunek firmowy"
-              type="button"
-              aria-label="Kopiuj rachunek firmowy"
-            >
-              {copiedSection === "Rachunek firmowy" ? (
-                <Check size={16} />
-              ) : (
-                <Copy size={16} />
-              )}
-            </button>
+            <CopyButton label="rachunek firmowy" text={bankClipboardText} />
           </div>
           <div className={styles.infoLines}>
             <p className={styles.bankName}>{bank.name}</p>
@@ -107,9 +63,6 @@ export function BusinessInfo() {
             ) : null}
           </div>
         </section>
-        <span className={styles.copyStatus} role="status" aria-live="polite">
-          {copyStatus}
-        </span>
       </div>
     </section>
   );

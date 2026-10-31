@@ -1,3 +1,4 @@
+import { footerNavigation } from "@/data/navigation";
 import { siteConfig } from "@/data/site-config";
 import Image from "next/image";
 import Link from "next/link";
@@ -41,12 +42,11 @@ export function SiteFooter() {
 
         <nav className={styles.footerGroup} aria-label="Nawigacja">
           <h2 className={styles.footerHeading}>Nawigacja</h2>
-          <Link href="/">Strona główna</Link>
-          <Link href="/zabiegi">Zabiegi</Link>
-          <Link href="/o-mnie">O mnie</Link>
-          <Link href="/blog">Blog</Link>
-          <Link href="/cennik">Cennik</Link>
-          <Link href="/kontakt">Kontakt</Link>
+          {footerNavigation.map(({ href, label }) => (
+            <Link href={href} key={href}>
+              {label}
+            </Link>
+          ))}
         </nav>
 
         <nav className={styles.footerGroup} aria-label="Media społecznościowe">

@@ -35,3 +35,13 @@ export const storeCookieConsent = (consent: CookieConsentState) => {
     }),
   );
 };
+
+export const subscribeToCookieConsent = (onChange: () => void) => {
+  window.addEventListener(COOKIE_CONSENT_CHANGE_EVENT, onChange);
+  window.addEventListener("storage", onChange);
+
+  return () => {
+    window.removeEventListener(COOKIE_CONSENT_CHANGE_EVENT, onChange);
+    window.removeEventListener("storage", onChange);
+  };
+};

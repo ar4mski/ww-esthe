@@ -23,7 +23,7 @@
   transition: border-bottom-width 80ms linear;
 }
 
-.menuOpen {
+.siteHeader[data-menu-open="true"] {
   overflow: visible;
 }
 
@@ -95,7 +95,7 @@
   text-align: center;
 }
 
-.navOpen {
+.siteHeader[data-menu-open="true"] .nav {
   display: block;
 }
 
