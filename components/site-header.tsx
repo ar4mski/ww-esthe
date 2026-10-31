@@ -151,6 +151,11 @@ export function SiteHeader() {
             </Link>
           </li>
           <li>
+            <Link href="/blog" onClick={closeMenu}>
+              Blog
+            </Link>
+          </li>
+          <li>
             <Link href="/cennik" onClick={closeMenu}>
               Cennik
             </Link>

@@ -1,0 +1,95 @@
+/* Same measure as the article body (see article-content.module.css). */
+.column {
+  margin: 0 auto;
+  max-width: 42rem;
+}
+
+.header {
+  padding-bottom: 1.5rem;
+
+  @media (min-width: 1024px) {
+    padding-top: 3.5rem;
+  }
+}
+
+.category {
+  color: var(--beige);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+
+  a {
+    color: inherit;
+  }
+}
+
+.title {
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  line-height: 1.05;
+  margin-bottom: 1.25rem;
+}
+
+.lead {
+  color: var(--accent);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+
+  @media (min-width: 768px) {
+    font-size: 1.25rem;
+  }
+}
+
+.cover {
+  padding-block: 1rem 0;
+}
+
+.coverImage {
+  aspect-ratio: 4 / 3;
+  background: var(--line);
+  display: block;
+  height: auto;
+  object-fit: cover;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    aspect-ratio: 3 / 2;
+  }
+}
+
+.body {
+  padding-block: 3rem 2rem;
+
+  @media (min-width: 1024px) {
+    padding-top: 4.5rem;
+  }
+}
+
+.footer {
+  border-top: 1px solid var(--line);
+  margin: 3.5rem auto 0;
+  max-width: 42rem;
+  padding-top: 1.5rem;
+}
+
+.disclaimer {
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.tags {
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  gap: 0.35rem 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li::before {
+    content: "#";
+    margin-right: 0.1rem;
+  }
+}

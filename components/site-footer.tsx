@@ -44,6 +44,7 @@ export function SiteFooter() {
           <Link href="/">Strona główna</Link>
           <Link href="/zabiegi">Zabiegi</Link>
           <Link href="/o-mnie">O mnie</Link>
+          <Link href="/blog">Blog</Link>
           <Link href="/cennik">Cennik</Link>
           <Link href="/kontakt">Kontakt</Link>
         </nav>
