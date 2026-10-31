@@ -172,6 +172,14 @@ Every UI change must work on:
 
 Use a mobile-first CSS approach: define the base styles for mobile, then add `min-width` media queries for larger viewports. Avoid `max-width` media queries.
 
+Use only these breakpoints:
+
+- mobile: base styles (below 640px)
+- tablet: `min-width: 640px`
+- desktop: `min-width: 1024px`
+
+Do not introduce other breakpoint values (such as 768px or 900px).
+
 Do not design desktop-first and “fix mobile later”.
 
 When changing layout, consider:

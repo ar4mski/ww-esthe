@@ -15,8 +15,8 @@
   padding: 0.2rem 0 0.55rem;
 }
 
-.filter:hover,
-.filter:focus-visible,
+.filter:not(.filterExpand):hover,
+.filter:not(.filterExpand):focus-visible,
 .filterActive {
   color: var(--beige);
 }
@@ -222,6 +222,10 @@
   .viewerItem {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .filterTabletVisible {
+    display: block;
   }
 }
 

@@ -5,6 +5,9 @@ import {
   type GalleryFilter as GalleryFilterValue,
 } from "./gallery-items";
 
+const VISIBLE_FILTERS_ON_MOBILE = 2;
+const VISIBLE_FILTERS_ON_TABLET = 3;
+
 type GalleryFilterProps = {
   activeCategory: GalleryFilterValue;
   onCategoryChange: (category: GalleryFilterValue) => void;
@@ -19,7 +22,8 @@ export function GalleryFilter({
   return (
     <div className={styles.filters} role="group" aria-label="Kategorie galerii">
       {galleryCategories.map((category, index) => {
-        const isCollapsed = index >= 3 && !isExpanded;
+        const isCollapsed = index >= VISIBLE_FILTERS_ON_MOBILE && !isExpanded;
+        const isTabletVisible = index < VISIBLE_FILTERS_ON_TABLET;
 
         return (
           <button
@@ -27,6 +31,7 @@ export function GalleryFilter({
               styles.filter,
               category.id === activeCategory && styles.filterActive,
               isCollapsed && styles.filterCollapsed,
+              isCollapsed && isTabletVisible && styles.filterTabletVisible,
             ]
               .filter(Boolean)
               .join(" ")}
