@@ -2,8 +2,18 @@
   display: grid;
   gap: 3rem 1.5rem;
 
+  > :not(:last-child) {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2rem;
+  }
+
   @media (min-width: 640px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    > :not(:last-child) {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
   }
 
   @media (min-width: 1024px) {
