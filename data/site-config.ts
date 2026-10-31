@@ -6,7 +6,9 @@ export const siteConfig = {
   // Every deployment is blocked from crawlers until ALLOW_INDEXING=true is set at launch.
   allowIndexing: process.env.ALLOW_INDEXING === "true",
   defaultOgImage: {
-    url: "/images/heroes/home/mobile.jpg",
+    url: "/images/heroes/home/og.jpg",
+    width: 1200,
+    height: 630,
     alt: "Portret klientki WW-Esthe",
   },
   phone: {
@@ -29,8 +31,12 @@ export const siteConfig = {
   },
   bookingUrl: "https://ig.me/m/wiktoria.warylak.esthe",
   openingHours: [
-    { days: "Poniedziałek - Piątek", hours: "09:00 - 18:00" },
-    { days: "Sobota", hours: "10:00 - 14:00" },
+    {
+      days: "Poniedziałek - Piątek",
+      hours: "09:00 - 18:00",
+      schemaDays: "Mo-Fr",
+    },
+    { days: "Sobota", hours: "10:00 - 14:00", schemaDays: "Sa" },
   ],
   legal: {
     copyrightYear: 2026,

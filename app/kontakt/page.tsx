@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 
 import { FaqItem } from "@/components/faq-item";
+import { JsonLd } from "@/components/json-ld";
 import { PageSection } from "@/components/page-section";
 import { contactFaqs } from "@/data/faq";
 import { createPageMetadata } from "@/data/page-metadata";
+import { getLocalBusinessJsonLd } from "@/data/structured-data";
 
 import { AddressSection } from "./components/address-section";
 import { BusinessInfo } from "./components/business-info";
@@ -19,6 +21,7 @@ export const metadata: Metadata = createPageMetadata({
 export default function ContactPage() {
   return (
     <>
+      <JsonLd data={getLocalBusinessJsonLd()} />
       <AddressSection />
       <ContactSection />
       <PageSection

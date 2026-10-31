@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import { siteConfig } from "@/data/site-config";
+import { JsonLd } from "@/components/json-ld";
+import { getBreadcrumbJsonLd } from "@/data/structured-data";
 
-import { JsonLd } from "./json-ld";
 import styles from "./blog-breadcrumbs.module.css";
 
 type BreadcrumbItem = {
@@ -20,25 +20,7 @@ export const BlogBreadcrumbs = ({
   trail,
 }: BlogBreadcrumbsProps) => (
   <nav className={styles.breadcrumbs} aria-label="Okruszki nawigacyjne">
-    <JsonLd
-      data={{
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          ...trail.map(({ label, href }, index) => ({
-            "@type": "ListItem",
-            position: index + 1,
-            name: label,
-            item: new URL(href, siteConfig.siteUrl).toString(),
-          })),
-          {
-            "@type": "ListItem",
-            position: trail.length + 1,
-            name: currentPage,
-          },
-        ],
-      }}
-    />
+    <JsonLd data={getBreadcrumbJsonLd(trail, currentPage)} />
     <ol className={styles.list}>
       {trail.map(({ label, href }, index) => (
         <li key={href}>

@@ -7,8 +7,10 @@ import { notFound } from "next/navigation";
 import { BackgroundVideoSection } from "@/components/background-video-section";
 import { CTAButton } from "@/components/cta-button";
 import { FaqItem } from "@/components/faq-item";
+import { JsonLd } from "@/components/json-ld";
 import { PageSection } from "@/components/page-section";
 import { createPageMetadata } from "@/data/page-metadata";
+import { getTreatmentJsonLd } from "@/data/structured-data";
 import { getTreatmentShowcase } from "@/data/treatment-showcase";
 import { getTreatment, getTreatmentImage, treatments } from "@/data/treatments";
 import type { GalleryCategory } from "@/components/gallery-grid/gallery-items";
@@ -118,6 +120,7 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
 
   return (
     <article>
+      <JsonLd data={getTreatmentJsonLd(treatment)} />
       <section
         id="wprowadzenie"
         className={`${styles.hero} ${styles.anchorSection} section-shell`}

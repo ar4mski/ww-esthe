@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { JsonLd } from "@/components/json-ld";
 import {
   getAllPosts,
   getBlogCategoryPath,
@@ -15,7 +16,6 @@ import { siteConfig } from "@/data/site-config";
 import { ArticleContent } from "../components/article-content";
 import { BlogBreadcrumbs } from "../components/blog-breadcrumbs";
 import { BlogCta } from "../components/blog-cta";
-import { JsonLd } from "../components/json-ld";
 import { PostGrid } from "../components/post-grid";
 import { PostMeta } from "../components/post-meta";
 import styles from "./article-page.module.css";

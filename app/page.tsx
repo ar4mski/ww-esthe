@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Carousel } from "@/components/carousel";
+import { JsonLd } from "@/components/json-ld";
 import { PageHero } from "@/components/page-hero";
 import { PageSection } from "@/components/page-section";
 import { Testimonial } from "@/components/testimonial";
 import { TreatmentListItem } from "@/components/treatment-list-item";
 import { createPageMetadata } from "@/data/page-metadata";
 import { siteConfig } from "@/data/site-config";
+import { getLocalBusinessJsonLd } from "@/data/structured-data";
 import { testimonials } from "@/data/testimonials";
 import { treatments } from "@/data/treatments";
 
@@ -26,6 +28,7 @@ export const metadata: Metadata = createPageMetadata({
 export default function Home() {
   return (
     <>
+      <JsonLd data={getLocalBusinessJsonLd()} />
       <PageHero
         eyebrow="Estetyka, która zaczyna się od Ciebie"
         title="Naturalne piękno w dobrych rękach."
