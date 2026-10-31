@@ -20,6 +20,7 @@ interface HeroPageProps {
   description?: string;
   desktopImage?: string;
   video?: string;
+  videoPoster?: string;
   blendVideoOnDesktop?: boolean;
   cta?: HeroLink;
   secondaryCta?: HeroLink;
@@ -35,6 +36,7 @@ export const PageHero = ({
   description,
   desktopImage,
   video,
+  videoPoster,
   blendVideoOnDesktop,
   cta,
   secondaryCta,
@@ -42,13 +44,14 @@ export const PageHero = ({
 }: HeroPageProps) => {
   const titleId = `${id}-title`;
   const desktopHeroImage = desktopImage ?? image;
+  const visualPoster = videoPoster ?? image;
 
   return (
     <section
       id={id}
       className={`${styles.heroSection} ${
         video && blendVideoOnDesktop ? styles.blendedVideoHero : ""
-      }`}
+      } ${videoPoster ? styles.hasVideoPoster : ""}`}
       aria-labelledby={titleId}
       style={
         {
@@ -60,9 +63,11 @@ export const PageHero = ({
       <div className={styles.heroBackground} aria-hidden="true" />
       <div className={styles.heroVisual}>
         <Image
-          className={`${styles.heroImage} ${styles.mobileHeroImage}`}
-          src={image}
-          alt={desktopImage ? "" : imageAlt}
+          className={`${styles.heroImage} ${styles.mobileHeroImage} ${
+            videoPoster ? styles.videoPosterImage : ""
+          }`}
+          src={visualPoster}
+          alt={desktopImage || videoPoster ? "" : imageAlt}
           fill
           preload={!desktopImage}
           loading={desktopImage ? "eager" : undefined}
@@ -71,15 +76,17 @@ export const PageHero = ({
         {video && (
           <BackgroundVideo
             className={styles.heroVideo}
-            poster={image}
+            poster={visualPoster}
             src={video}
           />
         )}
-        {desktopImage && (
+        {(desktopImage || videoPoster) && (
           <Image
-            className={`${styles.heroImage} ${styles.desktopHeroImage}`}
-            src={desktopImage}
-            alt={imageAlt}
+            className={`${styles.heroImage} ${styles.desktopHeroImage} ${
+              videoPoster ? styles.videoPosterImage : ""
+            }`}
+            src={videoPoster ?? desktopHeroImage}
+            alt={videoPoster ? "" : imageAlt}
             fill
             preload
             sizes="(min-width: 1024px) 100vw, 40vw"

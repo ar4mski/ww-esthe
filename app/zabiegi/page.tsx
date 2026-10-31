@@ -6,12 +6,12 @@ export default function TreatmentsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Oferta"
         title="Zabiegi stworzone z myślą o Tobie."
         description="Poznaj przebieg zabiegów, przygotowanie, przeciwwskazania oraz zalecenia pozabiegowe."
         image="/images/heroes/treatments/mobile.jpg"
         desktopImage="/images/heroes/treatments/desktop.jpg"
         video="/video/IMG_4309.MP4"
+        videoPoster="/images/heroes/treatments/video-poster.jpg"
         blendVideoOnDesktop
         imageAlt="Portret klientki związany z naturalną estetyką zabiegów"
         cta={{ label: "Umów konsultację", href: siteConfig.bookingUrl }}

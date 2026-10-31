@@ -25,6 +25,7 @@ export default function Home() {
         image="/images/heroes/home/mobile.jpg"
         desktopImage="/images/heroes/home/desktop.jpg"
         video="/video/IMG_4277.MP4"
+        videoPoster="/images/heroes/home/video-poster.jpg"
         imageAlt="Portret klientki WW-Esthe"
         cta={{ label: "Umów konsultację", href: siteConfig.bookingUrl }}
         secondaryCta={{ label: "Zobacz usługi", href: "/zabiegi" }}
