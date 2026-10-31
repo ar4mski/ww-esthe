@@ -23,6 +23,7 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   icons: {
     icon: "/images/branding/favicon.svg",
+    apple: "/apple-icon.png",
   },
   robots: siteConfig.allowIndexing
     ? undefined
