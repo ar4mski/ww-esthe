@@ -143,7 +143,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               alt={post.coverImageAlt}
               width={1344}
               height={896}
-              sizes="(min-width: 768px) 672px, 100vw"
+              sizes="(min-width: 640px) 672px, 100vw"
               preload
             />
           </div>

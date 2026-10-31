@@ -108,7 +108,7 @@
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
   .aboutSection {
     grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 0.75fr);
   }
@@ -227,7 +227,7 @@
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
   .aboutSection {
     grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 0.75fr);
   }

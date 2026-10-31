@@ -32,7 +32,7 @@ export const TreatmentShowcaseGallery = ({
                 src={src}
                 alt={alt}
                 fill
-                sizes="(min-width: 1024px) 20vw, (min-width: 768px) 25vw, 50vw"
+                sizes="(min-width: 1024px) 20vw, (min-width: 640px) 25vw, 50vw"
               />
             </button>
           </li>

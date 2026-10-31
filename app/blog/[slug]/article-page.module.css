@@ -36,7 +36,7 @@
   line-height: 1.6;
   margin-bottom: 1.5rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: 640px) {
     font-size: 1.25rem;
   }
 }
@@ -53,7 +53,7 @@
   object-fit: cover;
   width: 100%;
 
-  @media (min-width: 768px) {
+  @media (min-width: 640px) {
     aspect-ratio: 3 / 2;
   }
 }

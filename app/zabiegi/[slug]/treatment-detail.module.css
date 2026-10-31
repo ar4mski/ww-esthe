@@ -196,10 +196,8 @@
   }
 }
 
-@media (width < 640px) {
-  .mobileNoDivider::before {
-    display: none;
-  }
+.mobileNoDivider::before {
+  display: none;
 }
 
 .recoverySymptoms {
@@ -239,6 +237,10 @@
 }
 
 @media (min-width: 640px) {
+  .mobileNoDivider::before {
+    display: block;
+  }
+
   .heroCopy {
     display: block;
   }
@@ -291,12 +293,6 @@
     }
   }
 
-  .heroImage {
-    display: none;
-  }
-}
-
-@media (min-width: 768px) {
   .heroCopy {
     grid-column: 1;
     grid-row: 1;
@@ -304,19 +300,9 @@
 
   .heroImage {
     aspect-ratio: 5 / 4;
-    border: 1px solid var(--line);
-    display: block;
     grid-column: 2;
     grid-row: 1;
     min-width: 0;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-  }
-
-  .heroImageFile {
-    object-fit: cover;
-    object-position: center;
   }
 
   .copyContent,

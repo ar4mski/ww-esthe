@@ -155,7 +155,7 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
             src={getTreatmentImage(treatment.slug)}
             alt={treatment.imageAlt}
             fill
-            sizes="(min-width: 768px) 50vw, 100vw"
+            sizes="(min-width: 640px) 50vw, 100vw"
           />
         </div>
       </section>

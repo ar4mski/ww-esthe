@@ -46,7 +46,7 @@ const ContentImage = ({ src, alt = "" }: ComponentProps<"img">) =>
         alt={alt}
         width={1200}
         height={800}
-        sizes="(min-width: 768px) 672px, 100vw"
+        sizes="(min-width: 640px) 672px, 100vw"
       />
     </span>
   ) : null;

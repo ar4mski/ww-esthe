@@ -95,7 +95,7 @@ export const BeforeAfterSlider = ({
           alt={beforeAlt}
           fill
           draggable={false}
-          sizes="(min-width: 768px) 50vw, 100vw"
+          sizes="(min-width: 640px) 50vw, 100vw"
         />
         <div
           className={styles.afterLayer}
@@ -107,7 +107,7 @@ export const BeforeAfterSlider = ({
             alt={afterAlt}
             fill
             draggable={false}
-            sizes="(min-width: 768px) 50vw, 100vw"
+            sizes="(min-width: 640px) 50vw, 100vw"
           />
         </div>
 

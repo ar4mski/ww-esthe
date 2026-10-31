@@ -130,13 +130,6 @@
 }
 
 @media (min-width: 640px) {
-  .heroContainer {
-    padding: 2.125rem 2rem;
-  }
-
-}
-
-@media (min-width: 768px) {
   .heroSection {
     background: #9b7964;
     min-height: 28.9rem;
