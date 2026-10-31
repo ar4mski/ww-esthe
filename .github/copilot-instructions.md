@@ -311,6 +311,15 @@ Do not add SEO text that makes the page feel unnatural or harms the existing des
 
 Content is written for real users first.
 
+Metadata and structured data:
+
+- Create page metadata with `createPageMetadata` from `data/page-metadata.ts` (title, description, canonical path, Open Graph, Twitter). Do not set `alternates.canonical` in the root layout: child pages inherit it.
+- Every indexable page must have its own title, description and canonical path.
+- Metadata objects such as `robots` and `openGraph` are overwritten, not merged, by the last segment that defines them. Omit the key instead of setting it to `undefined`.
+- Build JSON-LD with the helpers in `data/structured-data.ts` and render it with the shared `JsonLd` component from `components/json-ld.tsx`.
+- Indexing is controlled by `siteConfig.allowIndexing` (`ALLOW_INDEXING=true`). Do not bypass it with per-page `robots` settings that would make a page indexable while it is off.
+- Each page needs exactly one `<h1>`.
+
 ⸻
 
 Code Style
