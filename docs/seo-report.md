@@ -1,6 +1,6 @@
 # Raport SEO – WW-ESTHE
 
-Data: 2026-11-01
+Data: 2026-11-01 (zaktualizowano po przeglądzie wydajności; ogólny stan: [project-status.md](project-status.md))
 
 **Stan: podstawy techniczne są gotowe, strona jest świadomie zablokowana przed indeksowaniem.** Do startu zostają treści i konfiguracja.
 
@@ -14,6 +14,8 @@ Data: 2026-11-01
 | 5 | `<h1>` na `/kontakt` | Dodany (`PageSection` ma opcjonalny `headingLevel`) |
 | 6 | Dane strukturalne (JSON-LD) | `HealthAndBeautyBusiness` na `/` i `/kontakt`, `Service` i `BreadcrumbList` na stronach zabiegów (`data/structured-data.ts`, `components/json-ld.tsx`) |
 | 9 | Obraz OG | Nowy `public/images/heroes/home/og.jpg` 1200×630, 42 KB (wcześniej 3,2 MB) |
+| 10 | `/galeria` statyczna | Filtr kategorii w URL przez `useSearchParams` w `<Suspense>`, bez `searchParams` na stronie |
+| 11 | Wydajność obrazów | Źródła zmniejszone do maks. 2400 px (`public/images`: 51 MB → 17 MB), `images.formats` AVIF/WebP, `minimumCacheTTL` 31 dni, nagłówki cache dla `/images` i `/video` |
 
 Przy okazji naprawiony błąd: jawne `robots: undefined` na stronach kategorii bloga nadpisywało `noindex` z layoutu.
 
@@ -30,10 +32,8 @@ Przy okazji naprawiony błąd: jawne `robots: undefined` na stronach kategorii b
 - Alt-y w galerii są ogólnikowe („Efekt zabiegu estetycznego”); wymagają wiedzy o zdjęciach.
 - Description zabiegów bez frazy lokalnej („Szczecin”).
 - `geo` w JSON-LD (potrzebne współrzędne), `priceRange` i ceny w `Service`.
-- Obrazy OG bloga (`fallback.jpg`, 492 KB) i zabiegów (okładki) nie są w proporcji 1200×630.
+- Obrazy OG bloga (`fallback.jpg`, 410 KB) i zabiegów (okładki) nie są w proporcji 1200×630.
 - Sitemap: brak `lastModified` dla stron statycznych.
-- `/galeria` jest dynamiczna przez `searchParams`.
-- Źródłowe zdjęcia ważą 2–3,5 MB; `next/image` je optymalizuje, ale pliki są ciężkie.
 - `title.template` świadomie pominięty: „Wiktoria Warylak Esthe” (nazwa firmy, `og:siteName`) i „WW - ESTHE” (krótki sufiks w titlach) są rozdzielone celowo.
 
 ## Ocena

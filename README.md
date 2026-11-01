@@ -38,7 +38,7 @@ Open [http://localhost:3000](http://localhost:3000).
 | `data/`       | Static content and structured data (see below)                                            |
 | `content/`    | Blog articles as `.mdx` files                                                             |
 | `public/`     | Images (`images/`) and videos (`video/`)                                                  |
-| `docs/`       | Project documentation, e.g. the [SEO report](docs/seo-report.md)                          |
+| `docs/`       | Project documentation: [project status](docs/project-status.md), [SEO report](docs/seo-report.md), [Next.js review](docs/nextjs-review.md) |
 
 Routes: `/`, `/zabiegi` and `/zabiegi/[slug]`, `/o-mnie`, `/galeria`, `/cennik`, `/kontakt`, `/blog`, `/blog/[slug]`, `/blog/kategoria/[category]`, `/regulamin`, `/polityka-prywatnosci`.
 
@@ -98,4 +98,4 @@ The site is deployed on [Vercel](https://vercel.com); every build of the `master
 4. Redirect the `vercel.app` domain and `www`/non-`www` to the canonical domain.
 5. Submit `/sitemap.xml` in Google Search Console and validate the structured data with the [Rich Results Test](https://search.google.com/test/rich-results).
 
-See [docs/seo-report.md](docs/seo-report.md) for the current SEO status.
+See [docs/seo-report.md](docs/seo-report.md) for the current SEO status and [docs/project-status.md](docs/project-status.md) for what is done and what is left.

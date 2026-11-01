@@ -7,6 +7,8 @@ Wynik przeglądu repo pod kątem Next.js 16 i użycia Client Components. Poprawk
 - `BusinessInfo` jest serwerowy; kliencki jest tylko `CopyButton`.
 - `GalleryFilter` i `GalleryViewer` mają jawne `"use client"`.
 - `CookieConsent` używa `useSyncExternalStore` zamiast `useEffect` + `setState`.
+- `next.config.ts` ma `images.formats` (AVIF/WebP), `images.minimumCacheTTL` (31 dni) i nagłówki `Cache-Control` dla `/images/*` i `/video/*`.
+- Źródłowe obrazy w `public/images` zostały zmniejszone (maks. 2400 px, 17 MB zamiast 51 MB). Pełna lista zmian i zadań: [project-status.md](project-status.md).
 
 ## Do rozważenia (niezrobione)
 
@@ -25,7 +27,7 @@ Wynik przeglądu repo pod kątem Next.js 16 i użycia Client Components. Poprawk
 - Obsługuje równolegle zdarzenia pointer i touch (`handleTouchStart`/`handleTouchMove`). Same pointer events (z `touch-action: pan-y` w CSS) wystarczą i usuwają zduplikowaną logikę.
 
 ### `next.config.ts`
-- Plik jest pusty. Do rozważenia: `images.formats` (AVIF/WebP), nagłówki cache dla zasobów statycznych z `public/`.
+- Nagłówki cache dla `public/` są krótkie (1 dzień + `stale-while-revalidate`), bo pliki są podmieniane pod tą samą nazwą. Dłuższy cache (`immutable`) wymagałby nazw z hashem, np. przez statyczny import obrazów.
 
 ### MDX
 - Blog używa `next-mdx-remote/rsc` (kompilacja podczas buildu przy SSG — poprawne). Alternatywa na przyszłość: wbudowane `@next/mdx`, co usunęłoby zależność zewnętrzną.
