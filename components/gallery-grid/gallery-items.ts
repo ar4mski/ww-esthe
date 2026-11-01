@@ -66,7 +66,7 @@ export const galleryItems = [
       "Regularna pielęgnacja i odpowiednio dobrane zabiegi wspierają kondycję skóry.",
   },
   {
-    src: "/images/gallery/mezoterapia-mikroiglowa/01.png",
+    src: "/images/gallery/mezoterapia-mikroiglowa/01.jpg",
     category: "mezoterapia-mikroiglowa",
     alt: "Rezultat zabiegu kosmetologicznego",
     description:
@@ -128,7 +128,7 @@ export const galleryItems = [
     description: "Efekt końcowy jest świeży i proporcjonalny do całej twarzy.",
   },
   {
-    src: "/images/gallery/modelowanie-ust/01.png",
+    src: "/images/gallery/modelowanie-ust/01.jpg",
     category: "modelowanie-ust",
     alt: "Rezultat zabiegu estetycznego ust",
     description:
