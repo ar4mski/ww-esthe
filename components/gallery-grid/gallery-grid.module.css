@@ -8,21 +8,10 @@
 .filter {
   background: transparent;
   border: 0;
-  border-bottom: 1px solid transparent;
   color: var(--muted);
   cursor: pointer;
   font: inherit;
   padding: 0.2rem 0 0.55rem;
-}
-
-.filter:not(.filterExpand):hover,
-.filter:not(.filterExpand):focus-visible,
-.filterActive {
-  color: var(--beige);
-}
-
-.filterActive {
-  border-bottom-color: var(--beige);
 }
 
 .filterCollapsed {

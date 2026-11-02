@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { headerNavigation } from "@/data/navigation";
 
+import { SiteHeaderNavLink } from "./site-header-nav-link";
 import { SiteHeaderShell } from "./site-header-shell";
 import styles from "./site-header.module.css";
 
@@ -38,7 +39,7 @@ export const SiteHeader = () => (
       <ul className={styles.navList}>
         {headerNavigation.map(({ href, label }) => (
           <li key={href}>
-            <Link href={href}>{label}</Link>
+            <SiteHeaderNavLink href={href} label={label} />
           </li>
         ))}
       </ul>

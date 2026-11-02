@@ -25,7 +25,7 @@ export const CategoryNavList = ({
           className={`${styles.expandItem} ${hasTabletOverflow ? "" : styles.expandItemMobileOnly}`}
         >
           <button
-            className={styles.expand}
+            className={`${styles.expand} interactive-underline`}
             type="button"
             aria-expanded={isExpanded}
             onClick={() => setIsExpanded(!isExpanded)}

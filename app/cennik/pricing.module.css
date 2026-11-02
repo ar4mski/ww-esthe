@@ -20,16 +20,6 @@
 }
 
 .categoryLink {
-  transition: color 180ms ease;
-}
-
-.categoryLink:hover {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.15em;
-}
-
-.categoryLink {
   align-items: baseline;
   display: inline-flex;
   gap: 0.5rem;

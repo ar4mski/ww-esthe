@@ -9,6 +9,8 @@
   --line: #d6d6d2;
   --accent: #444444;
   --beige: #76614d;
+  --link-underline-thickness: 1px;
+  --link-underline-offset: clamp(0.25em, 0.35vw, 0.4em);
   --header-height: 80px;
   --foter-heading: #fffdf9;
   --text: #f7f4ef;
@@ -60,11 +62,26 @@ a {
   transition: color 180ms ease;
 }
 
+a,
+.interactive-underline,
+.button.button-outline-secondary {
+  text-decoration-thickness: var(--link-underline-thickness);
+  text-underline-offset: var(--link-underline-offset);
+}
+
 a:not(.button):hover,
-a:not(.button):focus-visible {
-  color: var(--link-hover-color);
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+a:not(.button):focus-visible,
+a:not(.button):active,
+a:not(.button)[aria-current="page"],
+a:not(.button)[data-active="true"],
+.interactive-underline:hover,
+.interactive-underline:focus-visible,
+.interactive-underline:active,
+.interactive-underline[aria-pressed="true"],
+.button.button-outline-secondary:hover,
+.button.button-outline-secondary:focus-visible {
+color: var(--link-hover-color, var(--beige));
+  text-decoration-line: underline;
 }
 
 a:not(.button):focus-visible {
@@ -202,13 +219,9 @@ p {
 }
 
 .button.button-outline-secondary:hover,
-.button.button-outline-secondary:focus-visible,
-.text-link:hover,
-.text-link:focus-visible {
+.button.button-outline-secondary:focus-visible {
   color: var(--beige);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.15em;
+  text-decoration-line: underline;
 }
 
 .text-link {

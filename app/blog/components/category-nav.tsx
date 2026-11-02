@@ -39,7 +39,7 @@ export const CategoryNav = ({
       >
         <li>
           <Link
-            className={`${styles.link} ${activeCategory ? "" : styles.active}`}
+            className={styles.link}
             href="/blog"
             aria-current={activeCategory ? undefined : "page"}
           >
@@ -62,7 +62,7 @@ export const CategoryNav = ({
               key={category.slug}
             >
               <Link
-                className={`${styles.link} ${isActive ? styles.active : ""}`}
+                className={styles.link}
                 href={getBlogCategoryPath(category)}
                 aria-current={isActive ? "page" : undefined}
               >

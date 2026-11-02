@@ -15,12 +15,7 @@
 
   a {
     color: inherit;
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-
-    &:hover {
-      color: var(--foreground);
-    }
+    text-decoration-line: underline;
   }
 }
 

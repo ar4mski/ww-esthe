@@ -41,10 +41,8 @@
 
   a {
     color: var(--foreground);
-    text-decoration: underline;
+    text-decoration-line: underline;
     text-decoration-color: var(--beige);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.25em;
   }
 
   strong {

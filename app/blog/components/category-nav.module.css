@@ -13,29 +13,15 @@
 
 /* Same understated underline treatment as the gallery filters. */
 .link {
-  border-bottom: 1px solid transparent;
   color: var(--muted);
   display: block;
   padding: 0.5rem 0;
-  transition:
-    color 180ms ease,
-    border-color 180ms ease;
-
-  &.active {
-    border-bottom-color: var(--beige);
-    color: var(--beige);
-  }
-}
-
-.list .link:hover,
-.list .link:focus-visible {
-  text-decoration: none;
+  transition: color 180ms ease;
 }
 
 .expand {
   background: transparent;
   border: 0;
-  border-bottom: 1px solid transparent;
   color: var(--muted);
   cursor: pointer;
   font: inherit;

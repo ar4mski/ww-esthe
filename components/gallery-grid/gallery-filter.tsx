@@ -31,7 +31,7 @@ export function GalleryFilter({
           <button
             className={[
               styles.filter,
-              category.id === activeCategory && styles.filterActive,
+              "interactive-underline",
               isCollapsed && styles.filterCollapsed,
               isCollapsed && isTabletVisible && styles.filterTabletVisible,
             ]
@@ -47,7 +47,7 @@ export function GalleryFilter({
         );
       })}
       <button
-        className={`${styles.filter} ${styles.filterExpand}`}
+        className={`${styles.filter} ${styles.filterExpand} interactive-underline`}
         type="button"
         aria-expanded={isExpanded}
         onClick={() => setIsExpanded(!isExpanded)}
