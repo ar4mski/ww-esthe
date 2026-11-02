@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { CTAButton } from "@/components/cta-button";
+import { BookingCta } from "@/components/booking-cta";
 import { createPageMetadata } from "@/data/page-metadata";
 
 import styles from "./pricing.module.css";
@@ -124,19 +124,7 @@ export default function PricingPage() {
           ))}
         </div>
       </section>
-      <section className={styles.bookingSection}>
-        <div className="section-shell">
-          <div className={styles.bookingContent}>
-            <p className="eyebrow">Konsultacja</p>
-            <h2>Nie wiesz, który zabieg wybrać lub masz pytanie?</h2>
-            <p>
-              Napisz, a wspólnie dobierzemy rozwiązanie dopasowane do Twoich
-              potrzeb.
-            </p>
-            <CTAButton className="button-outline button-outline-beige" />
-          </div>
-        </div>
-      </section>
+      <BookingCta />
     </>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { BookingCta } from "@/components/booking-cta";
 import {
   blogCategories,
   getActiveCategories,
@@ -11,7 +12,6 @@ import {
 import { siteConfig } from "@/data/site-config";
 
 import { BlogBreadcrumbs } from "../../components/blog-breadcrumbs";
-import { BlogCta } from "../../components/blog-cta";
 import { BlogEmptyState } from "../../components/blog-empty-state";
 import { CategoryNav } from "../../components/category-nav";
 import { PostGrid } from "../../components/post-grid";
@@ -94,7 +94,7 @@ export default async function BlogCategoryPage({ params }: CategoryPageProps) {
         )}
       </section>
 
-      <BlogCta />
+      <BookingCta />
     </>
   );
 }

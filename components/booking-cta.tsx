@@ -2,16 +2,16 @@ import Link from "next/link";
 
 import { CTAButton } from "@/components/cta-button";
 
-import styles from "./blog-cta.module.css";
+import styles from "./booking-cta.module.css";
 
-export const BlogCta = () => (
+export const BookingCta = () => (
   <section
     className="section-shell section-tinted"
-    aria-labelledby="blog-cta-title"
+    aria-labelledby="booking-cta-title"
   >
     <div className={styles.cta}>
       <p className="eyebrow">Umów wizytę</p>
-      <h2 id="blog-cta-title">Masz pytania o zabieg?</h2>
+      <h2 id="booking-cta-title">Masz pytania o zabieg?</h2>
       <p>
         Porozmawiajmy o Twoich potrzebach. Podczas konsultacji dobierzemy
         rozwiązanie, które będzie dla Ciebie odpowiednie.

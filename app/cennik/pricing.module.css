@@ -47,23 +47,14 @@
   white-space: nowrap;
 }
 
-.bookingSection {
-  background: var(--section-tint);
-}
-
-.bookingContent {
-  max-width: 36rem;
-
-  :global(.button.button-outline) {
-    margin-top: 1rem;
+@media (min-width: 1024px) {
+  .pageIntro {
+    margin-inline: auto;
+    text-align: center;
   }
-}
 
-.bookingContent h2 {
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  margin-bottom: 0.85rem;
-}
-
-.bookingContent p:not(.eyebrow) {
-  margin-bottom: 0;
+  .priceList {
+    margin-inline: auto;
+    max-width: 54rem;
+  }
 }

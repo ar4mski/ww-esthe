@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
+import { BookingCta } from "@/components/booking-cta";
 import { getActiveCategories, getAllPosts, getFeaturedPost } from "@/data/blog";
 import { siteConfig } from "@/data/site-config";
 
-import { BlogCta } from "./components/blog-cta";
 import { BlogEmptyState } from "./components/blog-empty-state";
 import { CategoryNav } from "./components/category-nav";
 import { FeaturedPost } from "./components/featured-post";
@@ -68,7 +68,7 @@ export default async function BlogPage() {
         </section>
       )}
 
-      <BlogCta />
+      <BookingCta />
     </>
   );
 }
