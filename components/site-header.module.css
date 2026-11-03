@@ -1,8 +1,7 @@
 .siteHeader {
   --collapse: 0;
   align-items: center;
-  border-bottom: calc(1px + (0.425rem - 1px) * var(--collapse)) solid
-    var(--beige);
+  border-bottom: calc(1px + (0.2rem - 1px) * var(--collapse)) solid var(--beige);
   display: flex;
   gap: 1.5rem;
   justify-content: space-between;
@@ -120,7 +119,7 @@
   }
 }
 
-@media (min-width: 640px) {
+@media (min-width: 800px) {
   .siteHeader {
     padding-left: max(2rem, calc((100% - 1180px) / 2 + 2rem));
     padding-right: max(2rem, calc((100% - 1180px) / 2 + 2rem));
