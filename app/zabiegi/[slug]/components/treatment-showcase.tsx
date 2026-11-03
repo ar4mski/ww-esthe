@@ -1,7 +1,7 @@
 import Link from "next/link";
 
+import { GalleryPreview } from "@/components/gallery-grid/gallery-preview";
 import type { TreatmentShowcase as TreatmentShowcaseData } from "@/data/treatment-showcase";
-import { TreatmentShowcaseGallery } from "./treatment-showcase-gallery";
 
 type TreatmentShowcaseProps = {
   showcase: TreatmentShowcaseData;
@@ -13,7 +13,7 @@ export const TreatmentShowcase = ({
   galleryHref,
 }: TreatmentShowcaseProps) => (
   <>
-    <TreatmentShowcaseGallery photos={photos} />
+    <GalleryPreview photos={photos} />
     {galleryHref ? (
       <Link className="text-link" href={galleryHref}>
         Zobacz więcej

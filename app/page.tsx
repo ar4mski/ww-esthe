@@ -14,9 +14,9 @@ import { testimonials } from "@/data/testimonials";
 import { treatments } from "@/data/treatments";
 
 import { FaqItem } from "@/components/faq-item";
-import { GalleryPreview } from "@/components/gallery-grid/gallery-preview";
 import { Visit } from "@/components/visit";
 import { homeFaqs } from "@/data/faq";
+import { HomeShowcase } from "./components/home-showcase";
 import styles from "./homepage.module.css";
 
 export const metadata: Metadata = createPageMetadata({
@@ -80,10 +80,7 @@ export default function Home() {
         title="Moje prace"
         description="Zobacz efekty zabiegów i poznaj estetykę WW-Esthe."
       >
-        <GalleryPreview className={styles.fullWidthGallery} previewCount={3} />
-        <Link className="text-link" href="/galeria">
-          Zobacz całą galerię
-        </Link>
+        <HomeShowcase />
       </PageSection>
 
       <PageSection

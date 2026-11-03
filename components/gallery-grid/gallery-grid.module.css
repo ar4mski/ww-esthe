@@ -34,23 +34,6 @@
   touch-action: pan-y;
 }
 
-.previewViewport {
-  overflow: hidden;
-  touch-action: pan-y;
-}
-
-.previewTrack {
-  display: flex;
-  gap: 0.15rem;
-  transition: transform 450ms ease;
-  width: calc(100% * var(--preview-item-count) / 3);
-  will-change: transform;
-}
-
-.previewTrack .thumbnail {
-  flex: 0 0 calc(100% / var(--preview-item-count));
-}
-
 .thumbnail {
   animation: thumbnailSlideIn 500ms ease both;
   aspect-ratio: 4 / 5;

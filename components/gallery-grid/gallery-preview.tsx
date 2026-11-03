@@ -1,121 +1,49 @@
 "use client";
 
-import type { CSSProperties } from "react";
+import Image from "next/image";
 import { useState } from "react";
 
-import { useSwipeGesture } from "@/hooks/use-swipe-gesture";
+import type { ShowcasePhoto } from "@/data/treatment-showcase";
 
-import { GalleryFilter } from "./gallery-filter";
-import styles from "./gallery-grid.module.css";
-import {
-  galleryItems,
-  type GalleryFilter as GalleryFilterValue,
-} from "./gallery-items";
-import { GalleryThumbnail } from "./gallery-thumbnail";
+import styles from "./gallery-preview.module.css";
 import { GalleryViewer } from "./gallery-viewer";
 
 type GalleryPreviewProps = {
-  className?: string;
-  previewCount: number;
+  photos: (ShowcasePhoto & { description?: string })[];
 };
 
-export function GalleryPreview({
-  className,
-  previewCount,
-}: GalleryPreviewProps) {
-  const [activeCategory, setActiveCategory] =
-    useState<GalleryFilterValue>("all");
+export const GalleryPreview = ({ photos }: GalleryPreviewProps) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [previewStart, setPreviewStart] = useState(0);
-  const visibleItems =
-    activeCategory === "all"
-      ? galleryItems
-      : galleryItems.filter((item) => item.category === activeCategory);
-
-  const movePreview = (direction: "next" | "previous") => {
-    setPreviewStart((currentStart) => {
-      const lastStart = Math.max(visibleItems.length - previewCount, 0);
-      const nextStart =
-        direction === "next"
-          ? currentStart + previewCount
-          : currentStart - previewCount;
-
-      if (nextStart > lastStart) {
-        return 0;
-      }
-
-      if (nextStart < 0) {
-        return lastStart;
-      }
-
-      return nextStart;
-    });
-  };
-
-  const {
-    didSwipe: didSwipeRef,
-    onPointerDown,
-    onPointerUp,
-    onPointerCancel,
-  } = useSwipeGesture({ onSwipe: movePreview });
-
-  const handleOpen = (index: number) => {
-    if (didSwipeRef.current) {
-      didSwipeRef.current = false;
-      return;
-    }
-
-    setActiveIndex(index);
-  };
-
-  const handleCategoryChange = (category: GalleryFilterValue) => {
-    setActiveCategory(category);
-    setActiveIndex(null);
-    setPreviewStart(0);
-  };
 
   return (
     <>
-      <GalleryFilter
-        activeCategory={activeCategory}
-        onCategoryChange={handleCategoryChange}
-      />
-      <div
-        className={`${styles.previewViewport} ${className ?? ""}`}
-        onPointerCancel={onPointerCancel}
-        onPointerDown={onPointerDown}
-        onPointerUp={onPointerUp}
-      >
-        <div
-          className={styles.previewTrack}
-          style={
-            {
-              "--preview-item-count": visibleItems.length,
-              transform: `translateX(-${(previewStart / visibleItems.length) * 100}%)`,
-            } as CSSProperties
-          }
-        >
-          {visibleItems.map((item, index) => (
-            <GalleryThumbnail
-              item={item}
-              key={item.src}
-              onOpen={() => handleOpen(index)}
-              tabIndex={
-                index >= previewStart && index < previewStart + previewCount
-                  ? undefined
-                  : -1
-              }
-            />
-          ))}
-        </div>
-      </div>
-      {activeIndex !== null && (
+      <ul className={styles.photos}>
+        {photos.map(({ src, alt }, index) => (
+          <li className={styles.photo} key={src}>
+            <button
+              className={styles.photoButton}
+              type="button"
+              onClick={() => setActiveIndex(index)}
+              aria-label={`Powiększ zdjęcie: ${alt}`}
+            >
+              <Image
+                className={styles.photoImage}
+                src={src}
+                alt={alt}
+                fill
+                sizes="(min-width: 1024px) 20vw, (min-width: 640px) 25vw, 50vw"
+              />
+            </button>
+          </li>
+        ))}
+      </ul>
+      {activeIndex !== null ? (
         <GalleryViewer
           activeIndex={activeIndex}
-          items={visibleItems}
+          items={photos}
           onClose={() => setActiveIndex(null)}
         />
-      )}
+      ) : null}
     </>
   );
-}
+};

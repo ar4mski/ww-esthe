@@ -8,11 +8,6 @@
   font-size: 0.9rem;
 }
 
-.fullWidthGallery {
-  margin-left: -1.25rem;
-  width: calc(100% + 2.5rem);
-}
-
 .visitIntro {
   display: block;
   margin-bottom: 3.25rem;
@@ -22,18 +17,5 @@
   .grid {
     gap: 1.5rem;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .fullWidthGallery {
-    margin-left: -2rem;
-    width: calc(100% + 4rem);
-  }
-}
-
-@media (min-width: 1024px) {
-  .fullWidthGallery {
-    margin: 0 auto;
-    max-width: 1180px;
-    width: 100%;
   }
 }

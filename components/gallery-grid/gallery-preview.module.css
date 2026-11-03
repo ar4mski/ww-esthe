@@ -54,7 +54,6 @@
 @media (min-width: 640px) {
   .photos {
     gap: 0.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-    grid-auto-flow: column;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
