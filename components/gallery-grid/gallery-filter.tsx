@@ -19,7 +19,12 @@ export function GalleryFilter({
   activeCategory,
   onCategoryChange,
 }: GalleryFilterProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const activeCategoryIndex = galleryCategories.findIndex(
+    ({ id }) => id === activeCategory,
+  );
+  const [isExpanded, setIsExpanded] = useState(
+    activeCategoryIndex >= VISIBLE_FILTERS_ON_MOBILE,
+  );
 
   return (
     <div className={styles.filters} role="group" aria-label="Kategorie galerii">
