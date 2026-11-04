@@ -16,6 +16,7 @@ import { treatments } from "@/data/treatments";
 import { FaqItem } from "@/components/faq-item";
 import { Visit } from "@/components/visit";
 import { homeFaqs } from "@/data/faq";
+import { HomeBeforeAfter } from "./components/home-before-after";
 import { HomeShowcase } from "./components/home-showcase";
 import styles from "./homepage.module.css";
 
@@ -81,6 +82,15 @@ export default function Home() {
         description="Zobacz efekty zabiegów i poznaj estetykę WW-Esthe."
       >
         <HomeShowcase />
+      </PageSection>
+
+      <PageSection
+        id="homepage-before-after"
+        eyebrow="Efekty zabiegów"
+        title="Przed i po"
+        description="Porównaj efekty w wybranej kategorii."
+      >
+        <HomeBeforeAfter />
       </PageSection>
 
       <PageSection

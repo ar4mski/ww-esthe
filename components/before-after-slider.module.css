@@ -1,5 +1,5 @@
 .root {
-  margin: 0 auto;
+  margin: 0 auto 2rem;
   max-width: 26rem;
   width: 100%;
 }
@@ -56,7 +56,6 @@
   right: 0.75rem;
 }
 
-/* Niewidoczny range zapewnia tylko klawiaturę i czytniki ekranu; przeciąganie obsługuje ramka. */
 .range {
   height: 100%;
   inset: 0;

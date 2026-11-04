@@ -13,13 +13,17 @@ const VISIBLE_FILTERS_ON_TABLET = 3;
 type GalleryFilterProps = {
   activeCategory: GalleryFilterValue;
   onCategoryChange: (category: GalleryFilterValue) => void;
+  categories?: readonly (typeof galleryCategories)[number][];
+  ariaLabel?: string;
 };
 
 export function GalleryFilter({
   activeCategory,
   onCategoryChange,
+  categories = galleryCategories,
+  ariaLabel = "Kategorie galerii",
 }: GalleryFilterProps) {
-  const activeCategoryIndex = galleryCategories.findIndex(
+  const activeCategoryIndex = categories.findIndex(
     ({ id }) => id === activeCategory,
   );
   const [isExpanded, setIsExpanded] = useState(
@@ -27,8 +31,8 @@ export function GalleryFilter({
   );
 
   return (
-    <div className={styles.filters} role="group" aria-label="Kategorie galerii">
-      {galleryCategories.map((category, index) => {
+    <div className={styles.filters} role="group" aria-label={ariaLabel}>
+      {categories.map((category, index) => {
         const isCollapsed = index >= VISIBLE_FILTERS_ON_MOBILE && !isExpanded;
         const isTabletVisible = index < VISIBLE_FILTERS_ON_TABLET;
 

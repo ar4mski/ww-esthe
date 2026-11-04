@@ -1,3 +1,5 @@
+import { beforeAfterByCategory, type BeforeAfterImages } from "./before-after";
+
 export type ShowcasePhoto = {
   src: string;
   alt: string;
@@ -5,12 +7,7 @@ export type ShowcasePhoto = {
 
 export type TreatmentShowcase = {
   photos: ShowcasePhoto[];
-  beforeAfter?: {
-    afterAlt: string;
-    afterSrc: string;
-    beforeAlt: string;
-    beforeSrc: string;
-  };
+  beforeAfter?: BeforeAfterImages;
 };
 
 export const treatmentShowcases: Record<string, TreatmentShowcase> = {
@@ -35,12 +32,7 @@ export const treatmentShowcases: Record<string, TreatmentShowcase> = {
     ],
   },
   "modelowanie-ust": {
-    beforeAfter: {
-      beforeSrc: "/images/treatments/modelowanie-ust/before.jpg",
-      beforeAlt: "Usta przed zabiegiem modelowania",
-      afterSrc: "/images/treatments/modelowanie-ust/after.jpg",
-      afterAlt: "Usta po zabiegu modelowania",
-    },
+    beforeAfter: beforeAfterByCategory["modelowanie-ust"],
     photos: [
       {
         src: "/images/treatments/modelowanie-ust/showcase-01.jpg",
