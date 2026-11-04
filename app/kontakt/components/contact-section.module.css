@@ -1,53 +1,135 @@
+.contactSection {
+  @media (min-width: 640px) {
+    padding-bottom: 4rem;
+    padding-top: 4rem;
+  }
+
+  @media (min-width: 1024px) {
+    align-items: start;
+    column-gap: 4.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-bottom: 5.5rem;
+    padding-top: 5.5rem;
+  }
+}
+
+.contactCopy {
+  max-width: 38rem;
+
+  p {
+    max-width: 28rem;
+  }
+}
+
 .channelList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-  justify-content: flex-start;
+  display: grid;
+  gap: 0.75rem;
   list-style: none;
-  margin: 0;
+  margin: 1.75rem 0 0;
   padding: 0;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .channelList .channelButton {
   align-items: center;
-  display: inline-flex;
-  flex-direction: row;
-  height: 3.5rem;
-  justify-content: center;
-  margin-top: 0;
-  min-height: 0;
-  padding: 0;
-  width: 3.5rem;
-  border-radius: 50%;
+  background: transparent;
   border-color: var(--beige);
   color: var(--beige);
-  text-decoration: none;
-  transition:
-    background 180ms ease,
-    border-color 180ms ease,
-    color 180ms ease,
-    transform 180ms ease;
-}
+  display: flex;
+  font-size: 0.75rem;
+  font-weight: 600;
+  gap: 0.5rem;
+  justify-content: center;
+  letter-spacing: 0.14em;
+  margin-top: 0;
+  min-height: 3rem;
+  padding: 0 0.9rem;
+  text-transform: uppercase;
 
-.channelList .channelButton:hover,
-.channelList .channelButton:focus-visible {
-  background: var(--section-tint);
-  border-color: var(--beige);
-  transform: translateY(-2px);
-}
+  &:hover,
+  &:focus-visible {
+    background: var(--beige);
+    color: var(--surface);
+  }
 
-.channelList .channelButton:focus-visible {
-  outline: 2px solid var(--beige);
-  outline-offset: 3px;
+  &:focus-visible {
+    outline: 2px solid var(--beige);
+    outline-offset: 3px;
+  }
+
+  &.primary {
+    background: var(--beige);
+    color: var(--surface);
+
+    &:hover,
+    &:focus-visible {
+      background: var(--foreground);
+      border-color: var(--foreground);
+    }
+  }
 }
 
 .channelIcon {
   fill: none;
   flex: 0 0 auto;
-  height: 1.75rem;
+  height: 1.15rem;
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 1.4;
-  width: 1.75rem;
+  stroke-width: 1.5;
+  width: 1.15rem;
+}
+
+/* The same information is already in the channel buttons, so steps stay desktop-only. */
+.steps {
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: grid;
+    gap: 1.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    align-items: flex-start;
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+.stepNumber {
+  align-items: center;
+  border: 1px solid var(--beige);
+  border-radius: 50%;
+  color: var(--beige);
+  display: flex;
+  flex: 0 0 2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  height: 2rem;
+  justify-content: center;
+
+  .steps li:first-child & {
+    background: var(--beige);
+    color: var(--surface);
+  }
+}
+
+.stepText {
+  color: var(--muted);
+  display: grid;
+  gap: 0.15rem;
+  line-height: 1.5;
+
+  strong {
+    color: var(--foreground);
+    font-size: 1.05rem;
+    font-weight: 500;
+  }
 }

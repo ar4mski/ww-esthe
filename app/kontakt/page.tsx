@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 
-import { FaqItem } from "@/components/faq-item";
 import { JsonLd } from "@/components/json-ld";
-import { PageSection } from "@/components/page-section";
-import { contactFaqs } from "@/data/faq";
 import { createPageMetadata } from "@/data/page-metadata";
 import { getLocalBusinessJsonLd } from "@/data/structured-data";
 
+import { AboutTeaser } from "./components/about-teaser";
 import { AddressSection } from "./components/address-section";
 import { BusinessInfo } from "./components/business-info";
 import { ContactSection } from "./components/contact-section";
+import { FaqSection } from "./components/faq-section";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Kontakt | WW - ESTHE",
@@ -24,15 +23,8 @@ export default function ContactPage() {
       <JsonLd data={getLocalBusinessJsonLd()} />
       <AddressSection />
       <ContactSection />
-      <PageSection
-        className="section-tinted"
-        id="contact-faq"
-        title="Najczęstsze pytania"
-      >
-        {contactFaqs.map((faq) => (
-          <FaqItem key={faq.question} {...faq} />
-        ))}
-      </PageSection>
+      <FaqSection />
+      <AboutTeaser />
       <BusinessInfo />
     </>
   );

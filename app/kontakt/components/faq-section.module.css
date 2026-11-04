@@ -1,0 +1,29 @@
+.faqSection {
+  display: grid;
+  gap: 1.5rem;
+
+  @media (min-width: 640px) {
+    padding-bottom: 4rem;
+    padding-top: 4rem;
+  }
+
+  @media (min-width: 1024px) {
+    column-gap: 4.5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-bottom: 5.5rem;
+    padding-top: 5.5rem;
+  }
+}
+
+.faqIntro {
+  align-self: start;
+  max-width: 24rem;
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.faqList {
+  border-top: 1px solid var(--line);
+}
