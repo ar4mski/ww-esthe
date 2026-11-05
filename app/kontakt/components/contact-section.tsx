@@ -9,19 +9,16 @@ const channels = [
     name: "Instagram",
     href: siteConfig.bookingUrl,
     icon: InstagramIcon,
-    isPrimary: true,
   },
   {
     name: "WhatsApp",
     href: siteConfig.social.whatsapp,
     icon: WhatsAppIcon,
-    isPrimary: false,
   },
   {
     name: "Messenger",
     href: siteConfig.social.messenger,
     icon: MessengerIcon,
-    isPrimary: false,
   },
 ];
 
@@ -38,10 +35,10 @@ export const ContactSection = () => (
         kilka słów o tym, co Cię interesuje, a wspólnie ustalimy termin.
       </p>
       <ul className={styles.channelList}>
-        {channels.map(({ name, href, icon: Icon, isPrimary }) => (
+        {channels.map(({ name, href, icon: Icon }) => (
           <li key={name}>
             <a
-              className={`button ${styles.channelButton} ${isPrimary ? styles.primary : ""}`}
+              className={`button button-outline button-outline-beige ${styles.channelButton}`}
               href={href}
               target="_blank"
               rel="noreferrer"

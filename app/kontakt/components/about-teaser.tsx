@@ -25,7 +25,10 @@ export const AboutTeaser = () => (
         Wierzę, że najlepsze efekty zaczynają się od uważnej rozmowy, zaufania i
         dobrze dobranego planu.
       </p>
-      <Link className="button button-outline button-outline-beige" href="/o-mnie">
+      <Link
+        className="button button-outline button-outline-beige"
+        href="/o-mnie"
+      >
         Poznaj mnie
       </Link>
     </div>

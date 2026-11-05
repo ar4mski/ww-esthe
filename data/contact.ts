@@ -1,3 +1,5 @@
+import { siteConfig } from "@/data/site-config";
+
 export const contactSteps = [
   {
     title: "Wysyłasz wiadomość",
@@ -9,7 +11,7 @@ export const contactSteps = [
   },
   {
     title: "Spotykamy się w gabinecie",
-    text: "Racławicka 1/4, Szczecin.",
+    text: `${siteConfig.address.lines.join(", ")}.`,
   },
 ] as const;
 

@@ -6,7 +6,6 @@ import { getLocalBusinessJsonLd } from "@/data/structured-data";
 
 import { AboutTeaser } from "./components/about-teaser";
 import { AddressSection } from "./components/address-section";
-import { BusinessInfo } from "./components/business-info";
 import { ContactSection } from "./components/contact-section";
 import { FaqSection } from "./components/faq-section";
 
@@ -25,7 +24,6 @@ export default function ContactPage() {
       <ContactSection />
       <FaqSection />
       <AboutTeaser />
-      <BusinessInfo />
     </>
   );
 }

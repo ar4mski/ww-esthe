@@ -1,4 +1,4 @@
-import { ArrowUpRight, Clock } from "lucide-react";
+import { CircleParking, Clock } from "lucide-react";
 import type { ComponentType, ReactNode, SVGProps } from "react";
 
 import {
@@ -48,7 +48,6 @@ export const AddressSection = () => {
     <PageSection
       className={styles.addressSection}
       headingClassName={styles.addressHeading}
-      eyebrow="Gabinet w Szczecinie"
       title="Kontakt"
       headingLevel="h1"
       id="adres"
@@ -57,7 +56,7 @@ export const AddressSection = () => {
         <ContactLine
           href={siteConfig.bookingUrl}
           icon={InstagramIcon}
-          label="Instagram · najszybciej"
+          label="Instagram"
           external
         >
           @wiktoria.warylak.esthe
@@ -83,9 +82,7 @@ export const AddressSection = () => {
           external
         >
           {siteConfig.address.lines.map((line) => (
-            <span className={styles.addressLine} key={line}>
-              {line}
-            </span>
+            <span key={line}>{line}</span>
           ))}
         </ContactLine>
       </address>
@@ -98,20 +95,11 @@ export const AddressSection = () => {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />
-          <a
-            className={`button ${styles.routeButton}`}
-            href={siteConfig.address.mapsUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Wyznacz trasę
-            <ArrowUpRight aria-hidden="true" size={16} />
-          </a>
         </div>
         <div className={styles.infoBlocks}>
           <section className={styles.infoBlock}>
             <h2>
-              <Clock aria-hidden="true" size={15} />
+              <Clock aria-hidden="true" size={16} />
               Godziny otwarcia
             </h2>
             <ul>
@@ -124,7 +112,10 @@ export const AddressSection = () => {
             </ul>
           </section>
           <section className={styles.infoBlock}>
-            <h2>Parking</h2>
+            <h2>
+              <CircleParking aria-hidden="true" size={16} />
+              Parking
+            </h2>
             <p>{parkingNote}</p>
           </section>
         </div>

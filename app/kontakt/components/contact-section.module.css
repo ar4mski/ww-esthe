@@ -1,22 +1,13 @@
 .contactSection {
-  @media (min-width: 640px) {
-    padding-bottom: 4rem;
-    padding-top: 4rem;
-  }
-
   @media (min-width: 1024px) {
     align-items: start;
-    column-gap: 4.5rem;
+    column-gap: 4rem;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    padding-bottom: 5.5rem;
-    padding-top: 5.5rem;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
   }
 }
 
 .contactCopy {
-  max-width: 38rem;
-
   p {
     max-width: 28rem;
   }
@@ -30,47 +21,20 @@
   padding: 0;
 
   @media (min-width: 640px) {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    & li:first-child {
+      grid-column: 1 / -1;
+    }
   }
 }
 
-.channelList .channelButton {
+.channelButton {
   align-items: center;
-  background: transparent;
-  border-color: var(--beige);
-  color: var(--beige);
   display: flex;
-  font-size: 0.75rem;
-  font-weight: 600;
   gap: 0.5rem;
   justify-content: center;
-  letter-spacing: 0.14em;
-  margin-top: 0;
-  min-height: 3rem;
-  padding: 0 0.9rem;
-  text-transform: uppercase;
-
-  &:hover,
-  &:focus-visible {
-    background: var(--beige);
-    color: var(--surface);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--beige);
-    outline-offset: 3px;
-  }
-
-  &.primary {
-    background: var(--beige);
-    color: var(--surface);
-
-    &:hover,
-    &:focus-visible {
-      background: var(--foreground);
-      border-color: var(--foreground);
-    }
-  }
+  min-height: 2.75rem;
 }
 
 .channelIcon {
@@ -80,7 +44,7 @@
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 1.5;
+  stroke-width: 1.6;
   width: 1.15rem;
 }
 
@@ -105,18 +69,18 @@
 
 .stepNumber {
   align-items: center;
-  border: 1px solid var(--beige);
+  border: 1px solid #665444;
   border-radius: 50%;
-  color: var(--beige);
+  color: #665444;
   display: flex;
-  flex: 0 0 2rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  height: 2rem;
+  flex: 0 0 2.2rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  height: 2.2rem;
   justify-content: center;
 
   .steps li:first-child & {
-    background: var(--beige);
+    background: #665444;
     color: var(--surface);
   }
 }

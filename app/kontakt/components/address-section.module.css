@@ -1,30 +1,24 @@
 .addressSection {
   display: grid;
   gap: 2rem;
-
-  @media (min-width: 640px) {
-    padding-bottom: 3.5rem;
-    padding-top: 3.5rem;
-  }
+  grid-template-columns: minmax(0, 1fr);
 
   @media (min-width: 1024px) {
     align-items: start;
-    column-gap: 4.5rem;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 4rem;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
     grid-template-areas:
       "heading map"
       "details map";
     grid-template-rows: auto 1fr;
-    padding-bottom: 5.5rem;
-    padding-top: 4.5rem;
   }
 }
 
 .addressHeading {
-  grid-area: heading;
   margin-bottom: 0;
 
   @media (min-width: 1024px) {
+    grid-area: heading;
     margin-bottom: -0.5rem;
   }
 
@@ -39,7 +33,6 @@
   display: grid;
   font-style: normal;
   gap: 1.35rem;
-  grid-area: details;
   margin: 0;
 
   @media (min-width: 640px) {
@@ -48,6 +41,7 @@
   }
 
   @media (min-width: 1024px) {
+    grid-area: details;
     grid-template-columns: minmax(0, 1fr);
   }
 }
@@ -56,20 +50,21 @@
   align-items: flex-start;
   display: flex;
   gap: 1rem;
+  justify-self: start;
   min-height: 2.75rem;
   text-decoration: none;
 }
 
 .detailIcon {
   fill: none;
-  flex: 0 0 1.4rem;
-  height: 1.4rem;
+  flex: 0 0 1.15rem;
+  height: 1.15rem;
   margin-top: 0.2rem;
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 1.5;
-  width: 1.4rem;
+  stroke-width: 1.6;
+  width: 1.15rem;
 }
 
 .detailText {
@@ -100,21 +95,25 @@
 .mapColumn {
   display: grid;
   gap: 1.5rem;
-  grid-area: map;
+  grid-template-columns: minmax(0, 1fr);
+
+  @media (min-width: 1024px) {
+    grid-area: map;
+  }
 }
 
 .mapFrame {
-  aspect-ratio: 4 / 3;
+  border: 1px solid var(--line);
+  min-height: 18.75rem;
   overflow: hidden;
   position: relative;
   width: 100%;
 
   @media (min-width: 640px) {
-    aspect-ratio: 16 / 9;
+    min-height: 21.25rem;
   }
 
   @media (min-width: 1024px) {
-    aspect-ratio: auto;
     min-height: 17.5rem;
   }
 
@@ -126,37 +125,17 @@
   }
 }
 
-.mapFrame .routeButton {
-  align-items: center;
-  background: var(--beige);
-  border-color: var(--beige);
-  bottom: 1rem;
-  display: inline-flex;
-  font-size: 0.75rem;
-  font-weight: 600;
-  gap: 0.6rem;
-  left: 1rem;
-  letter-spacing: 0.14em;
-  margin-top: 0;
-  min-height: 3rem;
-  padding: 0 1.4rem;
-  position: absolute;
-  text-transform: uppercase;
-
-  &:hover,
-  &:focus-visible {
-    background: var(--foreground);
-    border-color: var(--foreground);
-    color: var(--surface);
-  }
-}
-
 .infoBlocks {
   display: grid;
   gap: 1.5rem;
 
   @media (min-width: 640px) {
+    column-gap: 3rem;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1024px) {
+    column-gap: 1.5rem;
   }
 }
 
@@ -184,21 +163,24 @@
 
   ul {
     display: grid;
-    gap: 0.6rem;
+    gap: 0.6rem 1.5rem;
+    grid-template-columns: auto auto;
+    justify-content: start;
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
   li {
-    display: flex;
+    display: grid;
     font-size: 0.95rem;
-    gap: 1rem;
-    justify-content: space-between;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    white-space: nowrap;
 
     span:last-child {
+      font-variant-numeric: tabular-nums;
       font-weight: 500;
-      white-space: nowrap;
     }
   }
 }
