@@ -1,53 +1,99 @@
+.contactSection {
+  @media (min-width: 1024px) {
+    align-items: start;
+    column-gap: 4rem;
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  }
+}
+
+.contactCopy {
+  p {
+    max-width: 28rem;
+  }
+}
+
 .channelList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-  justify-content: flex-start;
+  display: grid;
+  gap: 0.75rem;
   list-style: none;
-  margin: 0;
+  margin: 1.75rem 0 0;
   padding: 0;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    & li:first-child {
+      grid-column: 1 / -1;
+    }
+  }
 }
 
-.channelList .channelButton {
+.channelButton {
   align-items: center;
-  display: inline-flex;
-  flex-direction: row;
-  height: 3.5rem;
+  display: flex;
+  gap: 0.5rem;
   justify-content: center;
-  margin-top: 0;
-  min-height: 0;
-  padding: 0;
-  width: 3.5rem;
-  border-radius: 50%;
-  border-color: var(--beige);
-  color: var(--beige);
-  text-decoration: none;
-  transition:
-    background 180ms ease,
-    border-color 180ms ease,
-    color 180ms ease,
-    transform 180ms ease;
-}
-
-.channelList .channelButton:hover,
-.channelList .channelButton:focus-visible {
-  background: var(--section-tint);
-  border-color: var(--beige);
-  transform: translateY(-2px);
-}
-
-.channelList .channelButton:focus-visible {
-  outline: 2px solid var(--beige);
-  outline-offset: 3px;
+  min-height: 2.75rem;
 }
 
 .channelIcon {
   fill: none;
   flex: 0 0 auto;
-  height: 1.75rem;
+  height: 1.15rem;
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 1.4;
-  width: 1.75rem;
+  stroke-width: 1.6;
+  width: 1.15rem;
+}
+
+/* The same information is already in the channel buttons, so steps stay desktop-only. */
+.steps {
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: grid;
+    gap: 1.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    align-items: flex-start;
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+.stepNumber {
+  align-items: center;
+  border: 1px solid #665444;
+  border-radius: 50%;
+  color: #665444;
+  display: flex;
+  flex: 0 0 2.2rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  height: 2.2rem;
+  justify-content: center;
+
+  .steps li:first-child & {
+    background: #665444;
+    color: var(--surface);
+  }
+}
+
+.stepText {
+  color: var(--muted);
+  display: grid;
+  gap: 0.15rem;
+  line-height: 1.5;
+
+  strong {
+    color: var(--foreground);
+    font-size: 1.05rem;
+    font-weight: 500;
+  }
 }

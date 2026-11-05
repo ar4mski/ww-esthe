@@ -1,71 +1,125 @@
-import { Clock } from "lucide-react";
+import { CircleParking, Clock } from "lucide-react";
+import type { ComponentType, ReactNode, SVGProps } from "react";
 
-import { AddressIcon, MailIcon, PhoneIcon } from "@/components/icons";
+import {
+  AddressIcon,
+  InstagramIcon,
+  MailIcon,
+  PhoneIcon,
+} from "@/components/icons";
 import { PageSection } from "@/components/page-section";
+import { parkingNote } from "@/data/contact";
 import { siteConfig } from "@/data/site-config";
 
 import styles from "./address-section.module.css";
 
-export function AddressSection() {
+type ContactLineProps = {
+  href: string;
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
+  label: string;
+  children: ReactNode;
+  external?: boolean;
+};
+
+const ContactLine = ({
+  href,
+  icon: Icon,
+  label,
+  children,
+  external = false,
+}: ContactLineProps) => (
+  <a
+    className={styles.detailItem}
+    href={href}
+    {...(external && { target: "_blank", rel: "noreferrer" })}
+  >
+    <Icon className={styles.detailIcon} />
+    <span className={styles.detailText}>
+      <span className={styles.detailLabel}>{label}</span>
+      <span className={styles.detailValue}>{children}</span>
+    </span>
+  </a>
+);
+
+export const AddressSection = () => {
   const mapQuery = encodeURIComponent(siteConfig.address.lines.join(", "));
 
   return (
     <PageSection
       className={styles.addressSection}
       headingClassName={styles.addressHeading}
-      eyebrow="Gabinet w Szczecinie"
       title="Kontakt"
       headingLevel="h1"
       id="adres"
     >
-      <div className={styles.details}>
-        <address className={styles.detailsList}>
-          <a className={styles.detailItem} href={siteConfig.phone.href}>
-            <PhoneIcon className={styles.detailIcon} />
-            {siteConfig.phone.display}
-          </a>
-          <a className={styles.detailItem} href={siteConfig.email.href}>
-            <MailIcon className={styles.detailIcon} />
-            {siteConfig.email.display}
-          </a>
-          <a
-            className={`${styles.detailItem} ${styles.addressDetail}`}
-            href={siteConfig.address.mapsUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <AddressIcon className={styles.detailIcon} />
-            <span className={styles.addressLines}>
-              {siteConfig.address.lines.map((line) => (
-                <span key={line}>{line}</span>
-              ))}
-            </span>
-          </a>
-        </address>
-        <div className={styles.hours}>
-          <h3>
-            <Clock aria-hidden="true" size={15} />
-            Godziny otwarcia
-          </h3>
-          <ul>
-            {siteConfig.openingHours.map((entry) => (
-              <li key={entry.days}>
-                <span>{entry.days}</span>
-                <span>{entry.hours}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      <address className={styles.detailsList}>
+        <ContactLine
+          href={siteConfig.bookingUrl}
+          icon={InstagramIcon}
+          label="Instagram"
+          external
+        >
+          @wiktoria.warylak.esthe
+        </ContactLine>
+        <ContactLine
+          href={siteConfig.phone.href}
+          icon={PhoneIcon}
+          label="Telefon"
+        >
+          {siteConfig.phone.display}
+        </ContactLine>
+        <ContactLine
+          href={siteConfig.email.href}
+          icon={MailIcon}
+          label="E-mail"
+        >
+          {siteConfig.email.display}
+        </ContactLine>
+        <ContactLine
+          href={siteConfig.address.mapsUrl}
+          icon={AddressIcon}
+          label="Adres"
+          external
+        >
+          {siteConfig.address.lines.map((line) => (
+            <span key={line}>{line}</span>
+          ))}
+        </ContactLine>
+      </address>
 
-      <div className={styles.mapFrame}>
-        <iframe
-          src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
-          title="Mapa dojazdu do gabinetu WW-Esthe"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        />
+      <div className={styles.mapColumn}>
+        <div className={styles.mapFrame}>
+          <iframe
+            src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
+            title="Mapa dojazdu do gabinetu WW-Esthe"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
+        <div className={styles.infoBlocks}>
+          <section className={styles.infoBlock}>
+            <h2>
+              <Clock aria-hidden="true" size={16} />
+              Godziny otwarcia
+            </h2>
+            <ul>
+              {siteConfig.openingHours.map((entry) => (
+                <li key={entry.days}>
+                  <span>{entry.days}</span>
+                  <span>{entry.hours}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+          <section className={styles.infoBlock}>
+            <h2>
+              <CircleParking aria-hidden="true" size={16} />
+              Parking
+            </h2>
+            <p>{parkingNote}</p>
+          </section>
+        </div>
       </div>
     </PageSection>
   );
-}
+};
