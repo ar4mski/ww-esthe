@@ -11,7 +11,7 @@
   --beige: #76614d;
   --link-underline-thickness: 1px;
   --link-underline-offset: clamp(0.25em, 0.35vw, 0.4em);
-  --header-height: 80px;
+  --header-height: 70px;
   --foter-heading: #fffdf9;
   --text: #f7f4ef;
   --image-hover-scale: 1.24;
@@ -20,12 +20,6 @@
   --heading-2-size: clamp(1.75rem, 3.5vw, 2.5rem);
   --heading-3-size: clamp(1.125rem, 1.75vw, 1.5rem);
   --heading-card-size: clamp(1.5rem, 2vw, 2rem);
-}
-
-@media (min-width: 640px) {
-  :root {
-    --header-height: 88px;
-  }
 }
 
 @theme inline {
