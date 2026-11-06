@@ -177,11 +177,17 @@ export const treatments: Treatment[] = [
     title: "Modelowanie ust",
     shortDescription:
       "Pełniejsze, symetryczne i pięknie wymodelowane usta. Priorytetem jest zachowanie proporcji twarzy i uzyskanie efektu podkreślającego urodę.",
-    duration: "50 MIN",
+    duration: "50 minut",
     price: "700 zł",
     recoveryTime: "2-7 dni",
     sessionCount: "1",
     imageAlt: "Zdjęcie ust związane z zabiegiem modelowania.",
+    forWho: {
+      heading: "Dla kogo jest zabieg?",
+      paragraphs: [
+        "Modelowanie ust to zabieg przeznaczony dla osób, które chcą subtelnie podkreślić naturalne piękno swoich ust, poprawić ich proporcje lub przywrócić im utraconą objętość. Sprawdzi się zarówno u osób z naturalnie wąskimi ustami, jak i tych, które zauważają asymetrię, niewyraźny kontur czerwieni wargowej czy utratę jędrności i objętości związanej z upływem czasu.",
+      ],
+    },
     description: {
       heading: "Na czym polega zabieg",
       paragraphs: [
@@ -748,6 +754,137 @@ export const treatments: Treatment[] = [
         question: "Jak może wyglądać skóra bezpośrednio po zabiegu?",
         answer:
           "Może być zaczerwieniona, lekko obrzęknięta i bardziej wrażliwa. Może pojawić się również uczucie ciepła, pieczenia lub napięcia.",
+      },
+    ],
+  },
+  {
+    slug: "laserowe-usuwanie-brwi",
+    title: "Laserowe usuwanie makijażu permanentnego brwi",
+    shortDescription:
+      "Stopniowe rozjaśnienie lub usunięcie nieudanego, przebarwionego albo nieaktualnego makijażu permanentnego brwi laserem pikosekundowym.",
+    duration: "15-30 minut",
+    price: "od 200 zł",
+    recoveryTime: "7-14 dni",
+    sessionCount: "Ustalana indywidualnie",
+    imageAlt: "Laserowe usuwanie makijażu permanentnego brwi.",
+    forWho: {
+      heading: "Dla kogo jest zabieg?",
+      paragraphs: [
+        "Laserowe usuwanie makijażu permanentnego brwi to zabieg przeznaczony dla osób, które chcą pozbyć się nieudanego, nieestetycznego lub nieaktualnego makijażu permanentnego. Sprawdzi się również u osób, których pigment z czasem zmienił odcień, stał się zbyt intensywny lub przybrał niepożądany kolor.",
+        "Zabieg wykonywany przy użyciu lasera pikosekundowego pozwala na stopniowe rozbijanie cząsteczek pigmentu znajdującego się w skórze, dzięki czemu organizm może sukcesywnie usuwać ich fragmenty.",
+        "Laserowe usuwanie pigmentu może być także dobrym rozwiązaniem dla osób planujących wykonanie nowego makijażu permanentnego, u których konieczne jest wcześniejsze rozjaśnienie lub usunięcie starej pigmentacji.",
+      ],
+    },
+    description: {
+      heading: "Na czym polega zabieg?",
+      paragraphs: [
+        "Laserowe usuwanie makijażu permanentnego polega na wykorzystaniu krótkich impulsów światła laserowego o bardzo wysokiej mocy szczytowej. Energia lasera oddziałuje na cząsteczki pigmentu znajdujące się w skórze, powodując ich rozdrobnienie na mniejsze fragmenty.",
+        "Wykorzystanie technologii pikosekundowej pozwala na precyzyjne oddziaływanie na barwnik przy ograniczaniu niepożądanego wpływu energii na otaczające tkanki.",
+        "Po rozdrobnieniu pigmentu jego drobne cząsteczki są stopniowo usuwane przez naturalne mechanizmy organizmu. Z tego względu efekt rozjaśnienia nie jest widoczny wyłącznie bezpośrednio po zabiegu – proces ten trwa również w kolejnych tygodniach.",
+        "Liczba potrzebnych sesji zależy między innymi od rodzaju, koloru, głębokości i ilości pigmentu, a także indywidualnych predyspozycji skóry. Niektóre pigmenty mogą wymagać szczególnego postępowania, dlatego przed rozpoczęciem terapii konieczna jest ocena ich charakterystyki.",
+      ],
+    },
+    preparation: {
+      heading: "Przygotowanie do zabiegu",
+      items: [
+        "Na minimum 2–4 tygodnie przed zabiegiem należy unikać intensywnego opalania oraz korzystania z solarium.",
+        "Skóra w miejscu zabiegowym powinna być zdrowa, bez ran, podrażnień i aktywnych stanów zapalnych.",
+        "Przed zabiegiem należy poinformować o wszystkich przyjmowanych lekach, suplementach oraz stosowanych preparatach mogących zwiększać wrażliwość skóry na światło.",
+        "Należy poinformować o wcześniejszych zabiegach laserowych oraz kosmetologicznych wykonywanych w obrębie brwi.",
+        "Warto poinformować o rodzaju i pochodzeniu pigmentu, jeżeli takie informacje są dostępne.",
+        "W dniu zabiegu okolica brwi powinna być czysta, bez makijażu i kosmetyków.",
+        "Przed rozpoczęciem terapii przeprowadzana jest konsultacja i ocena pigmentu oraz stanu skóry.",
+      ],
+    },
+    contraindications: {
+      heading: "Przeciwwskazania",
+      items: [
+        "Ciąża i okres karmienia piersią.",
+        "Aktywne infekcje i stany zapalne skóry w miejscu zabiegowym.",
+        "Choroby skóry w aktywnej fazie.",
+        "Świeża opalenizna lub niedawne korzystanie z solarium.",
+        "Przyjmowanie leków i stosowanie preparatów o działaniu fotouczulającym.",
+        "Aktywna opryszczka w obrębie miejsca zabiegowego.",
+        "Skłonność do powstawania bliznowców.",
+        "Zaburzenia gojenia skóry.",
+        "Niektóre choroby autoimmunologiczne.",
+        "Niewyrównana cukrzyca.",
+        "Choroby nowotworowe – wymagają indywidualnej kwalifikacji.",
+        "Epilepsja, szczególnie jeżeli występuje nadwrażliwość na bodźce świetlne.",
+        "Świeżo wykonane zabiegi kosmetologiczne lub medycyny estetycznej w obrębie brwi.",
+        "Wszelkie zmiany skórne wymagające wcześniejszej diagnostyki.",
+        "Wiek poniżej 18 roku życia.",
+      ],
+    },
+    recovery: {
+      heading: "Reakcje pozabiegowe i czas rekonwalescencji",
+      paragraphs: [
+        "Bezpośrednio po zabiegu w okolicy brwi może pojawić się zaczerwienienie, niewielki obrzęk oraz uczucie ciepła lub pieczenia. W zależności od reakcji skóry może wystąpić również przejściowe zbielenie obszaru poddanego działaniu lasera.",
+        "W kolejnych dniach może pojawić się delikatne złuszczanie naskórka, niewielkie strupki lub przejściowa zmiana zabarwienia skóry. Są to możliwe reakcje związane z procesem regeneracji.",
+        "Rozjaśnianie pigmentu zachodzi stopniowo, również po zakończeniu samej sesji. Z tego względu kolejne zabiegi wykonuje się po odpowiednim czasie, pozwalającym skórze na regenerację i organizmowi na usuwanie rozdrobnionego barwnika.",
+        "Czas regeneracji jest indywidualny i zależy od reakcji skóry, parametrów zabiegu oraz charakterystyki pigmentu.",
+        "W przypadku nasilającego się bólu, objawów infekcji, zaburzeń widzenia lub innych niepokojących objawów należy skontaktować się z lekarzem.",
+      ],
+      symptomsHeading: "Do najczęstszych reakcji pozabiegowych należą:",
+      symptoms: [
+        "Zaczerwienienie skóry.",
+        "Delikatny obrzęk.",
+        "Uczucie ciepła lub pieczenia.",
+        "Przejściowe zbielenie skóry bezpośrednio po impulsie lasera.",
+        "Zwiększona wrażliwość okolicy zabiegowej.",
+        "Delikatne złuszczanie naskórka.",
+        "Niewielkie strupki.",
+        "Przejściowe zmiany pigmentacyjne.",
+        "Przejściowe przyciemnienie niektórych pigmentów.",
+        "Rzadziej pęcherzyki, nadżerki lub zaburzenia pigmentacji skóry.",
+      ],
+    },
+    aftercare: {
+      heading: "Zalecenia pozabiegowe",
+      items: [
+        "Przez pierwsze dni należy unikać dotykania i pocierania obszaru poddanego zabiegowi.",
+        "Nie wolno zdrapywać ani odrywać powstających strupków.",
+        "Należy utrzymywać okolicę zabiegową w czystości i stosować się do zaleceń dotyczących pielęgnacji.",
+        "Przez kilka dni należy unikać sauny, basenu, gorących kąpieli i intensywnego wysiłku fizycznego.",
+        "Do czasu pełnego zagojenia należy unikać stosowania peelingów oraz kosmetyków o silnym działaniu złuszczającym w okolicy brwi.",
+        "Nie należy nakładać makijażu bezpośrednio na obszar zabiegowy do czasu jego zagojenia.",
+        "Należy unikać ekspozycji na promieniowanie UV.",
+        "Po zagojeniu skóry należy regularnie stosować ochronę przeciwsłoneczną SPF 50.",
+        "Nie należy wykonywać kolejnego zabiegu laserowego przed upływem zalecanego czasu regeneracji.",
+        "W przypadku wystąpienia niepokojących objawów należy skontaktować się z osobą wykonującą zabieg.",
+      ],
+    },
+    faqs: [
+      {
+        question:
+          "Czy laser pikosekundowy usuwa makijaż permanentny całkowicie?",
+        answer:
+          "Efekty zależą od rodzaju, koloru, głębokości i ilości pigmentu. W wielu przypadkach możliwe jest znaczne rozjaśnienie lub usunięcie pigmentacji, jednak nie można zagwarantować całkowitego usunięcia w każdym przypadku.",
+      },
+      {
+        question: "Ile zabiegów potrzeba, aby usunąć makijaż permanentny?",
+        answer:
+          "Liczba sesji jest ustalana indywidualnie. Zależy między innymi od zastosowanego pigmentu, jego głębokości oraz reakcji organizmu. Czasami wystarczy kilka zabiegów, w innych przypadkach potrzebna jest dłuższa terapia.",
+      },
+      {
+        question: "Czy zabieg jest bolesny?",
+        answer:
+          "Odczucia podczas zabiegu są indywidualne. Najczęściej opisywane są jako krótkotrwałe uczucie szczypania lub ukłucia. Intensywność odczuć zależy od indywidualnej wrażliwości oraz parametrów zabiegu.",
+      },
+      {
+        question: "Czy laser pikosekundowy uszkadza naturalne włoski brwi?",
+        answer:
+          "Energia lasera jest kierowana na pigment, jednak nie można zagwarantować całkowitego braku wpływu zabiegu na włoski i otaczającą skórę. Dlatego tak ważna jest prawidłowa kwalifikacja, dobór parametrów i odpowiednie zabezpieczenie okolicy oczu.",
+      },
+      {
+        question: "Kiedy można wykonać nowy makijaż permanentny?",
+        answer:
+          "Nową pigmentację można wykonać dopiero po pełnym zagojeniu skóry i zakończeniu odpowiedniego etapu terapii laserowej. Termin ustalany jest indywidualnie podczas konsultacji.",
+      },
+      {
+        question: "Czy każdy kolor pigmentu można usunąć laserem?",
+        answer:
+          "Nie każdy pigment reaguje na laser w taki sam sposób. Niektóre kolory mogą być trudniejsze do usunięcia, a pigmenty zawierające określone związki, np. tlenki żelaza lub dwutlenek tytanu, mogą nawet ulec przejściowemu lub trwałemu ściemnieniu. Dlatego przed rozpoczęciem terapii konieczna jest ocena pigmentu, a w uzasadnionych przypadkach wykonanie próby laserowej.",
       },
     ],
   },

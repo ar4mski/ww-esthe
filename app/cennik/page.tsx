@@ -79,6 +79,7 @@ const priceCategories: PriceCategory[] = [
   },
   {
     name: "Laserowe usuwanie brwi",
+    href: "/zabiegi/laserowe-usuwanie-brwi",
     items: [
       { name: "1 sesja", price: "200 zł" },
       { name: "Ocieplenie / ochłodzenie brwi", price: "200 zł" },
