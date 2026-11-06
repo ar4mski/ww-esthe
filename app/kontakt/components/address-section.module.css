@@ -55,18 +55,6 @@
   text-decoration: none;
 }
 
-.detailIcon {
-  fill: none;
-  flex: 0 0 1.15rem;
-  height: 1.15rem;
-  margin-top: 0.2rem;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.6;
-  width: 1.15rem;
-}
-
 .detailText {
   display: grid;
   gap: 0.15rem;
@@ -144,6 +132,7 @@
   padding-left: 1.25rem;
 
   h2 {
+    --icon-size: 1rem;
     align-items: center;
     color: var(--muted);
     display: flex;

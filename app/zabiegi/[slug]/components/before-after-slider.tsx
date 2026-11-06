@@ -145,7 +145,7 @@ export const BeforeAfterSlider = ({
         />
         <div className={styles.divider} style={{ left: `${position}%` }}>
           <span className={styles.handle}>
-            <ArrowLeftRight size={16} aria-hidden />
+            <ArrowLeftRight className="icon" aria-hidden />
           </span>
         </div>
       </div>

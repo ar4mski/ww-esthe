@@ -86,6 +86,7 @@
 }
 
 .handle {
+  --icon-size: 1rem;
   align-items: center;
   background: #fff;
   border-radius: 50%;

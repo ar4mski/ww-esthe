@@ -23,7 +23,7 @@ export const TreatmentFacts = ({
     {facts.map(({ icon: Icon, label: factLabel, value }) => (
       <div key={factLabel}>
         <dt>
-          <Icon aria-hidden="true" />
+          <Icon className="icon" aria-hidden="true" />
           {factLabel}
         </dt>
         <dd>{value}</dd>

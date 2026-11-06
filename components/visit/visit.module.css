@@ -98,6 +98,7 @@
 }
 
 .stepIcon {
+  --icon-size: 1.375rem;
   align-items: center;
   background: rgba(102, 84, 68, 0.12);
   border-radius: 50%;

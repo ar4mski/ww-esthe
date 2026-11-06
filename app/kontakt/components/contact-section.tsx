@@ -43,7 +43,7 @@ export const ContactSection = () => (
               target="_blank"
               rel="noreferrer"
             >
-              <Icon className={styles.channelIcon} />
+              <Icon className="icon" />
               {name}
             </a>
           </li>

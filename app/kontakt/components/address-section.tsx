@@ -1,12 +1,7 @@
-import { CircleParking, Clock } from "lucide-react";
+import { CircleParking, Clock, Mail, MapPin, Phone } from "lucide-react";
 import type { ComponentType, ReactNode, SVGProps } from "react";
 
-import {
-  AddressIcon,
-  InstagramIcon,
-  MailIcon,
-  PhoneIcon,
-} from "@/components/icons";
+import { InstagramIcon } from "@/components/icons";
 import { PageSection } from "@/components/page-section";
 import { parkingNote } from "@/data/contact";
 import { siteConfig } from "@/data/site-config";
@@ -33,7 +28,7 @@ const ContactLine = ({
     href={href}
     {...(external && { target: "_blank", rel: "noreferrer" })}
   >
-    <Icon className={styles.detailIcon} />
+    <Icon className="icon" />
     <span className={styles.detailText}>
       <span className={styles.detailLabel}>{label}</span>
       <span className={styles.detailValue}>{children}</span>
@@ -63,21 +58,21 @@ export const AddressSection = () => {
         </ContactLine>
         <ContactLine
           href={siteConfig.phone.href}
-          icon={PhoneIcon}
+          icon={Phone}
           label="Telefon"
         >
           {siteConfig.phone.display}
         </ContactLine>
         <ContactLine
           href={siteConfig.email.href}
-          icon={MailIcon}
+          icon={Mail}
           label="E-mail"
         >
           {siteConfig.email.display}
         </ContactLine>
         <ContactLine
           href={siteConfig.address.mapsUrl}
-          icon={AddressIcon}
+          icon={MapPin}
           label="Adres"
           external
         >
@@ -99,7 +94,7 @@ export const AddressSection = () => {
         <div className={styles.infoBlocks}>
           <section className={styles.infoBlock}>
             <h2>
-              <Clock aria-hidden="true" size={16} />
+              <Clock className="icon" aria-hidden="true" />
               Godziny otwarcia
             </h2>
             <ul>
@@ -113,7 +108,7 @@ export const AddressSection = () => {
           </section>
           <section className={styles.infoBlock}>
             <h2>
-              <CircleParking aria-hidden="true" size={16} />
+              <CircleParking className="icon" aria-hidden="true" />
               Parking
             </h2>
             <p>{parkingNote}</p>

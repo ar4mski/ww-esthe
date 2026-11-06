@@ -1,14 +1,9 @@
 import { footerNavigation } from "@/data/navigation";
 import { siteConfig } from "@/data/site-config";
+import { Mail, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  InstagramIcon,
-  MailIcon,
-  MessengerIcon,
-  PhoneIcon,
-  WhatsAppIcon,
-} from "./icons";
+import { InstagramIcon, MessengerIcon, WhatsAppIcon } from "./icons";
 
 import styles from "./site-footer.module.css";
 
@@ -27,9 +22,7 @@ export function SiteFooter() {
               target="_blank"
               rel="noreferrer"
             >
-              <InstagramIcon
-                className={`${styles.footerIcon} ${styles.brandIcon}`}
-              />
+              <InstagramIcon className="icon" />
               Instagram
             </a>
             <a
@@ -38,9 +31,7 @@ export function SiteFooter() {
               target="_blank"
               rel="noreferrer"
             >
-              <WhatsAppIcon
-                className={`${styles.footerIcon} ${styles.brandIcon}`}
-              />
+              <WhatsAppIcon className="icon" />
               WhatsApp
             </a>
             <a
@@ -49,17 +40,15 @@ export function SiteFooter() {
               target="_blank"
               rel="noreferrer"
             >
-              <MessengerIcon
-                className={`${styles.footerIcon} ${styles.brandIcon}`}
-              />
+              <MessengerIcon className="icon" />
               Messenger
             </a>
             <a className={styles.footerItem} href={siteConfig.phone.href}>
-              <PhoneIcon className={styles.footerIcon} />
+              <Phone className="icon" />
               <span>{siteConfig.phone.display}</span>
             </a>
             <a className={styles.footerItem} href={siteConfig.email.href}>
-              <MailIcon className={styles.footerIcon} />
+              <Mail className="icon" />
               <span>{siteConfig.email.display}</span>
             </a>
           </div>

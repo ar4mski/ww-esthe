@@ -26,7 +26,7 @@ export const VisitStep = ({
     >
       <div className={styles.visitSlideContent}>
         <div className={styles.stepIcon} aria-hidden="true">
-          <Icon size={22} strokeWidth={1.6} />
+          <Icon className="icon" />
         </div>
         <p className={styles.stepSubtitle}>{step.subtitle}</p>
         <h3>{step.title}</h3>
@@ -40,9 +40,9 @@ export const VisitStep = ({
         >
           {isLastStep ? "Wróć do początku" : "Kolejny krok"}
           {isLastStep ? (
-            <RotateCcw size={18} strokeWidth={1.6} aria-hidden="true" />
+            <RotateCcw className="icon" aria-hidden="true" />
           ) : (
-            <ArrowRight size={18} strokeWidth={1.6} aria-hidden="true" />
+            <ArrowRight className="icon" aria-hidden="true" />
           )}
         </button>
       </div>

@@ -54,6 +54,7 @@ Stack: Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, lucide-rea
 - Prefer Next.js image handling. Preserve aspect ratio, use proper object-fit/position, meaningful alt text (empty alt for decorative).
 - Don't replace existing assets with placeholders. Don't add remote image hosts without checking the Next.js config.
 - Icons: lucide-react only, preferred over hand-drawn SVG. Decorative when adjacent text conveys the same info.
+- Every icon gets `className="icon"` (defined in `app/globals.css`); no `size`/`strokeWidth` props and no per-component icon sizing. For a different size set `--icon-size` on a parent. Brand logos (lucide has none) live in `components/icons/` as filled glyphs with the `-2 -2 28 28` viewBox so they match lucide's padding.
 
 ## Accessibility and navigation
 

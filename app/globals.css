@@ -80,7 +80,7 @@ a:not(.button)[data-active="true"],
 .interactive-underline[aria-pressed="true"],
 .button.button-outline-secondary:hover,
 .button.button-outline-secondary:focus-visible {
-color: var(--link-hover-color, var(--beige));
+  color: var(--link-hover-color, var(--beige));
   text-decoration-line: underline;
 }
 
@@ -111,6 +111,14 @@ a {
   background: var(--section-tint);
   padding-left: max(1.25rem, calc((100% - 1180px) / 2 + 1.25rem));
   padding-right: max(1.25rem, calc((100% - 1180px) / 2 + 1.25rem));
+}
+
+.icon {
+  flex: 0 0 auto;
+  height: var(--icon-size, 1.15rem);
+  width: var(--icon-size, 1.15rem);
+  /* center the icon on the first text line: (line height − icon height) / 2 */
+  margin-block: calc((1lh - var(--icon-size, 1.15rem)) / 2);
 }
 
 .eyebrow {
