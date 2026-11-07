@@ -1,0 +1,16 @@
+/* Visual continuation of the address section above, which already has bottom padding. */
+.gallerySection {
+  padding-top: 0;
+}
+
+.galleryHeading {
+  margin-bottom: 1.5rem;
+
+  h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    max-width: 27.5rem;
+  }
+}

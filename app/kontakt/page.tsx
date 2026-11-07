@@ -8,7 +8,7 @@ import { getLocalBusinessJsonLd } from "@/data/structured-data";
 
 import { AboutTeaser } from "./components/about-teaser";
 import { AddressSection } from "./components/address-section";
-import { ContactSection } from "./components/contact-section";
+import { GallerySection } from "./components/gallery-section";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Kontakt | WW - ESTHE",
@@ -22,11 +22,12 @@ export default function ContactPage() {
     <>
       <JsonLd data={getLocalBusinessJsonLd()} />
       <AddressSection />
-      <ContactSection />
+      <GallerySection />
       <FaqSection
         faqs={contactFaqs}
         id="contact-faq"
         title="Najczęstsze pytania"
+        className="section-tinted"
       />
       <AboutTeaser />
     </>

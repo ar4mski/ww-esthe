@@ -5,7 +5,7 @@ import styles from "./about-teaser.module.css";
 
 export const AboutTeaser = () => (
   <section
-    className={`section-shell section-tinted ${styles.aboutTeaser}`}
+    className={`section-shell ${styles.aboutTeaser}`}
     id="o-mnie"
     aria-labelledby="o-mnie-title"
   >
