@@ -1,0 +1,130 @@
+.list {
+  display: grid;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @media (min-width: 640px) {
+    gap: 2rem 1.5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Mobile: compact list row with a 128×96 thumbnail. */
+.card {
+  align-items: center;
+  border-top: 1px solid var(--line);
+  column-gap: 1rem;
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr);
+  padding-block: 1rem;
+
+  &:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  @media (min-width: 640px) {
+    align-items: stretch;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-block: 0;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+}
+
+.tile {
+  align-items: center;
+  aspect-ratio: 4 / 3;
+  background: var(--section-tint);
+  border: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+  width: 100%;
+
+  &:is(button) {
+    cursor: zoom-in;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--beige);
+    outline-offset: 3px;
+  }
+}
+
+.photo {
+  inset: 0.5rem;
+  position: absolute;
+
+  img {
+    object-fit: contain;
+  }
+
+  @media (min-width: 640px) {
+    inset: 1.5rem;
+  }
+}
+
+.zoomBadge {
+  --icon-size: 1rem;
+
+  display: none;
+
+  @media (min-width: 640px) {
+    align-items: center;
+    background: var(--background);
+    bottom: 0.75rem;
+    color: var(--foreground);
+    display: flex;
+    height: 2rem;
+    justify-content: center;
+    position: absolute;
+    right: 0.75rem;
+    width: 2rem;
+  }
+}
+
+.placeholderSheet {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  height: 76%;
+  width: 58%;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  min-width: 0;
+
+  h3 {
+    font-weight: 500;
+    line-height: 1.25;
+    margin-bottom: 0;
+  }
+
+  .meta {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+    text-align: start;
+  }
+}
+
+.category {
+  color: var(--beige);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

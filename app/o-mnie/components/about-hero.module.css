@@ -1,0 +1,240 @@
+.hero {
+  display: grid;
+  padding-bottom: 2.5rem;
+
+  @media (min-width: 1024px) {
+    align-items: center;
+    column-gap: 3rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0 auto;
+    max-width: 1180px;
+    padding: 2.5rem 2rem;
+  }
+}
+
+/* Mobile and tablet: full-bleed photo; the heading sits on its faded bottom. */
+.visual {
+  aspect-ratio: 390 / 460;
+  grid-area: 1 / 1;
+  mask-image: linear-gradient(to bottom, #000 50%, transparent);
+  position: relative;
+
+  @media (min-width: 640px) {
+    aspect-ratio: 768 / 620;
+  }
+
+  @media (min-width: 1024px) {
+    aspect-ratio: auto;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    height: 43.75rem;
+    /* Fade every edge so the photo has no visible frame. */
+    mask-image:
+      linear-gradient(to top, transparent, #000 55%),
+      linear-gradient(to right, transparent, #000 38%),
+      linear-gradient(to bottom, transparent, #000 14%),
+      linear-gradient(to left, transparent, #000 16%);
+    mask-composite: intersect;
+    -webkit-mask-composite: source-in;
+  }
+}
+
+.image {
+  object-fit: cover;
+  /* Crop from the top so only a little space stays above the head. */
+  object-position: 60% 90%;
+
+  @media (min-width: 640px) {
+    object-position: 55% 47%;
+  }
+
+  @media (min-width: 1024px) {
+    object-position: 55% 30%;
+  }
+}
+
+.intro,
+.body {
+  min-width: 0;
+  padding-inline: 1.25rem;
+
+  @media (min-width: 640px) {
+    padding-inline: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    grid-column: 1;
+    padding-inline: 0;
+  }
+}
+
+.intro {
+  align-self: end;
+  grid-area: 1 / 1;
+  position: relative;
+
+  h1 {
+    font-size: var(--heading-display-size);
+    line-height: 0.9;
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 1024px) {
+    grid-row: 1;
+  }
+}
+
+.body {
+  padding-top: 1.5rem;
+
+  @media (min-width: 1024px) {
+    align-self: start;
+    grid-row: 2;
+    padding-top: 1.75rem;
+  }
+}
+
+.lead {
+  font-size: 1.05rem;
+  margin-bottom: 0;
+
+  @media (min-width: 1024px) {
+    max-width: 30rem;
+  }
+}
+
+.summary {
+  margin-top: 1.5rem;
+
+  @media (min-width: 640px) {
+    align-items: center;
+    border-block: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+    justify-content: space-between;
+    padding-block: 1rem;
+  }
+
+  @media (min-width: 1024px) {
+    border-block: 0;
+    display: block;
+    margin-top: 2.5rem;
+    max-width: 30rem;
+    padding-block: 0;
+  }
+}
+
+.stats {
+  border-block: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  margin: 0;
+  padding-block: 1rem;
+
+  @media (min-width: 640px) {
+    border-block: 0;
+    padding-block: 0;
+  }
+
+  @media (min-width: 1024px) {
+    border-top: 1px solid var(--line);
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-top: 1.5rem;
+  }
+}
+
+.stat {
+  align-items: baseline;
+  display: flex;
+  gap: 0.4rem;
+
+  dt {
+    color: var(--beige);
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  dd {
+    color: var(--muted);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @media (min-width: 640px) {
+    dt {
+      font-size: 1.75rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    align-items: flex-start;
+    flex-direction: column;
+
+    dt {
+      font-size: 2.5rem;
+    }
+
+    dd {
+      font-size: 0.95rem;
+    }
+  }
+}
+
+.fullLabel {
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: inline;
+  }
+}
+
+.shortLabel {
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}
+
+.actions {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 1.5rem;
+
+  :global(.button) {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    margin-top: 0;
+    min-height: 2.75rem;
+    text-align: center;
+  }
+
+  .primaryAction:global(.button) {
+    background: var(--beige);
+    border-color: var(--beige);
+    color: var(--surface);
+
+    &:hover,
+    &:focus-visible {
+      background: transparent;
+      color: var(--beige);
+    }
+  }
+
+  @media (min-width: 640px) {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0;
+  }
+
+  @media (min-width: 1024px) {
+    margin-top: 2.5rem;
+  }
+}

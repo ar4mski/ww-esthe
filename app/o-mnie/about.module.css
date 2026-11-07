@@ -1,238 +1,219 @@
-.aboutSection,
-.credentialsSection {
-  border-top: 1px solid var(--line);
+.aboutPage {
+  /* Body copy on this page is justified (client request). :where() keeps the
+     specificity low so the centered mobile values can opt out below. */
+  & :where(p:not(:global(.eyebrow))) {
+    hyphens: auto;
+    text-align: justify;
+  }
+}
+
+.values {
   display: grid;
-  gap: 2.5rem;
-}
-
-.aboutCopy {
-  max-width: 42rem;
-}
-
-.aboutCopy h2,
-.credentialsIntro h2 {
-  font-size: var(--heading-2-size);
-  margin-bottom: 1.25rem;
-}
-
-.aboutCopy p {
-  margin-bottom: 0;
-  max-width: 40rem;
-}
-
-.aboutCopy p + p {
-  margin-top: 1rem;
-}
-
-.aboutNote {
-  border-left: 1px solid var(--line);
-  padding-left: 1.25rem;
-}
-
-.aboutNote h3 {
-  margin-bottom: 0.75rem;
-}
-
-.aboutNote ul {
-  color: var(--muted);
-  display: grid;
-  gap: 0.75rem;
-  line-height: 1.6;
   list-style: none;
   margin: 0;
   padding: 0;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
-.aboutNote li {
-  padding-left: 1.25rem;
-  position: relative;
-}
+/* Mobile: values are centered on purpose (client request). */
+.value {
+  --icon-size: 1.25rem;
 
-.aboutNote li::before {
-  color: var(--beige);
-  content: "-";
-  left: 0;
-  position: absolute;
-}
-
-.credentialsSection {
-  gap: 2rem;
-}
-
-.credentialsIntro {
-  max-width: 38rem;
-}
-
-.credentialsIntro p {
-  margin-bottom: 0;
-}
-
-.credentialsList {
-  display: grid;
-}
-
-.credentialItem {
+  align-items: center;
   border-top: 1px solid var(--line);
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 0.75rem;
-  padding: 1.25rem 0;
-}
+  padding-block: 1.75rem;
+  text-align: center;
 
-.credentialItem:last-child {
-  border-bottom: 1px solid var(--line);
-}
-
-.credentialItem h3 {
-  margin-bottom: 0;
-}
-
-.credentialItem p {
-  margin-bottom: 0;
-}
-
-@media (min-width: 640px) {
-  .aboutSection,
-  .credentialsSection {
-    gap: 4rem;
+  &:last-child {
+    border-bottom: 1px solid var(--line);
   }
 
-  .aboutNote {
-    padding-left: 2rem;
+  h3 {
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-bottom: 0;
   }
 
-  .credentialItem {
+  p {
+    hyphens: manual;
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  @media (min-width: 640px) {
     align-items: center;
-    column-gap: 3rem;
-    grid-template-columns: minmax(12rem, 0.7fr) minmax(0, 1.3fr);
-    padding: 1.5rem 0;
+    column-gap: 1.5rem;
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 0.7fr) minmax(0, 1.3fr);
+    padding-block: 1.5rem;
+    text-align: start;
+
+    p {
+      hyphens: auto;
+      text-align: justify;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    align-items: center;
+    border-left: 1px solid var(--line);
+    border-top: 0;
+    display: flex;
+    gap: 1rem;
+    padding-block: 0;
+    padding-inline: 2rem;
+
+    &:first-child {
+      border-left: 0;
+      padding-left: 0;
+    }
+
+    &:last-child {
+      border-bottom: 0;
+      padding-right: 0;
+    }
+
+    p {
+      hyphens: manual;
+      text-align: center;
+    }
   }
 }
 
-@media (min-width: 1024px) {
-  .aboutSection {
-    grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 0.75fr);
-  }
+.iconCircle {
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--beige);
+  display: flex;
+  height: 3.5rem;
+  justify-content: center;
+  width: 3.5rem;
 
-  .credentialsSection {
-    grid-template-columns: minmax(14rem, 0.7fr) minmax(0, 1.3fr);
+  @media (min-width: 1024px) {
+    height: 4rem;
+    width: 4rem;
   }
 }
-.aboutSection,
-.credentialsSection {
-  border-top: 1px solid var(--line);
+
+.belief {
   display: grid;
-  gap: 2.5rem;
+  gap: 2rem;
+
+  @media (min-width: 640px) {
+    align-items: center;
+    column-gap: 2.5rem;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
+  }
+
+  @media (min-width: 1024px) {
+    column-gap: 4rem;
+  }
 }
 
-.aboutCopy {
-  max-width: 42rem;
+.imageFrame {
+  background: var(--line);
+  height: 15rem;
+  position: relative;
+
+  @media (min-width: 640px) {
+    aspect-ratio: 4 / 5;
+    height: auto;
+  }
+
+  @media (min-width: 1024px) {
+    justify-self: start;
+    max-width: 20rem;
+    width: 100%;
+  }
 }
 
-.aboutCopy h2,
-.credentialsIntro h2 {
-  font-size: var(--heading-2-size);
-  margin-bottom: 1.25rem;
+.image {
+  object-fit: cover;
+  object-position: center 20%;
 }
 
-.aboutCopy p {
-  margin-bottom: 0;
-  max-width: 40rem;
-}
+.quote {
+  --icon-size: 1.5rem;
 
-.aboutCopy p + p {
-  margin-top: 1rem;
-}
-
-.aboutNote {
-  border-left: 1px solid var(--line);
-  padding-left: 1.25rem;
-}
-
-.aboutNote h3 {
-  margin-bottom: 0.75rem;
-}
-
-.aboutNote ul {
-  color: var(--muted);
-  display: grid;
-  gap: 0.75rem;
-  line-height: 1.6;
-  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
   margin: 0;
-  padding: 0;
+
+  h2 {
+    font-size: var(--heading-1-size);
+    line-height: 1.02;
+    margin-bottom: 0;
+    max-width: 14ch;
+  }
+
+  p {
+    font-size: 1.05rem;
+    margin-bottom: 0;
+    max-width: 32rem;
+  }
+
+  @media (min-width: 1024px) {
+    gap: 1.5rem;
+  }
 }
 
-.aboutNote li {
-  padding-left: 1.25rem;
-  position: relative;
-}
-
-.aboutNote li::before {
+.quoteIcon {
   color: var(--beige);
-  content: "—";
-  left: 0;
-  position: absolute;
 }
 
-.credentialsSection {
-  gap: 2rem;
-}
+.knowledge {
+  --icon-size: 1.5rem;
 
-.credentialsIntro {
-  max-width: 38rem;
-}
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 
-.credentialsIntro p {
-  margin-bottom: 0;
-}
-
-.credentialsList {
-  display: grid;
-}
-
-.credentialItem {
-  border-top: 1px solid var(--line);
-  display: grid;
-  gap: 0.75rem;
-  padding: 1.25rem 0;
-}
-
-.credentialItem:last-child {
-  border-bottom: 1px solid var(--line);
-}
-
-.credentialItem h3 {
-  margin-bottom: 0;
-}
-
-.credentialItem p {
-  margin-bottom: 0;
-}
-
-@media (min-width: 640px) {
-  .aboutSection,
-  .credentialsSection {
-    gap: 4rem;
+  h2 {
+    margin-bottom: 0;
   }
 
-  .aboutNote {
-    padding-left: 2rem;
-  }
+  @media (min-width: 1024px) {
+    align-items: start;
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 
-  .credentialItem {
-    align-items: center;
-    column-gap: 3rem;
-    grid-template-columns: minmax(12rem, 0.7fr) minmax(0, 1.3fr);
-    padding: 1.5rem 0;
+    h2 {
+      max-width: 13ch;
+    }
   }
 }
 
-@media (min-width: 1024px) {
-  .aboutSection {
-    grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 0.75fr);
+/* Mobile: the icon moves above the eyebrow, the text stays below the heading. */
+.knowledgeCopy {
+  display: contents;
+
+  p {
+    color: var(--accent);
+    font-size: 1.05rem;
+    margin-bottom: 0;
   }
 
-  .credentialsSection {
-    grid-template-columns: minmax(14rem, 0.7fr) minmax(0, 1.3fr);
+  @media (min-width: 640px) {
+    align-items: flex-start;
+    display: flex;
+    gap: 1.25rem;
+  }
+}
+
+.knowledgeIcon {
+  color: var(--beige);
+  order: -1;
+
+  @media (min-width: 640px) {
+    order: 0;
   }
 }

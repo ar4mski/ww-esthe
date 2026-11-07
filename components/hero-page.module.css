@@ -47,7 +47,7 @@
 
 .heroContent h1 {
   color: var(--foreground);
-  font-size: clamp(2.125rem, 5.1vw, 4.0375rem);
+  font-size: var(--heading-display-size);
   line-height: 0.9;
   margin-bottom: 1.275rem;
   max-width: 9ch;
