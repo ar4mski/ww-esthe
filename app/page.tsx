@@ -18,6 +18,7 @@ import { Visit } from "@/components/visit";
 import { homeFaqs } from "@/data/faq";
 import { HomeShowcase } from "./components/home-showcase";
 import styles from "./homepage.module.css";
+import { AboutTeaser } from "./kontakt/components/about-teaser";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Makijaż permanentny i medycyna estetyczna w Szczecinie | WW - ESTHE",
@@ -90,8 +91,14 @@ export default function Home() {
         eyebrow="Najczęściej zadawane pytania"
         title="Wszystko o co chciałabyś zapytać"
       />
+      <AboutTeaser />
 
-      <PageSection eyebrow="Opinie" title="Co mówią klientki" id="opinie">
+      <PageSection
+        eyebrow="Opinie"
+        title="Co mówią klientki"
+        id="opinie"
+        className="section-tinted"
+      >
         <Carousel ariaLabel="Nawigacja opinii" autoPlayInterval={5000}>
           {testimonials.map((testimonial) => (
             <Testimonial
