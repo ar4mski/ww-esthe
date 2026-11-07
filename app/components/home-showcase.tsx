@@ -3,10 +3,11 @@
 import Link from "next/link";
 import { useState } from "react";
 
-import { GalleryFilter } from "@/components/gallery-grid/gallery-filter";
+import { CategoryFilter } from "@/components/category-filter";
 import {
+  galleryCategories,
   galleryItems,
-  type GalleryFilter as GalleryFilterValue,
+  type GalleryFilter,
 } from "@/components/gallery-grid/gallery-items";
 import { GalleryPreview } from "@/components/gallery-grid/gallery-preview";
 
@@ -14,7 +15,7 @@ const SHOWCASE_PHOTO_COUNT = 4;
 
 export const HomeShowcase = () => {
   const [activeCategory, setActiveCategory] =
-    useState<GalleryFilterValue>("all");
+    useState<GalleryFilter>("all");
   const photos = (
     activeCategory === "all"
       ? galleryItems
@@ -23,9 +24,11 @@ export const HomeShowcase = () => {
 
   return (
     <>
-      <GalleryFilter
+      <CategoryFilter
         activeCategory={activeCategory}
-        onCategoryChange={setActiveCategory}
+        categories={galleryCategories}
+        label="Kategorie galerii"
+        onChange={setActiveCategory}
       />
       <GalleryPreview key={activeCategory} photos={photos} />
       <Link

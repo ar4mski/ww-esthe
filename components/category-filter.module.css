@@ -1,0 +1,42 @@
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter {
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  padding: 0.2rem 0 0.55rem;
+
+  &:focus-visible {
+    outline: 2px solid var(--beige);
+    outline-offset: 3px;
+  }
+}
+
+.filterCollapsed {
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
+  }
+}
+
+.filterTabletVisible {
+  @media (min-width: 640px) {
+    display: block;
+  }
+}
+
+.filterExpand {
+  display: block;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}

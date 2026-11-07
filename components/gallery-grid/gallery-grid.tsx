@@ -3,12 +3,14 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
-import { GalleryFilter } from "./gallery-filter";
+import { CategoryFilter } from "@/components/category-filter";
+
 import styles from "./gallery-grid.module.css";
 import {
+  galleryCategories,
   galleryItems,
   isGalleryFilter,
-  type GalleryFilter as GalleryFilterValue,
+  type GalleryFilter,
 } from "./gallery-items";
 import { GalleryThumbnail } from "./gallery-thumbnail";
 import { GalleryViewer } from "./gallery-viewer";
@@ -21,7 +23,7 @@ export function GalleryGrid({ className }: GalleryGridProps) {
   const router = useRouter();
   const pathname = usePathname();
   const categoryParam = useSearchParams().get("category");
-  const activeCategory: GalleryFilterValue =
+  const activeCategory: GalleryFilter =
     categoryParam && isGalleryFilter(categoryParam) ? categoryParam : "all";
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const visibleItems =
@@ -29,7 +31,7 @@ export function GalleryGrid({ className }: GalleryGridProps) {
       ? galleryItems
       : galleryItems.filter((item) => item.category === activeCategory);
 
-  const handleCategoryChange = (category: GalleryFilterValue) => {
+  const handleCategoryChange = (category: GalleryFilter) => {
     setActiveIndex(null);
     router.replace(
       category === "all" ? pathname : `${pathname}?category=${category}`,
@@ -39,9 +41,11 @@ export function GalleryGrid({ className }: GalleryGridProps) {
 
   return (
     <>
-      <GalleryFilter
+      <CategoryFilter
         activeCategory={activeCategory}
-        onCategoryChange={handleCategoryChange}
+        categories={galleryCategories}
+        label="Kategorie galerii"
+        onChange={handleCategoryChange}
       />
       <div className={`${styles.grid} ${className ?? ""}`}>
         {visibleItems.map((item, index) => (

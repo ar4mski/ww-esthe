@@ -1,34 +1,43 @@
 "use client";
 
 import { useState } from "react";
-import styles from "./gallery-grid.module.css";
-import {
-  galleryCategories,
-  type GalleryFilter as GalleryFilterValue,
-} from "./gallery-items";
+
+import styles from "./category-filter.module.css";
 
 const VISIBLE_FILTERS_ON_MOBILE = 2;
 const VISIBLE_FILTERS_ON_TABLET = 3;
 
-type GalleryFilterProps = {
-  activeCategory: GalleryFilterValue;
-  onCategoryChange: (category: GalleryFilterValue) => void;
+type FilterCategory<T extends string> = {
+  id: T;
+  label: string;
 };
 
-export function GalleryFilter({
+type CategoryFilterProps<T extends string> = {
+  activeCategory: T;
+  categories: readonly FilterCategory<T>[];
+  label: string;
+  onChange: (category: T) => void;
+};
+
+export function CategoryFilter<T extends string>({
   activeCategory,
-  onCategoryChange,
-}: GalleryFilterProps) {
-  const activeCategoryIndex = galleryCategories.findIndex(
+  categories,
+  label,
+  onChange,
+}: CategoryFilterProps<T>) {
+  const activeCategoryIndex = categories.findIndex(
     ({ id }) => id === activeCategory,
   );
+  // TODO: `isExpanded` is initialised only on mount. If `activeCategory` changes
+  // from outside (e.g. `?category=` after browser back/forward) and lands on a
+  // collapsed filter, it stays hidden behind "Więcej..." on mobile.
   const [isExpanded, setIsExpanded] = useState(
     activeCategoryIndex >= VISIBLE_FILTERS_ON_MOBILE,
   );
 
   return (
-    <div className={styles.filters} role="group" aria-label="Kategorie galerii">
-      {galleryCategories.map((category, index) => {
+    <div className={styles.filters} role="group" aria-label={label}>
+      {categories.map((category, index) => {
         const isCollapsed = index >= VISIBLE_FILTERS_ON_MOBILE && !isExpanded;
         const isTabletVisible = index < VISIBLE_FILTERS_ON_TABLET;
 
@@ -45,12 +54,14 @@ export function GalleryFilter({
             type="button"
             aria-pressed={category.id === activeCategory}
             key={category.id}
-            onClick={() => onCategoryChange(category.id)}
+            onClick={() => onChange(category.id)}
           >
             {category.label}
           </button>
         );
       })}
+      {/* TODO: render "Więcej..." only when `categories` is longer than the
+          visible-filter thresholds; with 3 or fewer it toggles nothing. */}
       <button
         className={`${styles.filter} ${styles.filterExpand} interactive-underline`}
         type="button"
