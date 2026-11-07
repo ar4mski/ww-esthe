@@ -192,3 +192,30 @@ export const galleryItems = [
 ];
 
 export type GalleryItem = (typeof galleryItems)[number];
+
+export const homeShowcaseItems = [
+  {
+    src: "/images/gallery/makijaz-permanentny-brwi/06.jpg",
+    alt: "Brwi po makijażu permanentnym",
+    description:
+      "Gęste, wyraziste brwi o naturalnym kształcie dopasowanym do rysów twarzy.",
+  },
+  {
+    src: "/images/gallery/makijaz-permanentny-brwi/07.jpg",
+    alt: "Efekt pudrowych brwi",
+    description:
+      "Miękki, pudrowy efekt, który podkreśla spojrzenie i pozostaje subtelny na co dzień.",
+  },
+  {
+    src: "/images/gallery/makijaz-permanentny-ust/01.jpg",
+    alt: "Usta po makijażu permanentnym",
+    description:
+      "Świeży kolor ust dobrany do karnacji, z delikatnie zaznaczonym konturem.",
+  },
+  {
+    src: "/images/treatments/modelowanie-ust/showcase-01.jpg",
+    alt: "Modelowanie ust",
+    description:
+      "Naturalnie wymodelowane usta o miękkim kształcie i zachowanych proporcjach.",
+  },
+];

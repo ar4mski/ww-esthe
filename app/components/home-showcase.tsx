@@ -7,6 +7,7 @@ import { CategoryFilter } from "@/components/category-filter";
 import {
   galleryCategories,
   galleryItems,
+  homeShowcaseItems,
   type GalleryFilter,
 } from "@/components/gallery-grid/gallery-items";
 import { GalleryPreview } from "@/components/gallery-grid/gallery-preview";
@@ -16,11 +17,12 @@ const SHOWCASE_PHOTO_COUNT = 4;
 export const HomeShowcase = () => {
   const [activeCategory, setActiveCategory] =
     useState<GalleryFilter>("all");
-  const photos = (
+  const photos =
     activeCategory === "all"
-      ? galleryItems
-      : galleryItems.filter(({ category }) => category === activeCategory)
-  ).slice(0, SHOWCASE_PHOTO_COUNT);
+      ? homeShowcaseItems
+      : galleryItems
+          .filter(({ category }) => category === activeCategory)
+          .slice(0, SHOWCASE_PHOTO_COUNT);
 
   return (
     <>
