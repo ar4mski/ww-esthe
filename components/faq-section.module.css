@@ -1,0 +1,42 @@
+.faqSection {
+  display: grid;
+  gap: 1.5rem;
+  scroll-margin-top: calc(var(--header-height) + 1rem);
+
+  @media (min-width: 1024px) {
+    align-items: start;
+    column-gap: 4rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.intro {
+  p {
+    max-width: 28rem;
+  }
+}
+
+.channelList {
+  display: grid;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 28rem;
+  }
+}
+
+.channelButton {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  min-height: 2.75rem;
+}
+
+.faqList {
+  border-top: 1px solid var(--line);
+}

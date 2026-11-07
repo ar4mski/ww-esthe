@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 
 import { BackgroundVideoSection } from "@/components/background-video-section";
 import { CTAButton } from "@/components/cta-button";
-import { FaqItem } from "@/components/faq-item";
+import { FaqSection } from "@/components/faq-section";
 import type { GalleryCategory } from "@/components/gallery-grid/gallery-items";
 import { JsonLd } from "@/components/json-ld";
 import { PageSection } from "@/components/page-section";
@@ -281,20 +281,12 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
         </div>
       </section>
 
-      <section
+      <FaqSection
+        className="section-tinted"
+        faqs={treatment.faqs}
         id="faq"
-        className={`${styles.content} ${styles.faqSection} ${styles.anchorSection} section-shell section-tinted`}
-        aria-labelledby="faq-title"
-      >
-        <div>
-          <h2 id="faq-title">Najczęściej zadawane pytania</h2>
-        </div>
-        <div>
-          {treatment.faqs.map((faq) => (
-            <FaqItem key={faq.question} {...faq} />
-          ))}
-        </div>
-      </section>
+        title="Najczęściej zadawane pytania"
+      />
     </article>
   );
 }

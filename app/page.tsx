@@ -13,7 +13,7 @@ import { getLocalBusinessJsonLd } from "@/data/structured-data";
 import { testimonials } from "@/data/testimonials";
 import { treatments } from "@/data/treatments";
 
-import { FaqItem } from "@/components/faq-item";
+import { FaqSection } from "@/components/faq-section";
 import { Visit } from "@/components/visit";
 import { homeFaqs } from "@/data/faq";
 import { HomeShowcase } from "./components/home-showcase";
@@ -83,16 +83,13 @@ export default function Home() {
         <HomeShowcase />
       </PageSection>
 
-      <PageSection
+      <FaqSection
         className="section-tinted"
+        faqs={homeFaqs}
         id="homepage-faq"
         eyebrow="Najczęściej zadawane pytania"
         title="Wszystko o co chciałabyś zapytać"
-      >
-        {homeFaqs.map((faq) => (
-          <FaqItem key={faq.question} {...faq} />
-        ))}
-      </PageSection>
+      />
 
       <PageSection eyebrow="Opinie" title="Co mówią klientki" id="opinie">
         <Carousel ariaLabel="Nawigacja opinii" autoPlayInterval={5000}>

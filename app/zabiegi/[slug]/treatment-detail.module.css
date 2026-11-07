@@ -158,14 +158,6 @@
   display: grid;
   position: relative;
 
-  &.faqSection {
-    background: var(--section-tint);
-
-    &::before {
-      display: none;
-    }
-  }
-
   &::before {
     border-top: 1px solid var(--line);
     content: "";
