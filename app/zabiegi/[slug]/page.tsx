@@ -7,13 +7,13 @@ import { notFound } from "next/navigation";
 import { BackgroundVideoSection } from "@/components/background-video-section";
 import { CTAButton } from "@/components/cta-button";
 import { FaqItem } from "@/components/faq-item";
+import type { GalleryCategory } from "@/components/gallery-grid/gallery-items";
 import { JsonLd } from "@/components/json-ld";
 import { PageSection } from "@/components/page-section";
 import { createPageMetadata } from "@/data/page-metadata";
 import { getTreatmentJsonLd } from "@/data/structured-data";
 import { getTreatmentShowcase } from "@/data/treatment-showcase";
 import { getTreatment, getTreatmentImage, treatments } from "@/data/treatments";
-import type { GalleryCategory } from "@/components/gallery-grid/gallery-items";
 import { Breadcrumbs } from "./components/breadcrumbs";
 import { TreatmentFacts } from "./components/treatment-facts";
 import { TreatmentShowcase } from "./components/treatment-showcase";
@@ -36,12 +36,12 @@ const galleryLinks: Record<string, { category: GalleryCategory }> = {
   "mezoterapia-mikroiglowa": {
     category: "mezoterapia-mikroiglowa",
   },
-  "stymulatory-tkankowe": {
-    category: "stymulatory-tkankowe",
-  },
-  "rf-radiofrekwencja": {
-    category: "rf-radiofrekwencja",
-  },
+  // "stymulatory-tkankowe": {
+  //   category: "stymulatory-tkankowe",
+  // },
+  // "rf-radiofrekwencja": {
+  //   category: "rf-radiofrekwencja",
+  // },
 };
 
 type SectionItemsProps = {

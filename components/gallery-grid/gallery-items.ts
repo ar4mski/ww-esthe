@@ -4,8 +4,8 @@ export const galleryCategories = [
   { id: "makijaz-permanentny-brwi", label: "Brwi PMU" },
   { id: "makijaz-permanentny-ust", label: "Usta PMU" },
   { id: "mezoterapia-mikroiglowa", label: "Mezoterapia" },
-  { id: "stymulatory-tkankowe", label: "Stymulatory" },
-  { id: "rf-radiofrekwencja", label: "RF mikroigłowa" },
+  // { id: "stymulatory-tkankowe", label: "Stymulatory" },
+  // { id: "rf-radiofrekwencja", label: "RF mikroigłowa" },
   { id: "inne", label: "Inne" },
 ] as const;
 
@@ -66,11 +66,32 @@ export const galleryItems = [
       "Regularna pielęgnacja i odpowiednio dobrane zabiegi wspierają kondycję skóry.",
   },
   {
-    src: "/images/gallery/mezoterapia-mikroiglowa/01.jpg",
+    src: "/images/treatments/mezoterapia-mikroiglowa/cover.jpg",
     category: "mezoterapia-mikroiglowa",
-    alt: "Rezultat zabiegu kosmetologicznego",
+    alt: "Skóra po mezoterapii mikroigłowej",
     description:
-      "Komfort i bezpieczeństwo klientki są ważną częścią całego doświadczenia.",
+      "Mezoterapia mikroigłowa pomaga odświeżyć skórę i poprawić jej kondycję.",
+  },
+  {
+    src: "/images/treatments/mezoterapia-mikroiglowa/showcase-01.jpg",
+    category: "mezoterapia-mikroiglowa",
+    alt: "Wykonywanie mezoterapii mikroigłowej",
+    description:
+      "Zabieg wykonywany jest precyzyjnie, z dbałością o komfort klientki.",
+  },
+  {
+    src: "/images/treatments/mezoterapia-mikroiglowa/showcase-02.jpg",
+    category: "mezoterapia-mikroiglowa",
+    alt: "Aplikacja preparatu podczas zabiegu",
+    description:
+      "Preparat dobieramy do potrzeb skóry podczas konsultacji przed zabiegiem.",
+  },
+  {
+    src: "/images/treatments/mezoterapia-mikroiglowa/showcase-03.jpg",
+    category: "mezoterapia-mikroiglowa",
+    alt: "Zabieg mezoterapii mikroigłowej",
+    description:
+      "Regularne zabiegi wspierają nawilżenie, jędrność i świeży wygląd skóry.",
   },
   {
     src: "/images/gallery/makijaz-permanentny-brwi/01.jpg",
@@ -159,8 +180,7 @@ export const galleryItems = [
     src: "/images/treatments/makijaz-permanentny-ust/showcase-03.jpg",
     category: "makijaz-permanentny-ust",
     alt: "Naturalny efekt pigmentacji ust",
-    description:
-      "Pigment dobrany tak, aby podkreślić naturalny odcień ust.",
+    description: "Pigment dobrany tak, aby podkreślić naturalny odcień ust.",
   },
   {
     src: "/images/treatments/makijaz-permanentny-ust/showcase-04.jpg",
