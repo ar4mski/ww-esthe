@@ -47,6 +47,16 @@
   color: rgba(247, 244, 239, 0.86);
 }
 
+/* Looks like the footer links next to it. */
+.footerButton {
+  background: none;
+  border: 0;
+  color: rgba(247, 244, 239, 0.86);
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+}
+
 .companyAddress {
   display: flex;
   flex-direction: column;

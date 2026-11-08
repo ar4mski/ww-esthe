@@ -7,6 +7,7 @@ export const cookieConsentContent = {
   rejectAllLabel: "Odrzuć opcjonalne",
   settingsLabel: "Ustawienia",
   saveSettingsLabel: "Zapisz wybór",
+  reopenLabel: "Ustawienia cookies",
   categories: [
     {
       id: "necessary",

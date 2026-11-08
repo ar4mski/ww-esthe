@@ -83,8 +83,25 @@ The full guidelines live in [.github/copilot-instructions.md](.github/copilot-in
 | ---------------------- | ----------------------------- | -------------------------------------------------------------------------------- |
 | `NEXT_PUBLIC_SITE_URL` | `https://ww-esthe.vercel.app` | Base URL for canonical links, Open Graph, the sitemap and structured data        |
 | `ALLOW_INDEXING`       | unset (indexing blocked)      | Set to `true` to let search engines crawl and index the site (see the checklist) |
+| `NEXT_PUBLIC_GA_ID`    | unset (no analytics)          | Google Analytics 4 measurement ID (`G-…`). Set it for **Production** only; GA loads only after the visitor accepts analytics cookies |
 
 Until `ALLOW_INDEXING=true`, every deployment serves `Disallow: /` in `robots.txt` and `noindex, nofollow` on all pages.
+
+## Analytics
+
+Google Analytics 4 is loaded by `components/analytics/google-analytics.tsx`, and only when `NEXT_PUBLIC_GA_ID` is set **and** the visitor has accepted analytics cookies in the consent banner. Withdrawing consent (footer link "Ustawienia cookies") stops tracking and removes the `_ga` cookies.
+
+Page views, including client-side navigation, come from GA's enhanced measurement. Clicks on contact links are sent as custom events by a single click listener, based on the link's `href` (`components/analytics/link-click-event.ts`), so new buttons are tracked automatically as long as they use the URLs from `data/site-config.ts`:
+
+| Event              | Link                                  | Parameters                              |
+| ------------------ | ------------------------------------- | --------------------------------------- |
+| `booking_click`    | `bookingUrl` ("Umów wizytę")          | `method`, `link_location`, `link_text`  |
+| `phone_click`      | `tel:`                                | `link_location`, `link_text`            |
+| `contact_click`    | e-mail, WhatsApp, Messenger           | `method`, `link_location`, `link_text`  |
+| `social_click`     | Instagram, Facebook profile           | `network`, `link_location`, `link_text` |
+| `directions_click` | Google Maps                           | `link_location`, `link_text`            |
+
+`link_location` is `header`, `footer` or `content`; add `data-analytics-location="…"` to any wrapper to label a section more precisely. To test locally, put `NEXT_PUBLIC_GA_ID=G-…` in `.env.local`, accept cookies and watch **Realtime** in Google Analytics.
 
 ## Deployment
 
@@ -95,6 +112,7 @@ The site is deployed on [Vercel](https://vercel.com); every build of the `master
 1. Replace placeholder content (home hero text, FAQ answers, "O mnie" descriptions, bank account number).
 2. Set `NEXT_PUBLIC_SITE_URL` to the production domain.
 3. Set `ALLOW_INDEXING=true` for the **Production** environment only (not Preview).
+   Set `NEXT_PUBLIC_GA_ID` for **Production** only as well, so test deployments do not send analytics data.
 4. Redirect the `vercel.app` domain and `www`/non-`www` to the canonical domain.
 5. Submit `/sitemap.xml` in Google Search Console and validate the structured data with the [Rich Results Test](https://search.google.com/test/rich-results).
 

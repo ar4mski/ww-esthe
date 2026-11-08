@@ -3,6 +3,7 @@ import { siteConfig } from "@/data/site-config";
 import { Mail, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { CookieSettingsButton } from "./cookie-consent/cookie-settings-button";
 import { InstagramIcon, MessengerIcon, WhatsAppIcon } from "./icons";
 
 import styles from "./site-footer.module.css";
@@ -68,6 +69,7 @@ export function SiteFooter() {
             <Link href={siteConfig.legal.privacyPolicyPath}>
               Polityka prywatności
             </Link>
+            <CookieSettingsButton className={styles.footerButton} />
           </nav>
 
           <section className={styles.companyGroup}>

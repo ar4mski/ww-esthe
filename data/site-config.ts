@@ -5,6 +5,9 @@ export const siteConfig = {
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://ww-esthe.vercel.app",
   // Every deployment is blocked from crawlers until ALLOW_INDEXING=true is set at launch.
   allowIndexing: process.env.ALLOW_INDEXING === "true",
+  // Google Analytics 4 measurement ID (G-...). Set it only for the Production
+  // environment so previews and local builds never send data.
+  gaMeasurementId: process.env.NEXT_PUBLIC_GA_ID,
   defaultOgImage: {
     url: "/images/heroes/home/og.jpg",
     width: 1200,

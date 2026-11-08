@@ -9,6 +9,13 @@ const STORAGE_KEY = "ww-esthe-cookie-consent";
 // Lets other parts of the app (e.g. an analytics loader) react to consent changes without a reload.
 export const COOKIE_CONSENT_CHANGE_EVENT = "cookie-consent-change";
 
+// Lets e.g. a footer link reopen the banner so visitors can change their choice.
+export const COOKIE_SETTINGS_OPEN_EVENT = "cookie-settings-open";
+
+export const openCookieSettings = () => {
+  window.dispatchEvent(new Event(COOKIE_SETTINGS_OPEN_EVENT));
+};
+
 export const getStoredCookieConsent = (): CookieConsentState | null => {
   if (typeof window === "undefined") return null;
 

@@ -8,7 +8,7 @@ export type LegalSection = {
 
 const { company, address, email, phone, legal } = siteConfig;
 
-export const legalLastUpdated = "1 października 2026";
+export const legalLastUpdated = "8 listopada 2026";
 
 export const privacyPolicySections = [
   {
@@ -42,12 +42,15 @@ export const privacyPolicySections = [
     heading: "Odbiorcy danych",
     paragraphs: [
       "Dane mogą być przekazywane podmiotom wspierającym nas w prowadzeniu działalności, w tym dostawcy hostingu strony oraz platformom Meta (Instagram, Facebook, Messenger, WhatsApp) w zakresie komunikacji prowadzonej za ich pośrednictwem.",
+      "Jeśli wyrazisz zgodę na pliki cookie analityczne, dane o korzystaniu ze strony otrzymuje także Google Ireland Limited jako dostawca usługi Google Analytics. Dane te mogą być przekazywane do Google LLC w Stanach Zjednoczonych na podstawie decyzji Komisji Europejskiej w sprawie ram ochrony danych UE–USA (EU-US Data Privacy Framework).",
     ],
   },
   {
     heading: "Pliki cookie i analityka",
     paragraphs: [
-      "Strona korzysta z plików cookie niezbędnych do jej działania oraz, za Twoją zgodą wyrażoną w banerze zgody, z plików cookie analitycznych (np. Google Analytics), które pomagają nam zrozumieć ruch na stronie. Zgodę możesz w każdej chwili zmienić, czyszcząc dane strony w ustawieniach przeglądarki.",
+      "Strona zapisuje w Twojej przeglądarce informację o wyborze dokonanym w banerze zgody. Jest to niezbędne do działania strony i nie wymaga zgody.",
+      "Za Twoją zgodą (art. 6 ust. 1 lit. a RODO) korzystamy z Google Analytics 4, aby sprawdzać, ile osób odwiedza stronę, z jakich źródeł trafia na nią ruch, które podstrony są czytane oraz jak często klikane są przyciski kontaktu i umawiania wizyty. Google Analytics zapisuje pliki cookie _ga i _ga_*, ważne do 2 lat. Nie przekazujemy do Google imienia, adresu e-mail, numeru telefonu ani innych danych pozwalających bezpośrednio Cię zidentyfikować. Dane statystyczne przechowujemy w Google Analytics przez 14 miesięcy.",
+      "Bez Twojej zgody Google Analytics nie jest wczytywany. Zgodę możesz w każdej chwili zmienić lub wycofać, klikając „Ustawienia cookies” w stopce strony. Po wycofaniu zgody usuwamy pliki cookie Google Analytics z Twojej przeglądarki. Wycofanie zgody nie wpływa na zgodność z prawem przetwarzania przed jej wycofaniem.",
     ],
   },
   {

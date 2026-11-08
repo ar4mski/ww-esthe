@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { CookieConsent } from "@/components/cookie-consent/cookie-consent";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -60,6 +61,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <SiteFooter />
         </div>
         <CookieConsent />
+        {siteConfig.gaMeasurementId && (
+          <GoogleAnalytics measurementId={siteConfig.gaMeasurementId} />
+        )}
       </body>
     </html>
   );
