@@ -44,7 +44,8 @@ const removeAnalyticsCookies = () => {
 };
 
 const trackLinkClicks = (event: MouseEvent) => {
-  const anchor = (event.target as Element | null)?.closest?.("a");
+  const anchor =
+    event.target instanceof Element ? event.target.closest("a") : null;
   if (!anchor) return;
 
   const clickEvent = getLinkClickEvent(anchor);
