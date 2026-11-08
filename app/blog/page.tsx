@@ -9,7 +9,7 @@ import { CategoryNav } from "./components/category-nav";
 import { FeaturedPost } from "./components/featured-post";
 import { PostGrid } from "./components/post-grid";
 
-const title = "Blog | WW - ESTHE";
+const title = "Blog – porady o makijażu permanentnym i estetyce";
 const description =
   "Porady, inspiracje i rzetelna wiedza o makijażu permanentnym, pielęgnacji i zabiegach medycyny estetycznej.";
 
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.businessName,
     locale: siteConfig.locale,
     type: "website",
-    images: [{ url: "/images/heroes/fallback.jpg", alt: "Blog WW-Esthe" }],
+    images: [{ url: "/images/heroes/fallback.jpg", alt: `Blog ${siteConfig.businessName}` }],
   },
   twitter: {
     card: "summary_large_image",

@@ -36,7 +36,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     ...posts.map((post) => ({
       url: toUrl(getBlogPostPath(post.slug)),
-      lastModified: post.date,
+      lastModified: post.updatedDate ?? post.date,
     })),
   ];
 }

@@ -15,6 +15,7 @@ const toAbsoluteUrl = (path: string) =>
   new URL(path, siteConfig.siteUrl).toString();
 
 const businessId = toAbsoluteUrl("/#business");
+const logoUrl = toAbsoluteUrl("/images/branding/icon-512.png");
 
 // Treatment prices are display strings: "800 zł", "350-600 zł", "od 200 zł".
 const parsePrices = (price: string) => (price.match(/\d+/g) ?? []).map(Number);
@@ -59,6 +60,15 @@ export const getBreadcrumbJsonLd = (
   ],
 });
 
+// Tells Google the site name to show above the title in search results.
+export const getWebSiteJsonLd = () => ({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteConfig.businessName,
+  url: siteConfig.siteUrl,
+  inLanguage: siteConfig.locale,
+});
+
 export const getLocalBusinessJsonLd = () => {
   const [streetAddress, postalCodeAndCity] = siteConfig.address.lines;
   const [postalCode, ...cityParts] = postalCodeAndCity.split(" ");
@@ -71,6 +81,7 @@ export const getLocalBusinessJsonLd = () => {
     description: siteConfig.description,
     url: siteConfig.siteUrl,
     image: toAbsoluteUrl(siteConfig.defaultOgImage.url),
+    logo: logoUrl,
     telephone: siteConfig.phone.href.replace("tel:", ""),
     email: siteConfig.email.display,
     address: {
@@ -112,6 +123,7 @@ export const getBlogPostingJsonLd = (post: BlogPost) => ({
     "@type": "Organization",
     name: siteConfig.businessName,
     url: siteConfig.siteUrl,
+    logo: { "@type": "ImageObject", url: logoUrl },
   },
 });
 

@@ -41,7 +41,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const title = post.seoTitle ?? `${post.title} | WW - ESTHE`;
+  const title = post.seoTitle ?? post.title;
   const description = post.seoDescription ?? post.description;
   const path = getBlogPostPath(post.slug);
   const images = [{ url: post.coverImage, alt: post.coverImageAlt }];

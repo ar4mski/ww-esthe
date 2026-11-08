@@ -11,9 +11,9 @@ import { AboutHero } from "./components/about-hero";
 import { CertificateList } from "./components/certificate-list";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "O mnie | WW - ESTHE",
+  title: "O mnie – Wiktoria Warylak, makijaż permanentny Szczecin",
   description:
-    "Poznaj podejście Wiktorii do estetyki, pielęgnacji i świadomego podkreślania naturalnego piękna.",
+    "Poznaj Wiktorię Warylak: jej podejście do estetyki i pielęgnacji, certyfikaty oraz filozofię świadomego podkreślania naturalnego piękna w gabinecie w Szczecinie.",
   path: "/o-mnie",
 });
 

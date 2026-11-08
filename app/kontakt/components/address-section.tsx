@@ -86,7 +86,7 @@ export const AddressSection = () => {
         <div className={styles.mapFrame}>
           <iframe
             src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
-            title="Mapa dojazdu do gabinetu WW-Esthe"
+            title={`Mapa dojazdu do gabinetu ${siteConfig.businessName}`}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />

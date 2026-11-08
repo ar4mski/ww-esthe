@@ -3,13 +3,13 @@ import Link from "next/link";
 
 import { BookingCta } from "@/components/booking-cta";
 import { createPageMetadata } from "@/data/page-metadata";
+import { siteConfig } from "@/data/site-config";
 
 import styles from "./pricing.module.css";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Cennik zabiegów | WW - ESTHE",
-  description:
-    "Cennik makijażu permanentnego, modelowania ust i zabiegów medycyny estetycznej w gabinecie WW-Esthe w Szczecinie.",
+  title: "Cennik makijażu permanentnego i zabiegów w Szczecinie",
+  description: `Cennik makijażu permanentnego, modelowania ust i zabiegów medycyny estetycznej w gabinecie ${siteConfig.businessName} w Szczecinie.`,
   path: "/cennik",
 });
 

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { StatusPage } from "@/components/status-page";
 
 export const metadata: Metadata = {
-  title: "Nie znaleziono strony | WW - ESTHE",
+  title: "Nie znaleziono strony",
 };
 
 export default function NotFound() {

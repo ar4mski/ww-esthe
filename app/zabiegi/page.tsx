@@ -6,7 +6,7 @@ import { createPageMetadata } from "@/data/page-metadata";
 import { siteConfig } from "@/data/site-config";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Zabiegi | WW - ESTHE",
+  title: "Makijaż permanentny, powiększanie ust i laser – Szczecin",
   description:
     "Makijaż permanentny, modelowanie ust i zabiegi medycyny estetycznej w Szczecinie. Poznaj przebieg zabiegów, przygotowanie i zalecenia pozabiegowe.",
   path: "/zabiegi",

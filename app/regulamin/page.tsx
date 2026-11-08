@@ -6,8 +6,8 @@ import { createPageMetadata } from "@/data/page-metadata";
 import { siteConfig } from "@/data/site-config";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Regulamin | WW - ESTHE",
-  description: "Zasady umawiania i realizacji zabiegów w WW - ESTHE.",
+  title: "Regulamin",
+  description: `Zasady umawiania i realizacji zabiegów w ${siteConfig.businessName}.`,
   path: siteConfig.legal.termsPath,
 });
 

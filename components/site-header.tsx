@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { headerNavigation } from "@/data/navigation";
+import { siteConfig } from "@/data/site-config";
 
 import { SiteHeaderNavLink } from "./site-header-nav-link";
 import { SiteHeaderShell } from "./site-header-shell";
@@ -17,12 +18,12 @@ export const SiteHeader = () => (
         <Link
           className={styles.brand}
           href="/"
-          aria-label="Strona główna WW-Esthe"
+          aria-label={`Strona główna ${siteConfig.businessName}`}
         >
           <Image
             className={styles.brandLogo}
             src="/images/branding/horizontal.svg"
-            alt="WW-Esthe"
+            alt={siteConfig.businessName}
             width={130}
             height={68}
             priority

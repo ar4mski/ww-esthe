@@ -6,9 +6,8 @@ import { createPageMetadata } from "@/data/page-metadata";
 import { siteConfig } from "@/data/site-config";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Polityka prywatności | WW - ESTHE",
-  description:
-    "Zasady przetwarzania danych osobowych oraz plików cookie na stronie WW - ESTHE.",
+  title: "Polityka prywatności",
+  description: `Zasady przetwarzania danych osobowych oraz plików cookie na stronie ${siteConfig.businessName}.`,
   path: siteConfig.legal.privacyPolicyPath,
 });
 

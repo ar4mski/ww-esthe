@@ -80,7 +80,7 @@ export async function generateMetadata({
   }
 
   return createPageMetadata({
-    title: `${treatment.title} | WW - ESTHE`,
+    title: treatment.seoTitle ?? `${treatment.title} w Szczecinie`,
     description: treatment.shortDescription,
     path: `/zabiegi/${treatment.slug}`,
     image: {

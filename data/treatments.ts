@@ -23,6 +23,8 @@ export type Treatment = {
   recoveryTime: string;
   sessionCount: string;
   imageAlt: string;
+  /** Page title for search results; defaults to "{title} w Szczecinie". */
+  seoTitle?: string;
   procedureVideo?: {
     src: string;
     eyebrow?: string;
@@ -182,6 +184,7 @@ export const treatments: Treatment[] = [
     recoveryTime: "2-7 dni",
     sessionCount: "1",
     imageAlt: "Zdjęcie ust związane z zabiegiem modelowania.",
+    seoTitle: "Powiększanie i modelowanie ust w Szczecinie",
     forWho: {
       heading: "Dla kogo jest zabieg?",
       paragraphs: [
@@ -767,6 +770,7 @@ export const treatments: Treatment[] = [
     recoveryTime: "7-14 dni",
     sessionCount: "Ustalana indywidualnie",
     imageAlt: "Laserowe usuwanie makijażu permanentnego brwi.",
+    seoTitle: "Laserowe usuwanie makijażu permanentnego brwi – Szczecin",
     forWho: {
       heading: "Dla kogo jest zabieg?",
       paragraphs: [

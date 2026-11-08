@@ -37,8 +37,8 @@ export async function generateMetadata({
   }
 
   const posts = await getPostsByCategory(category);
-  const title = `${category.label} – Blog | WW - ESTHE`;
-  const description = `Artykuły z kategorii ${category.label}: porady i rzetelna wiedza od WW-Esthe.`;
+  const title = `${category.label} – Blog`;
+  const description = `Artykuły z kategorii ${category.label}: porady i rzetelna wiedza od ${siteConfig.businessName}.`;
   const path = getBlogCategoryPath(category);
 
   return {
