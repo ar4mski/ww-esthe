@@ -23,6 +23,8 @@ export type BlogPostMeta = {
   description: string;
   /** ISO date (YYYY-MM-DD). */
   date: string;
+  /** ISO date (YYYY-MM-DD) of the last substantial edit; omit if never edited. */
+  updatedDate?: string;
   category: BlogCategory;
   coverImage: string;
   coverImageAlt: string;
@@ -103,6 +105,10 @@ const parsePost = (source: string, file: string): BlogPost => {
     title,
     description: requireString(data.description, "description", file),
     date: parseDate(data.date, file),
+    updatedDate:
+      data.updatedDate === undefined
+        ? undefined
+        : parseDate(data.updatedDate, file),
     category,
     coverImage: requireString(data.coverImage, "coverImage", file),
     coverImageAlt:

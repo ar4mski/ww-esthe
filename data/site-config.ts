@@ -25,6 +25,7 @@ export const siteConfig = {
   address: {
     lines: ["ul. Racławicka 1/4", "70-811 Szczecin"],
     mapsUrl: "https://maps.app.goo.gl/8EGQF2ho8o2eJ4Ji7",
+    geo: { latitude: 53.3926715, longitude: 14.669513 },
   },
   social: {
     instagram: "https://instagram.com/wiktoria.warylak.esthe",

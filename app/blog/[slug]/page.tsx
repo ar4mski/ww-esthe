@@ -13,6 +13,7 @@ import {
   getRelatedPosts,
 } from "@/data/blog";
 import { siteConfig } from "@/data/site-config";
+import { getBlogPostingJsonLd } from "@/data/structured-data";
 
 import { ArticleContent } from "../components/article-content";
 import { BlogBreadcrumbs } from "../components/blog-breadcrumbs";
@@ -81,34 +82,10 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   }
 
   const relatedPosts = await getRelatedPosts(post);
-  const absoluteUrl = (path: string) =>
-    new URL(path, siteConfig.siteUrl).toString();
 
   return (
     <>
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
-          headline: post.title,
-          description: post.seoDescription ?? post.description,
-          image: absoluteUrl(post.coverImage),
-          datePublished: post.date,
-          dateModified: post.date,
-          inLanguage: siteConfig.locale,
-          articleSection: post.category.label,
-          keywords: post.tags.length > 0 ? post.tags.join(", ") : undefined,
-          mainEntityOfPage: absoluteUrl(getBlogPostPath(post.slug)),
-          author: post.author
-            ? { "@type": "Person", name: post.author }
-            : { "@type": "Organization", name: siteConfig.businessName },
-          publisher: {
-            "@type": "Organization",
-            name: siteConfig.businessName,
-            url: siteConfig.siteUrl,
-          },
-        }}
-      />
+      <JsonLd data={getBlogPostingJsonLd(post)} />
 
       <article>
         <header className={`section-shell ${styles.header}`}>
