@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useSyncExternalStore } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 
 import { cookieConsentContent } from "@/data/cookie-consent";
 import { siteConfig } from "@/data/site-config";
 
 import {
+  COOKIE_SETTINGS_OPEN_EVENT,
+  type CookieConsentState,
   getStoredCookieConsent,
   storeCookieConsent,
   subscribeToCookieConsent,
@@ -15,6 +17,7 @@ import styles from "./cookie-consent.module.css";
 
 export function CookieConsent() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isReopened, setIsReopened] = useState(false);
   const [analyticsChecked, setAnalyticsChecked] = useState(false);
   // The server snapshot reports consent as given so the banner is never in the
   // server HTML; only the client knows whether a choice was already stored.
@@ -24,7 +27,25 @@ export function CookieConsent() {
     () => true,
   );
 
-  if (hasStoredConsent) return null;
+  // Reopened from the "Ustawienia cookies" link: show the settings view with
+  // the visitor's current choice preselected.
+  useEffect(() => {
+    const onOpen = () => {
+      setAnalyticsChecked(getStoredCookieConsent()?.analytics ?? false);
+      setIsSettingsOpen(true);
+      setIsReopened(true);
+    };
+
+    window.addEventListener(COOKIE_SETTINGS_OPEN_EVENT, onOpen);
+    return () => window.removeEventListener(COOKIE_SETTINGS_OPEN_EVENT, onOpen);
+  }, []);
+
+  const saveConsent = (consent: CookieConsentState) => {
+    storeCookieConsent(consent);
+    setIsReopened(false);
+  };
+
+  if (hasStoredConsent && !isReopened) return null;
 
   return (
     <div
@@ -73,7 +94,7 @@ export function CookieConsent() {
             <button
               className="button"
               type="button"
-              onClick={() => storeCookieConsent({ analytics: analyticsChecked })}
+              onClick={() => saveConsent({ analytics: analyticsChecked })}
             >
               {cookieConsentContent.saveSettingsLabel}
             </button>
@@ -82,14 +103,14 @@ export function CookieConsent() {
               <button
                 className="button"
                 type="button"
-                onClick={() => storeCookieConsent({ analytics: true })}
+                onClick={() => saveConsent({ analytics: true })}
               >
                 {cookieConsentContent.acceptAllLabel}
               </button>
               <button
                 className="button button-secondary"
                 type="button"
-                onClick={() => storeCookieConsent({ analytics: false })}
+                onClick={() => saveConsent({ analytics: false })}
               >
                 {cookieConsentContent.rejectAllLabel}
               </button>
