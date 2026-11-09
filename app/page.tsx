@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { CTAButton } from "@/components/cta-button";
 import { JsonLd } from "@/components/json-ld";
 import { PageHero } from "@/components/page-hero";
 import { PageSection } from "@/components/page-section";
@@ -69,11 +70,16 @@ export default function Home() {
 
       <PageSection
         id="wizyta-krok-po-kroku"
-        headingClassName={styles.visitIntro}
-        eyebrow="Nasze podejście"
+        className={styles.visitSection}
+        headingClassName={styles.visitHeading}
+        eyebrow="Moje podejście"
         title="Twoja wizyta krok po kroku"
+        description="Bez pośpiechu i niespodzianek.Zanim zaczniemy, wiesz dokładnie, co Cię czeka."
       >
         <Visit />
+        <CTAButton
+          className={`button-outline button-outline-beige ${styles.visitButton}`}
+        />
       </PageSection>
 
       <PageSection

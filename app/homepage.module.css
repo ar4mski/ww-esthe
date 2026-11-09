@@ -8,9 +8,57 @@
   font-size: 0.9rem;
 }
 
-.visitIntro {
-  display: block;
-  margin-bottom: 3.25rem;
+.visitSection {
+  display: grid;
+  grid-template-areas:
+    "heading"
+    "steps"
+    "action";
+
+  & > ol {
+    grid-area: steps;
+  }
+
+  & > .visitButton {
+    grid-area: action;
+    margin-top: 2rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  @media (min-width: 640px) {
+    & > ol {
+      margin-top: 2.75rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    column-gap: 4rem;
+    grid-template-areas:
+      "heading steps"
+      "action steps";
+    grid-template-columns: 1fr 1.4fr;
+    grid-template-rows: auto 1fr;
+
+    & > ol {
+      margin-top: 0;
+    }
+
+    & > .visitButton {
+      align-self: start;
+      text-align: left;
+      width: fit-content;
+    }
+  }
+}
+
+.visitHeading {
+  grid-area: heading;
+  margin-bottom: 2rem;
+
+  @media (min-width: 640px) {
+    margin-bottom: 0;
+  }
 }
 
 @media (min-width: 640px) {
