@@ -54,7 +54,7 @@ Przy okazji naprawiony błąd: jawne `robots: undefined` na stronach kategorii b
 3. **Włączenie indeksowania:** `ALLOW_INDEXING=true` (tylko Production).
 4. **Google Business Profile:** weryfikacja adresu w toku. Nazwa, adres i telefon (NAP) identyczne jak na stronie i w JSON-LD; nie dopisywać fraz kluczowych do nazwy wizytówki. To najważniejszy czynnik lokalnego SEO.
 5. **Po starcie:** założyć Google Search Console, zgłosić sitemapę, sprawdzić JSON-LD w Rich Results Test (https://search.google.com/test/rich-results), ustawić przekierowania `vercel.app` i `www`, obserwować CTR i zapytania per strona.
-6. **Opinie:** po weryfikacji wizytówki i zebraniu prawdziwych opinii dodać `aggregateRating` (tylko jeśli opinie są widoczne na stronie).
+6. **Opinie:** sekcja jest tymczasowo ukryta. Po weryfikacji wizytówki i zebraniu prawdziwych opinii pobierać je z Google (Places API) i dopiero wtedy dodać `aggregateRating` (tylko jeśli opinie są widoczne na stronie). Szczegóły w [project-status.md](project-status.md).
 
 ## Treści do poprawy pod priorytetowe usługi
 - Strona modelowania ust: tytuł SEO mówi „Powiększanie i modelowanie ust”, ale H1, nawigacja i treść tylko „Modelowanie ust”. Rozważyć frazę „powiększanie ust” w H1 i opisie.

@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { Carousel } from "@/components/carousel";
 import { JsonLd } from "@/components/json-ld";
 import { PageHero } from "@/components/page-hero";
 import { PageSection } from "@/components/page-section";
-import { Testimonial } from "@/components/testimonial";
 import { TreatmentListItem } from "@/components/treatment-list-item";
 import { createPageMetadata } from "@/data/page-metadata";
 import { siteConfig } from "@/data/site-config";
@@ -13,7 +11,6 @@ import {
   getLocalBusinessJsonLd,
   getWebSiteJsonLd,
 } from "@/data/structured-data";
-import { testimonials } from "@/data/testimonials";
 import { treatments } from "@/data/treatments";
 
 import { FaqSection } from "@/components/faq-section";
@@ -96,23 +93,6 @@ export default function Home() {
         title="Wszystko o co chciałabyś zapytać"
       />
       <AboutTeaser />
-
-      <PageSection
-        eyebrow="Opinie"
-        title="Co mówią klientki"
-        id="opinie"
-        className="section-tinted"
-      >
-        <Carousel ariaLabel="Nawigacja opinii" autoPlayInterval={5000}>
-          {testimonials.map((testimonial) => (
-            <Testimonial
-              key={testimonial.quote}
-              quote={testimonial.quote}
-              author={testimonial.author}
-            />
-          ))}
-        </Carousel>
-      </PageSection>
     </>
   );
 }
