@@ -19,7 +19,7 @@ Data: 2026-11-09 (poprzednia wersja: 2026-11-01)
 ### SEO
 - Canonical per strona, metadane i OG przez `createPageMetadata`, JSON-LD, sitemapa, `robots.ts`, `manifest.ts`, ikony.
 - Jedna nazwa firmy w całym projekcie: „Wiktoria Warylak Esthe” (`siteConfig.businessName`), używana w kodzie zamiast tekstu wpisanego na sztywno.
-- Tytuły stron mają maks. 60 znaków, zawierają frazę lokalną i nie mają przyrostka z nazwą firmy (poza stroną główną). Zabiegi mogą nadpisać tytuł polem `seoTitle` w `data/treatments.ts`.
+- Tytuły stron mają maks. 60 znaków, zawierają frazę lokalną i nie mają przyrostka z nazwą firmy (nazwę podaje `WebSite` JSON-LD). Zabiegi mogą nadpisać tytuł polem `seoTitle` w `data/treatments.ts`.
 - Dane strukturalne w `data/structured-data.ts`: `WebSite`, `HealthAndBeautyBusiness` (z `geo`, `priceRange`, `logo`, `hasMap`), `Service` z `offers` (ceny z cennika), `BlogPosting` (z `updatedDate`), `BreadcrumbList`.
 - Indeksowanie jest zablokowane do czasu ustawienia `ALLOW_INDEXING=true`.
 - Szczegóły: [seo-report.md](seo-report.md).
@@ -55,7 +55,7 @@ Data: 2026-11-09 (poprzednia wersja: 2026-11-01)
 - **Opisy (`shortDescription`) laseru i modelowania ust** nie zawierają „Szczecin”; dopisać, bo są używane jako meta description.
 - **Blog:** przy istotnej edycji wpisu dodać `updatedDate` we frontmatterze (trafia do `dateModified` w JSON-LD i do sitemapy). Rozważyć jawnego autora z krótkim opisem kwalifikacji (E-E-A-T, medycyna estetyczna).
 - **`manifest.ts`:** `short_name` to nadal „WW-Esthe” (podpis ikony aplikacji jest ucinany po ok. 12 znakach). Zdecydować, czy zostawić.
-- **Tytuły:** mają maks. 60 znaków i nie zawierają nazwy firmy poza stroną główną (nazwa jest też w `WebSite` JSON-LD). Nowe strony i wpisy trzymać w tym limicie.
+- **Tytuły:** mają maks. 60 znaków i nie zawierają nazwy firmy (nazwa jest w `WebSite` JSON-LD). Nowe strony i wpisy trzymać w tym limicie.
 - Niski priorytet: `FAQPage` w JSON-LD. Google pokazuje rozwijane FAQ w wynikach tylko serwisom rządowym i zdrowotnym, więc zysk to najwyżej lepsze zrozumienie treści.
 
 ### Wydajność

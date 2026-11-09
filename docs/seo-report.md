@@ -10,7 +10,7 @@ Priorytetowe usługi do pozycjonowania: makijaż permanentny brwi i ust, powięk
 
 | Temat | Efekt |
 |---|---|
-| Tytuły stron | Maks. 60 znaków, z frazą lokalną, bez przyrostka z nazwą firmy (poza `/`). Zabiegi: `{nazwa} w Szczecinie`, a dla modelowania ust i lasera własny `seoTitle` (`data/treatments.ts`), np. „Powiększanie i modelowanie ust w Szczecinie” |
+| Tytuły stron | Maks. 60 znaków, z frazą lokalną, bez przyrostka z nazwą firmy (nazwę podaje `WebSite` JSON-LD). Strona główna celuje we frazy główne („Makijaż permanentny i powiększanie ust w Szczecinie”), a `/zabiegi` w ofertę jako całość, żeby dwie strony nie konkurowały o te same frazy. Zabiegi: `{nazwa} w Szczecinie`, a dla modelowania ust i lasera własny `seoTitle` (`data/treatments.ts`), np. „Powiększanie i modelowanie ust w Szczecinie” |
 | Opisy (meta description) | Nowy opis strony głównej (`siteConfig.description`), nowe opisy `/kontakt` (adres i telefon z `siteConfig`) i `/o-mnie` (fraza „Szczecin”). Opisy `/cennik`, `/galeria` i `/zabiegi` miały już frazę lokalną; zmieniona tylko nazwa firmy |
 | Jedna nazwa firmy | „Wiktoria Warylak Esthe” z `siteConfig.businessName` wszędzie (tytuły, opisy, alty, aria-label, JSON-LD); zgodnie z nazwą dla Google Business Profile |
 | `WebSite` JSON-LD | Na `/`, wskazuje Google nazwę strony pokazywaną nad wynikiem |

@@ -24,7 +24,7 @@ import styles from "./homepage.module.css";
 import { AboutTeaser } from "./kontakt/components/about-teaser";
 
 export const metadata: Metadata = createPageMetadata({
-  title: `${siteConfig.businessName} – makijaż permanentny w Szczecinie`,
+  title: "Makijaż permanentny i powiększanie ust w Szczecinie",
   description: siteConfig.description,
   path: "/",
 });
@@ -37,7 +37,7 @@ export default function Home() {
       <PageHero
         eyebrow="Estetyka, która zaczyna się od Ciebie"
         title="Naturalne piękno w dobrych rękach."
-        description="To miejsce na krótkie, wprowadzające zdanie o podejściu salonu i doświadczeniu klientek."
+        description="Makijaż permanentny, modelowanie ust i medycyna estetyczna w Szczecinie."
         image="/images/heroes/home/mobile.jpg"
         desktopImage="/images/heroes/home/desktop.jpg"
         video="/video/IMG_4277.MP4"

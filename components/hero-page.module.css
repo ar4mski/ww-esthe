@@ -132,7 +132,7 @@
 @media (min-width: 640px) {
   .heroSection {
     background: #9b7964;
-    min-height: 28.9rem;
+    min-height: 24rem;
   }
 
   .heroBackground {
@@ -152,7 +152,7 @@
 
   .heroContainer {
     display: block;
-    min-height: 28.9rem;
+    min-height: 24rem;
     padding: 4.25rem 2rem;
   }
 
@@ -239,12 +239,12 @@
 @media (min-width: 1024px) {
   .heroSection,
   .heroContainer {
-    min-height: 31.45rem;
+    min-height: 26rem;
   }
 
   .heroContainer {
-    padding-bottom: 5.1rem;
-    padding-top: 5.1rem;
+    padding-bottom: 4rem;
+    padding-top: 4rem;
   }
 
   .heroContent {
