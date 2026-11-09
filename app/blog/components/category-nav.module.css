@@ -2,6 +2,12 @@
   margin-bottom: 2.5rem;
 }
 
+/* Filters belong to the page heading, so they sit closer than the default
+   heading spacing. */
+:global(.section-heading):has(+ .nav) {
+  margin-bottom: 1.5rem;
+}
+
 .list {
   display: flex;
   flex-wrap: wrap;

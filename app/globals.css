@@ -93,6 +93,14 @@ a {
   max-width: 1180px;
   padding: 2.5rem 1.25rem;
 
+  /* Sections opening with breadcrumbs sit closer to the header on mobile.
+     Lives here, not in breadcrumbs.module.css, because :where() keeps the
+     specificity of .section-shell, so it relies on source order: the tablet
+     rule below and page-level overrides still win. */
+  &:where(:has([data-breadcrumbs])) {
+    padding-top: 1rem;
+  }
+
   & > .button {
     display: block;
     width: fit-content;

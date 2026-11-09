@@ -6,7 +6,7 @@ import {
   type Treatment,
 } from "./treatments";
 
-type BreadcrumbItem = {
+export type BreadcrumbItem = {
   label: string;
   href: string;
 };

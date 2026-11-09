@@ -5,6 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { BackgroundVideoSection } from "@/components/background-video-section";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CTAButton } from "@/components/cta-button";
 import { FaqSection } from "@/components/faq-section";
 import type { GalleryCategory } from "@/components/gallery-grid/gallery-items";
@@ -14,7 +15,6 @@ import { createPageMetadata } from "@/data/page-metadata";
 import { getTreatmentJsonLd } from "@/data/structured-data";
 import { getTreatmentShowcase } from "@/data/treatment-showcase";
 import { getTreatment, getTreatmentImage, treatments } from "@/data/treatments";
-import { Breadcrumbs } from "./components/breadcrumbs";
 import { TreatmentFacts } from "./components/treatment-facts";
 import { TreatmentShowcase } from "./components/treatment-showcase";
 import styles from "./treatment-detail.module.css";
@@ -127,7 +127,13 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
       >
         <div className={styles.heroCopy}>
           <div className={styles.heroIntro}>
-            <Breadcrumbs currentPage={treatment.title} />
+            <Breadcrumbs
+              trail={[
+                { label: "Strona główna", href: "/" },
+                { label: "Zabiegi", href: "/zabiegi" },
+              ]}
+              currentPage={treatment.title}
+            />
             <h1 className={styles.heroTitle}>{treatment.title}</h1>
           </div>
           <TreatmentFacts

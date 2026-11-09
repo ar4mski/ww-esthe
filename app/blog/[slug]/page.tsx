@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { BookingCta } from "@/components/booking-cta";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
 import {
   getAllPosts,
@@ -16,7 +17,6 @@ import { siteConfig } from "@/data/site-config";
 import { getBlogPostingJsonLd } from "@/data/structured-data";
 
 import { ArticleContent } from "../components/article-content";
-import { BlogBreadcrumbs } from "../components/blog-breadcrumbs";
 import { PostGrid } from "../components/post-grid";
 import { PostMeta } from "../components/post-meta";
 import styles from "./article-page.module.css";
@@ -90,7 +90,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       <article>
         <header className={`section-shell ${styles.header}`}>
           <div className={styles.column}>
-            <BlogBreadcrumbs
+            <Breadcrumbs
               trail={[
                 { label: "Strona główna", href: "/" },
                 { label: "Blog", href: "/blog" },

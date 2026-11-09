@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { BookingCta } from "@/components/booking-cta";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import {
   blogCategories,
   getActiveCategories,
@@ -11,7 +12,6 @@ import {
 } from "@/data/blog";
 import { siteConfig } from "@/data/site-config";
 
-import { BlogBreadcrumbs } from "../../components/blog-breadcrumbs";
 import { BlogEmptyState } from "../../components/blog-empty-state";
 import { CategoryNav } from "../../components/category-nav";
 import { PostGrid } from "../../components/post-grid";
@@ -75,7 +75,7 @@ export default async function BlogCategoryPage({ params }: CategoryPageProps) {
   return (
     <>
       <section className="section-shell" aria-labelledby="category-title">
-        <BlogBreadcrumbs
+        <Breadcrumbs
           trail={[
             { label: "Strona główna", href: "/" },
             { label: "Blog", href: "/blog" },
