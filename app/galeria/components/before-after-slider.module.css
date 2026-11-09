@@ -1,10 +1,14 @@
 .root {
+  align-items: center;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   margin: 0 auto;
   max-width: 26rem;
   width: 100%;
 }
 
 .frame {
+  grid-column: 1 / -1;
   aspect-ratio: 9 / 10;
   border: 1px solid var(--line);
   box-shadow: 0 18px 38px rgba(32, 32, 32, 0.08);
@@ -105,8 +109,21 @@
 .caption {
   color: var(--muted);
   font-size: 0.75rem;
+  grid-column: 1;
+  grid-row: 2;
   letter-spacing: 0.08em;
   margin-top: 0.75rem;
   text-align: center;
   text-transform: uppercase;
+}
+
+/* With controls the caption sits on the left and the controls on the right. */
+.controls {
+  grid-column: 2;
+  grid-row: 2;
+  margin-top: 0.75rem;
+
+  & + .caption {
+    text-align: left;
+  }
 }

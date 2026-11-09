@@ -2,7 +2,13 @@
 
 import { ArrowLeftRight } from "lucide-react";
 import Image from "next/image";
-import { useRef, useState, type PointerEvent, type TouchEvent } from "react";
+import {
+  useRef,
+  useState,
+  type PointerEvent,
+  type ReactNode,
+  type TouchEvent,
+} from "react";
 
 import styles from "./before-after-slider.module.css";
 
@@ -11,6 +17,10 @@ type BeforeAfterSliderProps = {
   afterSrc: string;
   beforeAlt: string;
   beforeSrc: string;
+  className?: string;
+  /** Rendered next to the caption, e.g. a pager. */
+  controls?: ReactNode;
+  sizes?: string;
 };
 
 export const BeforeAfterSlider = ({
@@ -18,6 +28,9 @@ export const BeforeAfterSlider = ({
   afterSrc,
   beforeAlt,
   beforeSrc,
+  className,
+  controls,
+  sizes = "(min-width: 640px) 50vw, 100vw",
 }: BeforeAfterSliderProps) => {
   const [position, setPosition] = useState(50);
   const [hiddenLabels, setHiddenLabels] = useState({
@@ -76,7 +89,7 @@ export const BeforeAfterSlider = ({
   };
 
   return (
-    <figure className={styles.root}>
+    <figure className={`${styles.root} ${className ?? ""}`}>
       <div
         ref={frameRef}
         className={styles.frame}
@@ -95,7 +108,7 @@ export const BeforeAfterSlider = ({
           alt={beforeAlt}
           fill
           draggable={false}
-          sizes="(min-width: 640px) 50vw, 100vw"
+          sizes={sizes}
         />
         <div
           className={styles.afterLayer}
@@ -107,7 +120,7 @@ export const BeforeAfterSlider = ({
             alt={afterAlt}
             fill
             draggable={false}
-            sizes="(min-width: 640px) 50vw, 100vw"
+            sizes={sizes}
           />
         </div>
 
@@ -149,6 +162,7 @@ export const BeforeAfterSlider = ({
           </span>
         </div>
       </div>
+      {controls ? <div className={styles.controls}>{controls}</div> : null}
       <figcaption className={styles.caption}>
         Przesuń suwak, aby zobaczyć różnicę
       </figcaption>

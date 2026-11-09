@@ -1,5 +1,13 @@
-.pageIntro h1 {
-  font-size: var(--heading-1-size);
-  line-height: 1;
-  margin-bottom: 0;
+/* Together with the .section-shell padding this keeps the grid as far from
+   the booking CTA as the "Przed i po" section is from the grid. */
+.allImages {
+  margin-bottom: 1.5rem;
+
+  @media (min-width: 640px) {
+    margin-bottom: 2.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    margin-bottom: 3.5rem;
+  }
 }

@@ -1,0 +1,228 @@
+.section {
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 4rem;
+  padding-bottom: 2.5rem;
+
+  @media (min-width: 640px) {
+    margin-bottom: 5rem;
+    padding-bottom: 3rem;
+  }
+
+  @media (min-width: 1024px) {
+    margin-bottom: 6rem;
+    padding-bottom: 4rem;
+  }
+}
+
+.layout {
+  display: grid;
+
+  @media (min-width: 1024px) {
+    align-items: center;
+    column-gap: 4rem;
+    grid-template-areas:
+      ". panel"
+      "intro panel"
+      "tabs panel"
+      "link panel"
+      ". panel";
+    grid-template-columns: minmax(0, 1fr) minmax(0, 35rem);
+    grid-template-rows: 1fr auto auto auto 1fr;
+  }
+}
+
+.intro {
+  margin-bottom: 1.5rem;
+
+  @media (min-width: 1024px) {
+    grid-area: intro;
+    margin-bottom: 2rem;
+  }
+}
+
+.eyebrow {
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
+  }
+}
+
+.description {
+  margin-bottom: 0;
+}
+
+/* Tabs */
+
+.tabsBar {
+  align-items: flex-start;
+  display: flex;
+  gap: 0.25rem 1.25rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+
+  @media (min-width: 1024px) {
+    display: block;
+    grid-area: tabs;
+    margin-bottom: 0;
+  }
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  min-width: 0;
+  position: relative;
+
+  @media (min-width: 1024px) {
+    border-top: 1px solid var(--line);
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+.tab {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  gap: 1rem;
+  min-height: 2.75rem;
+  padding: 0.2rem 0 0.55rem;
+  white-space: nowrap;
+
+  &:focus-visible {
+    outline: 2px solid var(--beige);
+    outline-offset: 3px;
+  }
+
+  &[aria-selected="true"] {
+    color: var(--beige);
+    text-decoration-line: underline;
+  }
+
+  @media (min-width: 1024px) {
+    border-bottom: 1px solid var(--line);
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    text-align: left;
+    width: 100%;
+
+    &[aria-selected="true"] {
+      font-weight: 500;
+      text-decoration-line: none;
+    }
+  }
+}
+
+.tabIcon {
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
+  }
+}
+
+.more {
+  flex: 0 0 auto;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}
+
+/* Keeps the element measurable while it is hidden from view, focus and screen readers. */
+.measuredHidden {
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+}
+
+/* Slider and pager */
+
+.panel {
+  @media (min-width: 1024px) {
+    grid-area: panel;
+  }
+}
+
+.layout .slider {
+  margin: 0;
+  max-width: none;
+}
+
+.pager {
+  align-items: center;
+  display: flex;
+}
+
+.pagerButton {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: var(--foreground);
+  cursor: pointer;
+  display: flex;
+  height: 2.75rem;
+  justify-content: center;
+  padding: 0;
+  transition: color 180ms ease;
+  width: 2.75rem;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--beige);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--beige);
+    outline-offset: -2px;
+  }
+}
+
+.dashes {
+  align-items: center;
+  display: flex;
+  gap: 0.35rem;
+}
+
+.dash {
+  background: var(--line);
+  height: var(--link-underline-thickness);
+  transition:
+    background 180ms ease,
+    width 180ms ease;
+  width: 0.75rem;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+.dashActive {
+  background: var(--beige);
+  width: 1.5rem;
+}
+
+/* Link */
+
+.layout .link {
+  color: var(--beige);
+  margin: 1rem auto 0;
+  text-decoration-line: underline;
+
+  @media (min-width: 640px) {
+    margin: 1.5rem 0 0;
+  }
+
+  @media (min-width: 1024px) {
+    grid-area: link;
+    margin-top: 2rem;
+  }
+}

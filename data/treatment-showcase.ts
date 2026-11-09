@@ -36,9 +36,9 @@ export const treatmentShowcases: Record<string, TreatmentShowcase> = {
   },
   "modelowanie-ust": {
     beforeAfter: {
-      beforeSrc: "/images/treatments/modelowanie-ust/before.jpg",
+      beforeSrc: "/images/before-after/modelowanie-ust/01-before.jpg",
       beforeAlt: "Usta przed zabiegiem modelowania",
-      afterSrc: "/images/treatments/modelowanie-ust/after.jpg",
+      afterSrc: "/images/before-after/modelowanie-ust/01-after.jpg",
       afterAlt: "Usta po zabiegu modelowania",
     },
     photos: [
