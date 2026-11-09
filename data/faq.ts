@@ -1,15 +1,18 @@
 export const homeFaqs = [
   {
     question: "Jak przygotować się do wizyty?",
-    answer: "Przykładowa odpowiedź, którą później zastąpimy właściwą treścią.",
+    answer:
+      "Przyjdź wypoczęta, bez makijażu w okolicy zabiegowej. Na 24-48 godzin przed wizytą unikaj alkoholu, a przed zabiegami z użyciem igły - jeśli to dla Ciebie bezpieczne - także leków przeciwbólowych z grupy NLPZ, np. aspiryny czy ibuprofenu. Szczegółowe zalecenia znajdziesz na stronie wybranego zabiegu.",
   },
   {
     question: "Ile trwa konsultacja?",
-    answer: "Przykładowa odpowiedź, którą później zastąpimy właściwą treścią.",
+    answer:
+      "Konsultacja trwa zwykle 15-30 minut i jest częścią każdej wizyty. Rozmawiamy o Twoich oczekiwaniach, sprawdzamy przeciwwskazania i wspólnie ustalamy plan. Zabieg wykonuję dopiero wtedy, gdy masz pewność, że to dobry wybór.",
   },
   {
     question: "Jak wybrać właściwy zabieg?",
-    answer: "Przykładowa odpowiedź, którą później zastąpimy właściwą treścią.",
+    answer:
+      "Nie musisz wiedzieć tego przed wizytą. Napisz mi, co chciałabyś podkreślić lub poprawić - podczas konsultacji ocenię Twoje rysy, kondycję skóry i oczekiwania, a potem zaproponuję zabieg, który da naturalny efekt. Jeśli coś nie będzie dla Ciebie dobrym rozwiązaniem, powiem o tym otwarcie.",
   },
 ];
 
