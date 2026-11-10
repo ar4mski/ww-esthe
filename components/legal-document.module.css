@@ -21,7 +21,7 @@
 }
 
 .section h2 {
-  font-size: 1.4rem;
+  font-size: var(--heading-3-size);
 }
 
 .section p + p {

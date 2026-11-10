@@ -7,7 +7,7 @@
     column-gap: 3rem;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     margin: 0 auto;
-    max-width: 1180px;
+    max-width: var(--content-max-width);
     padding: 2.5rem 2rem;
   }
 }

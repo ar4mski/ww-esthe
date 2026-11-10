@@ -11,12 +11,12 @@
 
 .content {
   margin: 0 auto;
-  max-width: 1180px;
+  max-width: var(--content-max-width);
   padding: 1.25rem 1.25rem 1.5rem;
 }
 
 .title {
-  font-size: 1.15rem;
+  font-size: var(--heading-3-size);
   margin-bottom: 0.5rem;
 }
 

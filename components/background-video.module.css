@@ -74,9 +74,9 @@
   &::before {
     border-top: 1px solid var(--line);
     content: "";
-    left: max(1.25rem, calc((100% - 1180px) / 2 + 1.25rem));
+    left: max(1.25rem, calc((100% - var(--content-max-width)) / 2 + 1.25rem));
     position: absolute;
-    right: max(1.25rem, calc((100% - 1180px) / 2 + 1.25rem));
+    right: max(1.25rem, calc((100% - var(--content-max-width)) / 2 + 1.25rem));
     top: 0;
   }
 }
@@ -88,8 +88,8 @@
 
   .section {
     &::before {
-      left: max(2rem, calc((100% - 1180px) / 2 + 2rem));
-      right: max(2rem, calc((100% - 1180px) / 2 + 2rem));
+      left: max(2rem, calc((100% - var(--content-max-width)) / 2 + 2rem));
+      right: max(2rem, calc((100% - var(--content-max-width)) / 2 + 2rem));
     }
   }
 

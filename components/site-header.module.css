@@ -121,8 +121,8 @@
 
 @media (min-width: 640px) {
   .siteHeader {
-    padding-left: max(2rem, calc((100% - 1180px) / 2 + 2rem));
-    padding-right: max(2rem, calc((100% - 1180px) / 2 + 2rem));
+    padding-left: max(2rem, calc((100% - var(--content-max-width)) / 2 + 2rem));
+    padding-right: max(2rem, calc((100% - var(--content-max-width)) / 2 + 2rem));
   }
 
   .brandLogo {
@@ -130,6 +130,7 @@
   }
 }
 
+/* Exception to the 640/1024 breakpoints: the full nav fits in one row only from 800px. */
 @media (min-width: 800px) {
   .menuButton {
     display: none;

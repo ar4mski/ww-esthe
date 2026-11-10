@@ -12,11 +12,6 @@
   cursor: pointer;
   font: inherit;
   padding: 0.2rem 0 0.55rem;
-
-  &:focus-visible {
-    outline: 2px solid var(--beige);
-    outline-offset: 3px;
-  }
 }
 
 .filterCollapsed {

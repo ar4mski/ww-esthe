@@ -1,8 +1,3 @@
-.pageIntro h1 {
-  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-  line-height: 1;
-}
-
 .priceList {
   border-top: 1px solid var(--line);
   max-width: none;
@@ -14,7 +9,7 @@
 }
 
 .priceCategory h2 {
-  font-size: clamp(1.375rem, 2.5vw, 1.875rem);
+  font-size: var(--heading-card-size);
   font-style: italic;
   margin: 0 0 1rem;
 }

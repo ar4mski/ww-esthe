@@ -1,7 +1,8 @@
 .siteFooter {
+  --focus-color: var(--footer-heading);
   border-top: 1px solid rgba(247, 244, 239, 0.18);
   color: var(--text);
-  background-color: #665444;
+  background-color: var(--brown);
   width: 100%;
 }
 
@@ -10,7 +11,7 @@
   font-size: 0.85rem;
   gap: 1.5rem;
   margin: 0 auto;
-  max-width: 1180px;
+  max-width: var(--content-max-width);
   padding: 2.5rem 1.25rem;
 }
 
@@ -28,7 +29,7 @@
 }
 
 .footerHeading {
-  color: var(--foter-heading);
+  color: var(--footer-heading);
   font-size: 0.78rem;
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -67,7 +68,7 @@
 }
 
 .companyName {
-  color: var(--foter-heading);
+  color: var(--footer-heading);
   font-weight: 400;
 }
 
@@ -119,7 +120,7 @@
 }
 
 .footerGroup a {
-  --link-hover-color: var(--foter-heading);
+  --link-hover-color: var(--footer-heading);
 }
 
 @media (min-width: 640px) {

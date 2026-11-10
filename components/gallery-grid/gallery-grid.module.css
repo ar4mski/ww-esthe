@@ -6,6 +6,7 @@
 }
 
 .thumbnail {
+  --focus-offset: -3px;
   animation: thumbnailSlideIn 500ms ease both;
   aspect-ratio: 4 / 5;
   background: var(--surface);
@@ -61,6 +62,7 @@
 }
 
 .viewer {
+  --focus-color: var(--section-tint);
   background: rgba(20, 20, 18, 0.98);
   inset: 0;
   position: fixed;
@@ -85,12 +87,6 @@
   &:focus-visible {
     color: var(--section-tint);
   }
-}
-
-.closeButton:focus-visible,
-.readMore:focus-visible {
-  outline: 2px solid var(--section-tint);
-  outline-offset: 3px;
 }
 
 .viewerScroll {

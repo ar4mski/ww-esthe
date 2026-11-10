@@ -72,8 +72,8 @@
   z-index: 2;
 
   &:focus-visible + .divider .handle {
-    outline: 2px solid var(--beige);
-    outline-offset: 3px;
+    outline: var(--focus-width) solid var(--focus-color);
+    outline-offset: var(--focus-offset);
   }
 }
 

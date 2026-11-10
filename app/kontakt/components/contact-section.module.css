@@ -58,9 +58,9 @@
 
 .stepNumber {
   align-items: center;
-  border: 1px solid #665444;
+  border: 1px solid var(--brown);
   border-radius: 50%;
-  color: #665444;
+  color: var(--brown);
   display: flex;
   flex: 0 0 2.2rem;
   font-size: 0.68rem;
@@ -69,7 +69,7 @@
   justify-content: center;
 
   .steps li:first-child & {
-    background: #665444;
+    background: var(--brown);
     color: var(--surface);
   }
 }

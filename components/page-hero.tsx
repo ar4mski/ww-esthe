@@ -40,7 +40,7 @@ export const PageHero = ({
   blendVideoOnDesktop,
   cta,
   secondaryCta,
-  desktopPosition = "calc(100% - max(2rem, calc((100vw - 1180px) / 2 + 2rem))) center",
+  desktopPosition = "calc(100% - max(2rem, calc((100vw - var(--content-max-width)) / 2 + 2rem))) center",
 }: HeroPageProps) => {
   const titleId = `${id}-title`;
   const desktopHeroImage = desktopImage ?? image;

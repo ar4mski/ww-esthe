@@ -9,14 +9,19 @@
   --line: #d6d6d2;
   --accent: #444444;
   --beige: #76614d;
+  --brown: #665444;
   --link-underline-thickness: 1px;
   --link-underline-offset: clamp(0.25em, 0.35vw, 0.4em);
+  --focus-width: 2px;
+  --focus-color: var(--beige);
+  --focus-offset: 3px;
   --header-height: 70px;
-  --foter-heading: #fffdf9;
+  --content-max-width: 1180px;
+  --footer-heading: #fffdf9;
   --text: #f7f4ef;
   --image-hover-scale: 1.24;
   --heading-display-size: clamp(2.125rem, 5.1vw, 4.0375rem);
-  --heading-1-size: clamp(2rem, 4.5vw, 3.5rem);
+  --heading-1-size: clamp(2rem, 4vw, 3rem);
   --heading-2-size: clamp(1.75rem, 3.5vw, 2.5rem);
   --heading-3-size: clamp(1.125rem, 1.75vw, 1.5rem);
   --heading-card-size: clamp(1.5rem, 2vw, 2rem);
@@ -51,6 +56,7 @@ body {
 
 a {
   --link-hover-color: var(--beige);
+  --focus-color: var(--link-hover-color);
   color: inherit;
   text-decoration: none;
   transition: color 180ms ease;
@@ -78,9 +84,17 @@ a:not(.button)[data-active="true"],
   text-decoration-line: underline;
 }
 
-a:not(.button):focus-visible {
-  outline: 2px solid var(--link-hover-color);
-  outline-offset: 3px;
+/* The only focus style. Components change it through --focus-color and
+   --focus-offset instead of writing their own outline. */
+:focus-visible {
+  outline: var(--focus-width) solid var(--focus-color);
+  outline-offset: var(--focus-offset);
+}
+
+/* Focus lands on <main> only through the skip link; outlining the whole page
+   adds nothing. */
+#main-content:focus-visible {
+  outline: none;
 }
 
 button,
@@ -90,7 +104,7 @@ a {
 
 .section-shell {
   margin: 0 auto;
-  max-width: 1180px;
+  max-width: var(--content-max-width);
   padding: 2.5rem 1.25rem;
 
   /* Sections opening with breadcrumbs sit closer to the header on mobile.
@@ -111,8 +125,8 @@ a {
 .section-tinted {
   max-width: none;
   background: var(--section-tint);
-  padding-left: max(1.25rem, calc((100% - 1180px) / 2 + 1.25rem));
-  padding-right: max(1.25rem, calc((100% - 1180px) / 2 + 1.25rem));
+  padding-left: max(1.25rem, calc((100% - var(--content-max-width)) / 2 + 1.25rem));
+  padding-right: max(1.25rem, calc((100% - var(--content-max-width)) / 2 + 1.25rem));
 }
 
 .icon {
@@ -271,7 +285,7 @@ p {
   }
 
   .section-tinted {
-    padding-left: max(2rem, calc((100% - 1180px) / 2 + 2rem));
-    padding-right: max(2rem, calc((100% - 1180px) / 2 + 2rem));
+    padding-left: max(2rem, calc((100% - var(--content-max-width)) / 2 + 2rem));
+    padding-right: max(2rem, calc((100% - var(--content-max-width)) / 2 + 2rem));
   }
 }

@@ -37,6 +37,7 @@ Stack: Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, lucide-rea
 
 ## Styling
 
+- **Before designing a mockup or changing any UI, read [docs/style-guide.md](docs/style-guide.md)**: tokens, typography, layout, components and mockup rules. If you change the design system (a token, a global class, a shared pattern), update the guide in the same change.
 - Tailwind CSS 4 and the existing design system only: no CSS-in-JS, styled-components, other utility frameworks or second design system.
 - Reuse existing colors, spacing, font sizes, radii, shadows and CSS variables before adding new values.
 - In stylesheets and CSS Modules use native CSS nesting (descendant, pseudo, state and breakpoint rules under the owning selector).
@@ -45,7 +46,7 @@ Stack: Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, lucide-rea
 ## Responsive design
 
 - Mobile-first: base styles for mobile, then `min-width` queries. No `max-width` queries.
-- Only these breakpoints: base (<640px), tablet `min-width: 640px`, desktop `min-width: 1024px`. No other values (768px, 900px, ...).
+- Only these breakpoints: base (<640px), tablet `min-width: 640px`, desktop `min-width: 1024px`. No other values (768px, 900px, ...). The only exception is the site header's desktop nav at `min-width: 800px`, because all nav links fit in one row only from that width.
 - Every UI change must work on mobile, tablet, desktop and large desktop. Consider narrow widths, long text, image aspect ratios, button wrapping, navigation, section spacing, touch targets.
 - Avoid hard-coded dimensions that cause horizontal scroll or clipping.
 

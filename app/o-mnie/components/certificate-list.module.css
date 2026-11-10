@@ -55,11 +55,6 @@
   &:is(button) {
     cursor: zoom-in;
   }
-
-  &:focus-visible {
-    outline: 2px solid var(--beige);
-    outline-offset: 3px;
-  }
 }
 
 .photo {

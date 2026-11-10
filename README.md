@@ -38,7 +38,7 @@ Open [http://localhost:3000](http://localhost:3000).
 | `data/`       | Static content and structured data (see below)                                            |
 | `content/`    | Blog articles as `.mdx` files                                                             |
 | `public/`     | Images (`images/`) and videos (`video/`)                                                  |
-| `docs/`       | Project documentation: [project status](docs/project-status.md), [SEO report](docs/seo-report.md), [Next.js review](docs/nextjs-review.md) |
+| `docs/`       | Project documentation: [style guide](docs/style-guide.md), [project status](docs/project-status.md), [SEO report](docs/seo-report.md), [Next.js review](docs/nextjs-review.md) |
 
 Routes: `/`, `/zabiegi` and `/zabiegi/[slug]`, `/o-mnie`, `/galeria`, `/cennik`, `/kontakt`, `/blog`, `/blog/[slug]`, `/blog/kategoria/[category]`, `/regulamin`, `/polityka-prywatnosci`.
 
