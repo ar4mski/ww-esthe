@@ -124,8 +124,11 @@ a {
 }
 
 .eyebrow {
-  color: var(--accent);
+  color: var(--beige);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
   margin: 0 0 0.85rem;
+  text-transform: uppercase;
 }
 
 h1,

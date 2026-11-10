@@ -84,7 +84,7 @@ export default function Home() {
 
       <PageSection
         id="homepage-gallery"
-        eyebrow="Atmosfera"
+        eyebrow="Efekty"
         title="Moje prace"
         description={`Zobacz efekty zabiegów i poznaj estetykę ${siteConfig.businessName}.`}
       >
