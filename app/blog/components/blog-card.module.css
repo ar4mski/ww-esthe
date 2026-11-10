@@ -10,6 +10,14 @@
   &:hover .link {
     color: var(--beige);
   }
+
+  /* One parent grid row per child (5), so titles, descriptions and meta lines
+     of neighbouring cards start at the same height. */
+  @media (min-width: 640px) {
+    display: grid;
+    grid-row: span 5;
+    grid-template-rows: subgrid;
+  }
 }
 
 .media {
@@ -65,11 +73,6 @@
   line-clamp: 3;
   margin-bottom: 1.25rem;
   overflow: hidden;
-}
-
-/* Keeps the meta line aligned at the bottom of equal-height grid cells. */
-.card > :last-child {
-  margin-top: auto;
 }
 
 .card a.link:focus-visible {

@@ -129,6 +129,23 @@ a {
   padding-right: max(1.25rem, calc((100% - var(--content-max-width)) / 2 + 1.25rem));
 }
 
+/* Long body copy is justified (client request). Put the class on the wrapper
+   of the running text. :where() leaves only the class's specificity, so a
+   module can opt a paragraph out (centred or short text) with its own rule.
+   Not on tablet: the two-column text is too narrow there (about 30 characters
+   a line) and the word gaps get too wide without hyphenation. */
+.text-justified :where(p:not(.eyebrow)) {
+  text-align: justify;
+
+  @media (min-width: 640px) {
+    text-align: start;
+  }
+
+  @media (min-width: 1024px) {
+    text-align: justify;
+  }
+}
+
 .icon {
   flex: 0 0 auto;
   height: var(--icon-size, 1.15rem);

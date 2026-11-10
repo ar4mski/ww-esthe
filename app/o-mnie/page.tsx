@@ -19,10 +19,10 @@ export const metadata: Metadata = createPageMetadata({
 
 export default function AboutPage() {
   return (
-    <div className={styles.aboutPage}>
+    <>
       <AboutHero />
       <section
-        className={`section-shell section-tinted ${styles.knowledge}`}
+        className={`section-shell section-tinted text-justified ${styles.knowledge}`}
         aria-labelledby="knowledge-title"
       >
         <div>
@@ -90,6 +90,6 @@ export default function AboutPage() {
       >
         <CertificateList />
       </PageSection>
-    </div>
+    </>
   );
 }

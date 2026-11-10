@@ -1,3 +1,5 @@
+import { CalendarDays, Clock } from "lucide-react";
+
 import { formatBlogDate, formatReadingTime } from "@/data/blog";
 
 import styles from "./post-meta.module.css";
@@ -5,17 +7,22 @@ import styles from "./post-meta.module.css";
 type PostMetaProps = {
   date: string;
   readingTimeMinutes: number;
-  author?: string;
+  className?: string;
 };
 
 export const PostMeta = ({
   date,
   readingTimeMinutes,
-  author,
+  className,
 }: PostMetaProps) => (
-  <p className={styles.meta}>
-    <time dateTime={date}>{formatBlogDate(date)}</time>
-    <span>{formatReadingTime(readingTimeMinutes)}</span>
-    {author && <span>{author}</span>}
+  <p className={className ? `${styles.meta} ${className}` : styles.meta}>
+    <span>
+      <Clock className="icon" aria-hidden="true" />
+      {formatReadingTime(readingTimeMinutes)}
+    </span>
+    <span>
+      <CalendarDays className="icon" aria-hidden="true" />
+      <time dateTime={date}>{formatBlogDate(date)}</time>
+    </span>
   </p>
 );

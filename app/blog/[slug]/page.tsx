@@ -105,9 +105,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             <h1 className={styles.title}>{post.title}</h1>
             <p className={styles.lead}>{post.description}</p>
             <PostMeta
+              className={styles.meta}
               date={post.date}
               readingTimeMinutes={post.readingTimeMinutes}
-              author={post.author}
             />
           </div>
         </header>
@@ -129,6 +129,11 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         <div className={`section-shell ${styles.body}`}>
           <ArticleContent source={post.content} />
           <footer className={styles.footer}>
+            {post.author && (
+              <p className={styles.author}>
+                Tekst: <span>{post.author}</span>
+              </p>
+            )}
             <p className={styles.disclaimer}>
               Artykuł ma charakter informacyjny i nie zastępuje konsultacji ze
               specjalistą. Zalecenia po zabiegu zawsze dopasowujemy

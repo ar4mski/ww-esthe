@@ -75,7 +75,10 @@ Line height may be adjusted locally for long multi-line titles (e.g. `1.05` on b
 ### Text rules
 - **Eyebrow** (`.eyebrow`): a short line above a section heading styled as a Label: `0.75rem`, uppercase, `0.14em`, `--beige`. Write the markup in normal sentence case; uppercase is CSS only. On a dark background or photo, override the colour locally (like the hero's `#fffaf5`).
 - **Readable measure**: headings in `.section-heading` max `38rem`; paragraphs about `28–42rem`; article body `42rem`. Long headings may be capped in `ch` (`13ch`, `14ch`).
-- **Justified text**: long body copy is justified with `hyphens: auto` on `/o-mnie` and on treatment pages, at the client's request; a shared site-wide rule is planned. Never justify eyebrows, labels, meta lines, captions, card text, centered text or short (1–2 line) paragraphs.
+- **Justified text** (client request): only long running text is justified, through the global `.text-justified` class (`text-align: justify` on `p` descendants except `.eyebrow`), on mobile and desktop but not on tablet (640–1023px): two-column text is too narrow there and the gaps get too wide. Put it on the wrapper of that text, never on the global `p` (it would break inherited centring). There is no automatic hyphenation: `hyphens: auto` looks poor in Polish, so the word gaps stretch instead, which reads well only in long text, so keep justified blocks long and wide. The class only affects `p`; list items (`li`), `dd` and headings are never justified. To opt a paragraph out inside a justified wrapper, give it its own `text-align` in the module (a class + `p` selector wins, as on the `/o-mnie` values).
+  - **Justified**: on `/o-mnie` only the first two paragraphs (hero lead, wrapper `.body` in `about-hero`; the knowledge text, on its section); on treatment pages the intro (`forWho` paragraphs), the description, the recovery paragraphs (the `.text-justified` sections, not the lists in them).
+  - **Exception, treatment pages**: the text stays justified on tablet too, but only together with `hyphens: auto` there (640–1023px). The two text columns are narrow at that width and justification needs hyphenation to avoid wide gaps. It is a local rule in `treatment-detail.module.css` that overrides the global tablet opt-out. Mobile and desktop have no hyphenation.
+  - **Never justified**: the whole blog (article body and lead, cards, featured post), the legal pages (terms, privacy policy), treatment cards (home and `/zabiegi`), FAQ answers, hero descriptions, the treatment gallery description, `/cennik`, `/kontakt`, `/galeria`, the home page, the footer, the cookie banner, eyebrows, labels, meta lines, captions and centred text.
 - Numbers in tables of hours or prices use `font-variant-numeric: tabular-nums`.
 
 ## 4. Layout
@@ -160,13 +163,14 @@ Text buttons in a wrapping row (`gap: 0.25rem 1.25rem`), `--muted` at rest, acti
 - **Hairline list**: items separated by `border-top: 1px solid var(--line)`, last item also `border-bottom`; vertical padding `1–1.75rem`. Used for FAQ, values, certificates on mobile, price rows.
 - **FAQ**: native `<details>` via `FaqItem` / `FaqSection` with a `▾` marker that rotates.
 - **Numbered steps**: `<ol>` with circles carrying the number (see §5).
-- **Meta line**: items separated by `·` in `--muted`, `0.85rem` (`PostMeta`, "Organizator · Rok").
+- **Meta line**: items separated by `·` in `--muted`, `0.85rem` ("Organizator · Rok"). Blog `PostMeta` (date and reading time only) marks each item with a decorative `1rem` icon (`CalendarDays`, `Clock`) instead of the dot. The article author is shown at the end of the post, in the article footer ("Tekst: …").
 
 ### Cards
 No box, border or background: an image on top, text below, aligned to the image edge.
 - Image: fixed aspect ratio, `object-fit: cover`, hover zoom inside an `overflow: hidden` wrapper.
 - Then a small uppercase category label in `--beige`, the title (`h3` or `--heading-card-size`), 2–3 lines of `--muted` text, and a meta row pinned to the bottom (`margin-top: auto`) with a top hairline.
 - When the whole card is a link, use a stretched `::after` link instead of nesting links (see `blog-card`).
+- In a multi-column grid, make the card a subgrid (`grid-row: span <number of children>; grid-template-rows: subgrid`) so titles, text and meta of neighbouring cards line up even when a title wraps to more lines. The parent grid then has `row-gap: 0` and the space between card rows comes from the cards' `margin-top` (see `blog-card` and `post-grid`). Wrappers between the card and its content (`treatment-list-item`: card → row → copy) must be subgrids too, and each subgrid sets `row-gap: 0` because it inherits the parent's row gap.
 
 ### Imagery
 - Always `next/image`. Photos are warm and natural; never add saturated colour filters.
@@ -222,4 +226,3 @@ For agents designing a page or section before implementation (Claude Design, HTM
 Existing deviations. Don't copy them into new work; fix them only when asked.
 
 - Hero colours `#9b7964`, `#fffaf5` and the overlay brown `rgba(42, 29, 22, α)` have no tokens; `#fffaf5` overlaps with `--text` `#f7f4ef`.
-- Justified text is scoped to `/o-mnie` and the treatment pages; a shared rule is planned.

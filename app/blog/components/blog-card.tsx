@@ -3,8 +3,8 @@ import Link from "next/link";
 
 import { getBlogPostPath, type BlogPostMeta } from "@/data/blog";
 
-import { PostMeta } from "./post-meta";
 import styles from "./blog-card.module.css";
+import { PostMeta } from "./post-meta";
 
 type BlogCardProps = {
   post: BlogPostMeta;

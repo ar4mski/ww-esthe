@@ -133,42 +133,51 @@
     }
   }
 
+  /* Each card is a subgrid with 4 rows (image, title, text, meta), so
+     neighbouring cards line up even when a title or text wraps differently.
+     Subgrids inherit the parent's row gap, hence row-gap: 0. */
   .grid {
+    display: grid;
+    grid-row: span 4;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: subgrid;
     padding-block: 0;
-    display: flex;
     position: relative;
+    row-gap: 0;
 
     .image {
       aspect-ratio: 5 / 3;
     }
 
     .row {
-      display: flex;
-      flex: 1;
-      flex-direction: column;
-      gap: 0.75rem;
+      align-items: start;
+      gap: 0;
+      grid-row: span 4;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: subgrid;
+    }
+
+    .imageLink {
+      margin-bottom: 0.75rem;
     }
 
     .copy {
-      display: flex;
-      flex: 1;
-      flex-direction: column;
+      align-self: stretch;
+      display: grid;
+      grid-row: span 3;
+      grid-template-rows: subgrid;
+      row-gap: 0;
     }
 
-    .meta {
-      margin-top: auto;
-    }
-
+    /* Undo the alternating image/text order of the stacked variant. */
     &:nth-child(even) {
       .row {
-        display: flex;
-        flex-direction: column;
+        grid-template-columns: minmax(0, 1fr);
       }
 
-      .imageWrap,
       .copy {
         grid-column: auto;
-        grid-row: auto;
+        grid-row: span 3;
       }
     }
   }

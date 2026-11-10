@@ -123,7 +123,7 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
       <JsonLd data={getTreatmentJsonLd(treatment)} />
       <section
         id="wprowadzenie"
-        className={`${styles.hero} ${styles.anchorSection} section-shell`}
+        className={`${styles.hero} ${styles.anchorSection} section-shell text-justified`}
       >
         <div className={styles.heroCopy}>
           <div className={styles.heroIntro}>
@@ -179,7 +179,7 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
 
       <section
         id="opis-zabiegu"
-        className={`${styles.content} ${styles.copyContent} ${styles.mobileNoDivider} ${styles.anchorSection} section-shell`}
+        className={`${styles.content} ${styles.copyContent} ${styles.mobileNoDivider} ${styles.anchorSection} section-shell text-justified`}
       >
         <TreatmentFacts
           className={`${styles.heroFacts} ${styles.desktopHeroFacts} ${styles.anchorSection}`}
@@ -225,7 +225,7 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
 
       <section
         id="przygotowanie-do-zabiegu"
-        className={`${styles.content} ${styles.listContent} ${styles.anchorSection} section-shell`}
+        className={`${styles.content} ${styles.listContent} ${styles.anchorSection} section-shell text-justified`}
       >
         <div>
           <h2>{treatment.preparation.heading}</h2>
@@ -238,7 +238,7 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
 
       <section
         id="przeciwwskazania"
-        className={`${styles.content} ${styles.listContent} ${styles.anchorSection} section-shell`}
+        className={`${styles.content} ${styles.listContent} ${styles.anchorSection} section-shell text-justified`}
       >
         <div>
           <h2>{treatment.contraindications.heading}</h2>
@@ -248,7 +248,7 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
 
       <section
         id="reakcje-pozabiegowe"
-        className={`${styles.content} ${styles.listContent} ${styles.anchorSection} section-shell`}
+        className={`${styles.content} ${styles.listContent} ${styles.anchorSection} section-shell text-justified`}
       >
         <div>
           <h2>{treatment.recovery.heading}</h2>
@@ -279,7 +279,7 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
 
       <section
         id="zalecenia-pozabiegowe"
-        className={`${styles.content} ${styles.listContent} ${styles.anchorSection} section-shell`}
+        className={`${styles.content} ${styles.listContent} ${styles.anchorSection} section-shell text-justified`}
       >
         <div>
           <h2>{treatment.aftercare.heading}</h2>

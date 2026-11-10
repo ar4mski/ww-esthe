@@ -1,12 +1,3 @@
-.aboutPage {
-  /* Body copy on this page is justified (client request). :where() keeps the
-     specificity low so the centered mobile values can opt out below. */
-  & :where(p:not(:global(.eyebrow))) {
-    hyphens: auto;
-    text-align: justify;
-  }
-}
-
 .values {
   display: grid;
   list-style: none;
@@ -41,7 +32,6 @@
   }
 
   p {
-    hyphens: manual;
     margin-bottom: 0;
     text-align: center;
   }
@@ -55,8 +45,7 @@
     text-align: start;
 
     p {
-      hyphens: auto;
-      text-align: justify;
+      text-align: start;
     }
   }
 
@@ -80,7 +69,6 @@
     }
 
     p {
-      hyphens: manual;
       text-align: center;
     }
   }

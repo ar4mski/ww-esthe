@@ -28,7 +28,7 @@ export const AboutHero = () => (
       </h1>
     </div>
 
-    <div className={styles.body}>
+    <div className={`${styles.body} text-justified`}>
       <p className={styles.lead}>
         Nazywam się Wiktoria i od ponad 5 lat rozwijam swoją pasję do branży
         beauty. To, co początkowo było zainteresowaniem estetyką i pielęgnacją,
