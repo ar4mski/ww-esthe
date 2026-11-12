@@ -93,5 +93,5 @@ Stack: Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, lucide-rea
 
 ## Validation
 
-- After meaningful changes run `npm run lint`; for changes affecting production build also run `npm run build`.
+- Lint runs automatically after every edit (hook). For changes affecting production build run npm run build.
 - Fix lint/build/TypeScript errors rather than leaving them, unless the user asks for an incomplete implementation.
