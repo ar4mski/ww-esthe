@@ -1,0 +1,23 @@
+.stats {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+
+  dt {
+    color: var(--beige);
+    font-family: var(--font-serif), serif;
+    font-size: var(--heading-1-size);
+    line-height: 1;
+  }
+
+  dd {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 0.5rem 0 0;
+  }
+
+  @media (min-width: 1024px) {
+    gap: 2rem;
+  }
+}

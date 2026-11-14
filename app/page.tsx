@@ -15,11 +15,11 @@ import {
 import { treatments } from "@/data/treatments";
 
 import { FaqSection } from "@/components/faq-section";
+import { HomeAbout } from "@/components/home-about";
 import { Visit } from "@/components/visit";
 import { homeFaqs } from "@/data/faq";
 import { HomeShowcase } from "./components/home-showcase";
 import styles from "./homepage.module.css";
-import { AboutTeaser } from "./kontakt/components/about-teaser";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Makijaż permanentny i powiększanie ust w Szczecinie",
@@ -67,6 +67,8 @@ export default function Home() {
         </div>
       </PageSection>
 
+      <HomeAbout />
+
       <PageSection
         id="wizyta-krok-po-kroku"
         className={styles.visitSection}
@@ -97,7 +99,6 @@ export default function Home() {
         eyebrow="Najczęściej zadawane pytania"
         title="Wszystko o co chciałabyś zapytać"
       />
-      <AboutTeaser />
     </>
   );
 }

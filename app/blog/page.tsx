@@ -24,7 +24,12 @@ export const metadata: Metadata = {
     siteName: siteConfig.businessName,
     locale: siteConfig.locale,
     type: "website",
-    images: [{ url: "/images/heroes/fallback.jpg", alt: `Blog ${siteConfig.businessName}` }],
+    images: [
+      {
+        url: "/images/heroes/fallback.jpg",
+        alt: `Blog ${siteConfig.businessName}`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -46,7 +51,6 @@ export default async function BlogPage() {
     <>
       <section className="section-shell" aria-labelledby="blog-title">
         <header className="section-heading">
-          <p className="eyebrow">Blog</p>
           <h1 id="blog-title">Wiedza o pięknie.</h1>
           <p>{description}</p>
         </header>

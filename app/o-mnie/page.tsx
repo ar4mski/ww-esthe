@@ -22,7 +22,7 @@ export default function AboutPage() {
     <>
       <AboutHero />
       <section
-        className={`section-shell section-tinted text-justified ${styles.knowledge}`}
+        className={`section-shell section-tinted ${styles.knowledge}`}
         aria-labelledby="knowledge-title"
       >
         <div>

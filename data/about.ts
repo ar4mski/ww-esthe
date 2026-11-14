@@ -3,7 +3,6 @@ import { Leaf, Target, UserRound, type LucideIcon } from "lucide-react";
 type AboutStat = {
   value: string;
   label: string;
-  shortLabel: string;
 };
 
 type AboutValue = {
@@ -16,12 +15,10 @@ export const aboutStats: AboutStat[] = [
   {
     value: "5+ lat",
     label: "pasji i pracy w branży beauty",
-    shortLabel: "w beauty",
   },
   {
     value: "III rok",
     label: "studiów na kierunku pielęgniarstwo",
-    shortLabel: "pielęgniarstwa",
   },
 ];
 

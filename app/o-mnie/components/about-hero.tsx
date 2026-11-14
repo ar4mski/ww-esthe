@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { AboutStats } from "@/components/about-stats";
 import { CTAButton } from "@/components/cta-button";
-import { aboutStats } from "@/data/about";
 
 import styles from "./about-hero.module.css";
 
@@ -20,7 +20,6 @@ export const AboutHero = () => (
     </div>
 
     <div className={styles.intro}>
-      <p className="eyebrow">O mnie</p>
       <h1 id="about-hero-title">
         Cześć!
         <br />
@@ -28,7 +27,7 @@ export const AboutHero = () => (
       </h1>
     </div>
 
-    <div className={`${styles.body} text-justified`}>
+    <div className={styles.body}>
       <p className={styles.lead}>
         Nazywam się Wiktoria i od ponad 5 lat rozwijam swoją pasję do branży
         beauty. To, co początkowo było zainteresowaniem estetyką i pielęgnacją,
@@ -36,17 +35,7 @@ export const AboutHero = () => (
       </p>
 
       <div className={styles.summary}>
-        <dl className={styles.stats}>
-          {aboutStats.map(({ value, label, shortLabel }) => (
-            <div className={styles.stat} key={value}>
-              <dt>{value}</dt>
-              <dd>
-                <span className={styles.fullLabel}>{label}</span>
-                <span className={styles.shortLabel}>{shortLabel}</span>
-              </dd>
-            </div>
-          ))}
-        </dl>
+        <AboutStats className={styles.stats} />
 
         <div className={styles.actions}>
           <CTAButton className={`button-outline ${styles.primaryAction}`}>

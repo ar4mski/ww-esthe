@@ -44,7 +44,7 @@ Rules:
 
 ## 3. Typography
 
-One family: **Geist** (`--font-geist-sans`, loaded in `app/layout.tsx`), fallback Arial. Weights: 400 body, 500 headings and emphasis, 700 only for small uppercase labels and buttons. No serif. Italic is used on purpose only for the price-category headings on `/cennik`; don't use it elsewhere.
+One family: **Geist** (`--font-geist-sans`, loaded in `app/layout.tsx`), fallback Arial. Weights: 400 body, 500 headings and emphasis, 700 only for small uppercase labels and buttons. One serif exception: **Cormorant Garamond** 500 (`--font-serif`, loaded in `app/layout.tsx`) for the stat numbers of the shared `AboutStats` component (home `HomeAbout` section and the `/o-mnie` hero); don't use it elsewhere. Italic is used on purpose only for the price-category headings on `/cennik`; don't use it elsewhere.
 
 ### Scale
 
@@ -76,7 +76,7 @@ Line height may be adjusted locally for long multi-line titles (e.g. `1.05` on b
 - **Eyebrow** (`.eyebrow`): a short line above a section heading styled as a Label: `0.75rem`, uppercase, `0.14em`, `--beige`. Write the markup in normal sentence case; uppercase is CSS only. On a dark background or photo, override the colour locally (like the hero's `#fffaf5`).
 - **Readable measure**: headings in `.section-heading` max `38rem`; paragraphs about `28–42rem`; article body `42rem`. Long headings may be capped in `ch` (`13ch`, `14ch`).
 - **Justified text** (client request): only long running text is justified, through the global `.text-justified` class (`text-align: justify` on `p` descendants except `.eyebrow`), on mobile and desktop but not on tablet (640–1023px): two-column text is too narrow there and the gaps get too wide. Put it on the wrapper of that text, never on the global `p` (it would break inherited centring). There is no automatic hyphenation: `hyphens: auto` looks poor in Polish, so the word gaps stretch instead, which reads well only in long text, so keep justified blocks long and wide. The class only affects `p`; list items (`li`), `dd` and headings are never justified. To opt a paragraph out inside a justified wrapper, give it its own `text-align` in the module (a class + `p` selector wins, as on the `/o-mnie` values).
-  - **Justified**: on `/o-mnie` only the first two paragraphs (hero lead, wrapper `.body` in `about-hero`; the knowledge text, on its section); on treatment pages the intro (`forWho` paragraphs), the description, the recovery paragraphs (the `.text-justified` sections, not the lists in them).
+  - **Justified**: only on treatment pages: the intro (`forWho` paragraphs), the description, the recovery paragraphs (the `.text-justified` sections, not the lists in them).
   - **Exception, treatment pages**: the text stays justified on tablet too, but only together with `hyphens: auto` there (640–1023px). The two text columns are narrow at that width and justification needs hyphenation to avoid wide gaps. It is a local rule in `treatment-detail.module.css` that overrides the global tablet opt-out. Mobile and desktop have no hyphenation.
   - **Never justified**: the whole blog (article body and lead, cards, featured post), the legal pages (terms, privacy policy), treatment cards (home and `/zabiegi`), FAQ answers, hero descriptions, the treatment gallery description, `/cennik`, `/kontakt`, `/galeria`, the home page, the footer, the cookie banner, eyebrows, labels, meta lines, captions and centred text.
 - Numbers in tables of hours or prices use `font-variant-numeric: tabular-nums`.
