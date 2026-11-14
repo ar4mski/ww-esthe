@@ -4,6 +4,7 @@ type PageSectionProps = {
   children: ReactNode;
   id: string;
   title: string;
+  action?: ReactNode;
   className?: string;
   description?: string;
   eyebrow?: string;
@@ -15,6 +16,7 @@ export const PageSection = ({
   children,
   id,
   title,
+  action,
   className = "",
   description,
   eyebrow,
@@ -22,6 +24,13 @@ export const PageSection = ({
   headingLevel: Heading = "h2",
 }: PageSectionProps) => {
   const titleId = `${id}-title`;
+  const header = (
+    <header className={`section-heading ${headingClassName}`}>
+      {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+      <Heading id={titleId}>{title}</Heading>
+      {description && <p>{description}</p>}
+    </header>
+  );
 
   return (
     <section
@@ -29,11 +38,14 @@ export const PageSection = ({
       id={id}
       aria-labelledby={titleId}
     >
-      <header className={`section-heading ${headingClassName}`}>
-        {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-        <Heading id={titleId}>{title}</Heading>
-        {description && <p>{description}</p>}
-      </header>
+      {action ? (
+        <div className="section-heading-row">
+          {header}
+          {action}
+        </div>
+      ) : (
+        header
+      )}
       {children}
     </section>
   );

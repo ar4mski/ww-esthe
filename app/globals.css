@@ -115,6 +115,16 @@ a {
     padding-top: 1rem;
   }
 
+  /* Mobile: lets .section-heading-row move its action below the content. */
+  &:where(:has(> .section-heading-row)) {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 640px) {
+      display: block;
+    }
+  }
+
   & > .button {
     display: block;
     width: fit-content;
@@ -285,11 +295,31 @@ p {
   margin-bottom: 0;
 }
 
+/* Mobile: dissolves into the section's flex column so the action sits below
+   the content. From 640px: heading and action side by side. */
 .section-heading-row {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  justify-content: space-between;
+  display: contents;
+
+  & > :not(.section-heading) {
+    order: 1;
+  }
+
+  @media (min-width: 640px) {
+    align-items: flex-end;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-bottom: 2.25rem;
+
+    & > .section-heading {
+      margin-bottom: 0;
+    }
+
+    & > .text-link {
+      flex-shrink: 0;
+      margin: 0;
+    }
+  }
 }
 
 @media (min-width: 640px) {

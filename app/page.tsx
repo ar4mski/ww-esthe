@@ -50,6 +50,11 @@ export default function Home() {
         eyebrow="Oferta"
         title="Zabiegi"
         description="Wybrane zabiegi dopasowane do Twoich potrzeb."
+        action={
+          <Link className="text-link" href="/zabiegi">
+            Poznaj całą ofertę
+          </Link>
+        }
       >
         <div className={`${styles.list} ${styles.grid}`}>
           {treatments.slice(0, 3).map((treatment) => (
@@ -60,12 +65,6 @@ export default function Home() {
             />
           ))}
         </div>
-        <Link
-          className={`text-link ${styles.allTreatmentsLink}`}
-          href="/zabiegi"
-        >
-          Poznaj całą ofertę
-        </Link>
       </PageSection>
 
       <PageSection

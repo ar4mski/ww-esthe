@@ -93,7 +93,7 @@ Every section uses the global classes; don't recreate them in modules.
 
 Anything that has to line up with the content column outside `.section-shell` (header, footer, hero container, full-width hairlines) uses `--content-max-width`, never a literal `1180px`. Inset to the column with `max(<gutter>, calc((100% - var(--content-max-width)) / 2 + <gutter>))`.
 | `.section-heading` | Section header: eyebrow, `h2`, optional description. `max-width: 38rem`, `margin-bottom: 2.25rem`. |
-| `.section-heading-row` | Heading and an action side by side. |
+| `.section-heading-row` | Heading and an action (e.g. a `.text-link`) side by side, action bottom-aligned with the description, from 640px; on mobile the action moves below the section content. Rendered by `PageSection` when `action` is passed. |
 
 - Prefer `PageSection` (`components/page-section.tsx`) for a standard section: it renders `.section-shell`, the `.section-heading` header, the eyebrow, the heading (`h2` or `h1`) and `aria-labelledby`.
 - **Section rhythm**: sections sit directly on top of each other with their own `2.5rem` padding. Alternate plain and tinted bands to separate topics; between two plain sections use a hairline if they need separation, not extra padding.
