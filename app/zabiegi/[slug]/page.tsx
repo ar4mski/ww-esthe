@@ -172,6 +172,8 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
             src={getTreatmentImage(treatment.slug)}
             alt={treatment.imageAlt}
             fill
+            preload
+            fetchPriority="high"
             sizes="(min-width: 640px) 50vw, 100vw"
           />
         </div>

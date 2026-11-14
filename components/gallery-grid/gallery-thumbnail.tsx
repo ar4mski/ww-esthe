@@ -27,7 +27,7 @@ export function GalleryThumbnail({
         alt={item.alt}
         width={400}
         height={400}
-        sizes="(max-width: 639px) 33vw, 25vw"
+        sizes="(min-width: 1024px) 275px, (min-width: 640px) 25vw, 33vw"
       />
     </button>
   );

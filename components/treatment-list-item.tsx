@@ -10,6 +10,12 @@ type TreatmentListItemProps = {
   variant?: "stacked" | "grid";
 };
 
+// Rendered widths of the image column per variant (see the module CSS grids).
+const imageSizes = {
+  stacked: "(min-width: 1024px) 500px, (min-width: 640px) 46vw, 100vw",
+  grid: "(min-width: 1024px) 350px, (min-width: 640px) 32vw, 100vw",
+};
+
 export const TreatmentListItem = ({
   treatment,
   variant = "stacked",
@@ -32,6 +38,7 @@ export const TreatmentListItem = ({
             alt={treatment.imageAlt}
             width={720}
             height={900}
+            sizes={imageSizes[variant]}
           />
         </div>
       </Link>

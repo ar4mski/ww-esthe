@@ -111,7 +111,7 @@ export function GalleryViewer({
               alt={item.alt}
               width={1200}
               height={1200}
-              sizes="100vw"
+              sizes="(min-width: 640px) 68vh, 100vw"
             />
             {item.description ? (
               <div className={styles.description}>

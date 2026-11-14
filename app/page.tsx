@@ -38,7 +38,7 @@ export default function Home() {
         description="Makijaż permanentny, modelowanie ust i medycyna estetyczna w Szczecinie."
         image="/images/heroes/home/mobile.jpg"
         desktopImage="/images/heroes/home/desktop.jpg"
-        video="/video/IMG_4277.MP4"
+        video="/video/hero-home.mp4"
         videoPoster="/images/heroes/home/video-poster.jpg"
         imageAlt={`Portret klientki ${siteConfig.businessName}`}
         cta={{ label: "Umów konsultację", href: siteConfig.bookingUrl }}

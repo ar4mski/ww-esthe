@@ -21,7 +21,7 @@ Wynik przeglądu repo pod kątem Next.js 16 i użycia Client Components. Poprawk
 - `BackgroundVideo` zwraca `null` na serwerze i montuje `<video>` dopiero po hydracji (`matchMedia` + `prefers-reduced-motion`). To uzasadnione. Dla trybu `mobileOnly` można część logiki przenieść do CSS (np. ukrywanie przez media query), ale `prefers-reduced-motion` nadal wymaga JS lub `<source media>`.
 
 ### Obrazy w `PageHero`
-- Gdy podany jest `desktopImage`, mobilny obraz ma `loading="eager"`, a desktopowy `preload`, więc na desktopie mogą ładować się oba obrazy (jeden jest ukryty CSS-em). Warto sprawdzić w zakładce Network i ewentualnie ograniczyć `eager`/`preload` do właściwego wariantu.
+- Rozwiązane 2026-11-14: `PageHero` renderuje jeden `<picture>` zbudowany przez `getImageProps` i wywołuje `preload()` z `media` osobno dla mobile i desktop, więc każdy viewport pobiera jeden wariant. Szczegóły: [media-optimization.md](media-optimization.md).
 
 ### `BeforeAfterSlider`
 - Obsługuje równolegle zdarzenia pointer i touch (`handleTouchStart`/`handleTouchMove`). Same pointer events (z `touch-action: pan-y` w CSS) wystarczą i usuwają zduplikowaną logikę.

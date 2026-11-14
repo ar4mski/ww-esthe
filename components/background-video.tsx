@@ -5,14 +5,14 @@ import { useEffect, useState } from "react";
 type BackgroundVideoProps = {
   className: string;
   mobileOnly?: boolean;
-  poster?: string;
   src: string;
 };
 
+// No `poster`: the browser would download the raw file a second time, while the
+// optimized hero image underneath already shows until the first frame plays.
 export const BackgroundVideo = ({
   className,
   mobileOnly = false,
-  poster,
   src,
 }: BackgroundVideoProps) => {
   const [shouldAutoplay, setShouldAutoplay] = useState<boolean | null>(null);
@@ -49,7 +49,6 @@ export const BackgroundVideo = ({
       loop
       muted
       playsInline
-      poster={poster}
       preload="none"
     >
       <source src={src} type="video/mp4" />

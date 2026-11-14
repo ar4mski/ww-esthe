@@ -105,13 +105,6 @@
 
 .videoPosterImage {
   filter: none;
-  object-position: 60% center;
-  transform: none;
-}
-
-.desktopHeroImage.videoPosterImage {
-  object-fit: cover;
-  object-position: 60% center;
   transform: none;
 }
 
@@ -123,10 +116,6 @@
   position: absolute;
   width: 100%;
   z-index: 1;
-}
-
-.desktopHeroImage {
-  display: none;
 }
 
 @media (min-width: 640px) {
@@ -204,16 +193,15 @@
       linear-gradient(0deg, rgba(42, 29, 22, 0.16), transparent 55%);
   }
 
-  .mobileHeroImage {
-    display: none;
-  }
-
-  .desktopHeroImage {
-    display: block;
+  .heroImage {
     object-position: center center;
     transform: scale(1.08);
     transform-origin: right center;
-    width: 100%;
+  }
+
+  .videoPosterImage {
+    object-position: 60% center;
+    transform: none;
   }
 
   .heroActions :global(.button) {
@@ -259,20 +247,18 @@
     max-width: 31rem;
   }
 
-  .desktopHeroImage {
+  .heroImage {
     object-fit: contain;
     object-position: var(--hero-desktop-position);
     transform: none;
-    width: 100%;
-    -webkit-mask-image: none;
-    mask-image: none;
   }
 
   .heroVideo {
     object-position: center 45%;
   }
 
-  .desktopHeroImage.videoPosterImage {
+  .videoPosterImage {
+    object-fit: cover;
     object-position: center 45%;
   }
 
@@ -290,11 +276,11 @@
     display: none;
   }
 
-  .blendedVideoHero .desktopHeroImage {
+  .blendedVideoHero .heroImage {
     display: none;
   }
 
-  .blendedVideoHero.hasVideoPoster .desktopHeroImage {
+  .blendedVideoHero .videoPosterImage {
     display: block;
   }
 

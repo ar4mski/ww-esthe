@@ -27,6 +27,8 @@ export const FeaturedPost = ({ post }: FeaturedPostProps) => {
           alt=""
           width={1200}
           height={900}
+          preload
+          fetchPriority="high"
           sizes="(min-width: 1280px) 480px, (min-width: 1024px) 40vw, 100vw"
         />
       </Link>

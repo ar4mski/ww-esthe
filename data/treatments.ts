@@ -64,7 +64,7 @@ export const treatments: Treatment[] = [
     sessionCount: "2",
     imageAlt: "Makijaż permanentny brwi.",
     procedureVideo: {
-      src: "/video/brows_pmu.MP4",
+      src: "/video/brows-pmu.mp4",
       title: "Makijaż permanentny brwi w praktyce",
       description:
         "Zobacz krótki fragment pigmentacji i poznaj zabieg z bliska.",

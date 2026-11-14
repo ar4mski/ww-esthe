@@ -1,5 +1,6 @@
-import Image from "next/image";
+import { getImageProps } from "next/image";
 import Link from "next/link";
+import { preload } from "react-dom";
 
 import { BackgroundVideo } from "./background-video";
 import { CTAButton } from "./cta-button";
@@ -27,6 +28,29 @@ interface HeroPageProps {
   desktopPosition?: string;
 }
 
+// The visual switches source and rendered width at the tablet breakpoint.
+const DESKTOP_MEDIA = "(min-width: 640px)";
+const MOBILE_MEDIA = "(max-width: 639px)";
+const DESKTOP_SIZES = "(min-width: 1024px) 100vw, 40vw";
+const MOBILE_SIZES = "100vw";
+
+// The desktop backdrop is blurred by 1.25rem, so a 64 px variant is enough.
+const getBackdropImageSet = (src: string) => {
+  const {
+    props: { srcSet = "" },
+  } = getImageProps({ alt: "", src, width: 64, height: 64 });
+
+  const imageSet = srcSet
+    .split(", ")
+    .map((entry) => {
+      const [url, density] = entry.split(" ");
+      return `url("${url}") ${density}`;
+    })
+    .join(", ");
+
+  return `image-set(${imageSet})`;
+};
+
 export const PageHero = ({
   title,
   image,
@@ -43,55 +67,65 @@ export const PageHero = ({
   desktopPosition = "calc(100% - max(2rem, calc((100vw - var(--content-max-width)) / 2 + 2rem))) center",
 }: HeroPageProps) => {
   const titleId = `${id}-title`;
-  const desktopHeroImage = desktopImage ?? image;
-  const visualPoster = videoPoster ?? image;
+  const alt = videoPoster ? "" : imageAlt;
+  const mobileSrc = videoPoster ?? image;
+  const desktopSrc = videoPoster ?? desktopImage ?? image;
+
+  const {
+    props: { srcSet: desktopSrcSet },
+  } = getImageProps({ alt, src: desktopSrc, fill: true, sizes: DESKTOP_SIZES });
+  const { props: mobileImageProps } = getImageProps({
+    alt,
+    src: mobileSrc,
+    fill: true,
+    sizes: MOBILE_SIZES,
+    loading: "eager",
+    fetchPriority: "high",
+    className: `${styles.heroImage} ${videoPoster ? styles.videoPosterImage : ""}`,
+  });
+
+  // One preload per viewport. React would otherwise preload every non-lazy <img>
+  // on its own, which for two breakpoint images meant two downloads on mobile.
+  preload(mobileImageProps.src, {
+    as: "image",
+    imageSrcSet: mobileImageProps.srcSet,
+    imageSizes: MOBILE_SIZES,
+    media: MOBILE_MEDIA,
+    fetchPriority: "high",
+  });
+  preload(mobileImageProps.src, {
+    as: "image",
+    imageSrcSet: desktopSrcSet,
+    imageSizes: DESKTOP_SIZES,
+    media: DESKTOP_MEDIA,
+    fetchPriority: "high",
+  });
 
   return (
     <section
       id={id}
       className={`${styles.heroSection} ${
         video && blendVideoOnDesktop ? styles.blendedVideoHero : ""
-      } ${videoPoster ? styles.hasVideoPoster : ""}`}
+      }`}
       aria-labelledby={titleId}
       style={
         {
-          "--hero-desktop-image": `url("${desktopHeroImage}")`,
+          "--hero-desktop-image": getBackdropImageSet(desktopImage ?? image),
           "--hero-desktop-position": desktopPosition,
         } as React.CSSProperties
       }
     >
       <div className={styles.heroBackground} aria-hidden="true" />
       <div className={styles.heroVisual}>
-        <Image
-          className={`${styles.heroImage} ${styles.mobileHeroImage} ${
-            videoPoster ? styles.videoPosterImage : ""
-          }`}
-          src={visualPoster}
-          alt={desktopImage || videoPoster ? "" : imageAlt}
-          fill
-          preload={!desktopImage}
-          loading={desktopImage ? "eager" : undefined}
-          sizes="100vw"
-        />
-        {video && (
-          <BackgroundVideo
-            className={styles.heroVideo}
-            poster={visualPoster}
-            src={video}
+        <picture>
+          <source
+            media={DESKTOP_MEDIA}
+            srcSet={desktopSrcSet}
+            sizes={DESKTOP_SIZES}
           />
-        )}
-        {(desktopImage || videoPoster) && (
-          <Image
-            className={`${styles.heroImage} ${styles.desktopHeroImage} ${
-              videoPoster ? styles.videoPosterImage : ""
-            }`}
-            src={videoPoster ?? desktopHeroImage}
-            alt={videoPoster ? "" : imageAlt}
-            fill
-            preload
-            sizes="(min-width: 1024px) 100vw, 40vw"
-          />
-        )}
+          <img {...mobileImageProps} alt={alt} />
+        </picture>
+        {video && <BackgroundVideo className={styles.heroVideo} src={video} />}
       </div>
       <div className={styles.heroOverlay} aria-hidden="true" />
 

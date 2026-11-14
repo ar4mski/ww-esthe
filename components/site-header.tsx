@@ -26,7 +26,7 @@ export const SiteHeader = () => (
             alt={siteConfig.businessName}
             width={130}
             height={68}
-            priority
+            preload
           />
         </Link>
       </>

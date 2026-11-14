@@ -60,10 +60,8 @@ Data: 2026-11-09 (poprzednia wersja: 2026-11-01)
 - Niski priorytet: `FAQPage` w JSON-LD. Google pokazuje rozwijane FAQ w wynikach tylko serwisom rządowym i zdrowotnym, więc zysk to najwyżej lepsze zrozumienie treści.
 
 ### Wydajność
-- Przekodować filmy w `public/video` (łącznie 6,6 MB: `IMG_4277.MP4`, `IMG_4309.MP4`, `brows_pmu.MP4`) do H.264 z mniejszym bitrate; wymaga `ffmpeg`, którego nie ma na tej maszynie.
-- `PageHero`: na desktopie mogą ładować się oba obrazy (mobilny `eager` + desktopowy `preload`). Sprawdzić w zakładce Network.
+- Pełna lista zadań dla obrazów, wideo i czcionek z przeglądu z 2026-11-14 (LCP, czcionki, OG, nieużywane pliki): [media-optimization.md](media-optimization.md). Punkty krytyczne 2–7 są zrobione; wideo czeka na przekodowanie (`ffmpeg`), czcionki i OG są do zrobienia.
 - `BeforeAfterSlider`: usunąć zduplikowaną obsługę touch (wystarczą pointer events).
-- Obrazy OG bloga (`heroes/fallback.jpg`) i zabiegów nie mają proporcji 1200×630.
 
 ### Kod i treści
 - Stopka nie zawiera linku „Galeria” (zachowano poprzednie zachowanie). Potwierdzić, czy to celowe; dodanie to `navigationItems.gallery` w `data/navigation.ts`.
