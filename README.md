@@ -38,7 +38,7 @@ Open [http://localhost:3000](http://localhost:3000).
 | `data/`       | Static content and structured data (see below)                                            |
 | `content/`    | Blog articles as `.mdx` files                                                             |
 | `public/`     | Images (`images/`) and videos (`video/`)                                                  |
-| `docs/`       | Project documentation: [style guide](docs/style-guide.md), [project status](docs/project-status.md), [SEO report](docs/seo-report.md), [Next.js review](docs/nextjs-review.md) |
+| `docs/`       | Project documentation: [to do before launch](docs/todo.md), [key decisions](docs/decisions.md), [style guide](docs/style-guide.md), [adding content](docs/content-guide.md) |
 
 Routes: `/`, `/zabiegi` and `/zabiegi/[slug]`, `/o-mnie`, `/galeria`, `/cennik`, `/kontakt`, `/blog`, `/blog/[slug]`, `/blog/kategoria/[category]`, `/regulamin`, `/polityka-prywatnosci`.
 
@@ -68,9 +68,11 @@ Routes: `/`, `/zabiegi` and `/zabiegi/[slug]`, `/o-mnie`, `/galeria`, `/cennik`,
 
   New categories are added to `blogCategories` in `data/blog.ts`. The build fails with a clear message if the front matter is invalid.
 
+- **Open Graph images**: every cover used as a link preview has a 1200×630 crop at the same path under `public/images/og/`. Step-by-step instructions for new treatments and articles: [docs/content-guide.md](docs/content-guide.md).
+
 ## Conventions
 
-The full guidelines live in [.github/copilot-instructions.md](.github/copilot-instructions.md). In short:
+The full guidelines live in [AGENTS.md](AGENTS.md) (also loaded through `CLAUDE.md`). In short:
 
 - Server Components by default; `"use client"` only for small interactive parts.
 - Static content in `data/`, shared components in `components/`, route-only components next to the route.
@@ -107,13 +109,4 @@ Page views, including client-side navigation, come from GA's enhanced measuremen
 
 The site is deployed on [Vercel](https://vercel.com); every build of the `master` branch is published at https://ww-esthe.vercel.app.
 
-### Launch checklist
-
-1. Replace placeholder content (home hero text, FAQ answers, "O mnie" descriptions, bank account number).
-2. Set `NEXT_PUBLIC_SITE_URL` to the production domain.
-3. Set `ALLOW_INDEXING=true` for the **Production** environment only (not Preview).
-   Set `NEXT_PUBLIC_GA_ID` for **Production** only as well, so test deployments do not send analytics data.
-4. Redirect the `vercel.app` domain and `www`/non-`www` to the canonical domain.
-5. Submit `/sitemap.xml` in Google Search Console and validate the structured data with the [Rich Results Test](https://search.google.com/test/rich-results).
-
-See [docs/seo-report.md](docs/seo-report.md) for the current SEO status and [docs/project-status.md](docs/project-status.md) for what is done and what is left.
+Everything left before and right after the production launch (owner content, decisions, launch-day steps): [docs/todo.md](docs/todo.md).

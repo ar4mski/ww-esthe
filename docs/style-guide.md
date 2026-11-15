@@ -44,7 +44,7 @@ Rules:
 
 ## 3. Typography
 
-One family: **Geist** (`--font-geist-sans`, loaded in `app/layout.tsx`), fallback Arial. Weights: 400 body, 500 headings and emphasis, 700 only for small uppercase labels and buttons. One serif exception: **Cormorant Garamond** 500 (`--font-serif`, loaded in `app/layout.tsx`) for the stat numbers of the shared `AboutStats` component (home `HomeAbout` section and the `/o-mnie` hero); don't use it elsewhere. Italic is used on purpose only for the price-category headings on `/cennik`; don't use it elsewhere.
+One family: **Geist** (`--font-geist-sans`, loaded in `app/layout.tsx`), fallback Arial. Weights: 400 body, 500 headings and emphasis, 700 only for small uppercase labels and buttons. One serif exception: **Cormorant Garamond** 500 (`--font-serif`, loaded in `components/about-stats.tsx`, so it is preloaded only where the stats render) for the stat numbers of the shared `AboutStats` component (home `HomeAbout` section and the `/o-mnie` hero); don't use it elsewhere. Italic is used on purpose only for the price-category headings on `/cennik`; don't use it elsewhere.
 
 ### Scale
 
@@ -175,7 +175,8 @@ No box, border or background: an image on top, text below, aligned to the image 
 ### Imagery
 - Always `next/image`. Photos are warm and natural; never add saturated colour filters.
 - Common aspect ratios: `4 / 5` gallery thumbnails, `5 / 3` treatment and blog cards, `4 / 3` certificate tiles and featured posts, `8 / 5` and `5 / 4` treatment detail, `3 / 2` article images. Reuse one of these before inventing a new ratio.
-- Placeholder background while loading: `--line` or `--section-tint`.
+- Placeholder background while loading: `--line` or `--section-tint`. Hero photos (home, `/zabiegi`, `/o-mnie`) show a blurred version of themselves instead: import the image statically so Next generates its `blurDataURL` (`placeholder="blur"` on `<Image>`; `PageHero` handles it itself).
+- **Third-party embeds** (the Google map on `/kontakt`) load only on click. Until then the frame shows a facade: `--section-tint` background, a `--beige` icon badge (§5), one short `p` saying where the content comes from, a `.button-outline-beige` button that loads it and a `.button-outline-secondary` link to the external page (`MapEmbed`).
 - Hero photos may fade into the page with `mask-image` gradients instead of a hard edge (`/o-mnie` hero).
 - Hover zoom: `transform: scale(var(--image-hover-scale))` over 250ms on gallery and treatment images; a subtle `1.03–1.04` over 500–600ms on blog images.
 
@@ -220,6 +221,7 @@ For agents designing a page or section before implementation (Claude Design, HTM
 - Draw icons from Lucide and name them in the handoff (`GraduationCap`, `Quote`…).
 - Show the page with the real header and footer for context, but mark them out of scope unless they are the subject.
 - Every handoff (`docs/design/<topic>/HANDOFF.md`) lists: scope, what changes, final copy, which existing components/classes/tokens to reuse, the layout per breakpoint, an acceptance checklist and open questions. Where the mockup needs something this guide does not have, say so explicitly as an open question instead of silently introducing it.
+- Delete the handoff folder once the design is implemented; move any unresolved open question to [todo.md](todo.md).
 
 ## 11. Known inconsistencies
 

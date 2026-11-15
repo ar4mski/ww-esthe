@@ -91,6 +91,11 @@ Stack: Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, lucide-rea
 - Inspect existing implementation first; make the smallest coherent change. Don't refactor unrelated code, rename/move files unnecessarily, or rewrite working code out of preference.
 - Don't add dependencies when Next.js, React, Tailwind, lucide-react or a small local utility suffices.
 
+## Documentation
+
+- All documentation (`README.md`, `docs/**/*.md`) is written in English. Polish stays only for quoted site copy (button labels, headings, alt texts, page names) because that is the real UI text.
+- Docs hold what is still to do and why things are the way they are, not a history of done work: open items go to `docs/todo.md` (remove them once done), lasting non-obvious choices to `docs/decisions.md`.
+
 ## Validation
 
 - Lint runs automatically after every edit (hook). For changes affecting production build run npm run build.
