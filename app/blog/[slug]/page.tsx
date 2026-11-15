@@ -13,6 +13,7 @@ import {
   getPostBySlug,
   getRelatedPosts,
 } from "@/data/blog";
+import { getOgImage } from "@/data/page-metadata";
 import { siteConfig } from "@/data/site-config";
 import { getBlogPostingJsonLd } from "@/data/structured-data";
 
@@ -44,7 +45,7 @@ export async function generateMetadata({
   const title = post.seoTitle ?? post.title;
   const description = post.seoDescription ?? post.description;
   const path = getBlogPostPath(post.slug);
-  const images = [{ url: post.coverImage, alt: post.coverImageAlt }];
+  const image = getOgImage(post.coverImage, post.coverImageAlt);
 
   return {
     title,
@@ -62,13 +63,13 @@ export async function generateMetadata({
       authors: post.author ? [post.author] : undefined,
       section: post.category.label,
       tags: post.tags,
-      images,
+      images: [image],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [post.coverImage],
+      images: [image.url],
     },
   };
 }

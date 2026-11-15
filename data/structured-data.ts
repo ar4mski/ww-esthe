@@ -1,4 +1,5 @@
 import { getBlogPostPath, type BlogPost } from "./blog";
+import { getOgImage } from "./page-metadata";
 import { siteConfig } from "./site-config";
 import {
   getTreatmentImage,
@@ -13,6 +14,10 @@ export type BreadcrumbItem = {
 
 const toAbsoluteUrl = (path: string) =>
   new URL(path, siteConfig.siteUrl).toString();
+
+// Google recommends several aspect ratios: the portrait cover plus its 1.91:1 crop.
+const getImageUrls = (cover: string, alt: string) =>
+  [cover, getOgImage(cover, alt).url].map(toAbsoluteUrl);
 
 const businessId = toAbsoluteUrl("/#business");
 const logoUrl = toAbsoluteUrl("/images/branding/icon-512.png");
@@ -109,7 +114,7 @@ export const getBlogPostingJsonLd = (post: BlogPost) => ({
   "@type": "BlogPosting",
   headline: post.title,
   description: post.seoDescription ?? post.description,
-  image: toAbsoluteUrl(post.coverImage),
+  image: getImageUrls(post.coverImage, post.coverImageAlt),
   datePublished: post.date,
   dateModified: post.updatedDate ?? post.date,
   inLanguage: siteConfig.locale,
@@ -133,7 +138,7 @@ export const getTreatmentJsonLd = (treatment: Treatment) => ({
   name: treatment.title,
   description: treatment.shortDescription,
   url: toAbsoluteUrl(`/zabiegi/${treatment.slug}`),
-  image: toAbsoluteUrl(getTreatmentImage(treatment.slug)),
+  image: getImageUrls(getTreatmentImage(treatment.slug), treatment.imageAlt),
   provider: { "@id": businessId },
   areaServed: { "@type": "City", name: "Szczecin" },
   offers: {

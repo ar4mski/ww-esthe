@@ -11,7 +11,7 @@ import { FaqSection } from "@/components/faq-section";
 import type { GalleryCategory } from "@/components/gallery-grid/gallery-items";
 import { JsonLd } from "@/components/json-ld";
 import { PageSection } from "@/components/page-section";
-import { createPageMetadata } from "@/data/page-metadata";
+import { createPageMetadata, getOgImage } from "@/data/page-metadata";
 import { getTreatmentJsonLd } from "@/data/structured-data";
 import { getTreatmentShowcase } from "@/data/treatment-showcase";
 import { getTreatment, getTreatmentImage, treatments } from "@/data/treatments";
@@ -83,10 +83,7 @@ export async function generateMetadata({
     title: treatment.seoTitle ?? `${treatment.title} w Szczecinie`,
     description: treatment.shortDescription,
     path: `/zabiegi/${treatment.slug}`,
-    image: {
-      url: getTreatmentImage(treatment.slug),
-      alt: treatment.imageAlt,
-    },
+    image: getOgImage(getTreatmentImage(treatment.slug), treatment.imageAlt),
   });
 }
 

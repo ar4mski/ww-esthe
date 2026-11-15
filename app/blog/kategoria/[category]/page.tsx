@@ -10,6 +10,7 @@ import {
   getBlogCategoryPath,
   getPostsByCategory,
 } from "@/data/blog";
+import { createPageMetadata } from "@/data/page-metadata";
 import { siteConfig } from "@/data/site-config";
 
 import { BlogEmptyState } from "../../components/blog-empty-state";
@@ -42,20 +43,10 @@ export async function generateMetadata({
   const path = getBlogCategoryPath(category);
 
   return {
-    title,
-    description,
-    alternates: { canonical: path },
+    ...createPageMetadata({ title, description, path }),
     // Categories without articles are still reachable but should not be indexed.
     // The key is omitted otherwise: an explicit `undefined` would override the root layout's robots.
     ...(posts.length === 0 && { robots: { index: false } }),
-    openGraph: {
-      title,
-      description,
-      url: path,
-      siteName: siteConfig.businessName,
-      locale: siteConfig.locale,
-      type: "website",
-    },
   };
 }
 

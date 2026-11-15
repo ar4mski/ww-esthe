@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { BookingCta } from "@/components/booking-cta";
 import { getActiveCategories, getAllPosts, getFeaturedPost } from "@/data/blog";
-import { siteConfig } from "@/data/site-config";
+import { createPageMetadata } from "@/data/page-metadata";
 
 import { BlogEmptyState } from "./components/blog-empty-state";
 import { CategoryNav } from "./components/category-nav";
@@ -13,31 +13,11 @@ const title = "Blog – porady o makijażu permanentnym i estetyce";
 const description =
   "Porady, inspiracje i rzetelna wiedza o makijażu permanentnym, pielęgnacji i zabiegach medycyny estetycznej.";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title,
   description,
-  alternates: { canonical: "/blog" },
-  openGraph: {
-    title,
-    description,
-    url: "/blog",
-    siteName: siteConfig.businessName,
-    locale: siteConfig.locale,
-    type: "website",
-    images: [
-      {
-        url: "/images/heroes/fallback.jpg",
-        alt: `Blog ${siteConfig.businessName}`,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
-    images: ["/images/heroes/fallback.jpg"],
-  },
-};
+  path: "/blog",
+});
 
 export default async function BlogPage() {
   const [posts, featuredPost, categories] = await Promise.all([
