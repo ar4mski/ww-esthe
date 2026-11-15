@@ -53,10 +53,5 @@ export const siteConfig = {
     registeredAddress: ["ul. Adama Mickiewicza 4A", "72-420 Dziwnów"],
     nip: "9860269048",
     regon: "545249482",
-    bank: {
-      name: "PKO Bank Polski",
-      accountNumber: "00 0000 0000 0000 0000 0000 0000",
-      isExample: true,
-    },
   },
 } as const;

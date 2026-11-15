@@ -28,12 +28,20 @@ export function CategoryFilter<T extends string>({
   const activeCategoryIndex = categories.findIndex(
     ({ id }) => id === activeCategory,
   );
-  // TODO: `isExpanded` is initialised only on mount. If `activeCategory` changes
-  // from outside (e.g. `?category=` after browser back/forward) and lands on a
-  // collapsed filter, it stays hidden behind "Więcej..." on mobile.
   const [isExpanded, setIsExpanded] = useState(
     activeCategoryIndex >= VISIBLE_FILTERS_ON_MOBILE,
   );
+  const [previousActiveCategory, setPreviousActiveCategory] =
+    useState(activeCategory);
+
+  // `activeCategory` can change from outside (e.g. `?category=` after browser
+  // back/forward); reveal it if it sits behind "Więcej...".
+  if (activeCategory !== previousActiveCategory) {
+    setPreviousActiveCategory(activeCategory);
+    if (activeCategoryIndex >= VISIBLE_FILTERS_ON_MOBILE) {
+      setIsExpanded(true);
+    }
+  }
 
   return (
     <div className={styles.filters} role="group" aria-label={label}>
@@ -60,16 +68,24 @@ export function CategoryFilter<T extends string>({
           </button>
         );
       })}
-      {/* TODO: render "Więcej..." only when `categories` is longer than the
-          visible-filter thresholds; with 3 or fewer it toggles nothing. */}
-      <button
-        className={`${styles.filter} ${styles.filterExpand} interactive-underline`}
-        type="button"
-        aria-expanded={isExpanded}
-        onClick={() => setIsExpanded(!isExpanded)}
-      >
-        {isExpanded ? "Mniej..." : "Więcej..."}
-      </button>
+      {categories.length > VISIBLE_FILTERS_ON_MOBILE && (
+        <button
+          className={[
+            styles.filter,
+            styles.filterExpand,
+            "interactive-underline",
+            categories.length <= VISIBLE_FILTERS_ON_TABLET &&
+              styles.filterExpandMobileOnly,
+          ]
+            .filter(Boolean)
+            .join(" ")}
+          type="button"
+          aria-expanded={isExpanded}
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
+          {isExpanded ? "Mniej..." : "Więcej..."}
+        </button>
+      )}
     </div>
   );
 }

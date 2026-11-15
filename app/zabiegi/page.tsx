@@ -19,7 +19,6 @@ export default function TreatmentsPage() {
       <PageHero
         title="Zabiegi stworzone z myślą o Tobie."
         description="Poznaj przebieg zabiegów, przygotowanie, przeciwwskazania oraz zalecenia pozabiegowe."
-        image="/images/heroes/treatments/mobile.jpg"
         desktopImage="/images/heroes/treatments/desktop.jpg"
         video="/video/hero-treatments.mp4"
         videoPoster={treatmentsVideoPoster}

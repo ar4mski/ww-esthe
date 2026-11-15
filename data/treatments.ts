@@ -178,7 +178,7 @@ export const treatments: Treatment[] = [
     slug: "modelowanie-ust",
     title: "Modelowanie ust",
     shortDescription:
-      "Pełniejsze, symetryczne i pięknie wymodelowane usta. Priorytetem jest zachowanie proporcji twarzy i uzyskanie efektu podkreślającego urodę.",
+      "Powiększanie i modelowanie ust w Szczecinie: pełniejsze, symetryczne usta z zachowaniem proporcji twarzy i naturalnego efektu.",
     duration: "50 minut",
     price: "700 zł",
     recoveryTime: "2-7 dni",
@@ -188,7 +188,7 @@ export const treatments: Treatment[] = [
     forWho: {
       heading: "Dla kogo jest zabieg?",
       paragraphs: [
-        "Modelowanie ust to zabieg przeznaczony dla osób, które chcą subtelnie podkreślić naturalne piękno swoich ust, poprawić ich proporcje lub przywrócić im utraconą objętość. Sprawdzi się zarówno u osób z naturalnie wąskimi ustami, jak i tych, które zauważają asymetrię, niewyraźny kontur czerwieni wargowej czy utratę jędrności i objętości związanej z upływem czasu.",
+        "Modelowanie ust, czyli powiększanie ust kwasem hialuronowym, to zabieg przeznaczony dla osób, które chcą subtelnie podkreślić naturalne piękno swoich ust, poprawić ich proporcje lub przywrócić im utraconą objętość. Sprawdzi się zarówno u osób z naturalnie wąskimi ustami, jak i tych, które zauważają asymetrię, niewyraźny kontur czerwieni wargowej czy utratę jędrności i objętości związanej z upływem czasu.",
       ],
     },
     description: {
@@ -275,6 +275,11 @@ export const treatments: Treatment[] = [
         question: "Na czym polega modelowanie ust?",
         answer:
           "To zabieg, którego celem jest poprawa kształtu, proporcji oraz objętości ust z zachowaniem naturalnej harmonii.",
+      },
+      {
+        question: "Czy modelowanie ust to to samo co powiększanie ust?",
+        answer:
+          "Tak, to ten sam zabieg wykonywany preparatem na bazie kwasu hialuronowego. Może obejmować delikatne zwiększenie objętości, ale także podkreślenie konturu, poprawę symetrii czy proporcji ust, dlatego mówimy o modelowaniu, a nie tylko powiększaniu.",
       },
       {
         question: "Kiedy można ocenić ostateczny efekt?",
@@ -764,7 +769,7 @@ export const treatments: Treatment[] = [
     slug: "laserowe-usuwanie-brwi",
     title: "Laserowe usuwanie makijażu permanentnego brwi",
     shortDescription:
-      "Stopniowe rozjaśnienie lub usunięcie nieudanego, przebarwionego albo nieaktualnego makijażu permanentnego brwi laserem pikosekundowym.",
+      "Stopniowe rozjaśnienie lub usunięcie nieudanego, przebarwionego albo nieaktualnego makijażu permanentnego brwi laserem pikosekundowym w Szczecinie.",
     duration: "15-30 minut",
     price: "od 200 zł",
     recoveryTime: "7-14 dni",

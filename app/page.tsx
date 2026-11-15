@@ -37,7 +37,6 @@ export default function Home() {
         eyebrow="Estetyka, która zaczyna się od Ciebie"
         title="Naturalne piękno w dobrych rękach."
         description="Makijaż permanentny, modelowanie ust i medycyna estetyczna w Szczecinie."
-        image="/images/heroes/home/mobile.jpg"
         desktopImage="/images/heroes/home/desktop.jpg"
         video="/video/hero-home.mp4"
         videoPoster={homeVideoPoster}

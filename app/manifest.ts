@@ -5,7 +5,7 @@ import { siteConfig } from "@/data/site-config";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: siteConfig.businessName,
-    short_name: "WW-Esthe",
+    short_name: "Warylak Esthe",
     description: siteConfig.description,
     lang: "pl",
     start_url: "/",

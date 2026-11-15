@@ -21,6 +21,7 @@ export const footerNavigation = [
   navigationItems.home,
   navigationItems.treatments,
   navigationItems.about,
+  navigationItems.gallery,
   navigationItems.blog,
   navigationItems.pricing,
   navigationItems.contact,

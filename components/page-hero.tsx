@@ -17,11 +17,12 @@ type ImageSource = string | StaticImageData;
 
 interface HeroPageProps {
   title: string;
-  image: ImageSource;
   imageAlt: string;
   id?: string;
   eyebrow?: string;
   description?: string;
+  // Required unless `videoPoster` is set, which replaces it.
+  image?: ImageSource;
   desktopImage?: ImageSource;
   video?: string;
   videoPoster?: ImageSource;
@@ -56,11 +57,11 @@ const getBackdropImageSet = (src: ImageSource) => {
 
 export const PageHero = ({
   title,
-  image,
   imageAlt,
   id = "hero",
   eyebrow,
   description,
+  image,
   desktopImage,
   video,
   videoPoster,
@@ -72,7 +73,8 @@ export const PageHero = ({
   const titleId = `${id}-title`;
   const alt = videoPoster ? "" : imageAlt;
   const mobileSrc = videoPoster ?? image;
-  const desktopSrc = videoPoster ?? desktopImage ?? image;
+  if (!mobileSrc) throw new Error("PageHero needs an image or a videoPoster");
+  const desktopSrc = videoPoster ?? desktopImage ?? mobileSrc;
   // getImageProps can't take `placeholder` (nothing would remove it), so the
   // blur is drawn by CSS behind the opaque photo, which covers it once loaded.
   const blurDataURL =
@@ -117,7 +119,7 @@ export const PageHero = ({
       aria-labelledby={titleId}
       style={
         {
-          "--hero-desktop-image": getBackdropImageSet(desktopImage ?? image),
+          "--hero-desktop-image": getBackdropImageSet(desktopImage ?? mobileSrc),
           "--hero-desktop-position": desktopPosition,
           ...(blurDataURL && {
             "--hero-placeholder-image": `url("${blurDataURL}")`,
