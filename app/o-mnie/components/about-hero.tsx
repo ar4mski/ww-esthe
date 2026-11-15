@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { AboutStats } from "@/components/about-stats";
 import { CTAButton } from "@/components/cta-button";
+import aboutHeroImage from "@/public/images/heroes/about/hero.jpg";
 
 import styles from "./about-hero.module.css";
 
@@ -11,10 +12,11 @@ export const AboutHero = () => (
     <div className={styles.visual}>
       <Image
         className={styles.image}
-        src="/images/heroes/about/hero.jpg"
+        src={aboutHeroImage}
         alt="Wiktoria siedząca na jasnej sofie w gabinecie"
         fill
         preload
+        placeholder="blur"
         sizes="(min-width: 1024px) 560px, 100vw"
       />
     </div>

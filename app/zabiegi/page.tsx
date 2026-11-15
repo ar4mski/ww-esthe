@@ -4,6 +4,7 @@ import { PageHero } from "@/components/page-hero";
 import { TreatmentList } from "@/components/treatment-list";
 import { createPageMetadata } from "@/data/page-metadata";
 import { siteConfig } from "@/data/site-config";
+import treatmentsVideoPoster from "@/public/images/heroes/treatments/video-poster.jpg";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Zabiegi: brwi, usta, laser, medycyna estetyczna – Szczecin",
@@ -21,7 +22,7 @@ export default function TreatmentsPage() {
         image="/images/heroes/treatments/mobile.jpg"
         desktopImage="/images/heroes/treatments/desktop.jpg"
         video="/video/hero-treatments.mp4"
-        videoPoster="/images/heroes/treatments/video-poster.jpg"
+        videoPoster={treatmentsVideoPoster}
         blendVideoOnDesktop
         imageAlt="Portret klientki związany z naturalną estetyką zabiegów"
         cta={{ label: "Umów konsultację", href: siteConfig.bookingUrl }}

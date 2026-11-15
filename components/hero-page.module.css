@@ -77,6 +77,23 @@
   position: absolute;
   width: 100%;
   z-index: 0;
+
+  /* Blurred placeholder while the mobile photo loads; the opaque photo covers
+     it afterwards. Tablet and desktop already have the blurred backdrop. */
+  &::before {
+    background: var(--hero-placeholder-image, none) 60% center / cover no-repeat;
+    content: "";
+    filter: blur(1rem);
+    inset: 0;
+    position: absolute;
+    transform: scale(1.1);
+  }
+
+  @media (min-width: 640px) {
+    &::before {
+      content: none;
+    }
+  }
 }
 
 .heroOverlay {

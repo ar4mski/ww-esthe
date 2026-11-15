@@ -13,6 +13,7 @@ import {
   getWebSiteJsonLd,
 } from "@/data/structured-data";
 import { treatments } from "@/data/treatments";
+import homeVideoPoster from "@/public/images/heroes/home/video-poster.jpg";
 
 import { FaqSection } from "@/components/faq-section";
 import { HomeAbout } from "@/components/home-about";
@@ -39,7 +40,7 @@ export default function Home() {
         image="/images/heroes/home/mobile.jpg"
         desktopImage="/images/heroes/home/desktop.jpg"
         video="/video/hero-home.mp4"
-        videoPoster="/images/heroes/home/video-poster.jpg"
+        videoPoster={homeVideoPoster}
         imageAlt={`Portret klientki ${siteConfig.businessName}`}
         cta={{ label: "Umów konsultację", href: siteConfig.bookingUrl }}
         secondaryCta={{ label: "Zobacz usługi", href: "/zabiegi" }}

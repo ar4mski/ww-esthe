@@ -7,6 +7,7 @@ import { parkingNote } from "@/data/contact";
 import { siteConfig } from "@/data/site-config";
 
 import styles from "./address-section.module.css";
+import { MapEmbed } from "./map-embed";
 
 type ContactLineProps = {
   href: string;
@@ -84,11 +85,10 @@ export const AddressSection = () => {
 
       <div className={styles.mapColumn}>
         <div className={styles.mapFrame}>
-          <iframe
+          <MapEmbed
             src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
             title={`Mapa dojazdu do gabinetu ${siteConfig.businessName}`}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
+            mapsUrl={siteConfig.address.mapsUrl}
           />
         </div>
         <div className={styles.infoBlocks}>

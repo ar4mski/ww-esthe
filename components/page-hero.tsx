@@ -1,4 +1,4 @@
-import { getImageProps } from "next/image";
+import { getImageProps, type StaticImageData } from "next/image";
 import Link from "next/link";
 import { preload } from "react-dom";
 
@@ -12,16 +12,19 @@ interface HeroLink {
   href: string;
 }
 
+// A static import also carries a tiny blurDataURL, shown while the photo loads.
+type ImageSource = string | StaticImageData;
+
 interface HeroPageProps {
   title: string;
-  image: string;
+  image: ImageSource;
   imageAlt: string;
   id?: string;
   eyebrow?: string;
   description?: string;
-  desktopImage?: string;
+  desktopImage?: ImageSource;
   video?: string;
-  videoPoster?: string;
+  videoPoster?: ImageSource;
   blendVideoOnDesktop?: boolean;
   cta?: HeroLink;
   secondaryCta?: HeroLink;
@@ -35,7 +38,7 @@ const DESKTOP_SIZES = "(min-width: 1024px) 100vw, 40vw";
 const MOBILE_SIZES = "100vw";
 
 // The desktop backdrop is blurred by 1.25rem, so a 64 px variant is enough.
-const getBackdropImageSet = (src: string) => {
+const getBackdropImageSet = (src: ImageSource) => {
   const {
     props: { srcSet = "" },
   } = getImageProps({ alt: "", src, width: 64, height: 64 });
@@ -70,6 +73,10 @@ export const PageHero = ({
   const alt = videoPoster ? "" : imageAlt;
   const mobileSrc = videoPoster ?? image;
   const desktopSrc = videoPoster ?? desktopImage ?? image;
+  // getImageProps can't take `placeholder` (nothing would remove it), so the
+  // blur is drawn by CSS behind the opaque photo, which covers it once loaded.
+  const blurDataURL =
+    typeof mobileSrc === "string" ? undefined : mobileSrc.blurDataURL;
 
   const {
     props: { srcSet: desktopSrcSet },
@@ -112,6 +119,9 @@ export const PageHero = ({
         {
           "--hero-desktop-image": getBackdropImageSet(desktopImage ?? image),
           "--hero-desktop-position": desktopPosition,
+          ...(blurDataURL && {
+            "--hero-placeholder-image": `url("${blurDataURL}")`,
+          }),
         } as React.CSSProperties
       }
     >
