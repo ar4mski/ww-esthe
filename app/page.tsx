@@ -16,7 +16,7 @@ import { treatments } from "@/data/treatments";
 import homeVideoPoster from "@/public/images/heroes/home/video-poster.jpg";
 
 import { FaqSection } from "@/components/faq-section";
-import { HomeAbout } from "@/components/home-about";
+import { AboutMe } from "@/components/about-me";
 import { Visit } from "@/components/visit";
 import { homeFaqs } from "@/data/faq";
 import { HomeShowcase } from "./components/home-showcase";
@@ -67,7 +67,10 @@ export default function Home() {
         </div>
       </PageSection>
 
-      <HomeAbout />
+      <AboutMe
+        title="Estetyka poparta wiedzą medyczną."
+        text="Certyfikowane szkolenia z makijażu permanentnego, modelowania ust, mezoterapii i laserowego usuwania PMU."
+      />
 
       <PageSection
         id="wizyta-krok-po-kroku"

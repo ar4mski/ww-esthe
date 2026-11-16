@@ -1,9 +1,8 @@
-import { GraduationCap, Quote } from "lucide-react";
+import { GraduationCap, Leaf, Quote, Target, UserRound } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 
 import { PageSection } from "@/components/page-section";
-import { aboutValues } from "@/data/about";
 import { createPageMetadata } from "@/data/page-metadata";
 
 import styles from "./about.module.css";
@@ -49,15 +48,36 @@ export default function AboutPage() {
         description="Zależy mi, aby każda osoba, która przekracza próg mojego gabinetu, czuła się zaopiekowana, wysłuchana i pewna, że jest w dobrych rękach."
       >
         <ul className={styles.values}>
-          {aboutValues.map(({ icon: Icon, title, description }) => (
-            <li className={styles.value} key={title}>
-              <span className={styles.iconCircle} aria-hidden="true">
-                <Icon className="icon" />
-              </span>
-              <h3>{title}</h3>
-              <p>{description}</p>
-            </li>
-          ))}
+          <li className={styles.value}>
+            <span className={styles.iconCircle} aria-hidden="true">
+              <Target className="icon" />
+            </span>
+            <h3>Dokładność</h3>
+            <p>
+              Ważne są dla mnie bezpieczeństwo, precyzja oraz świadomy dobór
+              odpowiednich metod.
+            </p>
+          </li>
+          <li className={styles.value}>
+            <span className={styles.iconCircle} aria-hidden="true">
+              <UserRound className="icon" />
+            </span>
+            <h3>Indywidualne podejście</h3>
+            <p>
+              Do każdego zabiegu podchodzę indywidualnie, zwracając uwagę nie
+              tylko na oczekiwania, ale również na potrzeby i możliwości skóry.
+            </p>
+          </li>
+          <li className={styles.value}>
+            <span className={styles.iconCircle} aria-hidden="true">
+              <Leaf className="icon" />
+            </span>
+            <h3>Naturalność</h3>
+            <p>
+              Estetyka nie powinna zmieniać tego, kim jesteś – ma podkreślać to,
+              co już w Tobie piękne.
+            </p>
+          </li>
         </ul>
       </PageSection>
       <section

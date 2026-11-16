@@ -1,7 +1,5 @@
 import { Cormorant_Garamond } from "next/font/google";
 
-import { aboutStats } from "@/data/about";
-
 import styles from "./about-stats.module.css";
 
 // Loaded here, not in the root layout, so it is preloaded only on pages that
@@ -18,11 +16,13 @@ type AboutStatsProps = {
 
 export const AboutStats = ({ className = "" }: AboutStatsProps) => (
   <dl className={`${styles.stats} ${cormorantGaramond.variable} ${className}`}>
-    {aboutStats.map(({ value, label }) => (
-      <div key={value}>
-        <dt>{value}</dt>
-        <dd>{label}</dd>
-      </div>
-    ))}
+    <div>
+      <dt>5+ lat</dt>
+      <dd>pasji i pracy w branży beauty</dd>
+    </div>
+    <div>
+      <dt>III rok</dt>
+      <dd>studiów na kierunku pielęgniarstwo</dd>
+    </div>
   </dl>
 );

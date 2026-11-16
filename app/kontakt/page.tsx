@@ -7,7 +7,7 @@ import { createPageMetadata } from "@/data/page-metadata";
 import { siteConfig } from "@/data/site-config";
 import { getLocalBusinessJsonLd } from "@/data/structured-data";
 
-import { AboutTeaser } from "./components/about-teaser";
+import { AboutMe } from "@/components/about-me";
 import { AddressSection } from "./components/address-section";
 import { GallerySection } from "./components/gallery-section";
 
@@ -29,7 +29,10 @@ export default function ContactPage() {
         title="Najczęstsze pytania"
         className="section-tinted"
       />
-      <AboutTeaser />
+      <AboutMe
+        title="Poznajmy się bliżej."
+        text="Wierzę, że najlepsze efekty zaczynają się od uważnej rozmowy, zaufania i dobrze dobranego planu."
+      />
     </>
   );
 }

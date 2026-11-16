@@ -44,7 +44,7 @@ Rules:
 
 ## 3. Typography
 
-One family: **Geist** (`--font-geist-sans`, loaded in `app/layout.tsx`), fallback Arial. Weights: 400 body, 500 headings and emphasis, 700 only for small uppercase labels and buttons. One serif exception: **Cormorant Garamond** 500 (`--font-serif`, loaded in `components/about-stats.tsx`, so it is preloaded only where the stats render) for the stat numbers of the shared `AboutStats` component (home `HomeAbout` section and the `/o-mnie` hero); don't use it elsewhere. Italic is used on purpose only for the price-category headings on `/cennik`; don't use it elsewhere.
+One family: **Geist** (`--font-geist-sans`, loaded in `app/layout.tsx`), fallback Arial. Weights: 400 body, 500 headings and emphasis, 700 only for small uppercase labels and buttons. One serif exception: **Cormorant Garamond** 500 (`--font-serif`, loaded in `components/about-stats.tsx`, so it is preloaded only where the stats render) for the stat numbers of the shared `AboutStats` component (`AboutMe` section on home and contact and the `/o-mnie` hero); don't use it elsewhere. Italic is used on purpose only for the price-category headings on `/cennik`; don't use it elsewhere.
 
 ### Scale
 
