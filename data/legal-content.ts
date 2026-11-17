@@ -8,7 +8,7 @@ export type LegalSection = {
 
 const { company, address, email, phone, legal } = siteConfig;
 
-export const legalLastUpdated = "15 listopada 2026";
+export const legalLastUpdated = "17 listopada 2026";
 
 export const privacyPolicySections = [
   {
@@ -43,6 +43,7 @@ export const privacyPolicySections = [
     paragraphs: [
       "Dane mogą być przekazywane podmiotom wspierającym nas w prowadzeniu działalności, w tym dostawcy hostingu strony oraz platformom Meta (Instagram, Facebook, Messenger, WhatsApp) w zakresie komunikacji prowadzonej za ich pośrednictwem.",
       "Jeśli wyrazisz zgodę na pliki cookie analityczne, dane o korzystaniu ze strony otrzymuje także Google Ireland Limited jako dostawca usługi Google Analytics. Dane te mogą być przekazywane do Google LLC w Stanach Zjednoczonych na podstawie decyzji Komisji Europejskiej w sprawie ram ochrony danych UE–USA (EU-US Data Privacy Framework).",
+      "Jeśli wyrazisz zgodę na treści z Google, zdjęcia profilowe autorów opinii z Map Google wczytują się bezpośrednio z serwerów Google Ireland Limited (a dane mogą trafiać do Google LLC), o czym piszemy niżej.",
     ],
   },
   {
@@ -51,6 +52,7 @@ export const privacyPolicySections = [
       "Strona zapisuje w Twojej przeglądarce informację o wyborze dokonanym w banerze zgody. Jest to niezbędne do działania strony i nie wymaga zgody.",
       "Za Twoją zgodą (art. 6 ust. 1 lit. a RODO) korzystamy z Google Analytics 4, aby sprawdzać, ile osób odwiedza stronę, z jakich źródeł trafia na nią ruch, które podstrony są czytane oraz jak często klikane są przyciski kontaktu i umawiania wizyty. Google Analytics zapisuje pliki cookie _ga i _ga_*, ważne do 2 lat. Nie przekazujemy do Google imienia, adresu e-mail, numeru telefonu ani innych danych pozwalających bezpośrednio Cię zidentyfikować. Dane statystyczne przechowujemy w Google Analytics przez 14 miesięcy.",
       "Na stronie Kontakt mapa Google Maps jest wczytywana dopiero po kliknięciu przycisku wyświetlenia mapy. Do tego momentu nie łączymy się z serwerami Google. Po kliknięciu Google Ireland Limited otrzymuje Twój adres IP oraz dane o przeglądarce i może zapisać w niej własne pliki cookie, na zasadach opisanych w polityce prywatności Google. Dane te mogą być przekazywane do Google LLC w Stanach Zjednoczonych na podstawie EU-US Data Privacy Framework. Wczytanie mapy odbywa się za Twoją zgodą (art. 6 ust. 1 lit. a RODO), wyrażoną przez kliknięcie. Jeśli nie klikniesz, możesz skorzystać z linku otwierającego lokalizację w Mapach Google w osobnej karcie.",
+      "Na stronie głównej pokazujemy opinie z naszego profilu w Mapach Google. Pobieramy je z serwera naszej strony przez interfejs Google Places API, gdy przewiniesz stronę w pobliże sekcji opinii, i nie przechowujemy ich. Zdjęcia profilowe autorów opinii wczytują się bezpośrednio z serwerów Google tylko wtedy, gdy wyrazisz na to zgodę w ustawieniach plików cookie (kategoria „Treści z Google”). Google Ireland Limited otrzymuje wtedy Twój adres IP i dane o przeglądarce, na zasadach opisanych w Polityce prywatności Google (https://policies.google.com/privacy). Dane te mogą być przekazywane do Google LLC w Stanach Zjednoczonych na podstawie EU-US Data Privacy Framework. Zgodę możesz wycofać w każdej chwili w ustawieniach plików cookie.",
       "Bez Twojej zgody Google Analytics nie jest wczytywany. Zgodę możesz w każdej chwili zmienić lub wycofać, klikając „Ustawienia cookies” w stopce strony. Po wycofaniu zgody usuwamy pliki cookie Google Analytics z Twojej przeglądarki. Wycofanie zgody nie wpływa na zgodność z prawem przetwarzania przed jej wycofaniem.",
     ],
   },
@@ -120,6 +122,12 @@ export const termsSections = [
     heading: "Ochrona danych osobowych",
     paragraphs: [
       `Zasady przetwarzania danych osobowych opisane są w dokumencie dostępnym pod adresem ${legal.privacyPolicyPath}.`,
+    ],
+  },
+  {
+    heading: "Treści z Google Maps",
+    paragraphs: [
+      "Sekcja opinii korzysta z usług Google Maps. Korzystając z niej, akceptujesz Dodatkowe warunki korzystania z usług Google Maps/Google Earth (https://maps.google.com/help/terms_maps/) oraz Politykę prywatności Google (https://policies.google.com/privacy). Opinie pochodzą od użytkowników Google i nie są weryfikowane przez Usługodawcę.",
     ],
   },
   {

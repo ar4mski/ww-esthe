@@ -1,7 +1,8 @@
-export type CookieCategoryId = "necessary" | "analytics";
+export type CookieCategoryId = "necessary" | "analytics" | "googleContent";
 
 export type CookieConsentState = {
   analytics: boolean;
+  googleContent: boolean;
 };
 
 const STORAGE_KEY = "ww-esthe-cookie-consent";
@@ -24,8 +25,11 @@ export const getStoredCookieConsent = (): CookieConsentState | null => {
     if (!raw) return null;
 
     const parsed = JSON.parse(raw);
-    return typeof parsed?.analytics === "boolean"
-      ? { analytics: parsed.analytics }
+    // A value saved before a category existed has no answer for it, so it counts
+    // as no choice and the banner asks again.
+    return typeof parsed?.analytics === "boolean" &&
+      typeof parsed?.googleContent === "boolean"
+      ? { analytics: parsed.analytics, googleContent: parsed.googleContent }
       : null;
   } catch {
     return null;

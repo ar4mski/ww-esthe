@@ -24,7 +24,7 @@ Everything still open before and right after the production launch. Remove an it
 ## After launch
 
 - [ ] **Google Business Profile:** finish the address verification. The name must be exactly "Wiktoria Warylak Esthe" (`siteConfig.businessName`), address and phone identical to the site and the JSON-LD; no keywords in the name.
-- [ ] **Google reviews** (once real reviews exist): fetch them on the server from the Places API (New), `reviews` field (max 5, plus `rating` and `userRatingCount`), with `fetch` and `next: { revalidate }`. Needs a `place_id`, an API key restricted to the Places API, `GOOGLE_PLACES_API_KEY` and `GOOGLE_PLACE_ID` in `.env.example`, Google attribution, and no section when there are no reviews or the API fails. The `Testimonial` component is kept for this. Only then add `aggregateRating` to `getLocalBusinessJsonLd`.
+- [ ] **Google reviews** (once real reviews exist): fetch them on the server from the Places API (New), `reviews` field (max 5, plus `rating` and `userRatingCount`), with `fetch` and `next: { revalidate }`. Needs a `place_id`, an API key restricted to the Places API, `GOOGLE_PLACES_API_KEY` and `GOOGLE_PLACE_ID` in `.env.example`, Google attribution, and no section when there are no reviews or the API fails. Only then add `aggregateRating` to `getLocalBusinessJsonLd`.
 - [ ] **Search Console:** watch CTR and queries per page and adjust titles and descriptions.
 - [ ] **Blog:** add `updatedDate` on significant edits; consider an author box with qualifications (E-E-A-T for aesthetic medicine).
 

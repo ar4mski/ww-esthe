@@ -15,10 +15,20 @@ import {
 } from "./cookie-consent-storage";
 import styles from "./cookie-consent.module.css";
 
+const noOptionalConsent: CookieConsentState = {
+  analytics: false,
+  googleContent: false,
+};
+
+const allConsent: CookieConsentState = {
+  analytics: true,
+  googleContent: true,
+};
+
 export function CookieConsent() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isReopened, setIsReopened] = useState(false);
-  const [analyticsChecked, setAnalyticsChecked] = useState(false);
+  const [choice, setChoice] = useState<CookieConsentState>(noOptionalConsent);
   // The server snapshot reports consent as given so the banner is never in the
   // server HTML; only the client knows whether a choice was already stored.
   const hasStoredConsent = useSyncExternalStore(
@@ -31,7 +41,7 @@ export function CookieConsent() {
   // the visitor's current choice preselected.
   useEffect(() => {
     const onOpen = () => {
-      setAnalyticsChecked(getStoredCookieConsent()?.analytics ?? false);
+      setChoice(getStoredCookieConsent() ?? noOptionalConsent);
       setIsSettingsOpen(true);
       setIsReopened(true);
     };
@@ -71,12 +81,15 @@ export function CookieConsent() {
                   <input
                     type="checkbox"
                     checked={
-                      category.id === "analytics" ? analyticsChecked : true
+                      category.id === "necessary" ? true : choice[category.id]
                     }
                     disabled={category.required}
                     onChange={(event) =>
-                      category.id === "analytics" &&
-                      setAnalyticsChecked(event.target.checked)
+                      category.id !== "necessary" &&
+                      setChoice({
+                        ...choice,
+                        [category.id]: event.target.checked,
+                      })
                     }
                   />
                   {category.label}
@@ -94,7 +107,7 @@ export function CookieConsent() {
             <button
               className="button"
               type="button"
-              onClick={() => saveConsent({ analytics: analyticsChecked })}
+              onClick={() => saveConsent(choice)}
             >
               {cookieConsentContent.saveSettingsLabel}
             </button>
@@ -103,14 +116,14 @@ export function CookieConsent() {
               <button
                 className="button"
                 type="button"
-                onClick={() => saveConsent({ analytics: true })}
+                onClick={() => saveConsent(allConsent)}
               >
                 {cookieConsentContent.acceptAllLabel}
               </button>
               <button
                 className="button button-secondary"
                 type="button"
-                onClick={() => saveConsent({ analytics: false })}
+                onClick={() => saveConsent(noOptionalConsent)}
               >
                 {cookieConsentContent.rejectAllLabel}
               </button>
