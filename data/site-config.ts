@@ -9,6 +9,13 @@ export const siteConfig = {
   // Google Analytics 4 measurement ID (G-...). Set it only for the Production
   // environment so previews and local builds never send data.
   gaMeasurementId: process.env.NEXT_PUBLIC_GA_ID,
+  // Google reviews section on the home page (Places API (New), server-only key).
+  // Set GOOGLE_PLACE_ID for the Production environment only to turn it on.
+  googleReviews: {
+    enabled: Boolean(process.env.GOOGLE_PLACE_ID),
+    minReviews: 3,
+    shownReviews: 3,
+  },
   defaultOgImage: {
     url: "/images/heroes/home/og.jpg",
     width: 1200,

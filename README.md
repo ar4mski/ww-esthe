@@ -86,6 +86,8 @@ The full guidelines live in [AGENTS.md](AGENTS.md) (also loaded through `CLAUDE.
 | `NEXT_PUBLIC_SITE_URL` | `https://ww-esthe.vercel.app` | Base URL for canonical links, Open Graph, the sitemap and structured data        |
 | `ALLOW_INDEXING`       | unset (indexing blocked)      | Set to `true` to let search engines crawl and index the site (see the checklist) |
 | `NEXT_PUBLIC_GA_ID`    | unset (no analytics)          | Google Analytics 4 measurement ID (`G-…`). Set it for **Production** only; GA loads only after the visitor accepts analytics cookies |
+| `GOOGLE_PLACES_API_KEY` | unset (no reviews section) | Server-only Places API (New) key for the Google reviews section. **Production** only |
+| `GOOGLE_PLACE_ID`      | unset (no reviews section)    | Place ID of the Google Business Profile (`ChIJ…`). Setting it turns the section on at the next build. **Production** only |
 
 Until `ALLOW_INDEXING=true`, every deployment serves `Disallow: /` in `robots.txt` and `noindex, nofollow` on all pages.
 
