@@ -184,7 +184,7 @@ No box, border or background: an image on top, text below, aligned to the image 
 lucide-react only, always `className="icon"`, size through `--icon-size` on a parent (default `1.15rem`; `1rem` in dense rows, `1.25–1.5rem` in badges and quotes). Icons are line icons in `currentColor`; accent icons are `--beige`. Brand glyphs come from `components/icons/`.
 
 ### Existing building blocks
-`PageHero`, `PageSection`, `BookingCta`, `FaqSection`/`FaqItem`, `CTAButton`, `Breadcrumbs`, `CategoryFilter`, `TreatmentList`/`TreatmentListItem`, `GalleryGrid`/`GalleryPreview`, `Visit`, `Carousel`, `Testimonial`, `LegalDocument`, `StatusPage`, `BackgroundVideo`, `SiteHeader`, `SiteFooter`. Route-specific ones live in `app/<route>/components/`.
+`PageHero`, `PageSection`, `BookingCta`, `FaqSection`/`FaqItem`, `CTAButton`, `Breadcrumbs`, `CategoryFilter`, `TreatmentList`/`TreatmentListItem`, `GalleryGrid`/`GalleryPreview`, `Visit`, `LegalDocument`, `StatusPage`, `BackgroundVideo`, `SiteHeader`, `SiteFooter`. Route-specific ones live in `app/<route>/components/`.
 
 ## 7. Hero
 

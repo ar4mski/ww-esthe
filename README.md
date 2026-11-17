@@ -46,7 +46,7 @@ Routes: `/`, `/zabiegi` and `/zabiegi/[slug]`, `/o-mnie`, `/galeria`, `/cennik`,
 
 - **Business details** (name, phone, address, opening hours, social links, booking URL): `data/site-config.ts`
 - **Treatments** (descriptions, facts, FAQ, cover images): `data/treatments.ts`, with extra photos in `data/treatment-showcase.ts`
-- **FAQ, testimonials, legal texts**: `data/faq.ts`, `data/testimonials.ts`, `data/legal-content.ts`
+- **FAQ, legal texts**: `data/faq.ts`, `data/legal-content.ts`
 - **Gallery**: add images to `public/images/gallery/<category>/` and register them in `components/gallery-grid/gallery-items.ts`
 - **Blog**: add a `content/blog/<slug>.mdx` file. The file name becomes the URL slug. Front matter:
 
