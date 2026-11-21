@@ -24,7 +24,11 @@ Everything still open before and right after the production launch. Remove an it
 ## After launch
 
 - [ ] **Google Business Profile:** finish the address verification. The name must be exactly "Wiktoria Warylak Esthe" (`siteConfig.businessName`), address and phone identical to the site and the JSON-LD; no keywords in the name.
-- [ ] **Google reviews** (once real reviews exist): fetch them on the server from the Places API (New), `reviews` field (max 5, plus `rating` and `userRatingCount`), with `fetch` and `next: { revalidate }`. Needs a `place_id`, an API key restricted to the Places API, `GOOGLE_PLACES_API_KEY` and `GOOGLE_PLACE_ID` in `.env.example`, Google attribution, and no section when there are no reviews or the API fails. Only then add `aggregateRating` to `getLocalBusinessJsonLd`.
+- [ ] **Google reviews** (code is done, the section is hidden until `GOOGLE_PLACE_ID` is set):
+  - Owner collects reviews with the "Poproś o opinie" link/QR from all clients, with no reward; turn the section on at 3+ reviews with text.
+  - Google Cloud: project with billing, enable Places API (New), API key restricted to it, quota "Place Details requests per day" = 30, budget alert at 10 PLN, find the place ID (see `docs/design/google-reviews/HANDOFF.md` §2).
+  - Vercel **Production only**: `GOOGLE_PLACES_API_KEY`, `GOOGLE_PLACE_ID`; redeploy.
+  - On launch day: bump `legalLastUpdated` in `data/legal-content.ts`, have a lawyer check the privacy policy and terms wording, add `https://warylakesthe.pl` to the Business Profile.
 - [ ] **Search Console:** watch CTR and queries per page and adjust titles and descriptions.
 - [ ] **Blog:** add `updatedDate` on significant edits; consider an author box with qualifications (E-E-A-T for aesthetic medicine).
 
