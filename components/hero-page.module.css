@@ -247,7 +247,7 @@
   .heroActions :global(.button-secondary:focus-visible) {
     background: #fffaf5;
     border-color: #fffaf5;
-    color: #2c241f;
+    color: var(--brown);
   }
 }
 

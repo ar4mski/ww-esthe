@@ -7,8 +7,8 @@ export type LinkClickEvent = {
 
 const { bookingUrl, messageUrl, phone, email, social, address } = siteConfig;
 
-// First match wins. The message link is an Instagram DM (ig.me), so it must be
-// matched before the generic Instagram profile link.
+// First match wins. The Instagram DM link (ig.me) counts as contact, not as a
+// visit to the Instagram profile.
 const rules: { matches: (href: string) => boolean; event: LinkClickEvent }[] = [
   {
     matches: (href) => href.startsWith(bookingUrl),

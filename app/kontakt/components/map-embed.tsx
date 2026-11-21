@@ -45,7 +45,7 @@ export const MapEmbed = ({ src, title, mapsUrl }: MapEmbedProps) => {
           className="button button-link"
           href={mapsUrl}
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
         >
           Otwórz w Google Maps
         </a>

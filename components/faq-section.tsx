@@ -1,6 +1,6 @@
 import { FaqItem } from "@/components/faq-item";
 
-import { ChannelLinks } from "./channel-links";
+import { ChannelLinks } from "@/components/channel-links";
 import styles from "./faq-section.module.css";
 
 type Faq = {

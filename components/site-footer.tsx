@@ -21,7 +21,7 @@ export function SiteFooter() {
               className={styles.footerItem}
               href={siteConfig.bookingUrl}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <CalendarDays className="icon" />
               Rezerwacja online
@@ -30,7 +30,7 @@ export function SiteFooter() {
               className={styles.footerItem}
               href={siteConfig.social.instagram}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <InstagramIcon className="icon" />
               Instagram
@@ -39,7 +39,7 @@ export function SiteFooter() {
               className={styles.footerItem}
               href={siteConfig.social.whatsapp}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <WhatsAppIcon className="icon" />
               WhatsApp
@@ -48,7 +48,7 @@ export function SiteFooter() {
               className={styles.footerItem}
               href={siteConfig.social.messenger}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <MessengerIcon className="icon" />
               Messenger

@@ -28,7 +28,7 @@ const ContactLine = ({
   <a
     className={styles.detailItem}
     href={href}
-    {...(external && { target: "_blank", rel: "noreferrer" })}
+    {...(external && { target: "_blank", rel: "noopener noreferrer" })}
   >
     <Icon className="icon" />
     <span className={styles.detailText}>
@@ -54,7 +54,7 @@ export const AddressSection = () => {
       </div>
       <address className={styles.detailsList}>
         <ContactLine
-          href={siteConfig.messageUrl}
+          href={siteConfig.social.instagram}
           icon={InstagramIcon}
           label="Instagram"
           external

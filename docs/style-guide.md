@@ -153,7 +153,8 @@ Other link styles: `.text-link` (uppercase, centred block: "Zobacz więcej" unde
 
 - Booking: always `BookingButton`, questions: always `MessageButton` (`components/cta-buttons.tsx`). They point to `siteConfig.bookingUrl` (Booksy) and `siteConfig.messageUrl` (Instagram DM) and keep analytics working. "Umów konsultację" is not used.
 - Only a secondary button stands next to a primary one; never two primary buttons. A link never shares a row with buttons: it goes on its own line below the pair.
-- A pair sits in `display: flex; flex-wrap: wrap; gap: 0.75rem`, primary first.
+- Every button group (a pair, or a button with a `.button-link`) sits in `display: flex; flex-wrap: wrap; gap: 0.75rem`, primary first. The same gap on every page; don't add a wider column gap.
+- External links (`target="_blank"`) always use `rel="noopener noreferrer"`.
 - The full list of channels (Instagram, WhatsApp, Messenger, phone, e-mail) appears only as links with icons: `ChannelLinks` in FAQ and `/kontakt`, the footer.
 - Touch targets: at least `2.75rem` (44px) high.
 - Plain links: inherit colour, no underline at rest; hover/focus/current → `--beige` + underline (`--link-underline-thickness`, `--link-underline-offset`). Links inside a sentence are underlined at rest: `.inline-link`, or a module rule in long text (articles, cookie banner).
