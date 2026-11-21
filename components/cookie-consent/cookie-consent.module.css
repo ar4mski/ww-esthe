@@ -61,22 +61,11 @@
 }
 
 .actions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
   margin-top: 1.25rem;
-
-  & .button {
-    text-align: center;
-  }
 }
 
 @media (min-width: 640px) {
   .content {
     padding: 1.5rem 2rem 1.75rem;
-  }
-
-  .actions {
-    flex-direction: row;
   }
 }

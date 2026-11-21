@@ -22,7 +22,7 @@ export const BookingCta = ({ variant = "default" }: BookingCtaProps) => (
             Porozmawiajmy o Twoich potrzebach. Podczas konsultacji dobierzemy
             rozwiązanie, które będzie dla Ciebie odpowiednie.
           </p>
-          <div className={styles.actions}>
+          <div className={`button-group button-group-center ${styles.actions}`}>
             <MessageButton>Napisz do mnie</MessageButton>
           </div>
           <p className={styles.bookingNote}>
@@ -44,7 +44,7 @@ export const BookingCta = ({ variant = "default" }: BookingCtaProps) => (
             Zarezerwuj termin online albo napisz, jeśli masz pytania –
             dobierzemy zabieg do Twoich potrzeb.
           </p>
-          <div className={styles.actions}>
+          <div className={`button-group button-group-center ${styles.actions}`}>
             <BookingButton />
             <MessageButton />
           </div>

@@ -150,7 +150,7 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
                 ))}
               </>
             )}
-            <div className={styles.heroActions}>
+            <div className={`button-group ${styles.heroActions}`}>
               <BookingButton />
               <MessageButton>Zapytaj o ten zabieg</MessageButton>
             </div>

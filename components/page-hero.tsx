@@ -112,7 +112,9 @@ export const PageHero = ({
       aria-labelledby={titleId}
       style={
         {
-          "--hero-desktop-image": getBackdropImageSet(desktopImage ?? mobileSrc),
+          "--hero-desktop-image": getBackdropImageSet(
+            desktopImage ?? mobileSrc,
+          ),
           "--hero-desktop-position": desktopPosition,
           ...(blurDataURL && {
             "--hero-placeholder-image": `url("${blurDataURL}")`,
@@ -140,7 +142,11 @@ export const PageHero = ({
           <h1 id={titleId}>{title}</h1>
           {description && <p className={styles.description}>{description}</p>}
 
-          {actions && <div className={styles.heroActions}>{actions}</div>}
+          {actions && (
+            <div className={`button-group ${styles.heroActions}`}>
+              {actions}
+            </div>
+          )}
         </div>
       </div>
     </section>

@@ -6,11 +6,6 @@
 }
 
 .actions {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  justify-content: center;
   margin-top: 2rem;
 }
 

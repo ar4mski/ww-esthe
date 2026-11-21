@@ -38,7 +38,7 @@ export const AboutHero = () => (
       <div className={styles.summary}>
         <AboutStats className={styles.stats} />
 
-        <div className={styles.actions}>
+        <div className={`button-group ${styles.actions}`}>
           <BookingButton />
           <MessageButton>Napisz do mnie</MessageButton>
         </div>

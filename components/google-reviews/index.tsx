@@ -123,7 +123,7 @@ export const GoogleReviews = () => {
         </ul>
 
         <div className={styles.footer}>
-          <div className={styles.actions}>
+          <div className={`button-group ${styles.actions}`}>
             <a
               className="button button-secondary"
               href={data.reviewsUrl}

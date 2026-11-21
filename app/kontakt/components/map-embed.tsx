@@ -33,7 +33,7 @@ export const MapEmbed = ({ src, title, mapsUrl }: MapEmbedProps) => {
         <MapPin className="icon" aria-hidden="true" />
       </span>
       <p>Mapa wczyta się z Google Maps dopiero po kliknięciu.</p>
-      <div className={styles.mapActions}>
+      <div className="button-group button-group-center">
         <button
           className="button button-secondary"
           type="button"

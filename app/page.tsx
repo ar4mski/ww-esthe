@@ -86,7 +86,7 @@ export default function Home() {
         description="Bez pośpiechu i niespodzianek.Zanim zaczniemy, wiesz dokładnie, co Cię czeka."
       >
         <Visit />
-        <div className={styles.visitActions}>
+        <div className={`button-group ${styles.visitActions}`}>
           <BookingButton />
           <MessageButton>Napisz do mnie</MessageButton>
         </div>

@@ -217,8 +217,10 @@ p {
   display: inline-block;
   font-size: 0.75rem;
   font-weight: 700;
+  justify-content: center;
   letter-spacing: 0.08em;
   padding: 0.8rem 1rem;
+  text-align: center;
   text-transform: uppercase;
   transition:
     background 180ms ease,
@@ -267,6 +269,25 @@ p {
   &:hover,
   &:focus-visible {
     text-decoration-line: underline;
+  }
+}
+
+/* Layout of a button pair: a full-width column on mobile, a row from tablet.
+   Context (margin, grid-area) stays in the owning module. */
+.button-group {
+  display: grid;
+  gap: 0.75rem;
+
+  @media (min-width: 640px) {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.button-group-center {
+  @media (min-width: 640px) {
+    justify-content: center;
   }
 }
 

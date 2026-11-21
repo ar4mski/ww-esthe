@@ -52,10 +52,6 @@
   min-width: 0;
 
   .heroActions {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
     margin-top: 2rem;
   }
 
@@ -249,11 +245,6 @@
 
   .heroCopy {
     display: block;
-  }
-
-  .heroCopy .heroActions {
-    flex-wrap: wrap;
-    column-gap: 1rem;
   }
 
   .desktopHeroFacts {

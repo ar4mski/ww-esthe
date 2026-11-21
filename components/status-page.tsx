@@ -1,7 +1,5 @@
 import type { ReactNode } from "react";
 
-import styles from "./status-page.module.css";
-
 type StatusPageProps = {
   eyebrow: string;
   title: string;
@@ -21,6 +19,6 @@ export const StatusPage = ({
       <h1 id="status-title">{title}</h1>
       <p>{description}</p>
     </header>
-    <div className={styles.actions}>{children}</div>
+    <div className="button-group">{children}</div>
   </section>
 );

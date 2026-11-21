@@ -102,7 +102,7 @@ export function CookieConsent() {
           </ul>
         )}
 
-        <div className={styles.actions}>
+        <div className={`button-group ${styles.actions}`}>
           {isSettingsOpen ? (
             <button
               className="button button-primary"
