@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 import {
@@ -13,6 +14,7 @@ import {
   type GoogleReviewsData,
 } from "@/data/google-reviews";
 import { siteConfig } from "@/data/site-config";
+import googleMapsLogo from "@/public/images/google-maps-logo.svg";
 
 import styles from "./google-reviews.module.css";
 import { RatingStars } from "./rating-stars";
@@ -103,9 +105,11 @@ export const GoogleReviews = () => {
               <span>{formatReviewCount(data.ratingCount)}</span>
             </span>
           </p>
-          <span className={styles.attribution} translate="no">
-            Google Maps
-          </span>
+          <Image
+            className={styles.attribution}
+            src={googleMapsLogo}
+            alt="Google Maps"
+          />
         </div>
 
         <ul className={styles.list}>

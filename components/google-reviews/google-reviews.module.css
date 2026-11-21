@@ -100,16 +100,14 @@
   --icon-size: 1.125rem;
 }
 
-/* Google's attribution: its own font and grey, never uppercase (style guide §2).
-   Padding keeps Google's clear space around it. */
+/* Google's official logo, unmodified: 18px high (allowed 16–19px), with the
+   clear space Google requires (10px left, right, top, 5px bottom). */
 .attribution {
-  color: #5e5e5e;
-  font-family: Roboto, Arial, sans-serif;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1;
-  padding: 0.625rem 0 0.3125rem;
-  white-space: nowrap;
+  flex: none;
+  height: 18px;
+  padding: 10px 10px 5px;
+  box-sizing: content-box;
+  width: auto;
 }
 
 /* Stars */
