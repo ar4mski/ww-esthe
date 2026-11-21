@@ -17,6 +17,7 @@ import homeVideoPoster from "@/public/images/heroes/home/video-poster.jpg";
 
 import { FaqSection } from "@/components/faq-section";
 import { AboutMe } from "@/components/about-me";
+import { GoogleReviews } from "@/components/google-reviews";
 import { Visit } from "@/components/visit";
 import { homeFaqs } from "@/data/faq";
 import { HomeShowcase } from "./components/home-showcase";
@@ -94,6 +95,8 @@ export default function Home() {
       >
         <HomeShowcase />
       </PageSection>
+
+      {siteConfig.googleReviews.enabled && <GoogleReviews />}
 
       <FaqSection
         className="section-tinted"

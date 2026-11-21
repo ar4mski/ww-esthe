@@ -1,3 +1,7 @@
+const isGoogleReviewsMock =
+  process.env.NODE_ENV === "development" &&
+  process.env.GOOGLE_REVIEWS_MOCK === "true";
+
 export const siteConfig = {
   businessName: "Wiktoria Warylak Esthe",
   description:
@@ -12,7 +16,9 @@ export const siteConfig = {
   // Google reviews section on the home page (Places API (New), server-only key).
   // Set GOOGLE_PLACE_ID for the Production environment only to turn it on.
   googleReviews: {
-    enabled: Boolean(process.env.GOOGLE_PLACE_ID),
+    enabled: Boolean(process.env.GOOGLE_PLACE_ID) || isGoogleReviewsMock,
+    // Fake reviews instead of the API, for previewing in `next dev` only.
+    mock: isGoogleReviewsMock,
     minReviews: 3,
     shownReviews: 3,
   },

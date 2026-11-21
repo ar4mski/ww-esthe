@@ -1,5 +1,35 @@
 import { siteConfig } from "./site-config";
 
+const reviewCountWords: Record<Intl.LDMLPluralRule, string> = {
+  zero: "opinii",
+  one: "opinia",
+  two: "opinie",
+  few: "opinie",
+  many: "opinii",
+  other: "opinii",
+};
+
+const pluralRules = new Intl.PluralRules(siteConfig.locale);
+
+// "1 opinia", "3 opinie", "5 opinii", "22 opinie"
+export const formatReviewCount = (count: number) =>
+  `${count} ${reviewCountWords[pluralRules.select(count)]}`;
+
+export const googleReviewsContent = {
+  eyebrow: "Opinie",
+  title: "Co mówią klientki",
+  description: `Opinie z profilu ${siteConfig.businessName} w Mapach Google.`,
+  allReviewsLabel: "Zobacz wszystkie opinie",
+  writeReviewLabel: "Wystaw opinię",
+  reviewLinkLabel: "Zobacz w Google Maps",
+  flagLabel: "Zgłoś",
+  flagAriaLabel: "Zgłoś opinię w Google Maps",
+  expandLabel: "Rozwiń",
+  collapseLabel: "Zwiń",
+  notice: (shown: number) =>
+    `Pokazujemy ${formatReviewCount(shown)} z profilu gabinetu w Mapach Google, wybrane i uporządkowane przez Google według trafności. Google nie weryfikuje opinii, ale sprawdza je i usuwa fałszywe treści, gdy je wykryje.`,
+};
+
 // The field mask sets the price of the call; `reviews` already puts it in the top SKU.
 export const GOOGLE_REVIEWS_FIELD_MASK =
   "rating,userRatingCount,reviews,googleMapsLinks";
@@ -42,7 +72,11 @@ export type PlaceResponse = {
   googleMapsLinks?: { reviewsUri?: string; writeAReviewUri?: string };
 };
 
-const ALLOWED_HOSTS = ["google.com", "maps.app.goo.gl", "googleusercontent.com"];
+const ALLOWED_HOSTS = [
+  "google.com",
+  "maps.app.goo.gl",
+  "googleusercontent.com",
+];
 
 // Only pass on https links that point to Google.
 const safeUrl = (value?: string) => {
@@ -86,7 +120,11 @@ export const mapPlaceToReviews = (
   const reviews = (place.reviews ?? [])
     .flatMap((review): GoogleReview[] => {
       // The original text, so no "translated by Google" label is needed.
-      const text = (review.originalText?.text ?? review.text?.text ?? "").trim();
+      const text = (
+        review.originalText?.text ??
+        review.text?.text ??
+        ""
+      ).trim();
       const reviewUrl = safeUrl(review.googleMapsUri);
       const flagUrl = safeUrl(review.flagContentUri);
       const author = review.authorAttribution;

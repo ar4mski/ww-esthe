@@ -1,0 +1,145 @@
+"use client";
+
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+
+import {
+  getStoredCookieConsent,
+  subscribeToCookieConsent,
+} from "@/components/cookie-consent/cookie-consent-storage";
+import { PageSection } from "@/components/page-section";
+import {
+  googleReviewsContent as content,
+  formatReviewCount,
+  type GoogleReviewsData,
+} from "@/data/google-reviews";
+import { siteConfig } from "@/data/site-config";
+
+import styles from "./google-reviews.module.css";
+import { RatingStars } from "./rating-stars";
+import { ReviewItem } from "./review-item";
+
+const externalLinkProps = {
+  target: "_blank",
+  rel: "noopener noreferrer",
+} as const;
+
+const ratingFormat = new Intl.NumberFormat(siteConfig.locale, {
+  minimumFractionDigits: 1,
+  maximumFractionDigits: 1,
+});
+
+const fetchReviews = async (signal: AbortSignal) => {
+  const response = await fetch("/api/google-reviews", { signal });
+  if (response.status !== 200) return null;
+  const data: GoogleReviewsData = await response.json();
+  return data;
+};
+
+/**
+ * Google reviews are fetched only when the visitor scrolls near the section,
+ * never at build time: the Google Maps Platform terms forbid storing them, and
+ * this keeps the home page static. Until the data arrives (or when there is
+ * none) nothing is rendered.
+ */
+export const GoogleReviews = () => {
+  const anchorRef = useRef<HTMLDivElement>(null);
+  const [data, setData] = useState<GoogleReviewsData | null>(null);
+
+  // Author photos load from Google's servers, so only with consent.
+  const showPhotos = useSyncExternalStore(
+    subscribeToCookieConsent,
+    () => getStoredCookieConsent()?.googleContent === true,
+    () => false,
+  );
+
+  useEffect(() => {
+    const anchor = anchorRef.current;
+    if (!anchor) return;
+
+    const controller = new AbortController();
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        // Exactly one request per page view.
+        observer.disconnect();
+        fetchReviews(controller.signal)
+          .then(setData)
+          .catch(() => {});
+      },
+      // Start one viewport before the section becomes visible.
+      { rootMargin: "100% 0px" },
+    );
+    observer.observe(anchor);
+
+    return () => {
+      observer.disconnect();
+      controller.abort();
+    };
+  }, []);
+
+  if (!data) return <div ref={anchorRef} aria-hidden="true" />;
+
+  const rating = ratingFormat.format(data.rating);
+
+  return (
+    <div data-analytics-location="reviews">
+      <PageSection
+        id="homepage-reviews"
+        className={styles.section}
+        headingClassName={styles.heading}
+        eyebrow={content.eyebrow}
+        title={content.title}
+        description={content.description}
+      >
+        <div className={styles.summary}>
+          <p className={styles.rating}>
+            <span className={styles.ratingValue}>{rating}</span>
+            <span className={styles.ratingDetails}>
+              <RatingStars
+                className={styles.summaryStars}
+                label={`Średnia ocena ${rating} na 5`}
+                rating={data.rating}
+              />
+              <span>{formatReviewCount(data.ratingCount)}</span>
+            </span>
+          </p>
+          <span className={styles.attribution} translate="no">
+            Google Maps
+          </span>
+        </div>
+
+        <ul className={styles.list}>
+          {data.reviews.map((review) => (
+            <ReviewItem
+              key={review.id}
+              review={review}
+              showPhoto={showPhotos}
+            />
+          ))}
+        </ul>
+
+        <div className={styles.footer}>
+          <div className={styles.actions}>
+            <a
+              className="button button-outline button-outline-beige"
+              href={data.reviewsUrl}
+              data-reviews-action="all_reviews"
+              {...externalLinkProps}
+            >
+              {content.allReviewsLabel}
+            </a>
+            <a
+              className="button button-outline-secondary"
+              href={data.writeReviewUrl}
+              data-reviews-action="write_review"
+              {...externalLinkProps}
+            >
+              {content.writeReviewLabel}
+            </a>
+          </div>
+          <p className={styles.notice}>{content.notice(data.reviews.length)}</p>
+        </div>
+      </PageSection>
+    </div>
+  );
+};

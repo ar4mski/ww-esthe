@@ -5,12 +5,19 @@ import {
 } from "@/data/google-reviews";
 import { siteConfig } from "@/data/site-config";
 
+import { mockPlace } from "./mock-place";
+
 // Google Maps Platform terms forbid caching reviews: keep this route dynamic,
 // never add `dynamic = "force-static"`, `revalidate` or `fetchCache` here.
 const headers = { "Cache-Control": "no-store" };
 const empty = () => new Response(null, { status: 204, headers });
 
 export async function GET(request: Request) {
+  if (siteConfig.googleReviews.mock) {
+    const data = mapPlaceToReviews(mockPlace);
+    return data ? Response.json(data, { headers }) : empty();
+  }
+
   const key = process.env.GOOGLE_PLACES_API_KEY;
   const placeId = process.env.GOOGLE_PLACE_ID;
   if (!siteConfig.googleReviews.enabled || !key || !placeId) return empty();

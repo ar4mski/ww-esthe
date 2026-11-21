@@ -54,7 +54,7 @@ Stack: Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, lucide-rea
 ## Responsive design
 
 - Mobile-first: base styles for mobile, then `min-width` queries. No `max-width` queries.
-- Only these breakpoints: base (<640px), tablet `min-width: 640px`, desktop `min-width: 1024px`. No other values (768px, 900px, ...). The only exception is the site header's desktop nav at `min-width: 800px`, because all nav links fit in one row only from that width.
+- Only these breakpoints: base (<640px), tablet `min-width: 640px`, desktop `min-width: 1024px`. No other values (768px, 900px, ...). The only exceptions are the site header's desktop nav at `min-width: 800px`, because all nav links fit in one row only from that width, and the Google reviews section at `min-width: 768px`, where its three review columns first fit.
 - Every UI change must work on mobile, tablet, desktop and large desktop. Consider narrow widths, long text, image aspect ratios, button wrapping, navigation, section spacing, touch targets.
 - Avoid hard-coded dimensions that cause horizontal scroll or clipping.
 

@@ -60,13 +60,18 @@ export const getLinkClickEvent = (
   const href = anchor.getAttribute("href");
   if (!href) return null;
 
-  const rule = rules.find(({ matches }) => matches(href));
-  if (!rule) return null;
+  // Google review links come from the Places API, so they can't be matched by
+  // a known URL; the links name their action instead.
+  const reviewsAction = anchor.dataset.reviewsAction;
+  const event: LinkClickEvent | undefined = reviewsAction
+    ? { name: "reviews_click", params: { action: reviewsAction } }
+    : rules.find(({ matches }) => matches(href))?.event;
+  if (!event) return null;
 
   return {
-    name: rule.event.name,
+    name: event.name,
     params: {
-      ...rule.event.params,
+      ...event.params,
       link_location: getLinkLocation(anchor),
       link_text: (anchor.textContent ?? "").trim().slice(0, 100),
     },

@@ -36,6 +36,8 @@ All colours are CSS variables in `:root` of `app/globals.css`.
 
 Colours in use without a token (see §11): hero brown `#9b7964`, warm white `#fffaf5` (text on hero imagery) and the overlay brown `rgba(42, 29, 22, α)` for darkening photos.
 
+Google Maps attribution is the one place where Google's own look wins over the tokens: the official Google Maps logo is used unchanged (no recolouring, cropping or effects), and its text fallback is `Google Maps` in Roboto/system sans-serif 400, `#5e5e5e`, never uppercase. Don't reuse that grey anywhere else.
+
 Rules:
 - `--beige` is the **only** accent. Don't introduce a second accent colour (no gold, pink, green).
 - Text colour on light backgrounds is one of `--foreground`, `--accent`, `--muted` or `--beige`. Nothing else.
@@ -101,7 +103,9 @@ Anything that has to line up with the content column outside `.section-shell` (h
 - Full-bleed content (hero imagery) breaks out of the column with `width: 100vw; margin-left: 50%; transform: translateX(-50%)`, as in `PageHero`.
 
 ### Breakpoints and columns
-Only `min-width: 640px` (tablet) and `min-width: 1024px` (desktop). The single exception is the site header: the desktop nav appears at `min-width: 800px`, because all links fit in one row only from that width. Mockup frames are 390 / 768 / 1440 px wide; they are not breakpoints.
+Only `min-width: 640px` (tablet) and `min-width: 1024px` (desktop). Two documented exceptions:
+- The site header: the desktop nav appears at `min-width: 800px`, because all links fit in one row only from that width.
+- The Google reviews section on the home page: the reviews turn from a list into three columns at `min-width: 768px`. Below that a review column would be too narrow for the quote. Mockup frames are 390 / 768 / 1440 px wide; they are not breakpoints.
 
 | | Mobile < 640 | Tablet ≥ 640 | Desktop ≥ 1024 |
 | --- | --- | --- | --- |
@@ -184,7 +188,7 @@ No box, border or background: an image on top, text below, aligned to the image 
 lucide-react only, always `className="icon"`, size through `--icon-size` on a parent (default `1.15rem`; `1rem` in dense rows, `1.25–1.5rem` in badges and quotes). Icons are line icons in `currentColor`; accent icons are `--beige`. Brand glyphs come from `components/icons/`.
 
 ### Existing building blocks
-`PageHero`, `PageSection`, `BookingCta`, `FaqSection`/`FaqItem`, `CTAButton`, `Breadcrumbs`, `CategoryFilter`, `TreatmentList`/`TreatmentListItem`, `GalleryGrid`/`GalleryPreview`, `Visit`, `LegalDocument`, `StatusPage`, `BackgroundVideo`, `SiteHeader`, `SiteFooter`. Route-specific ones live in `app/<route>/components/`.
+`PageHero`, `PageSection`, `BookingCta`, `FaqSection`/`FaqItem`, `CTAButton`, `Breadcrumbs`, `CategoryFilter`, `TreatmentList`/`TreatmentListItem`, `GalleryGrid`/`GalleryPreview`, `Visit`, `GoogleReviews`, `LegalDocument`, `StatusPage`, `BackgroundVideo`, `SiteHeader`, `SiteFooter`. Route-specific ones live in `app/<route>/components/`.
 
 ## 7. Hero
 

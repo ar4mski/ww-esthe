@@ -104,6 +104,7 @@ Page views, including client-side navigation, come from GA's enhanced measuremen
 | `contact_click`    | e-mail, WhatsApp, Messenger           | `method`, `link_location`, `link_text`  |
 | `social_click`     | Instagram, Facebook profile           | `network`, `link_location`, `link_text` |
 | `directions_click` | Google Maps                           | `link_location`, `link_text`            |
+| `reviews_click`    | "Zobacz wszystkie opinie", "Wystaw opinię" (links with `data-reviews-action`) | `action` (`all_reviews`, `write_review`), `link_location`, `link_text` |
 
 `link_location` is `header`, `footer` or `content`; add `data-analytics-location="…"` to any wrapper to label a section more precisely. To test locally, put `NEXT_PUBLIC_GA_ID=G-…` in `.env.local`, accept cookies and watch **Realtime** in Google Analytics.
 
