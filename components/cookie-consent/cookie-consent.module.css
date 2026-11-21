@@ -66,15 +66,9 @@
   gap: 0.75rem;
   margin-top: 1.25rem;
 
-  & .button,
-  & button {
-    margin-top: 0;
+  & .button {
     text-align: center;
   }
-}
-
-.settingsButton {
-  border-color: transparent;
 }
 
 @media (min-width: 640px) {

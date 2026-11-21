@@ -25,7 +25,7 @@ export const contactFaqs = [
   {
     question: "Czy przed wizytą muszę się umówić?",
     answer:
-      "Tak, wszystkie zabiegi umawiane są na konkretny termin. Najszybciej zrobisz to poprzez wiadomość na Instagramie, WhatsApp lub Messengerze.",
+      "Tak, wszystkie zabiegi umawiane są na konkretny termin. Wolny termin zarezerwujesz online przez Booksy. Jeśli masz pytania, napisz na Instagramie, WhatsAppie lub Messengerze.",
   },
   {
     question: "Jakie formy płatności są dostępne?",

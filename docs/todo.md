@@ -10,6 +10,7 @@ Everything still open before and right after the production launch. Remove an it
 
 ## Decisions needed
 
+- [ ] **Legal texts after Booksy** (owner/lawyer): `data/legal-content.ts` says visits are booked by phone, e-mail or social media and confirmed by the salon, and the privacy policy lists data recipients (Meta). Check whether online booking through Booksy needs to be added.
 - [ ] **Map on `/kontakt`:** today a plain click-to-load facade. Proposal: a static OpenStreetMap image as the facade background (with "© OpenStreetMap contributors"), plus a "Wyznacz trasę" button (`https://www.google.com/maps/dir/?api=1&destination=…`, from the approved contact page design) instead of "Otwórz w Google Maps".
 
 ## Launch day (Vercel)

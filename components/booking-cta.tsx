@@ -1,27 +1,55 @@
-import Link from "next/link";
-
-import { CTAButton } from "@/components/cta-button";
+import { BookingButton, MessageButton } from "@/components/cta-buttons";
+import { siteConfig } from "@/data/site-config";
 
 import styles from "./booking-cta.module.css";
 
-export const BookingCta = () => (
+interface BookingCtaProps {
+  // Blog readers are earlier on the path, so the question comes first there.
+  variant?: "default" | "blog";
+}
+
+export const BookingCta = ({ variant = "default" }: BookingCtaProps) => (
   <section
     className="section-shell section-tinted"
     aria-labelledby="booking-cta-title"
   >
     <div className={styles.cta}>
       <p className="eyebrow">Umów wizytę</p>
-      <h2 id="booking-cta-title">Masz pytania o zabieg?</h2>
-      <p>
-        Porozmawiajmy o Twoich potrzebach. Podczas konsultacji dobierzemy
-        rozwiązanie, które będzie dla Ciebie odpowiednie.
-      </p>
-      <div className={styles.actions}>
-        <CTAButton className="button-outline button-outline-beige" />
-        <Link className="button button-outline-secondary" href="/zabiegi">
-          Zobacz zabiegi
-        </Link>
-      </div>
+      {variant === "blog" ? (
+        <>
+          <h2 id="booking-cta-title">Masz pytania o zabieg?</h2>
+          <p>
+            Porozmawiajmy o Twoich potrzebach. Podczas konsultacji dobierzemy
+            rozwiązanie, które będzie dla Ciebie odpowiednie.
+          </p>
+          <div className={styles.actions}>
+            <MessageButton>Napisz do mnie</MessageButton>
+          </div>
+          <p className={styles.bookingNote}>
+            Wiesz już, czego chcesz?{" "}
+            <a
+              className="inline-link"
+              href={siteConfig.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Zarezerwuj wizytę
+            </a>
+          </p>
+        </>
+      ) : (
+        <>
+          <h2 id="booking-cta-title">Umów się na wizytę</h2>
+          <p>
+            Zarezerwuj termin online albo napisz, jeśli masz pytania –
+            dobierzemy zabieg do Twoich potrzeb.
+          </p>
+          <div className={styles.actions}>
+            <BookingButton />
+            <MessageButton />
+          </div>
+        </>
+      )}
     </div>
   </section>
 );

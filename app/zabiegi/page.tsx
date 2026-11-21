@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
+import { BookingButton, MessageButton } from "@/components/cta-buttons";
 import { PageHero } from "@/components/page-hero";
 import { TreatmentList } from "@/components/treatment-list";
 import { createPageMetadata } from "@/data/page-metadata";
-import { siteConfig } from "@/data/site-config";
 import treatmentsVideoPoster from "@/public/images/heroes/treatments/video-poster.jpg";
 
 export const metadata: Metadata = createPageMetadata({
@@ -24,7 +24,12 @@ export default function TreatmentsPage() {
         videoPoster={treatmentsVideoPoster}
         blendVideoOnDesktop
         imageAlt="Portret klientki związany z naturalną estetyką zabiegów"
-        cta={{ label: "Umów konsultację", href: siteConfig.bookingUrl }}
+        actions={
+          <>
+            <BookingButton />
+            <MessageButton />
+          </>
+        }
       />
       <div className="section-shell">
         <TreatmentList />

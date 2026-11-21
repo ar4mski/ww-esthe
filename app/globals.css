@@ -25,6 +25,8 @@
   --heading-2-size: clamp(1.75rem, 3.5vw, 2.5rem);
   --heading-3-size: clamp(1.125rem, 1.75vw, 1.5rem);
   --heading-card-size: clamp(1.5rem, 2vw, 2rem);
+  --radius-control: 3px;
+  --button-primary-hover: var(--brown);
 }
 
 @theme inline {
@@ -63,8 +65,7 @@ a {
 }
 
 a,
-.interactive-underline,
-.button.button-outline-secondary {
+.interactive-underline {
   text-decoration-thickness: var(--link-underline-thickness);
   text-underline-offset: var(--link-underline-offset);
 }
@@ -77,9 +78,7 @@ a:not(.button)[data-active="true"],
 .interactive-underline:hover,
 .interactive-underline:focus-visible,
 .interactive-underline:active,
-.interactive-underline[aria-pressed="true"],
-.button.button-outline-secondary:hover,
-.button.button-outline-secondary:focus-visible {
+.interactive-underline[aria-pressed="true"] {
   color: var(--link-hover-color, var(--beige));
   text-decoration-line: underline;
 }
@@ -124,19 +123,19 @@ a {
       display: block;
     }
   }
-
-  & > .button {
-    display: block;
-    width: fit-content;
-    margin-top: 2.5rem;
-  }
 }
 
 .section-tinted {
   max-width: none;
   background: var(--section-tint);
-  padding-left: max(1.25rem, calc((100% - var(--content-max-width)) / 2 + 1.25rem));
-  padding-right: max(1.25rem, calc((100% - var(--content-max-width)) / 2 + 1.25rem));
+  padding-left: max(
+    1.25rem,
+    calc((100% - var(--content-max-width)) / 2 + 1.25rem)
+  );
+  padding-right: max(
+    1.25rem,
+    calc((100% - var(--content-max-width)) / 2 + 1.25rem)
+  );
 }
 
 /* Long body copy is justified (client request). Put the class on the wrapper
@@ -207,80 +206,83 @@ p {
   line-height: 1.6;
 }
 
+/* Three levels, always with a modifier: .button-primary (booking),
+   .button-secondary (the alternative next to it), .button-link (navigation).
+   Same type and height on all three. */
 .button {
-  background: var(--foreground);
-  border: 1px solid var(--foreground);
-  color: var(--surface);
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  /* Tailwind's preflight gives <button> the default cursor; match the links. */
+  cursor: pointer;
   display: inline-block;
-  margin-top: 1rem;
-  padding: 0.95rem 1.2rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.8rem 1rem;
+  text-transform: uppercase;
   transition:
     background 180ms ease,
+    border-color 180ms ease,
     color 180ms ease;
+
+  &:has(> .icon) {
+    --icon-size: 1rem;
+    align-items: center;
+    display: inline-flex;
+    gap: 0.5rem;
+  }
 }
 
-.button:hover {
-  background: transparent;
-  color: var(--foreground);
+.button-primary {
+  background: var(--beige);
+  border-color: var(--beige);
+  color: var(--footer-heading);
+
+  &:hover,
+  &:focus-visible {
+    background: var(--button-primary-hover);
+    border-color: var(--button-primary-hover);
+  }
 }
 
 .button-secondary {
   background: transparent;
-  color: var(--foreground);
-}
-
-.button.button-outline,
-.button.button-outline-secondary {
-  background: transparent;
-  color: var(--foreground);
-  margin-top: 0;
-  padding: 0.8rem 1rem;
-}
-
-.button.button-outline,
-.button.button-outline-secondary,
-.text-link {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.button.button-outline {
-  border-color: currentColor;
-}
-
-.button.button-outline:hover {
-  background: var(--foreground);
-  color: var(--surface);
-}
-
-.button.button-outline-beige:hover,
-.button.button-outline-beige:focus-visible {
-  background: var(--beige);
   border-color: var(--beige);
-  color: var(--surface);
-}
-
-.button.button-outline-secondary {
-  border-color: transparent;
-  padding-inline: 0.25rem;
-}
-
-.button.button-outline-secondary:hover,
-.button.button-outline-secondary:focus-visible {
-  background: transparent;
-}
-
-.button.button-outline-secondary:hover,
-.button.button-outline-secondary:focus-visible {
   color: var(--beige);
+
+  &:hover,
+  &:focus-visible {
+    background: var(--beige);
+    color: var(--surface);
+  }
+}
+
+.button-link {
+  background: transparent;
+  color: var(--beige);
+  padding-inline: 0.25rem;
+  text-decoration-thickness: var(--link-underline-thickness);
+  text-underline-offset: var(--link-underline-offset);
+
+  &:hover,
+  &:focus-visible {
+    text-decoration-line: underline;
+  }
+}
+
+/* A link inside a sentence is underlined at rest so it stands out from the text. */
+.inline-link {
+  color: var(--foreground);
   text-decoration-line: underline;
 }
 
 .text-link {
   color: var(--foreground);
   display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   margin: 1.5rem auto 0;
   transition: color 180ms ease;
   width: fit-content;
@@ -333,6 +335,9 @@ p {
 
   .section-tinted {
     padding-left: max(2rem, calc((100% - var(--content-max-width)) / 2 + 2rem));
-    padding-right: max(2rem, calc((100% - var(--content-max-width)) / 2 + 2rem));
+    padding-right: max(
+      2rem,
+      calc((100% - var(--content-max-width)) / 2 + 2rem)
+    );
   }
 }

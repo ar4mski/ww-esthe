@@ -35,14 +35,14 @@ export const MapEmbed = ({ src, title, mapsUrl }: MapEmbedProps) => {
       <p>Mapa wczyta się z Google Maps dopiero po kliknięciu.</p>
       <div className={styles.mapActions}>
         <button
-          className="button button-outline button-outline-beige"
+          className="button button-secondary"
           type="button"
           onClick={() => setIsLoaded(true)}
         >
           Pokaż mapę
         </button>
         <a
-          className="button button-outline-secondary"
+          className="button button-link"
           href={mapsUrl}
           target="_blank"
           rel="noreferrer"

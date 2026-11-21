@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 
 import { BackgroundVideoSection } from "@/components/background-video-section";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { CTAButton } from "@/components/cta-button";
+import { BookingButton, MessageButton } from "@/components/cta-buttons";
 import { FaqSection } from "@/components/faq-section";
 import type { GalleryCategory } from "@/components/gallery-grid/gallery-items";
 import { JsonLd } from "@/components/json-ld";
@@ -151,16 +151,17 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
               </>
             )}
             <div className={styles.heroActions}>
-              <CTAButton className="button-outline button-outline-beige" />
-              {galleryLink && (
-                <Link
-                  className="button button-outline-secondary"
-                  href={`/galeria?category=${galleryLink.category}`}
-                >
-                  Zobacz moje prace
-                </Link>
-              )}
+              <BookingButton />
+              <MessageButton>Zapytaj o ten zabieg</MessageButton>
             </div>
+            {galleryLink && (
+              <Link
+                className={`text-link ${styles.heroGalleryLink}`}
+                href={`/galeria?category=${galleryLink.category}`}
+              >
+                Zobacz moje prace
+              </Link>
+            )}
           </div>
         </div>
         <div className={styles.heroImage}>

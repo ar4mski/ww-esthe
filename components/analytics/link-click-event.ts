@@ -5,14 +5,18 @@ export type LinkClickEvent = {
   params: Record<string, string>;
 };
 
-const { bookingUrl, phone, email, social, address } = siteConfig;
+const { bookingUrl, messageUrl, phone, email, social, address } = siteConfig;
 
-// Order matters: the booking link points to Instagram (ig.me), so it must be
-// matched before the generic social links.
+// First match wins. The message link is an Instagram DM (ig.me), so it must be
+// matched before the generic Instagram profile link.
 const rules: { matches: (href: string) => boolean; event: LinkClickEvent }[] = [
   {
     matches: (href) => href.startsWith(bookingUrl),
-    event: { name: "booking_click", params: { method: "instagram_dm" } },
+    event: { name: "booking_click", params: { method: "booksy" } },
+  },
+  {
+    matches: (href) => href.startsWith(messageUrl),
+    event: { name: "contact_click", params: { method: "instagram_dm" } },
   },
   {
     matches: (href) => href.startsWith("tel:") || href === phone.href,

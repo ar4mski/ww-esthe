@@ -1,16 +1,10 @@
 import { getImageProps, type StaticImageData } from "next/image";
-import Link from "next/link";
+import type { ReactNode } from "react";
 import { preload } from "react-dom";
 
 import { BackgroundVideo } from "./background-video";
-import { CTAButton } from "./cta-button";
 
 import styles from "./hero-page.module.css";
-
-interface HeroLink {
-  label: string;
-  href: string;
-}
 
 // A static import also carries a tiny blurDataURL, shown while the photo loads.
 type ImageSource = string | StaticImageData;
@@ -27,8 +21,8 @@ interface HeroPageProps {
   video?: string;
   videoPoster?: ImageSource;
   blendVideoOnDesktop?: boolean;
-  cta?: HeroLink;
-  secondaryCta?: HeroLink;
+  // BookingButton / MessageButton; restyled for the dark overlay from 640px.
+  actions?: ReactNode;
   desktopPosition?: string;
 }
 
@@ -66,8 +60,7 @@ export const PageHero = ({
   video,
   videoPoster,
   blendVideoOnDesktop,
-  cta,
-  secondaryCta,
+  actions,
   desktopPosition = "calc(100% - max(2rem, calc((100vw - var(--content-max-width)) / 2 + 2rem))) center",
 }: HeroPageProps) => {
   const titleId = `${id}-title`;
@@ -147,23 +140,7 @@ export const PageHero = ({
           <h1 id={titleId}>{title}</h1>
           {description && <p className={styles.description}>{description}</p>}
 
-          {(cta || secondaryCta) && (
-            <div className={styles.heroActions}>
-              {cta && (
-                <CTAButton className="button-outline" href={cta.href}>
-                  {cta.label}
-                </CTAButton>
-              )}
-              {secondaryCta && (
-                <Link
-                  className="button button-outline-secondary"
-                  href={secondaryCta.href}
-                >
-                  {secondaryCta.label}
-                </Link>
-              )}
-            </div>
-          )}
+          {actions && <div className={styles.heroActions}>{actions}</div>}
         </div>
       </div>
     </section>

@@ -225,23 +225,29 @@
     --focus-color: #fffaf5;
   }
 
-  .heroActions :global(.button-outline) {
+  .heroActions :global(.button-primary) {
+    background: #fffaf5;
+    border-color: #fffaf5;
+    color: var(--brown);
+  }
+
+  .heroActions :global(.button-primary:hover),
+  .heroActions :global(.button-primary:focus-visible) {
+    background: transparent;
+    border-color: #fffaf5;
+    color: #fffaf5;
+  }
+
+  .heroActions :global(.button-secondary) {
     border-color: rgba(255, 255, 255, 0.9);
     color: #fffaf5;
   }
 
-  .heroActions :global(.button-outline:hover) {
+  .heroActions :global(.button-secondary:hover),
+  .heroActions :global(.button-secondary:focus-visible) {
     background: #fffaf5;
+    border-color: #fffaf5;
     color: #2c241f;
-  }
-
-  .heroActions :global(.button-outline-secondary) {
-    color: #fffaf5;
-  }
-
-  .heroActions :global(.button-outline-secondary:hover) {
-    background: transparent;
-    color: #fffaf5;
   }
 }
 

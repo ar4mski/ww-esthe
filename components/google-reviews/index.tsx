@@ -125,7 +125,7 @@ export const GoogleReviews = () => {
         <div className={styles.footer}>
           <div className={styles.actions}>
             <a
-              className="button button-outline button-outline-beige"
+              className="button button-secondary"
               href={data.reviewsUrl}
               data-reviews-action="all_reviews"
               {...externalLinkProps}
@@ -133,7 +133,7 @@ export const GoogleReviews = () => {
               {content.allReviewsLabel}
             </a>
             <a
-              className="button button-outline-secondary"
+              className="button button-link"
               href={data.writeReviewUrl}
               data-reviews-action="write_review"
               {...externalLinkProps}

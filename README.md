@@ -99,9 +99,9 @@ Page views, including client-side navigation, come from GA's enhanced measuremen
 
 | Event              | Link                                  | Parameters                              |
 | ------------------ | ------------------------------------- | --------------------------------------- |
-| `booking_click`    | `bookingUrl` ("Umów wizytę")          | `method`, `link_location`, `link_text`  |
+| `booking_click`    | `bookingUrl`, Booksy ("Zarezerwuj wizytę") | `method`, `link_location`, `link_text`  |
 | `phone_click`      | `tel:`                                | `link_location`, `link_text`            |
-| `contact_click`    | e-mail, WhatsApp, Messenger           | `method`, `link_location`, `link_text`  |
+| `contact_click`    | `messageUrl` (Instagram DM), e-mail, WhatsApp, Messenger | `method`, `link_location`, `link_text`  |
 | `social_click`     | Instagram, Facebook profile           | `network`, `link_location`, `link_text` |
 | `directions_click` | Google Maps                           | `link_location`, `link_text`            |
 | `reviews_click`    | "Zobacz wszystkie opinie", "Wystaw opinię" (links with `data-reviews-action`) | `action` (`all_reviews`, `write_review`), `link_location`, `link_text` |

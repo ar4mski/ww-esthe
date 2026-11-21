@@ -52,7 +52,7 @@ export default async function BlogPage() {
         </section>
       )}
 
-      <BookingCta />
+      <BookingCta variant="blog" />
     </>
   );
 }

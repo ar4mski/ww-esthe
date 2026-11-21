@@ -46,7 +46,7 @@ export const FeaturedPost = ({ post }: FeaturedPostProps) => {
           readingTimeMinutes={post.readingTimeMinutes}
         />
         <Link
-          className="button button-outline button-outline-beige"
+          className="button button-secondary"
           href={href}
         >
           Czytaj artykuł

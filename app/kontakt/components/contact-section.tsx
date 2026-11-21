@@ -1,26 +1,7 @@
-import { InstagramIcon, MessengerIcon, WhatsAppIcon } from "@/components/icons";
+import { ChannelLinks } from "@/components/channel-links";
 import { contactSteps } from "@/data/contact";
-import { siteConfig } from "@/data/site-config";
 
 import styles from "./contact-section.module.css";
-
-const channels = [
-  {
-    name: "Instagram",
-    href: siteConfig.bookingUrl,
-    icon: InstagramIcon,
-  },
-  {
-    name: "WhatsApp",
-    href: siteConfig.social.whatsapp,
-    icon: WhatsAppIcon,
-  },
-  {
-    name: "Messenger",
-    href: siteConfig.social.messenger,
-    icon: MessengerIcon,
-  },
-];
 
 export const ContactSection = () => (
   <section
@@ -34,21 +15,7 @@ export const ContactSection = () => (
         Odpowiadam na wiadomości najczęściej w ciągu dnia roboczego. Napisz
         kilka słów o tym, co Cię interesuje, a wspólnie ustalimy termin.
       </p>
-      <ul className={styles.channelList}>
-        {channels.map(({ name, href, icon: Icon }) => (
-          <li key={name}>
-            <a
-              className={`button button-outline button-outline-beige ${styles.channelButton}`}
-              href={href}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Icon className="icon" />
-              {name}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <ChannelLinks />
     </div>
 
     <ol className={styles.steps}>

@@ -1,8 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { AboutStats } from "@/components/about-stats";
-import { CTAButton } from "@/components/cta-button";
+import { BookingButton, MessageButton } from "@/components/cta-buttons";
 import aboutHeroImage from "@/public/images/heroes/about/hero.jpg";
 
 import styles from "./about-hero.module.css";
@@ -40,13 +39,8 @@ export const AboutHero = () => (
         <AboutStats className={styles.stats} />
 
         <div className={styles.actions}>
-          <CTAButton className={`button-outline ${styles.primaryAction}`}>
-            Umów wizytę
-          </CTAButton>
-          <Link className="button button-outline" href="/zabiegi">
-            <span className={styles.fullLabel}>Zobacz zabiegi</span>
-            <span className={styles.shortLabel}>Zabiegi</span>
-          </Link>
+          <BookingButton />
+          <MessageButton>Napisz do mnie</MessageButton>
         </div>
       </div>
     </div>

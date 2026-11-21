@@ -24,15 +24,15 @@ All colours are CSS variables in `:root` of `app/globals.css`.
 | --- | --- | --- | --- |
 | `--background` | `#f3f3f1` | Page background, header, menu panel | — |
 | `--section-tint` | `#eee9e1` | Tinted bands (`.section-tinted`), image placeholders, certificate tiles | — |
-| `--surface` | `#ffffff` | Text on dark buttons, cookie banner, photo tile backgrounds | — |
-| `--foreground` | `#202020` | Headings, primary text, filled button, links at rest | 14.7 : 1 |
+| `--surface` | `#ffffff` | Text on a hovered secondary button, cookie banner, photo tile backgrounds | — |
+| `--foreground` | `#202020` | Headings, primary text, links at rest | 14.7 : 1 |
 | `--accent` | `#444444` | Eyebrows, lead paragraphs, article body | 8.8 : 1 |
 | `--muted` | `#666666` | Body paragraphs (global `p`), meta lines, inactive filters | 5.2 : 1 (4.75 on tint) |
 | `--line` | `#d6d6d2` | All hairlines and 1px borders, image loading background | decorative |
-| `--beige` | `#76614d` | The accent: link hover/active, focus outline, header bottom border, small category labels, icons in circles, list markers | 5.3 : 1 |
-| `--brown` | `#665444` | Dark brown surfaces: footer background, filled step circle on `/kontakt` | 6.5 : 1 |
+| `--beige` | `#76614d` | The accent: primary and secondary buttons, button links, link hover/active, focus outline, header bottom border, small category labels, icons in circles, list markers | 5.3 : 1 |
+| `--brown` | `#665444` | Dark brown surfaces: footer background, filled step circle on `/kontakt`, primary button hover (via `--button-primary-hover`) | 6.5 : 1 |
 | `--text` | `#f7f4ef` | Text on the `--brown` footer | 6.6 : 1 on footer |
-| `--footer-heading` | `#fffdf9` | Footer headings, footer link hover and focus | — |
+| `--footer-heading` | `#fffdf9` | Footer headings, footer link hover and focus, text on the primary button | 5.8 : 1 on `--beige` |
 
 Colours in use without a token (see §11): hero brown `#9b7964`, warm white `#fffaf5` (text on hero imagery) and the overlay brown `rgba(42, 29, 22, α)` for darkening photos.
 
@@ -62,7 +62,7 @@ One family: **Geist** (`--font-geist-sans`, loaded in `app/layout.tsx`), fallbac
 | Article body | `1.0625rem` | 1.8 | `--accent`, measure `42rem` | Blog posts |
 | Small / meta | `0.85–0.95rem` | 1.5 | `--muted` | Prices, dates, card meta, captions |
 | Label | `0.75rem` | — | uppercase, `0.08em` (or `0.14em`), `--beige` or `--accent` | Category over a card, step subtitle, section and hero eyebrow |
-| Button / text link | `0.75rem` | — | 700, uppercase, `0.08em` | `.button-outline`, `.text-link` |
+| Button / text link | `0.75rem` | — | 700, uppercase, `0.08em` | `.button`, `.text-link` |
 
 On desktop each step of the scale is about 1.2–1.33× the next one (65 / 48 / 40 / 32 / 24px); keep that rhythm if a token ever changes. All heading sizes are fluid `clamp()` tokens; never write a new `clamp()` or a fixed `rem` size for a heading. The size follows the role, not the page:
 
@@ -132,7 +132,7 @@ The site uses `rem` values on a loose 0.25rem grid. Reuse these steps:
 
 - **Hairlines**: `1px solid var(--line)`. Used for list separators (FAQ, certificates, values, price list), dividing a section from the one above (inset to the content column), vertical dividers in fact columns and info blocks (`border-left` + `padding-left: 1.25rem`), and around the map and treatment images.
 - **Header**: `1px` bottom border in `--beige` that thickens while collapsing.
-- **Radius**: `0` everywhere. `50%` only for circles.
+- **Radius**: `0` for photos, cards and sections. Controls (buttons) use `--radius-control` (3px). `50%` only for circles.
 - **Circles**: 1px border, content centred. Numbered steps with a `--beige` (or `--brown`) border and the number in the same colour; icon badges `3.5rem` (`4rem` desktop) with a `--line` border and a `--beige` icon.
 - **Shadows**: essentially none. Allowed only on floating layers (open mobile menu `0 0.75rem 1.5rem rgba(32,32,32,.08)`, cookie banner) and a very soft one on featured photos (`0 18px 38px rgba(32,32,32,.05–.08)`).
 
@@ -141,21 +141,22 @@ The site uses `rem` values on a loose 0.25rem grid. Reuse these steps:
 Reuse before building. If a pattern below fits, use it as is.
 
 ### Buttons and links
-All buttons are square, 1px border, no icons unless they identify a channel (Instagram, WhatsApp, Messenger). Labels are short Polish verbs ("Umów konsultację", "Zobacz zabiegi").
+`.button` is only the shared base and always takes one level modifier. All levels have the same type (uppercase 0.75rem/700, `letter-spacing: 0.08em`) and height (`padding: 0.8rem 1rem`; `.button-link` `padding-inline: 0.25rem`), a 1px border and `--radius-control` corners. Labels are short Polish verbs ("Zarezerwuj wizytę", "Zapytaj o zabieg"). A button with a direct `.icon` child becomes an inline-flex row with a `1rem` icon. The cookie banner uses the same buttons.
 
-| Class | Look | When |
-| --- | --- | --- |
-| `.button` | Filled `--foreground`, white text; hover: transparent + dark text | Rare, strong primary action |
-| `.button .button-outline` | Uppercase 0.75rem/700, 1px currentColor border; hover: fills dark | Default primary CTA |
-| `.button .button-outline .button-outline-beige` | Same; hover fills `--beige` | Booking CTAs in content sections, contact channels |
-| `.button .button-outline-secondary` | Text-only uppercase, underline + `--beige` on hover | Secondary action next to a primary one |
-| `.text-link` | Uppercase 0.75rem/700, centred block | "Zobacz więcej" under a grid |
-| `.interactive-underline` | Underline + `--beige` on hover/focus/`aria-pressed` | Text buttons (filters, tabs) |
+| Level | Class | Look | When |
+| --- | --- | --- | --- |
+| 1. Primary | `.button .button-primary` | `--beige` fill, `--footer-heading` text; hover `--button-primary-hover` (`--brown`) | **Booking** (Booksy), the main choice in the cookie banner. At most one per screen. |
+| 2. Secondary | `.button .button-secondary` | `--beige` border and text; hover fills `--beige`, `--surface` text | **Alternative**: a question (Instagram) next to a primary button; other standalone secondary actions. |
+| 3. Link | `.button .button-link` | `--beige` text, no border, underline on hover/focus | A text action next to a secondary button (map facade, review links, error pages). |
 
-- Booking: always `CTAButton` (`components/cta-button.tsx`). It points to `siteConfig.bookingUrl` and keeps analytics working.
-- Max two buttons in a group, primary first, `gap: 0.75rem` (or `0.75rem 1.25rem` centred). On mobile a button that is the section's last element may go full width; two buttons side by side use `grid-template-columns: 1fr 1fr`.
+Other link styles: `.text-link` (uppercase, centred block: "Zobacz więcej" under a grid, a link below a button pair), a plain `<a>` (navigation in content, lists of contact channels), `.interactive-underline` (text buttons: filters, tabs).
+
+- Booking: always `BookingButton`, questions: always `MessageButton` (`components/cta-buttons.tsx`). They point to `siteConfig.bookingUrl` (Booksy) and `siteConfig.messageUrl` (Instagram DM) and keep analytics working. "Umów konsultację" is not used.
+- Only a secondary button stands next to a primary one; never two primary buttons. A link never shares a row with buttons: it goes on its own line below the pair.
+- A pair sits in `display: flex; flex-wrap: wrap; gap: 0.75rem`, primary first.
+- The full list of channels (Instagram, WhatsApp, Messenger, phone, e-mail) appears only as links with icons: `ChannelLinks` in FAQ and `/kontakt`, the footer.
 - Touch targets: at least `2.75rem` (44px) high.
-- Plain links: inherit colour, no underline at rest; hover/focus/current → `--beige` + underline (`--link-underline-thickness`, `--link-underline-offset`). Links inside long text (articles, cookie banner) are underlined at rest.
+- Plain links: inherit colour, no underline at rest; hover/focus/current → `--beige` + underline (`--link-underline-thickness`, `--link-underline-offset`). Links inside a sentence are underlined at rest: `.inline-link`, or a module rule in long text (articles, cookie banner).
 
 ### Section header
 Eyebrow (`.eyebrow`) → `h2` → optional description `p`. Left-aligned. Centred only in `BookingCta` and the desktop `/cennik` intro.
@@ -180,7 +181,7 @@ No box, border or background: an image on top, text below, aligned to the image 
 - Always `next/image`. Photos are warm and natural; never add saturated colour filters.
 - Common aspect ratios: `4 / 5` gallery thumbnails, `5 / 3` treatment and blog cards, `4 / 3` certificate tiles and featured posts, `8 / 5` and `5 / 4` treatment detail, `3 / 2` article images. Reuse one of these before inventing a new ratio.
 - Placeholder background while loading: `--line` or `--section-tint`. Hero photos (home, `/zabiegi`, `/o-mnie`) show a blurred version of themselves instead: import the image statically so Next generates its `blurDataURL` (`placeholder="blur"` on `<Image>`; `PageHero` handles it itself).
-- **Third-party embeds** (the Google map on `/kontakt`) load only on click. Until then the frame shows a facade: `--section-tint` background, a `--beige` icon badge (§5), one short `p` saying where the content comes from, a `.button-outline-beige` button that loads it and a `.button-outline-secondary` link to the external page (`MapEmbed`).
+- **Third-party embeds** (the Google map on `/kontakt`) load only on click. Until then the frame shows a facade: `--section-tint` background, a `--beige` icon badge (§5), one short `p` saying where the content comes from, a `.button-secondary` button that loads it and a `.button-link` link to the external page (`MapEmbed`).
 - Hero photos may fade into the page with `mask-image` gradients instead of a hard edge (`/o-mnie` hero).
 - Hover zoom: `transform: scale(var(--image-hover-scale))` over 250ms on gallery and treatment images; a subtle `1.03–1.04` over 500–600ms on blog images.
 
@@ -188,12 +189,12 @@ No box, border or background: an image on top, text below, aligned to the image 
 lucide-react only, always `className="icon"`, size through `--icon-size` on a parent (default `1.15rem`; `1rem` in dense rows, `1.25–1.5rem` in badges and quotes). Icons are line icons in `currentColor`; accent icons are `--beige`. Brand glyphs come from `components/icons/`.
 
 ### Existing building blocks
-`PageHero`, `PageSection`, `BookingCta`, `FaqSection`/`FaqItem`, `CTAButton`, `Breadcrumbs`, `CategoryFilter`, `TreatmentList`/`TreatmentListItem`, `GalleryGrid`/`GalleryPreview`, `Visit`, `GoogleReviews`, `LegalDocument`, `StatusPage`, `BackgroundVideo`, `SiteHeader`, `SiteFooter`. Route-specific ones live in `app/<route>/components/`.
+`PageHero`, `PageSection`, `BookingCta`, `FaqSection`/`FaqItem`, `BookingButton`/`MessageButton`, `ChannelLinks`, `Breadcrumbs`, `CategoryFilter`, `TreatmentList`/`TreatmentListItem`, `GalleryGrid`/`GalleryPreview`, `Visit`, `GoogleReviews`, `LegalDocument`, `StatusPage`, `BackgroundVideo`, `SiteHeader`, `SiteFooter`. Route-specific ones live in `app/<route>/components/`.
 
 ## 7. Hero
 
 Two hero styles exist; a new page should use one of them.
-- **`PageHero`** (home, `/zabiegi`): full-bleed photo or video. Mobile: light warm gradient over the photo, dark text. From 640px: dark-brown overlay (`rgba(42,29,22,…)`) with warm-white `#fffaf5` text and white outline buttons. Display-size `h1`, uppercase eyebrow, short description.
+- **`PageHero`** (home, `/zabiegi`): full-bleed photo or video. Mobile: light warm gradient over the photo, dark text. From 640px: dark-brown overlay (`rgba(42,29,22,…)`) with warm-white `#fffaf5` text; the button colours invert there (primary = `#fffaf5` with `--brown` text, secondary = warm-white outline). Buttons come in through the `actions` prop. Display-size `h1`, uppercase eyebrow, short description.
 - **Editorial split** (`/o-mnie`, treatment pages): text column + photo column on desktop, photo first on mobile. No overlay; the photo fades into the background or sits in a 1px `--line` frame.
 - Pages without a photo (`/galeria`, `/blog`, `/cennik`, `/kontakt`, legal) start with a plain `.section-shell` and a `.section-heading` holding the `h1`, optionally with breadcrumbs above.
 

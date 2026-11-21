@@ -60,6 +60,13 @@
     row-gap: 1rem;
   }
 
+  /* Links never share a row with buttons: own line, aligned with the pair. */
+  .heroGalleryLink {
+    margin: 0.75rem 0 0;
+    padding-block: 0.8rem;
+    padding-inline: 0.25rem;
+  }
+
   p {
     margin-bottom: 0;
     max-width: 42rem;

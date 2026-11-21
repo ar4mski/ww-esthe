@@ -85,7 +85,7 @@ export default async function BlogCategoryPage({ params }: CategoryPageProps) {
         )}
       </section>
 
-      <BookingCta />
+      <BookingCta variant="blog" />
     </>
   );
 }

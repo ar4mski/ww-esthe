@@ -33,7 +33,7 @@ export const AboutMe = ({ title, text }: AboutMeProps) => (
         <AboutStats className={styles.stats} />
 
         <Link
-          className={`button button-outline button-outline-beige ${styles.action}`}
+          className={`button button-secondary ${styles.action}`}
           href="/o-mnie"
         >
           Poznaj mnie

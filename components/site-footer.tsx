@@ -1,6 +1,6 @@
 import { footerNavigation } from "@/data/navigation";
 import { siteConfig } from "@/data/site-config";
-import { Mail, Phone } from "lucide-react";
+import { CalendarDays, Mail, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { CookieSettingsButton } from "./cookie-consent/cookie-settings-button";
@@ -17,6 +17,15 @@ export function SiteFooter() {
         <div className={styles.footerGrid}>
           <div className={styles.footerGroup}>
             <h2 className={styles.footerHeading}>Kontakt</h2>
+            <a
+              className={styles.footerItem}
+              href={siteConfig.bookingUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <CalendarDays className="icon" />
+              Rezerwacja online
+            </a>
             <a
               className={styles.footerItem}
               href={siteConfig.social.instagram}

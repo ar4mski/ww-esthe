@@ -16,14 +16,14 @@ export default function ErrorPage({ retry }: ErrorPageProps) {
       description="Spróbuj ponownie za chwilę. Jeśli problem się powtarza, skontaktuj się z nami."
     >
       <button
-        className="button button-outline button-outline-beige"
+        className="button button-secondary"
         type="button"
         onClick={() => retry()}
       >
         Spróbuj ponownie
       </button>
       <Link
-        className="button button-outline button-outline-secondary"
+        className="button button-link"
         href="/kontakt"
       >
         Kontakt

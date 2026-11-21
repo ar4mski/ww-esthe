@@ -1,6 +1,7 @@
 import { CircleParking, Clock, Mail, MapPin, Phone } from "lucide-react";
 import type { ComponentType, ReactNode, SVGProps } from "react";
 
+import { BookingButton } from "@/components/cta-buttons";
 import { InstagramIcon } from "@/components/icons";
 import { PageSection } from "@/components/page-section";
 import { parkingNote } from "@/data/contact";
@@ -48,9 +49,12 @@ export const AddressSection = () => {
       headingLevel="h1"
       id="adres"
     >
+      <div className={styles.booking}>
+        <BookingButton />
+      </div>
       <address className={styles.detailsList}>
         <ContactLine
-          href={siteConfig.bookingUrl}
+          href={siteConfig.messageUrl}
           icon={InstagramIcon}
           label="Instagram"
           external

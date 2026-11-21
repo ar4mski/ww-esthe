@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { CTAButton } from "@/components/cta-button";
+import { BookingButton, MessageButton } from "@/components/cta-buttons";
 import { JsonLd } from "@/components/json-ld";
 import { PageHero } from "@/components/page-hero";
 import { PageSection } from "@/components/page-section";
@@ -42,8 +42,12 @@ export default function Home() {
         video="/video/hero-home.mp4"
         videoPoster={homeVideoPoster}
         imageAlt={`Portret klientki ${siteConfig.businessName}`}
-        cta={{ label: "Umów konsultację", href: siteConfig.bookingUrl }}
-        secondaryCta={{ label: "Zobacz usługi", href: "/zabiegi" }}
+        actions={
+          <>
+            <BookingButton />
+            <MessageButton />
+          </>
+        }
       />
 
       <PageSection
@@ -82,9 +86,10 @@ export default function Home() {
         description="Bez pośpiechu i niespodzianek.Zanim zaczniemy, wiesz dokładnie, co Cię czeka."
       >
         <Visit />
-        <CTAButton
-          className={`button-outline button-outline-beige ${styles.visitButton}`}
-        />
+        <div className={styles.visitActions}>
+          <BookingButton />
+          <MessageButton>Napisz do mnie</MessageButton>
+        </div>
       </PageSection>
 
       <PageSection

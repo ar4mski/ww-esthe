@@ -1,7 +1,6 @@
 import { FaqItem } from "@/components/faq-item";
-import { InstagramIcon, MessengerIcon } from "@/components/icons";
-import { siteConfig } from "@/data/site-config";
 
+import { ChannelLinks } from "./channel-links";
 import styles from "./faq-section.module.css";
 
 type Faq = {
@@ -17,19 +16,6 @@ type FaqSectionProps = {
   description?: string;
   eyebrow?: string;
 };
-
-const channels = [
-  {
-    name: "Instagram",
-    href: siteConfig.bookingUrl,
-    icon: InstagramIcon,
-  },
-  {
-    name: "Messenger",
-    href: siteConfig.social.messenger,
-    icon: MessengerIcon,
-  },
-];
 
 export const FaqSection = ({
   faqs,
@@ -51,21 +37,18 @@ export const FaqSection = ({
         {eyebrow && <p className="eyebrow">{eyebrow}</p>}
         <h2 id={titleId}>{title}</h2>
         <p>{description}</p>
-        <ul className={styles.channelList}>
-          {channels.map(({ name, href, icon: Icon }) => (
-            <li key={name}>
-              <a
-                className={`button button-outline button-outline-beige ${styles.channelButton}`}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Icon className="icon" />
-                {name}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <ChannelLinks />
+        {/* <p className={styles.bookingNote}>
+          Wiesz już, czego chcesz?{" "}
+          <a
+            className="inline-link"
+            href={siteConfig.bookingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Zarezerwuj wizytę
+          </a>
+        </p> */}
       </header>
       <div className={styles.faqList}>
         {faqs.map((faq) => (

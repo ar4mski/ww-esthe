@@ -14,11 +14,11 @@ export default function NotFound() {
       title="Nie znaleźliśmy tej strony."
       description="Adres mógł się zmienić albo strona już nie istnieje. Wróć na stronę główną lub zobacz nasze zabiegi."
     >
-      <Link className="button button-outline button-outline-beige" href="/">
+      <Link className="button button-secondary" href="/">
         Strona główna
       </Link>
       <Link
-        className="button button-outline button-outline-secondary"
+        className="button button-link"
         href="/zabiegi"
       >
         Zobacz zabiegi

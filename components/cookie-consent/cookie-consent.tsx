@@ -105,7 +105,7 @@ export function CookieConsent() {
         <div className={styles.actions}>
           {isSettingsOpen ? (
             <button
-              className="button"
+              className="button button-primary"
               type="button"
               onClick={() => saveConsent(choice)}
             >
@@ -114,7 +114,7 @@ export function CookieConsent() {
           ) : (
             <>
               <button
-                className="button"
+                className="button button-primary"
                 type="button"
                 onClick={() => saveConsent(allConsent)}
               >
@@ -128,7 +128,7 @@ export function CookieConsent() {
                 {cookieConsentContent.rejectAllLabel}
               </button>
               <button
-                className={`button button-secondary ${styles.settingsButton}`}
+                className="button button-secondary"
                 type="button"
                 onClick={() => setIsSettingsOpen(true)}
               >

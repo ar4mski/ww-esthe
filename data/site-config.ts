@@ -47,7 +47,10 @@ export const siteConfig = {
     whatsapp: "https://wa.me/48780182458",
     messenger: "https://m.me/61571133683099",
   },
-  bookingUrl: "https://ig.me/m/wiktoria.warylak.esthe",
+  // Booksy profile with all services; links to single services are not used.
+  bookingUrl:
+    "https://booksy.com/pl-pl/366052_wiktoria-warylak-esthe_salon-kosmetyczny_18078_szczecin",
+  messageUrl: "https://ig.me/m/wiktoria.warylak.esthe",
   openingHours: [
     {
       days: "Poniedziałek - Piątek",

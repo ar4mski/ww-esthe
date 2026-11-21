@@ -15,7 +15,7 @@ export const BlogEmptyState = ({ categoryLabel }: BlogEmptyStateProps) => (
         : "Nie ma jeszcze żadnych wpisów."}{" "}
       Zajrzyj do pozostałych tematów.
     </p>
-    <Link className="button button-outline button-outline-beige" href="/blog">
+    <Link className="button button-secondary" href="/blog">
       Zobacz wszystkie artykuły
     </Link>
   </div>

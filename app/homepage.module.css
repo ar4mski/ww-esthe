@@ -14,11 +14,12 @@
     grid-area: steps;
   }
 
-  & > .visitButton {
+  & > .visitActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
     grid-area: action;
     margin-top: 2rem;
-    text-align: center;
-    width: 100%;
   }
 
   @media (min-width: 640px) {
@@ -39,10 +40,8 @@
       margin-top: 0;
     }
 
-    & > .visitButton {
+    & > .visitActions {
       align-self: start;
-      text-align: left;
-      width: fit-content;
     }
   }
 }
