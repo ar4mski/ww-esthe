@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Fragment } from "react";
 
 import { BookingCta } from "@/components/booking-cta";
 import { createPageMetadata } from "@/data/page-metadata";
@@ -30,8 +31,8 @@ const priceCategories: PriceCategory[] = [
     href: "/zabiegi/makijaz-permanentny-brwi",
     items: [
       { name: "Brwi met. Soft Ombre, Foxy", price: "800 zł" },
-      { name: "Dopigmentowanie 4–6 tyg.", price: "100 zł" },
-      { name: "Dopigmentowanie do roku", price: "600 zł" },
+      { name: "Odświeżenie do 1,5 roku", price: "600 zł" },
+      { name: "Dopigmentowanie / korekta do 3 mies.", price: "200 zł" },
     ],
   },
   {
@@ -39,8 +40,8 @@ const priceCategories: PriceCategory[] = [
     href: "/zabiegi/makijaz-permanentny-ust",
     items: [
       { name: "Usta", price: "800 zł" },
-      { name: "Dopigmentowanie 4–6 tyg.", price: "100 zł" },
-      { name: "Dopigmentowanie do roku", price: "600 zł" },
+      { name: "Odświeżenie do 1,5 roku", price: "600 zł" },
+      { name: "Dopigmentowanie / korekta do 3 mies.", price: "200 zł" },
     ],
   },
   {
@@ -49,7 +50,25 @@ const priceCategories: PriceCategory[] = [
     items: [
       { name: "1 ml", price: "700 zł" },
       { name: "Hialuronidaza miejscowa", price: "300 zł" },
-      { name: "Hialuronidaza całe usta", price: "600 zł" },
+      { name: "Hialuronidaza całe usta", price: "700 zł" },
+    ],
+  },
+  {
+    name: "BTX",
+    items: [
+      { name: "Jedna okolica", price: "450 zł" },
+      { name: "2 okolice", price: "700 zł" },
+      { name: "Bruksizm", price: "700 zł" },
+      { name: "Lip Flip", price: "350 zł" },
+    ],
+  },
+  {
+    name: "Lipoliza podbródek",
+    items: [
+      {
+        name: "Usunięcie nadmiaru tkanki tłuszczowej z podbródka",
+        price: "od 350 zł",
+      },
     ],
   },
   {
@@ -57,16 +76,16 @@ const priceCategories: PriceCategory[] = [
     href: "/zabiegi/mezoterapia-mikroiglowa",
     items: [
       { name: "Twarz", price: "350 zł" },
-      { name: "Twarz / szyja / dekolt", price: "500 zł" },
+      { name: "Mikroigłowa z ampułką", price: "od 300 zł" },
+      { name: "Mikroigłowa + peeling chemiczny", price: "450 zł" },
     ],
   },
   {
     name: "Stymulatory / mezoterapia igłowa",
     href: "/zabiegi/stymulatory-tkankowe",
     items: [
-      { name: "Twarz", price: "450–800 zł" },
-      { name: "Okolica oka", price: "350–600 zł" },
-      { name: "Twarz / dekolt", price: "500–900 zł" },
+      { name: "Twarz", price: "od 500 zł" },
+      { name: "Okolica oka", price: "od 450 zł" },
     ],
   },
   {
@@ -80,19 +99,27 @@ const priceCategories: PriceCategory[] = [
   {
     name: "Laserowe usuwanie brwi",
     href: "/zabiegi/laserowe-usuwanie-brwi",
-    items: [
-      { name: "1 sesja", price: "200 zł" },
-      { name: "Ocieplenie / ochłodzenie brwi", price: "200 zł" },
-    ],
+    items: [{ name: "1 sesja", price: "200 zł" }],
   },
   {
     name: "Peelingi",
     items: [
-      { name: "Peeling chemiczny", price: "350 zł" },
-      { name: "Peeling węglowy", price: "300 zł" },
+      { name: "Peeling chemiczny", price: "150 zł" },
+      { name: "Peeling węglowy", price: "250 zł" },
+      { name: "Retix C – maska (retinol + witamina C)", price: "200 zł" },
     ],
   },
 ];
+
+const renderBreakingAtSlash = (text: string) =>
+  text.split(" / ").map((part, index, parts) => (
+    <Fragment key={part}>
+      {index > 0 && " "}
+      <span className={styles.nameSegment}>
+        {index < parts.length - 1 ? `${part} /` : part}
+      </span>
+    </Fragment>
+  ));
 
 export default function PricingPage() {
   return (
@@ -106,17 +133,17 @@ export default function PricingPage() {
             <section className={styles.priceCategory} key={category.name}>
               <h2>
                 {category.href ? (
-                  <Link className={styles.categoryLink} href={category.href}>
-                    {category.name}
+                  <Link href={category.href}>
+                    {renderBreakingAtSlash(category.name)}
                   </Link>
                 ) : (
-                  category.name
+                  renderBreakingAtSlash(category.name)
                 )}
               </h2>
               <dl>
                 {category.items.map((item) => (
                   <div className={styles.priceRow} key={item.name}>
-                    <dt>{item.name}</dt>
+                    <dt>{renderBreakingAtSlash(item.name)}</dt>
                     <dd>{item.price}</dd>
                   </div>
                 ))}

@@ -1,11 +1,14 @@
 .priceList {
-  border-top: 1px solid var(--line);
   max-width: none;
 }
 
 .priceCategory {
   border-bottom: 1px solid var(--line);
   padding: 1.5rem 0;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
 }
 
 .priceCategory h2 {
@@ -14,20 +17,14 @@
   margin: 0 0 1rem;
 }
 
-.categoryLink {
-  align-items: baseline;
-  display: inline-flex;
-  gap: 0.5rem;
-}
-
 .priceCategory dl {
   margin: 0;
 }
 
 .priceRow {
-  align-items: baseline;
+  align-items: flex-end;
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   justify-content: space-between;
   padding: 0.45rem 0;
 }
@@ -35,6 +32,11 @@
 .priceRow dt,
 .priceRow dd {
   color: var(--muted);
+}
+
+/* Name wraps only at " / " as long as each segment fits the line. */
+.nameSegment {
+  display: inline-block;
 }
 
 .priceRow dd {
@@ -50,6 +52,6 @@
 
   .priceList {
     margin-inline: auto;
-    max-width: 54rem;
+    max-width: 50rem;
   }
 }
