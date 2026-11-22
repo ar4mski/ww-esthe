@@ -1,6 +1,6 @@
+import { BookingLink, ChannelLinks } from "@/components/channel-links";
 import { FaqItem } from "@/components/faq-item";
 
-import { ChannelLinks } from "@/components/channel-links";
 import styles from "./faq-section.module.css";
 
 type Faq = {
@@ -22,7 +22,7 @@ export const FaqSection = ({
   id,
   title,
   className = "",
-  description = "Nie ma tu odpowiedzi na Twoje pytanie? Napisz, chętnie pomogę.",
+  description,
   eyebrow,
 }: FaqSectionProps) => {
   const titleId = `${id}-title`;
@@ -36,24 +36,27 @@ export const FaqSection = ({
       <header className={styles.intro}>
         {eyebrow && <p className="eyebrow">{eyebrow}</p>}
         <h2 id={titleId}>{title}</h2>
-        <p>{description}</p>
-        <ChannelLinks />
-        {/* <p className={styles.bookingNote}>
-          Wiesz już, czego chcesz?{" "}
-          <a
-            className="inline-link"
-            href={siteConfig.bookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Zarezerwuj wizytę
-          </a>
-        </p> */}
+        {description && <p>{description}</p>}
       </header>
       <div className={styles.faqList}>
-        {faqs.map((faq) => (
-          <FaqItem key={faq.question} {...faq} />
+        {faqs.map((faq, index) => (
+          <FaqItem key={faq.question} defaultOpen={index === 0} {...faq} />
         ))}
+      </div>
+      <div className={styles.contact} data-analytics-location="faq">
+        <h3>Nie ma tu odpowiedzi na Twoje pytanie?</h3>
+        <p>Napisz, chętnie pomogę.</p>
+        <div className={styles.paths}>
+          <div>
+            <h4 className="eyebrow">Zapytaj</h4>
+            <ChannelLinks layout="column" />
+          </div>
+          <div>
+            <h4 className="eyebrow">Zarezerwuj</h4>
+            <p>Wiesz już, czego chcesz? Wybierz termin online.</p>
+            <BookingLink />
+          </div>
+        </div>
       </div>
     </section>
   );

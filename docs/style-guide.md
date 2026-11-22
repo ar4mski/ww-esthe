@@ -155,7 +155,7 @@ Other link styles: `.text-link` (uppercase, centred block: "Zobacz więcej" unde
 - Only a secondary button stands next to a primary one; never two primary buttons. A link never shares a row with buttons: it goes on its own line below the pair.
 - Every button group (a pair, or a button with a `.button-link`) is wrapped in `.button-group` (`globals.css`), primary first: a full-width column with centred labels on mobile, a row from 640px. Add `.button-group-center` to centre the row (`BookingCta`, map facade). The module only adds context (`margin-top`, `grid-area`). The same gap on every page; don't add a wider column gap.
 - External links (`target="_blank"`) always use `rel="noopener noreferrer"`.
-- The full list of channels (Instagram, WhatsApp, Messenger, phone, e-mail) appears only as links with icons: `ChannelLinks` in FAQ and `/kontakt`, the footer.
+- The full list of channels (Instagram, WhatsApp, Messenger, phone, e-mail) appears only as links with icons: `ChannelLinks` on `/kontakt` and in the footer. The FAQ contact block (below the questions on mobile and tablet, left column on desktop) pairs a vertical `ChannelLinks` ("Zapytaj") with a `BookingLink` to Booksy ("Zarezerwuj").
 - Touch targets: at least `2.75rem` (44px) high.
 - Plain links: inherit colour, no underline at rest; hover/focus/current → `--beige` + underline (`--link-underline-thickness`, `--link-underline-offset`). Links inside a sentence are underlined at rest: `.inline-link`, or a module rule in long text (articles, cookie banner).
 
