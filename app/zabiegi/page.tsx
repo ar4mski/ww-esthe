@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { BookingButton, MessageButton } from "@/components/cta-buttons";
+import { BookingButton } from "@/components/cta-buttons";
 import { PageHero } from "@/components/page-hero";
 import { TreatmentList } from "@/components/treatment-list";
 import { createPageMetadata } from "@/data/page-metadata";
@@ -27,7 +27,6 @@ export default function TreatmentsPage() {
         actions={
           <>
             <BookingButton />
-            <MessageButton />
           </>
         }
       />

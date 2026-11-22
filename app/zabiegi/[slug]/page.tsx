@@ -1,7 +1,6 @@
 import { Banknote, Clock, HeartPulse, Layers } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { BackgroundVideoSection } from "@/components/background-video-section";
@@ -154,14 +153,6 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
               <BookingButton />
               <MessageButton>Zapytaj o ten zabieg</MessageButton>
             </div>
-            {galleryLink && (
-              <Link
-                className={`text-link ${styles.heroGalleryLink}`}
-                href={`/galeria?category=${galleryLink.category}`}
-              >
-                Zobacz moje prace
-              </Link>
-            )}
           </div>
         </div>
         <div className={styles.heroImage}>

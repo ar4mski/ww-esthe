@@ -3,8 +3,8 @@ import Link from "next/link";
 
 import { getBlogPostPath, type BlogPostMeta } from "@/data/blog";
 
-import { PostMeta } from "./post-meta";
 import styles from "./featured-post.module.css";
+import { PostMeta } from "./post-meta";
 
 type FeaturedPostProps = {
   post: BlogPostMeta;
@@ -45,12 +45,6 @@ export const FeaturedPost = ({ post }: FeaturedPostProps) => {
           date={post.date}
           readingTimeMinutes={post.readingTimeMinutes}
         />
-        <Link
-          className="button button-secondary"
-          href={href}
-        >
-          Czytaj artykuł
-        </Link>
       </div>
     </article>
   );

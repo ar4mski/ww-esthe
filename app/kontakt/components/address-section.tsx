@@ -1,7 +1,6 @@
 import { CircleParking, Clock, Mail, MapPin, Phone } from "lucide-react";
 import type { ComponentType, ReactNode, SVGProps } from "react";
 
-import { BookingButton } from "@/components/cta-buttons";
 import { InstagramIcon } from "@/components/icons";
 import { PageSection } from "@/components/page-section";
 import { parkingNote } from "@/data/contact";
@@ -49,31 +48,9 @@ export const AddressSection = () => {
       headingLevel="h1"
       id="adres"
     >
-      <div className={styles.booking}>
-        <BookingButton />
-      </div>
       <address className={styles.detailsList}>
-        <ContactLine
-          href={siteConfig.social.instagram}
-          icon={InstagramIcon}
-          label="Instagram"
-          external
-        >
-          @wiktoria.warylak.esthe
-        </ContactLine>
-        <ContactLine
-          href={siteConfig.phone.href}
-          icon={Phone}
-          label="Telefon"
-        >
+        <ContactLine href={siteConfig.phone.href} icon={Phone} label="Telefon">
           {siteConfig.phone.display}
-        </ContactLine>
-        <ContactLine
-          href={siteConfig.email.href}
-          icon={Mail}
-          label="E-mail"
-        >
-          {siteConfig.email.display}
         </ContactLine>
         <ContactLine
           href={siteConfig.address.mapsUrl}
@@ -84,6 +61,17 @@ export const AddressSection = () => {
           {siteConfig.address.lines.map((line) => (
             <span key={line}>{line}</span>
           ))}
+        </ContactLine>
+        <ContactLine
+          href={siteConfig.social.instagram}
+          icon={InstagramIcon}
+          label="Instagram"
+          external
+        >
+          @wiktoria.warylak.esthe
+        </ContactLine>
+        <ContactLine href={siteConfig.email.href} icon={Mail} label="E-mail">
+          {siteConfig.email.display}
         </ContactLine>
       </address>
 

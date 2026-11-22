@@ -15,8 +15,8 @@ import {
 import { treatments } from "@/data/treatments";
 import homeVideoPoster from "@/public/images/heroes/home/video-poster.jpg";
 
-import { FaqSection } from "@/components/faq-section";
 import { AboutMe } from "@/components/about-me";
+import { FaqSection } from "@/components/faq-section";
 import { GoogleReviews } from "@/components/google-reviews";
 import { Visit } from "@/components/visit";
 import { homeFaqs } from "@/data/faq";
@@ -45,7 +45,6 @@ export default function Home() {
         actions={
           <>
             <BookingButton />
-            <MessageButton />
           </>
         }
       />
