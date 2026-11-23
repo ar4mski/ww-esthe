@@ -13,6 +13,6 @@
     ]
   },
   "permissions": {
-    "allow": ["mcp_playwright"]
+    "allow": ["mcp__playwright"]
   }
 }
