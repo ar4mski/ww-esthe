@@ -33,4 +33,5 @@ Choices that shape the code and are not obvious from it. Coding rules live in [A
 
 ## Design
 
+- **Home page booking band mid-page:** `BookingCta` sits between "Twoja wizyta krok po kroku" and "Moje prace" instead of at the bottom, and the visit section has no buttons of its own (client decision, 23 Nov 2026: the band "looks premium" and should not be wasted at the end, but the page must not add calls to action).
 - **Embossed monogram on every `BookingCta`:** the band is the brand's signature block, used on several pages, so the mark goes into the component, not into one page. It is an inline SVG in `currentColor` (not the logo `<img>`), because the emboss needs the mark filled with the band colour. It is a deliberate exception to "no shadows" (see the style guide §5).

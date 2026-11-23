@@ -107,7 +107,7 @@ Anything that has to line up with the content column outside `.section-shell` (h
 
 - Prefer `PageSection` (`components/page-section.tsx`) for a standard section: it renders `.section-shell`, the `.section-heading` header, the eyebrow, the heading (`h2` or `h1`) and `aria-labelledby`.
 - **Section rhythm**: sections sit directly on top of each other with their own `2.5rem` padding. Alternate plain and tinted bands to separate topics; between two plain sections use a hairline if they need separation, not extra padding.
-- Typical page: hero → content sections (plain / tinted alternating) → `FaqSection` (tinted) and/or `BookingCta` (tinted) → footer.
+- Typical page: hero → content sections (plain / tinted alternating) → `FaqSection` (tinted) and/or `BookingCta` (tinted) → footer. The home page is the exception: its `BookingCta` sits mid-page, between "Twoja wizyta krok po kroku" and "Moje prace".
 - Full-bleed content (hero imagery) breaks out of the column with `width: 100vw; margin-left: 50%; transform: translateX(-50%)`, as in `PageHero`.
 
 ### Breakpoints and columns

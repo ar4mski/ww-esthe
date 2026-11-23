@@ -30,6 +30,7 @@ Everything still open before and right after the production launch. Remove an it
   - Google Cloud: project with billing, enable Places API (New), API key restricted to it, quota "Place Details requests per day" = 30, budget alert at 10 PLN, find the place ID (see `docs/design/google-reviews/HANDOFF.md` §2).
   - Vercel **Production only**: `GOOGLE_PLACES_API_KEY`, `GOOGLE_PLACE_ID`; redeploy.
   - On launch day: bump `legalLastUpdated` in `data/legal-content.ts`, have a lawyer check the privacy policy and terms wording, add `https://warylakesthe.pl` to the Business Profile.
+- [ ] **Home page end:** after the FAQ/blog swap (stage 3) the home page ends with the blog and the footer, with the booking band mid-page. Compare `booking_click` from `booking-cta` and `footer` in GA; move or repeat the band only if few bookings come from the end of the page.
 - [ ] **Search Console:** watch CTR and queries per page and adjust titles and descriptions.
 - [ ] **Blog:** add `updatedDate` on significant edits; consider an author box with qualifications (E-E-A-T for aesthetic medicine).
 

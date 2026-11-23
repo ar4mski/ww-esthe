@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { BookingButton, MessageButton } from "@/components/cta-buttons";
+import { BookingCta } from "@/components/booking-cta";
+import { BookingButton } from "@/components/cta-buttons";
 import { JsonLd } from "@/components/json-ld";
 import { PageHero } from "@/components/page-hero";
 import { PageSection } from "@/components/page-section";
@@ -85,11 +86,9 @@ export default function Home() {
         description="Bez pośpiechu i niespodzianek.Zanim zaczniemy, wiesz dokładnie, co Cię czeka."
       >
         <Visit />
-        <div className={`button-group ${styles.visitActions}`}>
-          <BookingButton />
-          <MessageButton>Napisz do mnie</MessageButton>
-        </div>
       </PageSection>
+
+      <BookingCta />
 
       <PageSection
         id="homepage-gallery"
