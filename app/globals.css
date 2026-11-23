@@ -2,7 +2,7 @@
 
 :root {
   --background: #f3f3f1;
-  --section-tint: #eee9e1;
+  --section-tint: #d5cdc2;
   --surface: #ffffff;
   --foreground: #202020;
   --muted: #666666;
@@ -20,11 +20,11 @@
   --footer-heading: #fffdf9;
   --text: #f7f4ef;
   --image-hover-scale: 1.24;
-  --heading-display-size: clamp(2.125rem, 5.1vw, 4.0375rem);
-  --heading-1-size: clamp(2rem, 4vw, 3rem);
-  --heading-2-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  --heading-display-size: clamp(2rem, 4vw, 3rem);
+  --heading-1-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  --heading-2-size: clamp(1.5rem, 2vw, 2rem);
   --heading-3-size: clamp(1.125rem, 1.75vw, 1.5rem);
-  --heading-card-size: clamp(1.5rem, 2vw, 2rem);
+  --heading-card-size: clamp(1.125rem, 1.75vw, 1.5rem);
   --radius-control: 3px;
   --button-primary-hover: var(--brown);
 }
@@ -126,6 +126,10 @@ a {
 }
 
 .section-tinted {
+  /* Text colours that keep 4.5:1 on the voucher tint. */
+  --muted: var(--accent);
+  /* Hairlines stay visible on the darker tint. */
+  --line: color-mix(in srgb, var(--foreground) 14%, transparent);
   max-width: none;
   background: var(--section-tint);
   padding-left: max(
@@ -136,6 +140,30 @@ a {
     1.25rem,
     calc((100% - var(--content-max-width)) / 2 + 1.25rem)
   );
+
+  & .eyebrow {
+    color: var(--brown);
+  }
+
+  /* --link-hover-color is set on the link itself, so override it there. */
+  & a:not(.button) {
+    --link-hover-color: var(--brown);
+  }
+
+  & .button-secondary {
+    border-color: var(--brown);
+    color: var(--brown);
+
+    &:hover,
+    &:focus-visible {
+      background: var(--brown);
+      color: var(--footer-heading);
+    }
+  }
+
+  & .button-link {
+    color: var(--brown);
+  }
 }
 
 /* Long body copy is justified (client request). Put the class on the wrapper
@@ -179,20 +207,31 @@ p {
 }
 
 h1,
-h2 {
+h2,
+h3 {
+  font-family: var(--font-display), var(--font-geist-sans), Arial, sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+/* A heading that keeps the body typeface: article titles, labels, UI and
+   long-form text. */
+.heading-text {
+  font-family: var(--font-geist-sans), Arial, sans-serif;
   font-weight: 500;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
+  text-transform: none;
 }
 
 h1 {
   font-size: var(--heading-1-size);
-  line-height: 0.98;
   margin-bottom: 1.5rem;
 }
 
 h2 {
   font-size: var(--heading-2-size);
-  line-height: 1;
   margin-bottom: 1rem;
 }
 

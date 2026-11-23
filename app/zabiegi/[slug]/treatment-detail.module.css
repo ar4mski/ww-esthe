@@ -7,6 +7,17 @@
   overflow: hidden;
 }
 
+/* Only the hero headings and the FAQ title (as on other pages) use the display
+   font: the page has many long content headings, which read poorly in
+   uppercase (client decision). Same declarations as the global .heading-text,
+   which cannot reach headings rendered by shared sections (video, gallery). */
+.page :is(h2, h3):not(.heroSubtitle, .faq h2) {
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-transform: none;
+}
+
 .anchorSection {
   scroll-margin-top: calc(var(--header-height) + 1rem);
 }
@@ -73,13 +84,11 @@
 
   .heroTitle {
     font-size: var(--heading-1-size);
-    line-height: 1;
     margin-bottom: 1.75rem;
   }
 
   .heroSubtitle {
     font-size: var(--heading-3-size);
-    line-height: 1.15;
     margin-bottom: 1rem;
     margin-top: 1rem;
   }
@@ -208,8 +217,6 @@
 
 .recoverySymptomsHeading {
   font-size: var(--heading-3-size);
-  font-weight: 500;
-  letter-spacing: -0.02em;
   line-height: 1.2;
   margin-bottom: 1rem;
 }

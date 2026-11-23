@@ -8,7 +8,7 @@ type BlogEmptyStateProps = {
 
 export const BlogEmptyState = ({ categoryLabel }: BlogEmptyStateProps) => (
   <div className={styles.empty}>
-    <h2>Wkrótce pojawią się tu nowe artykuły.</h2>
+    <h2 className="heading-text">Wkrótce pojawią się tu nowe artykuły.</h2>
     <p>
       {categoryLabel
         ? `W kategorii „${categoryLabel}” nie ma jeszcze żadnych wpisów.`

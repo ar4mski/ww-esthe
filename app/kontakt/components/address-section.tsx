@@ -85,7 +85,7 @@ export const AddressSection = () => {
         </div>
         <div className={styles.infoBlocks}>
           <section className={styles.infoBlock}>
-            <h2>
+            <h2 className="heading-text">
               <Clock className="icon" aria-hidden="true" />
               Godziny otwarcia
             </h2>
@@ -99,7 +99,7 @@ export const AddressSection = () => {
             </ul>
           </section>
           <section className={styles.infoBlock}>
-            <h2>
+            <h2 className="heading-text">
               <CircleParking className="icon" aria-hidden="true" />
               Parking
             </h2>

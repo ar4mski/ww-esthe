@@ -13,7 +13,6 @@
 
 .priceCategory h2 {
   font-size: var(--heading-card-size);
-  font-style: italic;
   margin: 0 0 1rem;
 }
 

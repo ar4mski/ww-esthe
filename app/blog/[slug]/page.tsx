@@ -103,7 +103,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 {post.category.label}
               </Link>
             </p>
-            <h1 className={styles.title}>{post.title}</h1>
+            <h1 className={`${styles.title} heading-text`}>{post.title}</h1>
             <p className={styles.lead}>{post.description}</p>
             <PostMeta
               className={styles.meta}

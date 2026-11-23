@@ -118,7 +118,9 @@
   }
 }
 
+/* Not a .section-tinted band, so it repeats that band's colour overrides. */
 .mapFacade {
+  --muted: var(--accent);
   align-content: center;
   background: var(--section-tint);
   display: grid;
@@ -133,6 +135,21 @@
     font-size: 0.95rem;
     margin: 0;
     max-width: 22rem;
+  }
+
+  :global(.button-secondary) {
+    border-color: var(--brown);
+    color: var(--brown);
+
+    &:hover,
+    &:focus-visible {
+      background: var(--brown);
+      color: var(--footer-heading);
+    }
+  }
+
+  :global(.button-link) {
+    color: var(--brown);
   }
 }
 

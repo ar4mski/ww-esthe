@@ -44,7 +44,7 @@ export const FaqSection = ({
         ))}
       </div>
       <div className={styles.contact} data-analytics-location="faq">
-        <h3>Nie ma tu odpowiedzi na Twoje pytanie?</h3>
+        <h3 className="heading-text">Nie ma tu odpowiedzi na Twoje pytanie?</h3>
         <p>Napisz, chętnie pomogę.</p>
         <div className={styles.paths}>
           <div>

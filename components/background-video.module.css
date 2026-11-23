@@ -49,7 +49,6 @@
 
   h2 {
     font-size: var(--heading-2-size);
-    line-height: 1.05;
     margin-bottom: 0.85rem;
     max-width: 14ch;
   }

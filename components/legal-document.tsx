@@ -22,7 +22,7 @@ export const LegalDocument = ({
 
       {sections.map((section) => (
         <article className={styles.section} key={section.heading}>
-          <h2>{section.heading}</h2>
+          <h2 className="heading-text">{section.heading}</h2>
           {section.paragraphs?.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}

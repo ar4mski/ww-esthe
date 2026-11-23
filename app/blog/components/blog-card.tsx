@@ -23,7 +23,7 @@ export const BlogCard = ({ post }: BlogCardProps) => (
       />
     </div>
     <p className={styles.category}>{post.category.label}</p>
-    <h3 className={styles.title}>
+    <h3 className={`${styles.title} heading-text`}>
       <Link className={styles.link} href={getBlogPostPath(post.slug)}>
         {post.title}
       </Link>

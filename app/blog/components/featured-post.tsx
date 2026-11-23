@@ -37,7 +37,10 @@ export const FeaturedPost = ({ post }: FeaturedPostProps) => {
           Wyróżniony artykuł <span aria-hidden="true">·</span>{" "}
           {post.category.label}
         </p>
-        <h2 className={styles.title} id="featured-post-title">
+        <h2
+          className={`${styles.title} heading-text`}
+          id="featured-post-title"
+        >
           <Link href={href}>{post.title}</Link>
         </h2>
         <p className={styles.description}>{post.description}</p>

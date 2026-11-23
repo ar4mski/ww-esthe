@@ -65,7 +65,7 @@ export function CookieConsent() {
       aria-label={cookieConsentContent.title}
     >
       <div className={styles.content}>
-        <h2 className={styles.title}>{cookieConsentContent.title}</h2>
+        <h2 className={`${styles.title} heading-text`}>{cookieConsentContent.title}</h2>
         <p className={styles.description}>
           {cookieConsentContent.description}{" "}
           <Link href={siteConfig.legal.privacyPolicyPath}>

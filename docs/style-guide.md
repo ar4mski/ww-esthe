@@ -12,7 +12,7 @@ Calm, warm-neutral, editorial. A small studio, not a clinic and not a fashion br
 - **Photography carries the colour.** The UI itself is almost monochrome: off-white background, near-black text, one warm brown accent.
 - **Flat and square.** No rounded corners, no cards with shadows, no gradients on UI elements. Structure comes from 1px hairlines (`--line`), whitespace and tinted bands.
 - **Circles are the only rounded shape**: numbered steps, icon badges, the before/after slider handle.
-- **Typography does the hierarchy**: large, tight, medium-weight headings; quiet grey body text; small uppercase labels.
+- **Typography does the hierarchy**: light uppercase Montserrat headings; quiet Geist body text; small uppercase labels.
 - **Restrained motion**: colour changes and slow image zooms on hover, nothing that bounces or slides in on scroll.
 - Copy is Polish, addressed to the reader in the second person singular, capitalised `Ty/Cię/Ciebie`.
 
@@ -23,7 +23,7 @@ All colours are CSS variables in `:root` of `app/globals.css`.
 | Token | Value | Use | Contrast on `--background` |
 | --- | --- | --- | --- |
 | `--background` | `#f3f3f1` | Page background, header, menu panel | — |
-| `--section-tint` | `#eee9e1` | Tinted bands (`.section-tinted`), image placeholders, certificate tiles | — |
+| `--section-tint` | `#d5cdc2` | Tinted bands (`.section-tinted`; the gift-voucher colour), image placeholders, certificate tiles | — |
 | `--surface` | `#ffffff` | Text on a hovered secondary button, cookie banner, photo tile backgrounds | — |
 | `--foreground` | `#202020` | Headings, primary text, links at rest | 14.7 : 1 |
 | `--accent` | `#444444` | Eyebrows, lead paragraphs, article body | 8.8 : 1 |
@@ -38,6 +38,8 @@ Colours in use without a token (see §11): hero brown `#9b7964`, warm white `#ff
 
 Google Maps attribution is the one place where Google's own look wins over the tokens: the official Google Maps logo is used unchanged (no recolouring, cropping or effects), and its text fallback is `Google Maps` in Roboto/system sans-serif 400, `#5e5e5e`, never uppercase. Don't reuse that grey anywhere else.
 
+Inside `.section-tinted` (and the map facade) `--muted` is redefined as `--accent`, `--line` becomes a 14% `--foreground` mix, and eyebrows, link hover, `.button-secondary` and `.button-link` use `--brown`: `--muted` (3.65 : 1) and `--beige` (3.72 : 1) fail 4.5 : 1 as small text on `#d5cdc2`. `--beige` stays fine for icons, borders and the focus ring (3 : 1). Put no other `--beige` text on the tint; use `--brown`.
+
 Rules:
 - `--beige` is the **only** accent. Don't introduce a second accent colour (no gold, pink, green).
 - Text colour on light backgrounds is one of `--foreground`, `--accent`, `--muted` or `--beige`. Nothing else.
@@ -46,17 +48,23 @@ Rules:
 
 ## 3. Typography
 
-One family: **Geist** (`--font-geist-sans`, loaded in `app/layout.tsx`), fallback Arial. Weights: 400 body, 500 headings and emphasis, 700 only for small uppercase labels and buttons. One serif exception: **Cormorant Garamond** 500 (`--font-serif`, loaded in `components/about-stats.tsx`, so it is preloaded only where the stats render) for the stat numbers of the shared `AboutStats` component (`AboutMe` section on home and contact and the `/o-mnie` hero); don't use it elsewhere. Italic is used on purpose only for the price-category headings on `/cennik`; don't use it elsewhere.
+Two families, both loaded in `app/layout.tsx`: **Geist** (`--font-geist-sans`) for body text and UI, fallback Arial; **Montserrat** 300 (`--font-display`, normal only, no italic) for `h1`–`h3`, set globally in uppercase with `0.04em` letter-spacing and line height `1.15`. Write heading text in normal sentence case; uppercase is CSS only. Geist weights: 400 body, 500 emphasis, 700 only for small uppercase labels and buttons.
+
+**Which typeface:** Montserrat uppercase for short names: page and section titles, treatment, card, step and value titles (certificate names on `/o-mnie` are treatment names, so they count). Geist in sentence case, through the `.heading-text` class, for titles that are a sentence or question meant to be read, headings inside long-form documents, and small labels and UI chrome:
+- the blog: article title `h1`, featured post title, blog card titles (also on the home page and under related posts), the empty state, article body `h2`/`h3`. Article titles are long questions that would take 3–4 uppercase lines on a card, so blog cards stay Geist next to Montserrat treatment cards on purpose;
+- treatment pages (`/zabiegi/[slug]`): every `h2`/`h3`, including the shared sections on the page (video, "Moje prace"); only the hero headings (treatment name `h1` and the subtitle `h2` "Dla kogo jest zabieg?") and the FAQ title `h2` (as on other pages) are Montserrat. The page has many long content headings (client decision). Set by `.page :is(h2, h3):not(.heroSubtitle, .faq h2)` in `treatment-detail.module.css`;
+- legal section headings, the FAQ contact `h3`, the "Godziny otwarcia" / "Parking" labels on `/kontakt`, the cookie banner title;
+- the footer group headings reset only `font-family` and keep their own uppercase label style. One serif exception: **Cormorant Garamond** 500 (`--font-serif`, loaded in `components/about-stats.tsx`, so it is preloaded only where the stats render) for the stat numbers of the shared `AboutStats` component (`AboutMe` section on home and contact and the `/o-mnie` hero); don't use it elsewhere. Italic is not used anywhere.
 
 ### Scale
 
 | Role | Size | Line height | Other | Where |
 | --- | --- | --- | --- | --- |
-| Display (hero `h1`) | `--heading-display-size` (34 → 65px) | 0.9 | `max-width: 9ch` in `PageHero` | `PageHero`, `/o-mnie` hero |
-| `h1` | `--heading-1-size` (32 → 48px) | 0.98 | 500, `-0.03em` | Page titles; large quotes |
-| `h2` | `--heading-2-size` (28 → 40px) | 1 | 500, `-0.03em` | Section titles |
-| Card title | `--heading-card-size` (24 → 32px) | — | | Treatment cards in a grid |
-| `h3` | `--heading-3-size` (18 → 24px) | default | set 500 in the module (the global `h3` has no weight, so it renders bold) | Step titles, values, certificate names |
+| Display (hero `h1`) | `--heading-display-size` (32 → 48px) | 1.15 | `max-width: 13ch` in `PageHero` | `PageHero`, `/o-mnie` hero |
+| `h1` | `--heading-1-size` (28 → 40px) | 1.15 | Montserrat 300, uppercase | Page titles; large quotes |
+| `h2` | `--heading-2-size` (24 → 32px) | 1.15 | Montserrat 300, uppercase | Section titles |
+| Card title | `--heading-card-size` (18 → 24px) | 1.15 | Same value as `h3`; the roles stay distinct | Treatment cards in a grid |
+| `h3` | `--heading-3-size` (18 → 24px) | 1.15 | Montserrat 300, uppercase | Step titles, values, certificate names |
 | Lead | `1.05rem` | 1.6 | `--accent` | First paragraph under a hero or quote heading |
 | Body | `1rem` | 1.6 | `--muted` (global `p`) | All paragraphs |
 | Article body | `1.0625rem` | 1.8 | `--accent`, measure `42rem` | Blog posts |
@@ -64,7 +72,7 @@ One family: **Geist** (`--font-geist-sans`, loaded in `app/layout.tsx`), fallbac
 | Label | `0.75rem` | — | uppercase, `0.08em` (or `0.14em`), `--beige` or `--accent` | Category over a card, step subtitle, section and hero eyebrow |
 | Button / text link | `0.75rem` | — | 700, uppercase, `0.08em` | `.button`, `.text-link` |
 
-On desktop each step of the scale is about 1.2–1.33× the next one (65 / 48 / 40 / 32 / 24px); keep that rhythm if a token ever changes. All heading sizes are fluid `clamp()` tokens; never write a new `clamp()` or a fixed `rem` size for a heading. The size follows the role, not the page:
+On desktop each step of the scale is about 1.2–1.33× the next one (48 / 40 / 32 / 24px); keep that rhythm if a token ever changes. All heading sizes are fluid `clamp()` tokens; never write a new `clamp()` or a fixed `rem` size for a heading. The size follows the role, not the page:
 
 - Page title `h1` without a photo hero (`/galeria`, `/blog`, `/cennik`, `/kontakt`, blog article, legal pages): `--heading-1-size` (the global `h1`, no override).
 - Section `h2`: `--heading-2-size` (global). Article `h2` too.
@@ -72,7 +80,7 @@ On desktop each step of the scale is about 1.2–1.33× the next one (65 / 48 / 
 - Group heading in a list and treatment card title (`/cennik` categories, treatment grid): `--heading-card-size`.
 - Allowed emphasis: a quote `h2` set at `--heading-1-size` (`/o-mnie`), the hero `h1` at `--heading-display-size`.
 
-Line height may be adjusted locally for long multi-line titles (e.g. `1.05` on blog article titles); the size may not.
+Line height may be adjusted locally for long multi-line titles (not below `1.1` for Montserrat headings; the Geist article title uses `1.05`); the size may not.
 
 ### Text rules
 - **Eyebrow** (`.eyebrow`): a short line above a section heading styled as a Label: `0.75rem`, uppercase, `0.14em`, `--beige`. Write the markup in normal sentence case; uppercase is CSS only. On a dark background or photo, override the colour locally (like the hero's `#fffaf5`).
@@ -221,7 +229,7 @@ Two hero styles exist; a new page should use one of them.
 For agents designing a page or section before implementation (Claude Design, HTML mockups in `docs/design/`):
 
 - Use **only the tokens in this file**, with their real values, so the handoff maps 1:1 to the code. Write colours as the hex values from §2 and fonts as Geist.
-- Frames: **390** (mobile), **768** (tablet, covers 640–1023) and **1440** (desktop). Show the layout change at each frame.
+- Frames: **390** (mobile), **820** (iPad Air, tablet, covers 640–1023) and **1440** (desktop). Show the layout change at each frame.
 - Use real Polish copy from `data/` or the client; mark placeholders clearly.
 - Use real images from `public/images/`; don't invent stock photos.
 - Draw icons from Lucide and name them in the handoff (`GraduationCap`, `Quote`…).

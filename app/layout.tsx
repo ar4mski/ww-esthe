@@ -5,13 +5,22 @@ import { CookieConsent } from "@/components/cookie-consent/cookie-consent";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { siteConfig } from "@/data/site-config";
-import { Geist } from "next/font/google";
+import { Geist, Montserrat } from "next/font/google";
 import "./globals.css";
 
 // latin-ext holds the Polish letters (ą, ę, ł, ś, ż), used in almost every text.
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin", "latin-ext"],
+});
+
+// One light weight for headings; latin-ext holds the Polish letters in uppercase.
+const montserrat = Montserrat({
+  variable: "--font-display",
+  weight: "300",
+  style: "normal",
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -46,7 +55,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="pl"
-      className={`${geistSans.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${montserrat.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <div id="top">

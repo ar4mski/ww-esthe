@@ -10,7 +10,7 @@
   background: linear-gradient(
     118deg,
     var(--section-tint) 0%,
-    rgba(238, 233, 225, 0.96) 48%,
+    rgba(213, 205, 194, 0.96) 48%,
     rgba(214, 202, 190, 0.92) 100%
   );
   inset: 0;
@@ -48,9 +48,8 @@
 .heroContent h1 {
   color: var(--foreground);
   font-size: var(--heading-display-size);
-  line-height: 0.9;
   margin-bottom: 1.275rem;
-  max-width: 9ch;
+  max-width: 13ch;
 }
 
 .description {
@@ -174,7 +173,6 @@
   }
 
   .heroContent h1 {
-    letter-spacing: -0.06em;
     text-shadow: 0 2px 18px rgba(42, 29, 22, 0.2);
   }
 

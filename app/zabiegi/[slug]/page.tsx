@@ -115,7 +115,7 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
   const allFacts = [...basicFacts, ...additionalFacts];
 
   return (
-    <article>
+    <article className={styles.page}>
       <JsonLd data={getTreatmentJsonLd(treatment)} />
       <section
         id="wprowadzenie"
@@ -279,7 +279,7 @@ export default async function TreatmentPage({ params }: TreatmentPageProps) {
       </section>
 
       <FaqSection
-        className="section-tinted"
+        className={`${styles.faq} section-tinted`}
         faqs={treatment.faqs}
         id="faq"
         title="Najczęściej zadawane pytania"
