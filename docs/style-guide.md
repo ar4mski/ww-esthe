@@ -143,6 +143,7 @@ The site uses `rem` values on a loose 0.25rem grid. Reuse these steps:
 - **Radius**: `0` for photos, cards and sections. Controls (buttons) use `--radius-control` (3px). `50%` only for circles.
 - **Circles**: 1px border, content centred. Numbered steps with a `--beige` (or `--brown`) border and the number in the same colour; icon badges `3.5rem` (`4rem` desktop) with a `--line` border and a `--beige` icon.
 - **Shadows**: essentially none. Allowed only on floating layers (open mobile menu `0 0.75rem 1.5rem rgba(32,32,32,.08)`, cookie banner) and a very soft one on featured photos (`0 18px 38px rgba(32,32,32,.05–.08)`).
+- **Embossed monogram**: the WW mark (`Monogram`, `components/monogram.tsx`) filled with the colour of the surface it sits on, so only two `drop-shadow`s show it: a light edge top-left (`-1px -1px 0 rgb(255 250 245 / 65%)`) and a dark edge bottom-right (`1.2px 1.4px 1px rgb(29 29 27 / 20%)`). Decorative (`aria-hidden`), absolutely positioned and cropped by the section's `overflow: hidden`, behind the content. Used only in `BookingCta`; it is the only shadow outside floating layers and photos. Don't add it to other sections without a design.
 
 ## 6. Components and patterns
 
@@ -198,7 +199,7 @@ No box, border or background: an image on top, text below, aligned to the image 
 lucide-react only, always `className="icon"`, size through `--icon-size` on a parent (default `1.15rem`; `1rem` in dense rows, `1.25–1.5rem` in badges and quotes). Icons are line icons in `currentColor`; accent icons are `--beige`. Brand glyphs come from `components/icons/`.
 
 ### Existing building blocks
-`PageHero`, `PageSection`, `BookingCta`, `FaqSection`/`FaqItem`, `BookingButton`/`MessageButton`, `ChannelLinks`, `Breadcrumbs`, `CategoryFilter`, `TreatmentList`/`TreatmentListItem`, `GalleryGrid`/`GalleryPreview`, `Visit`, `GoogleReviews`, `LegalDocument`, `StatusPage`, `BackgroundVideo`, `SiteHeader`, `SiteFooter`. Route-specific ones live in `app/<route>/components/`.
+`PageHero`, `PageSection`, `BookingCta`, `Monogram`, `FaqSection`/`FaqItem`, `BookingButton`/`MessageButton`, `ChannelLinks`, `Breadcrumbs`, `CategoryFilter`, `TreatmentList`/`TreatmentListItem`, `GalleryGrid`/`GalleryPreview`, `Visit`, `GoogleReviews`, `LegalDocument`, `StatusPage`, `BackgroundVideo`, `SiteHeader`, `SiteFooter`. Route-specific ones live in `app/<route>/components/`.
 
 ## 7. Hero
 

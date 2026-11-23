@@ -1,4 +1,5 @@
 import { BookingButton, MessageButton } from "@/components/cta-buttons";
+import { Monogram } from "@/components/monogram";
 import { siteConfig } from "@/data/site-config";
 
 import styles from "./booking-cta.module.css";
@@ -10,9 +11,11 @@ interface BookingCtaProps {
 
 export const BookingCta = ({ variant = "default" }: BookingCtaProps) => (
   <section
-    className="section-shell section-tinted"
+    className={`section-shell section-tinted ${styles.band}`}
     aria-labelledby="booking-cta-title"
+    data-analytics-location="booking-cta"
   >
+    <Monogram className={styles.monogram} />
     <div className={styles.cta}>
       <p className="eyebrow">Umów wizytę</p>
       {variant === "blog" ? (
