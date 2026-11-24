@@ -15,7 +15,7 @@ Everything still open before and right after the production launch. Remove an it
 
 ## Launch day (Vercel)
 
-- [ ] Environment variables for **Production only**, never Preview (template: `.env.example`): `NEXT_PUBLIC_SITE_URL=https://warylakesthe.pl`, `ALLOW_INDEXING=true`, `NEXT_PUBLIC_GA_ID`.
+- [ ] Environment variables for **Production only**, never Preview (template: `.env.example`): `NEXT_PUBLIC_SITE_URL=https://warylakesthe.pl`, `ALLOW_INDEXING=true`, `NEXT_PUBLIC_GA_ID`. Remove `GOOGLE_REVIEWS_MOCK` (it is ignored once indexing is on, but should not linger).
 - [ ] Redirect the `vercel.app` domain and `www`/non-`www` to the canonical domain.
 - [ ] Google Search Console: verify the domain and submit `/sitemap.xml`.
 - [ ] [Rich Results Test](https://search.google.com/test/rich-results) on `/`, one treatment and one blog post.

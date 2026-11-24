@@ -1,6 +1,9 @@
+const allowIndexing = process.env.ALLOW_INDEXING === "true";
+
+// Invented reviews must never reach an indexed (launched) site, so the mock
+// switches itself off once ALLOW_INDEXING=true, whatever GOOGLE_REVIEWS_MOCK says.
 const isGoogleReviewsMock =
-  process.env.NODE_ENV === "development" &&
-  process.env.GOOGLE_REVIEWS_MOCK === "true";
+  !allowIndexing && process.env.GOOGLE_REVIEWS_MOCK === "true";
 
 export const siteConfig = {
   businessName: "Wiktoria Warylak Esthe",
@@ -9,7 +12,7 @@ export const siteConfig = {
   locale: "pl-PL",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://ww-esthe.vercel.app",
   // Every deployment is blocked from crawlers until ALLOW_INDEXING=true is set at launch.
-  allowIndexing: process.env.ALLOW_INDEXING === "true",
+  allowIndexing,
   // Google Analytics 4 measurement ID (G-...). Set it only for the Production
   // environment so previews and local builds never send data.
   gaMeasurementId: process.env.NEXT_PUBLIC_GA_ID,
@@ -17,7 +20,7 @@ export const siteConfig = {
   // Set GOOGLE_PLACE_ID for the Production environment only to turn it on.
   googleReviews: {
     enabled: Boolean(process.env.GOOGLE_PLACE_ID) || isGoogleReviewsMock,
-    // Fake reviews instead of the API, for previewing in `next dev` only.
+    // Fake reviews instead of the API, for previewing before launch only.
     mock: isGoogleReviewsMock,
     minReviews: 3,
     shownReviews: 3,

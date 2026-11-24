@@ -1,8 +1,8 @@
 import type { PlaceResponse } from "@/data/google-reviews";
 
-// Fake Places API response for previewing the section in `next dev` with
-// GOOGLE_REVIEWS_MOCK=true. Obviously fake on purpose: invented reviews must
-// never be published.
+// Fake Places API response for previewing the section before launch with
+// GOOGLE_REVIEWS_MOCK=true (ignored once ALLOW_INDEXING=true). Obviously fake
+// on purpose: invented reviews must never appear on the launched site.
 const review = (
   id: number,
   rating: number,
