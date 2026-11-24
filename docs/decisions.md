@@ -8,6 +8,7 @@ Choices that shape the code and are not obvious from it. Coding rules live in [A
 - **`/galeria` is static:** the category filter lives in the URL and is read with `useSearchParams` inside `<Suspense>`, not through page `searchParams`.
 - **Blog** is MDX in `content/blog`, compiled at build time (`gray-matter` + `next-mdx-remote/rsc`). Invalid frontmatter fails the build.
 - **`BackgroundVideo`** mounts `<video>` only after hydration, because it depends on `matchMedia` and `prefers-reduced-motion`.
+- **`Carousel` without a library:** native scroll + CSS scroll snap; the client island only tracks the scroll position for the indicator (rendered on the server with the first segment active, so no layout shift). Its CSS sits in `@layer components` so the section's grid class on the same track wins regardless of stylesheet order; with plain specificity either the carousel or the section rules would win by load order.
 
 ## SEO
 

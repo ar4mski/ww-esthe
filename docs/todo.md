@@ -36,7 +36,7 @@ Everything still open before and right after the production launch. Remove an it
 
 ## Optional
 
-- **Home page blog on mobile:** the 3 compact cards are stacked like on `/blog`. The client may want a generic carousel or horizontal scroll later (the mockup scrolled horizontally); if so, build one shared pattern, not a blog-only one.
+- **Home carousel treatment order:** the 4th card (shown only in the carousel, below 1024px) is `treatments[3]` (today "Mezoterapia igłowa i mikroigłowa"). Ask the client whether a hand-picked list is wanted instead.
 - **Blog covers:** the 3 newest posts reuse photos already shown on the home page ("O mnie" portrait, brow and lip treatment covers). The owner will replace them; no code change needed.
 
 - Tests and CI (none today).

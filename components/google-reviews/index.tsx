@@ -7,6 +7,7 @@ import {
   getStoredCookieConsent,
   subscribeToCookieConsent,
 } from "@/components/cookie-consent/cookie-consent-storage";
+import { Carousel } from "@/components/carousel/carousel";
 import { PageSection } from "@/components/page-section";
 import {
   googleReviewsContent as content,
@@ -112,15 +113,22 @@ export const GoogleReviews = () => {
           />
         </div>
 
-        <ul className={styles.list}>
-          {data.reviews.map((review) => (
-            <ReviewItem
-              key={review.id}
-              review={review}
-              showPhoto={showPhotos}
-            />
-          ))}
-        </ul>
+        <div className={styles.reviews}>
+          <Carousel
+            as="ul"
+            label={content.eyebrow}
+            until="tablet"
+            className={styles.list}
+          >
+            {data.reviews.map((review) => (
+              <ReviewItem
+                key={review.id}
+                review={review}
+                showPhoto={showPhotos}
+              />
+            ))}
+          </Carousel>
+        </div>
 
         <div className={styles.footer}>
           <div className={`button-group ${styles.actions}`}>

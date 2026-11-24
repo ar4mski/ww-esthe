@@ -3,9 +3,9 @@ import Link from "next/link";
 
 import { getTreatmentImage, type Treatment } from "@/data/treatments";
 
-import styles from "./treatment-list-item.module.css";
+import styles from "./treatment-card.module.css";
 
-type TreatmentListItemProps = {
+type TreatmentCardProps = {
   treatment: Treatment;
   variant?: "stacked" | "grid";
 };
@@ -13,13 +13,13 @@ type TreatmentListItemProps = {
 // Rendered widths of the image column per variant (see the module CSS grids).
 const imageSizes = {
   stacked: "(min-width: 1024px) 500px, (min-width: 640px) 46vw, 100vw",
-  grid: "(min-width: 1024px) 350px, (min-width: 640px) 32vw, 100vw",
+  grid: "(min-width: 1024px) 350px, (min-width: 640px) 47vw, 90vw",
 };
 
-export const TreatmentListItem = ({
+export const TreatmentCard = ({
   treatment,
   variant = "stacked",
-}: TreatmentListItemProps) => (
+}: TreatmentCardProps) => (
   <article
     className={
       variant === "grid" ? `${styles.item} ${styles.grid}` : styles.item

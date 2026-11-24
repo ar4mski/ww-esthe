@@ -1,0 +1,105 @@
+/* In the `components` layer, so a section class on the track (unlayered)
+   always wins over these defaults regardless of stylesheet order. Sections
+   therefore set their own grid only from the carousel's breakpoint up. */
+@layer components {
+  .carousel {
+    /* 90% of the column: a peek of the next item. From 640px two items and an
+       edge of the third. The bleed matches the .section-shell gutter. */
+    --carousel-item-width: 90%;
+    --carousel-bleed: 1.25rem;
+
+    @media (min-width: 640px) {
+      --carousel-item-width: 47%;
+      --carousel-bleed: 2rem;
+    }
+
+    /* Reviews: a column under 768px would be too narrow for two quotes. */
+    &[data-until="tablet"] {
+      --carousel-item-width: 90%;
+    }
+  }
+
+  .track {
+    --focus-offset: -2px;
+    column-gap: 1.25rem;
+    display: grid;
+    grid-auto-columns: var(--carousel-item-width);
+    grid-auto-flow: column;
+    list-style: none;
+    margin: 0 calc(-1 * var(--carousel-bleed)) 0 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding: 0 var(--carousel-bleed) 0 0;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    > * {
+      scroll-snap-align: start;
+    }
+  }
+
+  .indicator {
+    display: flex;
+    gap: 3px;
+    margin-top: 2rem;
+
+    > span {
+      background: var(--line);
+      flex: 1;
+      height: 1px;
+      transition: background-color 180ms ease;
+
+      &[data-active="true"] {
+        background: var(--foreground);
+      }
+    }
+  }
+
+  /* From the breakpoint the track is a plain block and the section's grid takes
+     over. 768px is the documented reviews exception (docs/style-guide.md). */
+  .carousel[data-until="tablet"] {
+    @media (min-width: 768px) {
+      .track {
+        display: block;
+        grid-auto-columns: auto;
+        grid-auto-flow: row;
+        margin: 0;
+        overflow: visible;
+        padding: 0;
+        scroll-snap-type: none;
+      }
+
+      .indicator {
+        display: none;
+      }
+    }
+  }
+
+  .carousel[data-until="desktop"] {
+    @media (min-width: 1024px) {
+      .track {
+        display: block;
+        grid-auto-columns: auto;
+        grid-auto-flow: row;
+        margin: 0;
+        overflow: visible;
+        padding: 0;
+        scroll-snap-type: none;
+      }
+
+      .indicator {
+        display: none;
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .indicator > span {
+      transition: none;
+    }
+  }
+}

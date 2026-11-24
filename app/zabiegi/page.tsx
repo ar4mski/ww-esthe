@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 
 import { BookingButton } from "@/components/cta-buttons";
 import { PageHero } from "@/components/page-hero";
-import { TreatmentList } from "@/components/treatment-list";
+import { TreatmentCard } from "@/components/treatment-card";
 import { createPageMetadata } from "@/data/page-metadata";
+import { treatments } from "@/data/treatments";
 import treatmentsVideoPoster from "@/public/images/heroes/treatments/video-poster.jpg";
 
 export const metadata: Metadata = createPageMetadata({
@@ -31,7 +32,9 @@ export default function TreatmentsPage() {
         }
       />
       <div className="section-shell">
-        <TreatmentList />
+        {treatments.map((treatment) => (
+          <TreatmentCard key={treatment.slug} treatment={treatment} />
+        ))}
       </div>
     </>
   );

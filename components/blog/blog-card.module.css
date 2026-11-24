@@ -11,6 +11,11 @@
     color: var(--beige);
   }
 
+  /* The meta line stays at the bottom of equal-height cards in a carousel. */
+  > :last-child {
+    margin-top: auto;
+  }
+
   /* One parent grid row per child (5), so titles, descriptions and meta lines
      of neighbouring cards start at the same height. */
   @media (min-width: 640px) {

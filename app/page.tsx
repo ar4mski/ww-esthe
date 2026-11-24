@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { PostGrid } from "@/components/blog/post-grid";
+import { BlogCard } from "@/components/blog/blog-card";
 import { BookingCta } from "@/components/booking-cta";
+import { Carousel } from "@/components/carousel/carousel";
 import { BookingButton } from "@/components/cta-buttons";
 import { JsonLd } from "@/components/json-ld";
 import { PageHero } from "@/components/page-hero";
 import { PageSection } from "@/components/page-section";
-import { TreatmentListItem } from "@/components/treatment-list-item";
+import { TreatmentCard } from "@/components/treatment-card";
 import { getAllPosts } from "@/data/blog";
 import { createPageMetadata } from "@/data/page-metadata";
 import { siteConfig } from "@/data/site-config";
@@ -63,15 +64,15 @@ export default async function Home() {
           </Link>
         }
       >
-        <div className={`${styles.list} ${styles.grid}`}>
-          {treatments.slice(0, 3).map((treatment) => (
-            <TreatmentListItem
+        <Carousel label="Zabiegi" className={styles.grid}>
+          {treatments.slice(0, 4).map((treatment) => (
+            <TreatmentCard
               key={treatment.slug}
               treatment={treatment}
               variant="grid"
             />
           ))}
-        </div>
+        </Carousel>
       </PageSection>
 
       <AboutMe
@@ -112,7 +113,11 @@ export default async function Home() {
             </Link>
           }
         >
-          <PostGrid posts={latestPosts} compact className={styles.blogGrid} />
+          <Carousel label="Blog" className={styles.blogGrid}>
+            {latestPosts.map((post) => (
+              <BlogCard key={post.slug} post={post} />
+            ))}
+          </Carousel>
         </PageSection>
       )}
       <BookingCta />

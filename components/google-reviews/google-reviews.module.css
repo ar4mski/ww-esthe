@@ -1,5 +1,5 @@
-/* Below 768px the reviews are a hairline list; from 768px (a documented
-   breakpoint exception, see docs/style-guide.md) three columns. */
+/* Below 768px the reviews are a carousel (components/carousel); from 768px (a
+   documented breakpoint exception, see docs/style-guide.md) three columns. */
 
 .section {
   display: grid;
@@ -135,17 +135,15 @@
 
 /* Reviews */
 
-.list {
-  border-bottom: 1px solid var(--line);
-  display: grid;
+.reviews {
   grid-area: list;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  min-width: 0;
+}
 
+.list {
   @media (min-width: 768px) {
-    border-bottom: 0;
     column-gap: 1.5rem;
+    display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     row-gap: 0;
   }
@@ -158,7 +156,7 @@
 .item {
   border-top: 1px solid var(--line);
   min-width: 0;
-  padding: 1.75rem 0;
+  padding-top: 1.75rem;
 
   /* Items and their articles are subgrids, so meta, text and author rows of
      neighbouring reviews line up. */

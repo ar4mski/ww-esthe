@@ -1,8 +1,3 @@
-.list {
-  display: grid;
-  gap: 0;
-}
-
 .visitSection {
   display: grid;
   grid-template-areas:
@@ -40,25 +35,26 @@
   }
 }
 
-.blogGrid {
-  padding-bottom: 2rem;
-}
-
-/* Two columns on tablet: a third post would sit alone in a row. The card is a
-   subgrid from 640px, hence `display: grid` when it comes back. */
-.blogGrid > :nth-child(3) {
-  @media (min-width: 640px) {
-    display: none;
-  }
-
+/* Treatments: a carousel below 1024px, three columns above. The fourth
+   treatment is shown only in the carousel. */
+.grid {
   @media (min-width: 1024px) {
     display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    > :nth-child(n + 4) {
+      display: none;
+    }
   }
 }
 
-@media (min-width: 640px) {
-  .grid {
-    gap: 1.5rem;
+/* Blog teasers: a carousel below 1024px, one row of three cards above. */
+.blogGrid {
+  @media (min-width: 1024px) {
+    column-gap: 2rem;
+    display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 0;
   }
 }
