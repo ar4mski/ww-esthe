@@ -15,21 +15,6 @@ const pluralRules = new Intl.PluralRules(siteConfig.locale);
 export const formatReviewCount = (count: number) =>
   `${count} ${reviewCountWords[pluralRules.select(count)]}`;
 
-export const googleReviewsContent = {
-  eyebrow: "Opinie",
-  title: "Co mówią klientki",
-  description: `Opinie z profilu ${siteConfig.businessName} w Mapach Google.`,
-  allReviewsLabel: "Zobacz wszystkie opinie",
-  writeReviewLabel: "Wystaw opinię",
-  reviewLinkLabel: "Zobacz w Google Maps",
-  flagLabel: "Zgłoś",
-  flagAriaLabel: "Zgłoś opinię w Google Maps",
-  expandLabel: "Rozwiń",
-  collapseLabel: "Zwiń",
-  notice: (shown: number) =>
-    `Pokazujemy ${formatReviewCount(shown)} z profilu gabinetu w Mapach Google, wybrane i uporządkowane przez Google według trafności. Google nie weryfikuje opinii, ale sprawdza je i usuwa fałszywe treści, gdy je wykryje.`,
-};
-
 // The field mask sets the price of the call; `reviews` already puts it in the top SKU.
 export const GOOGLE_REVIEWS_FIELD_MASK =
   "rating,userRatingCount,reviews,googleMapsLinks";

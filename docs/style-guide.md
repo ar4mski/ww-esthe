@@ -113,7 +113,7 @@ Anything that has to line up with the content column outside `.section-shell` (h
 ### Breakpoints and columns
 Only `min-width: 640px` (tablet) and `min-width: 1024px` (desktop). Two documented exceptions:
 - The site header: the desktop nav appears at `min-width: 800px`, because all links fit in one row only from that width.
-- The Google reviews section on the home page: the reviews turn from a carousel into three columns at `min-width: 768px`. Below that a review column would be too narrow for the quote. Mockup frames are 390 / 768 / 1440 px wide; they are not breakpoints.
+- The Google reviews section on the home page: the reviews turn from a carousel into three columns at `min-width: 768px`. Below that a review column would be too narrow for the quote. Its rating number also has one-off sizes (`3.5rem` / `3.25rem` from 640px / `3.75rem` from 1024px, `--font-display` 300). Mockup frames are 390 / 768 / 1440 px wide; they are not breakpoints.
 
 | | Mobile < 640 | Tablet ≥ 640 | Desktop ≥ 1024 |
 | --- | --- | --- | --- |

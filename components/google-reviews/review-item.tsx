@@ -3,10 +3,7 @@
 import { Flag } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
 
-import {
-  type GoogleReview,
-  googleReviewsContent as content,
-} from "@/data/google-reviews";
+import type { GoogleReview } from "@/data/google-reviews";
 
 import styles from "./google-reviews.module.css";
 import { RatingStars } from "./rating-stars";
@@ -109,7 +106,7 @@ export const ReviewItem = ({ review, showPhoto }: ReviewItemProps) => {
               aria-expanded={isExpanded}
               onClick={() => setIsExpanded(!isExpanded)}
             >
-              {isExpanded ? content.collapseLabel : content.expandLabel}
+              {isExpanded ? "Zwiń" : "Rozwiń"}
             </button>
           )}
         </div>
@@ -133,18 +130,18 @@ export const ReviewItem = ({ review, showPhoto }: ReviewItemProps) => {
             )}
             <span className={styles.links}>
               <a href={review.reviewUrl} {...externalLinkProps}>
-                {content.reviewLinkLabel}
+                Zobacz w Google Maps
               </a>
               <span className={styles.dot} aria-hidden="true">
                 ·
               </span>
               <a
                 href={review.flagUrl}
-                aria-label={content.flagAriaLabel}
+                aria-label="Zgłoś opinię w Google Maps"
                 {...externalLinkProps}
               >
                 <Flag className="icon" aria-hidden="true" />
-                {content.flagLabel}
+                Zgłoś
               </a>
             </span>
           </div>

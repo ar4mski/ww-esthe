@@ -10,7 +10,6 @@ import {
 import { Carousel } from "@/components/carousel/carousel";
 import { PageSection } from "@/components/page-section";
 import {
-  googleReviewsContent as content,
   formatReviewCount,
   type GoogleReviewsData,
 } from "@/data/google-reviews";
@@ -90,9 +89,28 @@ export const GoogleReviews = () => {
         id="homepage-reviews"
         className={styles.section}
         headingClassName={styles.heading}
-        eyebrow={content.eyebrow}
-        title={content.title}
-        description={content.description}
+        eyebrow="Opinie"
+        title="Co mówią klientki"
+        description={
+          <>
+            Opinie z profilu{" "}
+            <a
+              className={styles.businessLink}
+              href={data.reviewsUrl}
+              {...externalLinkProps}
+            >
+              {siteConfig.businessName}
+            </a>{" "}
+            <span className={styles.descriptionSource}>
+              w{" "}
+              <Image
+                className={styles.attribution}
+                src={googleMapsLogo}
+                alt="Google Maps"
+              />
+            </span>
+          </>
+        }
       >
         <div className={styles.summary}>
           <p className={styles.rating}>
@@ -106,17 +124,12 @@ export const GoogleReviews = () => {
               <span>{formatReviewCount(data.ratingCount)}</span>
             </span>
           </p>
-          <Image
-            className={styles.attribution}
-            src={googleMapsLogo}
-            alt="Google Maps"
-          />
         </div>
 
         <div className={styles.reviews}>
           <Carousel
             as="ul"
-            label={content.eyebrow}
+            label="Opinie"
             until="tablet"
             className={styles.list}
           >
@@ -138,7 +151,7 @@ export const GoogleReviews = () => {
               data-reviews-action="all_reviews"
               {...externalLinkProps}
             >
-              {content.allReviewsLabel}
+              Zobacz wszystkie opinie
             </a>
             <a
               className="button button-link"
@@ -146,10 +159,15 @@ export const GoogleReviews = () => {
               data-reviews-action="write_review"
               {...externalLinkProps}
             >
-              {content.writeReviewLabel}
+              Wystaw opinię
             </a>
           </div>
-          <p className={styles.notice}>{content.notice(data.reviews.length)}</p>
+          <p className={styles.notice}>
+            Pokazujemy {formatReviewCount(data.reviews.length)} z profilu
+            gabinetu w Mapach Google, wybrane i uporządkowane przez Google
+            według trafności. Google nie weryfikuje opinii, ale sprawdza je
+            i usuwa fałszywe treści, gdy je wykryje.
+          </p>
         </div>
       </PageSection>
     </div>

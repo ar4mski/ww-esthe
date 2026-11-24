@@ -6,7 +6,7 @@ type PageSectionProps = {
   title: string;
   action?: ReactNode;
   className?: string;
-  description?: string;
+  description?: ReactNode;
   eyebrow?: string;
   headingClassName?: string;
   headingLevel?: "h1" | "h2";
