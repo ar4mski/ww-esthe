@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { PostMeta } from "@/components/blog/post-meta";
 import { getBlogPostPath, type BlogPostMeta } from "@/data/blog";
 
 import styles from "./featured-post.module.css";
-import { PostMeta } from "./post-meta";
 
 type FeaturedPostProps = {
   post: BlogPostMeta;

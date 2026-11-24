@@ -1,4 +1,4 @@
-export const homeFaqs = [
+export const contactFaqs = [
   {
     question: "Jak przygotować się do wizyty?",
     answer:
@@ -14,9 +14,6 @@ export const homeFaqs = [
     answer:
       "Nie musisz wiedzieć tego przed wizytą. Napisz mi, co chciałabyś podkreślić lub poprawić - podczas konsultacji ocenię Twoje rysy, kondycję skóry i oczekiwania, a potem zaproponuję zabieg, który da naturalny efekt. Jeśli coś nie będzie dla Ciebie dobrym rozwiązaniem, powiem o tym otwarcie.",
   },
-];
-
-export const contactFaqs = [
   {
     question: "Czy przy gabinecie jest darmowy parking?",
     answer:

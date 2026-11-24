@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { PostGrid } from "@/components/blog/post-grid";
 import { BookingCta } from "@/components/booking-cta";
 import { getActiveCategories, getAllPosts, getFeaturedPost } from "@/data/blog";
 import { createPageMetadata } from "@/data/page-metadata";
@@ -7,7 +8,6 @@ import { createPageMetadata } from "@/data/page-metadata";
 import { BlogEmptyState } from "./components/blog-empty-state";
 import { CategoryNav } from "./components/category-nav";
 import { FeaturedPost } from "./components/featured-post";
-import { PostGrid } from "./components/post-grid";
 
 const title = "Blog – porady o makijażu permanentnym i estetyce";
 const description =

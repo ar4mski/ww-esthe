@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { PostGrid } from "@/components/blog/post-grid";
 import { BookingCta } from "@/components/booking-cta";
 import { BookingButton } from "@/components/cta-buttons";
 import { JsonLd } from "@/components/json-ld";
 import { PageHero } from "@/components/page-hero";
 import { PageSection } from "@/components/page-section";
 import { TreatmentListItem } from "@/components/treatment-list-item";
+import { getAllPosts } from "@/data/blog";
 import { createPageMetadata } from "@/data/page-metadata";
 import { siteConfig } from "@/data/site-config";
 import {
@@ -17,10 +19,8 @@ import { treatments } from "@/data/treatments";
 import homeVideoPoster from "@/public/images/heroes/home/video-poster.jpg";
 
 import { AboutMe } from "@/components/about-me";
-import { FaqSection } from "@/components/faq-section";
 import { GoogleReviews } from "@/components/google-reviews";
 import { Visit } from "@/components/visit";
-import { homeFaqs } from "@/data/faq";
 import { HomeShowcase } from "./components/home-showcase";
 import styles from "./homepage.module.css";
 
@@ -30,7 +30,9 @@ export const metadata: Metadata = createPageMetadata({
   path: "/",
 });
 
-export default function Home() {
+export default async function Home() {
+  const latestPosts = (await getAllPosts()).slice(0, 3);
+
   return (
     <>
       <JsonLd data={getWebSiteJsonLd()} />
@@ -88,8 +90,6 @@ export default function Home() {
         <Visit />
       </PageSection>
 
-      <BookingCta />
-
       <PageSection
         id="homepage-gallery"
         eyebrow="Efekty"
@@ -101,13 +101,21 @@ export default function Home() {
 
       {siteConfig.googleReviews.enabled && <GoogleReviews />}
 
-      <FaqSection
-        className="section-tinted"
-        faqs={homeFaqs}
-        id="homepage-faq"
-        eyebrow="Najczęściej zadawane pytania"
-        title="Wszystko o co chciałabyś zapytać"
-      />
+      {latestPosts.length > 0 && (
+        <PageSection
+          id="homepage-blog"
+          eyebrow="Blog"
+          title="Wiedza o pięknie"
+          action={
+            <Link className="text-link" href="/blog">
+              Wszystkie artykuły
+            </Link>
+          }
+        >
+          <PostGrid posts={latestPosts} compact className={styles.blogGrid} />
+        </PageSection>
+      )}
+      <BookingCta />
     </>
   );
 }

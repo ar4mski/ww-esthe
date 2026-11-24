@@ -40,6 +40,22 @@
   }
 }
 
+.blogGrid {
+  padding-bottom: 2rem;
+}
+
+/* Two columns on tablet: a third post would sit alone in a row. The card is a
+   subgrid from 640px, hence `display: grid` when it comes back. */
+.blogGrid > :nth-child(3) {
+  @media (min-width: 640px) {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    display: grid;
+  }
+}
+
 @media (min-width: 640px) {
   .grid {
     gap: 1.5rem;

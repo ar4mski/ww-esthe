@@ -30,11 +30,14 @@ Everything still open before and right after the production launch. Remove an it
   - Google Cloud: project with billing, enable Places API (New), API key restricted to it, quota "Place Details requests per day" = 30, budget alert at 10 PLN, find the place ID (see `docs/design/google-reviews/HANDOFF.md` §2).
   - Vercel **Production only**: `GOOGLE_PLACES_API_KEY`, `GOOGLE_PLACE_ID`; redeploy.
   - On launch day: bump `legalLastUpdated` in `data/legal-content.ts`, have a lawyer check the privacy policy and terms wording, add `https://warylakesthe.pl` to the Business Profile.
-- [ ] **Home page end:** after the FAQ/blog swap (stage 3) the home page ends with the blog and the footer, with the booking band mid-page. Compare `booking_click` from `booking-cta` and `footer` in GA; move or repeat the band only if few bookings come from the end of the page.
+- [ ] **Home page end:** the home page ends with the blog section and the footer, with the booking band mid-page. Compare `booking_click` from `booking-cta` and `footer` in GA; move or repeat the band only if few bookings come from the end of the page.
 - [ ] **Search Console:** watch CTR and queries per page and adjust titles and descriptions.
 - [ ] **Blog:** add `updatedDate` on significant edits; consider an author box with qualifications (E-E-A-T for aesthetic medicine).
 
 ## Optional
+
+- **Home page blog on mobile:** the 3 compact cards are stacked like on `/blog`. The client may want a generic carousel or horizontal scroll later (the mockup scrolled horizontally); if so, build one shared pattern, not a blog-only one.
+- **Blog covers:** the 3 newest posts reuse photos already shown on the home page ("O mnie" portrait, brow and lip treatment covers). The owner will replace them; no code change needed.
 
 - Tests and CI (none today).
 - Video: an AV1/WebM `<source>` before the MP4; a landscape desktop video (720 px stretched to full width is soft).

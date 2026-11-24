@@ -10,9 +10,9 @@ export const visitSteps: VisitStepData[] = [
   {
     number: "1",
     title: "Konsultacja",
-    text: "Rozmawiamy o Twoich oczekiwaniach i potrzebach. To spokojny początek naszej wizyty.",
+    text: "Rozmawiamy o Twoich oczekiwaniach i potrzebach. To spokojny początek naszej wizyty – konsultacja trwa zwykle 15–30 minut i jest częścią każdej wizyty.",
     shortText:
-      "Rozmawiamy o Twoich oczekiwaniach i potrzebach. To spokojny początek naszej wizyty.",
+      "Rozmawiamy o Twoich oczekiwaniach i potrzebach. To spokojny początek naszej wizyty – konsultacja trwa zwykle 15–30 minut i jest częścią każdej wizyty.",
     subtitle: "Zaczynamy od rozmowy",
   },
   {

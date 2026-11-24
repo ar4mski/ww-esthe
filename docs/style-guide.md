@@ -184,7 +184,8 @@ Text buttons in a wrapping row (`gap: 0.25rem 1.25rem`), `--muted` at rest, acti
 No box, border or background: an image on top, text below, aligned to the image edge.
 - Image: fixed aspect ratio, `object-fit: cover`, hover zoom inside an `overflow: hidden` wrapper.
 - Then a small uppercase category label in `--beige`, the title (`h3` or `--heading-card-size`), 2–3 lines of `--muted` text, and a meta row pinned to the bottom (`margin-top: auto`) with a top hairline.
-- When the whole card is a link, use a stretched `::after` link instead of nesting links (see `blog-card`).
+- When the whole card is a link, use a stretched `::after` link instead of nesting links (see `components/blog/blog-card`).
+- Blog cards outside the blog (the home page "Blog" section) use `PostGrid` with `compact`: no description, the subgrid spans 4 rows instead of 5. The home page shows 3 posts, but only 2 on tablet so the third doesn't sit alone in a row.
 - In a multi-column grid, make the card a subgrid (`grid-row: span <number of children>; grid-template-rows: subgrid`) so titles, text and meta of neighbouring cards line up even when a title wraps to more lines. The parent grid then has `row-gap: 0` and the space between card rows comes from the cards' `margin-top` (see `blog-card` and `post-grid`). Wrappers between the card and its content (`treatment-list-item`: card → row → copy) must be subgrids too, and each subgrid sets `row-gap: 0` because it inherits the parent's row gap.
 
 ### Imagery
@@ -199,7 +200,7 @@ No box, border or background: an image on top, text below, aligned to the image 
 lucide-react only, always `className="icon"`, size through `--icon-size` on a parent (default `1.15rem`; `1rem` in dense rows, `1.25–1.5rem` in badges and quotes). Icons are line icons in `currentColor`; accent icons are `--beige`. Brand glyphs come from `components/icons/`.
 
 ### Existing building blocks
-`PageHero`, `PageSection`, `BookingCta`, `Monogram`, `FaqSection`/`FaqItem`, `BookingButton`/`MessageButton`, `ChannelLinks`, `Breadcrumbs`, `CategoryFilter`, `TreatmentList`/`TreatmentListItem`, `GalleryGrid`/`GalleryPreview`, `Visit`, `GoogleReviews`, `LegalDocument`, `StatusPage`, `BackgroundVideo`, `SiteHeader`, `SiteFooter`. Route-specific ones live in `app/<route>/components/`.
+`PageHero`, `PageSection`, `BookingCta`, `Monogram`, `FaqSection`/`FaqItem`, `BookingButton`/`MessageButton`, `ChannelLinks`, `Breadcrumbs`, `CategoryFilter`, `PostGrid`/`BlogCard`/`PostMeta` (`components/blog/`), `TreatmentList`/`TreatmentListItem`, `GalleryGrid`/`GalleryPreview`, `Visit`, `GoogleReviews`, `LegalDocument`, `StatusPage`, `BackgroundVideo`, `SiteHeader`, `SiteFooter`. Route-specific ones live in `app/<route>/components/`.
 
 ## 7. Hero
 

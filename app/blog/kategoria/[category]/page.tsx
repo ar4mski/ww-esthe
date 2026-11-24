@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { PostGrid } from "@/components/blog/post-grid";
 import { BookingCta } from "@/components/booking-cta";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import {
@@ -15,7 +16,6 @@ import { siteConfig } from "@/data/site-config";
 
 import { BlogEmptyState } from "../../components/blog-empty-state";
 import { CategoryNav } from "../../components/category-nav";
-import { PostGrid } from "../../components/post-grid";
 
 type CategoryPageProps = {
   params: Promise<{ category: string }>;

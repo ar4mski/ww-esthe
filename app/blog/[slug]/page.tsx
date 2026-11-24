@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { PostGrid } from "@/components/blog/post-grid";
+import { PostMeta } from "@/components/blog/post-meta";
 import { BookingCta } from "@/components/booking-cta";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
@@ -18,8 +20,6 @@ import { siteConfig } from "@/data/site-config";
 import { getBlogPostingJsonLd } from "@/data/structured-data";
 
 import { ArticleContent } from "../components/article-content";
-import { PostGrid } from "../components/post-grid";
-import { PostMeta } from "../components/post-meta";
 import styles from "./article-page.module.css";
 
 type ArticlePageProps = {

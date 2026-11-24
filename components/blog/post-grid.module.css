@@ -1,6 +1,7 @@
 .grid {
   display: grid;
   gap: 3rem 1.5rem;
+  
 
   > :not(:last-child) {
     border-bottom: 1px solid var(--line);

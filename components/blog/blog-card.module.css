@@ -20,6 +20,13 @@
   }
 }
 
+/* No description, so one child less to span. */
+.compact {
+  @media (min-width: 640px) {
+    grid-row: span 4;
+  }
+}
+
 .media {
   background: var(--line);
   margin-bottom: 1.25rem;

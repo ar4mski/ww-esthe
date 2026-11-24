@@ -8,10 +8,14 @@ import { PostMeta } from "./post-meta";
 
 type BlogCardProps = {
   post: BlogPostMeta;
+  /** Without the description, for teasers outside the blog (home page). */
+  compact?: boolean;
 };
 
-export const BlogCard = ({ post }: BlogCardProps) => (
-  <article className={styles.card}>
+export const BlogCard = ({ post, compact = false }: BlogCardProps) => (
+  <article
+    className={compact ? `${styles.card} ${styles.compact}` : styles.card}
+  >
     <div className={styles.media}>
       <Image
         className={styles.image}
@@ -28,7 +32,7 @@ export const BlogCard = ({ post }: BlogCardProps) => (
         {post.title}
       </Link>
     </h3>
-    <p className={styles.description}>{post.description}</p>
+    {!compact && <p className={styles.description}>{post.description}</p>}
     <PostMeta date={post.date} readingTimeMinutes={post.readingTimeMinutes} />
   </article>
 );
