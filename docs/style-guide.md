@@ -113,7 +113,7 @@ Anything that has to line up with the content column outside `.section-shell` (h
 ### Breakpoints and columns
 Only `min-width: 640px` (tablet) and `min-width: 1024px` (desktop). Two documented exceptions:
 - The site header: the desktop nav appears at `min-width: 800px`, because all links fit in one row only from that width.
-- The Google reviews section on the home page: the reviews turn from a carousel into three columns at `min-width: 768px`. Below that a review column would be too narrow for the quote. Its rating number also has one-off sizes (`3.5rem` / `3.25rem` from 640px / `3.75rem` from 1024px, `--font-display` 300). Mockup frames are 390 / 768 / 1440 px wide; they are not breakpoints.
+- The Google reviews section on the home page: the reviews stay a carousel at every width (five reviews: one card on phones, two from 640px, three from 1024px). Its rating number also has one-off sizes (`3.5rem` / `3.25rem` from 640px / `3.75rem` from 1024px, `--font-display` 300). Mockup frames are 390 / 768 / 1440 px wide; they are not breakpoints.
 
 | | Mobile < 640 | Tablet ≥ 640 | Desktop ≥ 1024 |
 | --- | --- | --- | --- |
@@ -194,7 +194,7 @@ No box, border or background: an image on top, text below, aligned to the image 
 - Item width: `90%` of the content column on mobile (a peek of the next card), `47%` from 640px (two cards and an edge of the third). Gap `1.25rem`. The track bleeds to the right screen edge by the `.section-shell` gutter, so the peek is not cut off.
 - Items stretch to equal heights; the meta row stays at the bottom of the card.
 - Under the track a segmented 1px line, one segment per item: `--line`, the active one `--foreground` (`180ms` colour transition, none with reduced motion). Decorative (`aria-hidden`).
-- `until="desktop"` (default): a carousel below 1024px. `until="tablet"`: below 768px, only for the reviews (the documented exception, §4). From the breakpoint the section's own grid, passed as `className`, takes over.
+- `until="desktop"` (default): a carousel below 1024px. `until="never"`: a carousel at every width (reviews). From the breakpoint the section's own grid, passed as `className`, takes over.
 - The track is a focusable named region (`tabindex="0"`, `aria-label`), so arrow keys scroll it; a `ul` track keeps its list semantics.
 - Its styles live in the `components` cascade layer, so a section class on the track always overrides them. Set the section's grid only from the breakpoint up.
 

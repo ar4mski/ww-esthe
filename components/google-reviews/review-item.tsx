@@ -81,7 +81,7 @@ export const ReviewItem = ({ review, showPhoto }: ReviewItemProps) => {
             label={`Ocena ${review.rating} na 5`}
             rating={review.rating}
           />
-          <span className={styles.dot} aria-hidden="true">
+          <span aria-hidden="true">
             ·
           </span>
           <span>{review.relativeTime}</span>
@@ -132,7 +132,7 @@ export const ReviewItem = ({ review, showPhoto }: ReviewItemProps) => {
               <a href={review.reviewUrl} {...externalLinkProps}>
                 Zobacz w Google Maps
               </a>
-              <span className={styles.dot} aria-hidden="true">
+              <span aria-hidden="true">
                 ·
               </span>
               <a

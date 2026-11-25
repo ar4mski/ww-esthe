@@ -1,6 +1,12 @@
 "use client";
 
-import { Children, useRef, useState, type ReactNode, type UIEvent } from "react";
+import {
+  Children,
+  useRef,
+  useState,
+  type ReactNode,
+  type UIEvent,
+} from "react";
 
 import styles from "./carousel.module.css";
 
@@ -9,26 +15,16 @@ type CarouselProps = {
   label: string;
   as?: "div" | "ul";
   className?: string;
-  until?: "tablet" | "desktop";
+  until?: "desktop" | "never";
 };
 
-// Tolerance for sub-pixel scroll positions at the end of the track.
-const END_TOLERANCE = 4;
-
+// Several items are visible at once on tablet and desktop, so the last ones
+// never reach the left edge. The segments follow scroll progress instead.
 const getActiveIndex = (track: HTMLElement, count: number) => {
-  if (track.scrollLeft + track.clientWidth >= track.scrollWidth - END_TOLERANCE) {
-    // Two items are visible on tablet, so the last one never reaches the left edge.
-    return count - 1;
-  }
-
-  const firstItem = track.firstElementChild;
-  if (!firstItem) return 0;
-
-  const step =
-    firstItem.getBoundingClientRect().width +
-    parseFloat(getComputedStyle(track).columnGap);
-  const index = Math.round(track.scrollLeft / step);
-  return Math.min(Math.max(index, 0), count - 1);
+  const maxScroll = track.scrollWidth - track.clientWidth;
+  if (maxScroll <= 0) return 0;
+  const progress = Math.min(Math.max(track.scrollLeft / maxScroll, 0), 1);
+  return Math.round(progress * (count - 1));
 };
 
 export const Carousel = ({

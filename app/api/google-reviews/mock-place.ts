@@ -57,8 +57,15 @@ export const mockPlace: PlaceResponse = {
       4,
       5,
       "3 miesiące temu",
-      "Ta opinia nie powinna się pokazać: sekcja pokazuje tylko 3.",
+      "Przykładowa opinia numer cztery, do podglądu karuzeli.",
       "Czwarta Osoba",
+    ),
+    review(
+      5,
+      5,
+      "4 miesiące temu",
+      "Przykładowa opinia numer pięć, do podglądu karuzeli.",
+      "Piąta Osoba",
     ),
   ],
 };

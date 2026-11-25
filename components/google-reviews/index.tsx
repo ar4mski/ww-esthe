@@ -130,7 +130,7 @@ export const GoogleReviews = () => {
           <Carousel
             as="ul"
             label="Opinie"
-            until="tablet"
+            until="never"
             className={styles.list}
           >
             {data.reviews.map((review) => (

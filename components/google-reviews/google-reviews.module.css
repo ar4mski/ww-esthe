@@ -1,6 +1,3 @@
-/* Below 768px the reviews are a carousel (components/carousel); from 768px (a
-   documented breakpoint exception, see docs/style-guide.md) three columns. */
-
 .section {
   column-gap: 1.25rem;
   display: grid;
@@ -219,15 +216,15 @@
   min-width: 0;
 }
 
+/* Carousel at every width: one card with a peek on phones, two from 640px,
+   three from 1024px (see components/carousel). */
 .list {
-  @media (min-width: 768px) {
-    column-gap: 1.5rem;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    row-gap: 0;
+  @media (min-width: 640px) {
+    column-gap: 2rem;
   }
 
   @media (min-width: 1024px) {
+    --carousel-item-width: calc((100% - 6rem) / 3);
     column-gap: 3rem;
   }
 }
@@ -236,40 +233,11 @@
   border-top: 1px solid var(--line);
   min-width: 0;
   padding-top: 1.75rem;
-
-  /* Items and their articles are subgrids, so meta, text and author rows of
-     neighbouring reviews line up. */
-  @media (min-width: 768px) {
-    border-top: 0;
-    display: grid;
-    grid-row: span 3;
-    grid-template-rows: subgrid;
-    padding: 0;
-    row-gap: 0;
-
-    & + & {
-      border-left: 1px solid var(--line);
-      padding-left: 1rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    & + & {
-      padding-left: 1.5rem;
-    }
-  }
 }
 
 .review {
   display: flex;
   flex-direction: column;
-
-  @media (min-width: 768px) {
-    display: grid;
-    grid-row: span 3;
-    grid-template-rows: subgrid;
-    row-gap: 0;
-  }
 }
 
 .meta {
@@ -280,36 +248,10 @@
   gap: 0.25rem 0.5rem;
   line-height: 1.5;
   margin: 0 0 0.875rem;
-
-  @media (min-width: 768px) {
-    align-items: flex-start;
-    flex-direction: column;
-    margin-bottom: 1.25rem;
-  }
-
-  @media (min-width: 1024px) {
-    align-items: center;
-    flex-direction: row;
-  }
-}
-
-.dot {
-  @media (min-width: 768px) {
-    display: none;
-  }
-
-  @media (min-width: 1024px) {
-    display: inline;
-  }
 }
 
 .body {
   margin-bottom: 0.875rem;
-
-  /* With the author's padding-top this makes the 1.25rem text → author gap. */
-  @media (min-width: 768px) {
-    margin-bottom: 0.5rem;
-  }
 }
 
 .quote {
@@ -328,14 +270,6 @@
   margin: 0;
   overflow: hidden;
   overflow-wrap: anywhere;
-
-  @media (min-width: 768px) {
-    --lines: 9;
-  }
-
-  @media (min-width: 1024px) {
-    --lines: 6;
-  }
 
   &[data-expanded="true"] {
     -webkit-line-clamp: unset;
@@ -362,10 +296,6 @@
   align-items: center;
   display: flex;
   gap: 0.75rem;
-
-  @media (min-width: 768px) {
-    padding-top: 0.75rem;
-  }
 }
 
 .avatar {
@@ -413,16 +343,6 @@
     gap: 0.25rem;
     min-height: 1.5rem;
   }
-
-  @media (min-width: 768px) {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  @media (min-width: 1024px) {
-    align-items: center;
-    flex-direction: row;
-  }
 }
 
 /* Buttons and notice */
@@ -431,7 +351,7 @@
   grid-area: footer;
   margin-top: 2.5rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: 640px) {
     align-items: end;
     column-gap: 2rem;
     display: grid;
@@ -456,7 +376,7 @@
   line-height: 1.5;
   margin: 1.75rem 0 0;
 
-  @media (min-width: 768px) {
+  @media (min-width: 640px) {
     margin: 0;
     max-width: 35rem;
   }

@@ -12,11 +12,6 @@
       --carousel-item-width: 47%;
       --carousel-bleed: 2rem;
     }
-
-    /* Reviews: a column under 768px would be too narrow for two quotes. */
-    &[data-until="tablet"] {
-      --carousel-item-width: 90%;
-    }
   }
 
   .track {
@@ -59,26 +54,8 @@
     }
   }
 
-  /* From the breakpoint the track is a plain block and the section's grid takes
-     over. 768px is the documented reviews exception (docs/style-guide.md). */
-  .carousel[data-until="tablet"] {
-    @media (min-width: 768px) {
-      .track {
-        display: block;
-        grid-auto-columns: auto;
-        grid-auto-flow: row;
-        margin: 0;
-        overflow: visible;
-        padding: 0;
-        scroll-snap-type: none;
-      }
-
-      .indicator {
-        display: none;
-      }
-    }
-  }
-
+  /* From 1024px the track is a plain block and the section's grid, passed as
+     `className`, takes over (not with until="never"). */
   .carousel[data-until="desktop"] {
     @media (min-width: 1024px) {
       .track {

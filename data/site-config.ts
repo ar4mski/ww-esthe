@@ -23,7 +23,7 @@ export const siteConfig = {
     // Fake reviews instead of the API, for previewing before launch only.
     mock: isGoogleReviewsMock,
     minReviews: 3,
-    shownReviews: 3,
+    shownReviews: 5,
   },
   defaultOgImage: {
     url: "/images/heroes/home/og.jpg",
