@@ -17,6 +17,7 @@
   --focus-offset: 3px;
   --header-height: 70px;
   --content-max-width: 1180px;
+  --section-gutter: 1.25rem;
   --footer-heading: #fffdf9;
   --text: #f7f4ef;
   --image-hover-scale: 1.24;
@@ -104,7 +105,7 @@ a {
 .section-shell {
   margin: 0 auto;
   max-width: var(--content-max-width);
-  padding: 2.5rem 1.25rem;
+  padding: 2.5rem var(--section-gutter);
 
   /* Sections opening with breadcrumbs sit closer to the header on mobile.
      Lives here, not in breadcrumbs.module.css, because :where() keeps the
@@ -133,12 +134,12 @@ a {
   max-width: none;
   background: var(--section-tint);
   padding-left: max(
-    1.25rem,
-    calc((100% - var(--content-max-width)) / 2 + 1.25rem)
+    var(--section-gutter),
+    calc((100% - var(--content-max-width)) / 2 + var(--section-gutter))
   );
   padding-right: max(
-    1.25rem,
-    calc((100% - var(--content-max-width)) / 2 + 1.25rem)
+    var(--section-gutter),
+    calc((100% - var(--content-max-width)) / 2 + var(--section-gutter))
   );
 
   & .eyebrow {
@@ -389,15 +390,7 @@ p {
     padding-top: var(--header-height);
   }
 
-  .section-shell {
-    padding: 2.5rem 2rem;
-  }
-
-  .section-tinted {
-    padding-left: max(2rem, calc((100% - var(--content-max-width)) / 2 + 2rem));
-    padding-right: max(
-      2rem,
-      calc((100% - var(--content-max-width)) / 2 + 2rem)
-    );
+  :root {
+    --section-gutter: 2rem;
   }
 }

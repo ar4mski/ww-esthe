@@ -4,13 +4,11 @@
 @layer components {
   .carousel {
     /* 90% of the column: a peek of the next item. From 640px two items and an
-       edge of the third. The bleed matches the .section-shell gutter. */
+       edge of the third. */
     --carousel-item-width: 90%;
-    --carousel-bleed: 1.25rem;
 
     @media (min-width: 640px) {
       --carousel-item-width: 47%;
-      --carousel-bleed: 2rem;
     }
   }
 
@@ -21,10 +19,11 @@
     grid-auto-columns: var(--carousel-item-width);
     grid-auto-flow: column;
     list-style: none;
-    margin: 0 calc(-1 * var(--carousel-bleed)) 0 0;
+    /* Bleeds to the screen edge by the .section-shell gutter. */
+    margin: 0 calc(-1 * var(--section-gutter)) 0 0;
     overflow-x: auto;
     overscroll-behavior-x: contain;
-    padding: 0 var(--carousel-bleed) 0 0;
+    padding: 0 var(--section-gutter) 0 0;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
 

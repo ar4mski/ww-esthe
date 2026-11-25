@@ -98,10 +98,12 @@ Every section uses the global classes; don't recreate them in modules.
 
 | Class | What it does |
 | --- | --- |
-| `.section-shell` | Content column `max-width: var(--content-max-width)` (1180px), centred. Padding `2.5rem 1.25rem` mobile, `2.5rem 2rem` from 640px. Top padding `1rem` when the section starts with breadcrumbs. |
+| `.section-shell` | Content column `max-width: var(--content-max-width)` (1180px), centred. Padding `2.5rem var(--section-gutter)`. Top padding `1rem` when the section starts with breadcrumbs. |
 | `.section-tinted` | Full-width `--section-tint` band; content stays aligned to the content column. Combine with `.section-shell`. |
 
-Anything that has to line up with the content column outside `.section-shell` (header, footer, hero container, full-width hairlines) uses `--content-max-width`, never a literal `1180px`. Inset to the column with `max(<gutter>, calc((100% - var(--content-max-width)) / 2 + <gutter>))`.
+Anything that has to line up with the content column outside `.section-shell` (header, footer, hero container, full-width hairlines) uses `--content-max-width`, never a literal `1180px`. Inset to the column with `max(var(--section-gutter), calc((100% - var(--content-max-width)) / 2 + var(--section-gutter)))`.
+
+`--section-gutter` (`1.25rem`, `2rem` from 640px, defined on `:root`) is the single source of the side gutter. `.section-shell`, `.section-tinted` and the carousel bleed use it; never repeat the literal values.
 | `.section-heading` | Section header: eyebrow, `h2`, optional description. `max-width: 38rem`, `margin-bottom: 2.25rem`. |
 | `.section-heading-row` | Heading and an action (e.g. a `.text-link`) side by side, action bottom-aligned with the description, from 640px; on mobile the action moves below the section content. Rendered by `PageSection` when `action` is passed. |
 
@@ -117,7 +119,7 @@ Only `min-width: 640px` (tablet) and `min-width: 1024px` (desktop). Two document
 
 | | Mobile < 640 | Tablet ≥ 640 | Desktop ≥ 1024 |
 | --- | --- | --- | --- |
-| Side gutter | `1.25rem` | `2rem` | `2rem` (content max `--content-max-width`) |
+| Side gutter (`--section-gutter`) | `1.25rem` | `2rem` | `2rem` (content max `--content-max-width`) |
 | Typical card grid | 1 column (or list rows) | 2–3 columns | 3 columns |
 | Photo grid | 2–3 columns, gap `0.15–0.25rem` | 4 columns, gap `0.5rem` | 4 columns |
 | Two-part section (text + media/list) | stacked | stacked or 2 equal columns | 2 columns: `2fr 3fr`, `1fr 1fr` or `4fr 6fr`, column gap `4rem` |
@@ -191,7 +193,7 @@ No box, border or background: an image on top, text below, aligned to the image 
 ### Carousel
 `Carousel` (`components/carousel/`) turns a row of cards into a horizontal scroller on small screens. Use it for card rows on the home page (treatments, reviews, blog); full lists on their own pages stay grids.
 - Native horizontal scroll with `scroll-snap` to the left content edge; no arrows, dots, autoplay or looping ("light and premium", client decision).
-- Item width: `90%` of the content column on mobile (a peek of the next card), `47%` from 640px (two cards and an edge of the third). Gap `1.25rem`. The track bleeds to the right screen edge by the `.section-shell` gutter, so the peek is not cut off.
+- Item width: `90%` of the content column on mobile (a peek of the next card), `47%` from 640px (two cards and an edge of the third). Gap `1.25rem`. The track bleeds to the right screen edge by `--section-gutter`, so the peek is not cut off.
 - Items stretch to equal heights; the meta row stays at the bottom of the card.
 - Under the track a segmented 1px line, one segment per item: `--line`, the active one `--foreground` (`180ms` colour transition, none with reduced motion). Decorative (`aria-hidden`).
 - `until="desktop"` (default): a carousel below 1024px. `until="never"`: a carousel at every width (reviews). From the breakpoint the section's own grid, passed as `className`, takes over.
